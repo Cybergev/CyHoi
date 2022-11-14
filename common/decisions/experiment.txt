@@ -1,0 +1,25 @@
+political_actions = {
+	
+	EXPD1 = {
+
+		icon = generic_research
+
+		allowed = {
+			always = no
+		}
+
+		complete_effect = {
+		}
+	}
+	EXPD2 = {
+
+		icon = generic_research
+
+		allowed = {
+			always = no
+		}
+
+		complete_effect = {
+		}
+	}
+}
