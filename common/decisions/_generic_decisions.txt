@@ -1097,6 +1097,15 @@ economy_decisions = {
 						v_trade = 0.8
 					}
 					set_temp_variable = {
+						v_trade_consumer = v_trade
+					}
+					divide_temp_variable = {
+						v_trade_consumer = 10
+					}
+					multiply_temp_variable = {
+						v_trade_consumer = -1
+					}
+					set_temp_variable = {
 						v_trade_bonus = v_trade
 					}
 					divide_temp_variable = {
@@ -1116,6 +1125,15 @@ economy_decisions = {
 					remove_ideas = export_focus
 					set_temp_variable = {
 						v_trade = 0.5
+					}
+					set_temp_variable = {
+						v_trade_consumer = v_trade
+					}
+					divide_temp_variable = {
+						v_trade_consumer = 10
+					}
+					multiply_temp_variable = {
+						v_trade_consumer = -1
 					}
 					set_temp_variable = {
 						v_trade_bonus = v_trade
