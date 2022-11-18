@@ -3068,7 +3068,7 @@ form_roman_empire_category = {
 
 form_persian_empire_category = {
 
-	unite_afg_and_per = {
+	first_persian_unite = {
 		
 		icon = generic_form_nation
 
@@ -3108,6 +3108,7 @@ form_persian_empire_category = {
 			OR = {
 				original_tag = PER
 				original_tag = AFG
+				original_tag = TAJ
 			}
 			OR = {
 				AFG = {
@@ -3118,6 +3119,13 @@ form_persian_empire_category = {
 					}
 				}
 				PER = {
+					all_core_state = {
+						NOT = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				TAJ = {
 					all_core_state = {
 						NOT = {
 							is_core_of = ROOT
@@ -3153,10 +3161,23 @@ form_persian_empire_category = {
 						}
 					}
 				}
+				TAJ = {
+					if = {
+						limit = {
+							is_subject_of = ROOT
+						}
+						ROOT = {
+							annex_country = {
+								target = PREV
+							}
+						}
+					}
+				}
 			}
 			AFG = {
 				every_core_state = {
 					add_core_of = PER
+					add_core_of = TAJ
 				}
 				every_character = {
 					set_nationality = ROOT
@@ -3165,6 +3186,16 @@ form_persian_empire_category = {
 			PER = {
 				every_core_state = {
 					add_core_of = AFG
+					add_core_of = TAJ
+				}
+				every_character = {
+					set_nationality = ROOT
+				}
+			}
+			TAJ = {
+				every_core_state = {
+					add_core_of = AFG
+					add_core_of = PER
 				}
 				every_character = {
 					set_nationality = ROOT
@@ -3182,6 +3213,7 @@ form_persian_empire_category = {
 			OR = {
 				original_tag = AFG
 				original_tag = PER
+				original_tag = TAJ
 			}
 		}
 
@@ -3246,6 +3278,7 @@ form_persian_empire_category = {
 			OR = {
 				original_tag = AFG
 				original_tag = PER
+				original_tag = TAJ
 			}
 			AND = {
 				NOT = { has_global_flag = form_persian_empire_flag }
@@ -3259,62 +3292,167 @@ form_persian_empire_category = {
 						is_core_of = ROOT
 					}
 				}
+				TAJ = {
+					all_core_state = {
+						is_core_of = ROOT
+					}
+				}
 			}
 		}
 
 		complete_effect = {
-			230 = { add_core_of = ROOT }
-			229 = { add_core_of = ROOT }
-			231 = { add_core_of = ROOT }
-			BUK = {
-				every_core_state = { add_core_of = ROOT }
+			230 = { 
+				add_core_of = AFG 
+				add_core_of = PER 
+				add_core_of = TAJ 
 			}
-			405 = { add_core_of = ROOT }
+			229 = { 
+				add_core_of = AFG 
+				add_core_of = PER 
+				add_core_of = TAJ 
+			}
+			231 = { 
+				add_core_of = AFG 
+				add_core_of = PER 
+				add_core_of = TAJ 
+			}
+			BUK = {
+				every_core_state = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
+			}
+			405 = { 
+				add_core_of = AFG 
+				add_core_of = PER 
+				add_core_of = TAJ 
+			}
 			TMS = {
-				every_core_state = { add_core_of = ROOT }
+				every_core_state = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
 			}
 			KYR = {
-				every_core_state = { add_core_of = ROOT }
+				every_core_state = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
 			}
-			619 = { add_core_of = ROOT }
+			619 = { 
+				add_core_of = AFG 
+				add_core_of = PER 
+				add_core_of = TAJ 
+			}
 			PAK = {
-				440 = { add_core_of = ROOT }
-				787 = { add_core_of = ROOT }
-				441 = { add_core_of = ROOT }
-				442 = { add_core_of = ROOT }
-				443 = { add_core_of = ROOT }
-				444 = { add_core_of = ROOT }
-				445 = { add_core_of = ROOT }
+				440 = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
+				787 = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
+				441 = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
+				442 = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
+				443 = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
+				444 = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
+				445 = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
 			}
 			TUR = {
-				every_core_state = { add_core_of = ROOT }
+				every_core_state = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
 			}
 			KUR = {
-				every_core_state = { add_core_of = ROOT }
+				every_core_state = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
 			}
 			CYP = {
-				every_core_state = { add_core_of = ROOT }
+				every_core_state = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
 			}
 			SYR = {
-				every_core_state = { add_core_of = ROOT }
+				every_core_state = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
 			}
 			LEB = {
-				every_core_state = { add_core_of = ROOT }
+				every_core_state = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
 			}
 			PAL = {
-				every_core_state = { add_core_of = ROOT }
+				every_core_state = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
 			}
 			JOR = {
-				every_core_state = { add_core_of = ROOT }
+				every_core_state = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
 			}
 			IRQ = {
-				every_core_state = { add_core_of = ROOT }
+				every_core_state = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
 			}
 			KUW = {
-				every_core_state = { add_core_of = ROOT }
+				every_core_state = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
 			}
 			EGY = {
-				every_core_state = { add_core_of = ROOT }
+				every_core_state = { 
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
 			}
 				set_cosmetic_tag = PER_UNIFIED
 			hidden_effect = {
@@ -3371,7 +3509,9 @@ form_persian_empire_category = {
 						region = 238
 					}
 				}
-				add_core_of = ROOT
+				add_core_of = AFG 
+				add_core_of = PER 
+				add_core_of = TAJ 
 			}
 		}
 

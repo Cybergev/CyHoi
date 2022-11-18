@@ -377,6 +377,7 @@ trade_decisions = {
 		cost = 1
 
 		complete_effect = {
+			clear_variable = Flexible_trade_policy_consumer_goods_factor
 			clear_variable = Flexible_trade_policy_production_speed_buildings_factor
 			clear_variable = Flexible_trade_policy_research_speed_factor
 			clear_variable = Flexible_trade_policy_industrial_capacity_factory
@@ -390,6 +391,15 @@ trade_decisions = {
 				v_trade = Flexible_trade_policy_min_export
 			}
 			set_temp_variable = {
+				v_trade_consumer = v_trade
+			}
+			divide_temp_variable = {
+				v_trade_consumer = 10
+			}
+			multiply_temp_variable = {
+				v_trade_consumer = -1
+			}
+			set_temp_variable = {
 				v_trade_bonus = v_trade
 			}
 			divide_temp_variable = {
@@ -401,6 +411,9 @@ trade_decisions = {
 			multiply_temp_variable = {
 				v_trade_intel = 40
 			}
+			set_variable = { 
+				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
+			} 
 			set_variable = { 
 				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
 			} 
@@ -439,6 +452,7 @@ trade_decisions = {
 		cost = 2
 
 		complete_effect = {
+			clear_variable = Flexible_trade_policy_consumer_goods_factor
 			clear_variable = Flexible_trade_policy_production_speed_buildings_factor
 			clear_variable = Flexible_trade_policy_research_speed_factor
 			clear_variable = Flexible_trade_policy_industrial_capacity_factory
@@ -452,6 +466,15 @@ trade_decisions = {
 				v_trade = Flexible_trade_policy_min_export
 			}
 			set_temp_variable = {
+				v_trade_consumer = v_trade
+			}
+			divide_temp_variable = {
+				v_trade_consumer = 10
+			}
+			multiply_temp_variable = {
+				v_trade_consumer = -1
+			}
+			set_temp_variable = {
 				v_trade_bonus = v_trade
 			}
 			divide_temp_variable = {
@@ -463,6 +486,9 @@ trade_decisions = {
 			multiply_temp_variable = {
 				v_trade_intel = 40
 			}
+			set_variable = { 
+				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
+			} 
 			set_variable = { 
 				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
 			} 
@@ -501,6 +527,7 @@ trade_decisions = {
 		cost = 5
 
 		complete_effect = {
+			clear_variable = Flexible_trade_policy_consumer_goods_factor
 			clear_variable = Flexible_trade_policy_production_speed_buildings_factor
 			clear_variable = Flexible_trade_policy_research_speed_factor
 			clear_variable = Flexible_trade_policy_industrial_capacity_factory
@@ -514,6 +541,15 @@ trade_decisions = {
 				v_trade = Flexible_trade_policy_min_export
 			}
 			set_temp_variable = {
+				v_trade_consumer = v_trade
+			}
+			divide_temp_variable = {
+				v_trade_consumer = 10
+			}
+			multiply_temp_variable = {
+				v_trade_consumer = -1
+			}
+			set_temp_variable = {
 				v_trade_bonus = v_trade
 			}
 			divide_temp_variable = {
@@ -525,6 +561,9 @@ trade_decisions = {
 			multiply_temp_variable = {
 				v_trade_intel = 40
 			}
+			set_variable = { 
+				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
+			} 
 			set_variable = { 
 				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
 			} 
@@ -563,6 +602,7 @@ trade_decisions = {
 		cost = 10
 
 		complete_effect = {
+			clear_variable = Flexible_trade_policy_consumer_goods_factor
 			clear_variable = Flexible_trade_policy_production_speed_buildings_factor
 			clear_variable = Flexible_trade_policy_research_speed_factor
 			clear_variable = Flexible_trade_policy_industrial_capacity_factory
@@ -576,6 +616,15 @@ trade_decisions = {
 				v_trade = Flexible_trade_policy_min_export
 			}
 			set_temp_variable = {
+				v_trade_consumer = v_trade
+			}
+			divide_temp_variable = {
+				v_trade_consumer = 10
+			}
+			multiply_temp_variable = {
+				v_trade_consumer = -1
+			}
+			set_temp_variable = {
 				v_trade_bonus = v_trade
 			}
 			divide_temp_variable = {
@@ -587,6 +636,9 @@ trade_decisions = {
 			multiply_temp_variable = {
 				v_trade_intel = 40
 			}
+			set_variable = { 
+				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
+			} 
 			set_variable = { 
 				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
 			} 
@@ -725,6 +777,7 @@ trade_decisions = {
 		cost = 1
 
 		complete_effect = {
+			clear_variable = Flexible_trade_policy_consumer_goods_factor
 			clear_variable = Flexible_trade_policy_production_speed_buildings_factor
 			clear_variable = Flexible_trade_policy_research_speed_factor
 			clear_variable = Flexible_trade_policy_industrial_capacity_factory
@@ -738,6 +791,15 @@ trade_decisions = {
 				v_trade = Flexible_trade_policy_min_export
 			}
 			set_temp_variable = {
+				v_trade_consumer = v_trade
+			}
+			divide_temp_variable = {
+				v_trade_consumer = 10
+			}
+			multiply_temp_variable = {
+				v_trade_consumer = -1
+			}
+			set_temp_variable = {
 				v_trade_bonus = v_trade
 			}
 			divide_temp_variable = {
@@ -749,6 +811,9 @@ trade_decisions = {
 			multiply_temp_variable = {
 				v_trade_intel = 40
 			}
+			set_variable = { 
+				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
+			} 
 			set_variable = { 
 				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
 			} 
@@ -787,6 +852,7 @@ trade_decisions = {
 		cost = 2
 
 		complete_effect = {
+			clear_variable = Flexible_trade_policy_consumer_goods_factor
 			clear_variable = Flexible_trade_policy_production_speed_buildings_factor
 			clear_variable = Flexible_trade_policy_research_speed_factor
 			clear_variable = Flexible_trade_policy_industrial_capacity_factory
@@ -800,6 +866,15 @@ trade_decisions = {
 				v_trade = Flexible_trade_policy_min_export
 			}
 			set_temp_variable = {
+				v_trade_consumer = v_trade
+			}
+			divide_temp_variable = {
+				v_trade_consumer = 10
+			}
+			multiply_temp_variable = {
+				v_trade_consumer = -1
+			}
+			set_temp_variable = {
 				v_trade_bonus = v_trade
 			}
 			divide_temp_variable = {
@@ -811,6 +886,9 @@ trade_decisions = {
 			multiply_temp_variable = {
 				v_trade_intel = 40
 			}
+			set_variable = { 
+				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
+			} 
 			set_variable = { 
 				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
 			} 
@@ -849,6 +927,7 @@ trade_decisions = {
 		cost = 5
 
 		complete_effect = {
+			clear_variable = Flexible_trade_policy_consumer_goods_factor
 			clear_variable = Flexible_trade_policy_production_speed_buildings_factor
 			clear_variable = Flexible_trade_policy_research_speed_factor
 			clear_variable = Flexible_trade_policy_industrial_capacity_factory
@@ -862,6 +941,15 @@ trade_decisions = {
 				v_trade = Flexible_trade_policy_min_export
 			}
 			set_temp_variable = {
+				v_trade_consumer = v_trade
+			}
+			divide_temp_variable = {
+				v_trade_consumer = 10
+			}
+			multiply_temp_variable = {
+				v_trade_consumer = -1
+			}
+			set_temp_variable = {
 				v_trade_bonus = v_trade
 			}
 			divide_temp_variable = {
@@ -873,6 +961,9 @@ trade_decisions = {
 			multiply_temp_variable = {
 				v_trade_intel = 40
 			}
+			set_variable = { 
+				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
+			} 
 			set_variable = { 
 				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
 			} 
@@ -911,6 +1002,7 @@ trade_decisions = {
 		cost = 10
 
 		complete_effect = {
+			clear_variable = Flexible_trade_policy_consumer_goods_factor
 			clear_variable = Flexible_trade_policy_production_speed_buildings_factor
 			clear_variable = Flexible_trade_policy_research_speed_factor
 			clear_variable = Flexible_trade_policy_industrial_capacity_factory
@@ -924,6 +1016,15 @@ trade_decisions = {
 				v_trade = Flexible_trade_policy_min_export
 			}
 			set_temp_variable = {
+				v_trade_consumer = v_trade
+			}
+			divide_temp_variable = {
+				v_trade_consumer = 10
+			}
+			multiply_temp_variable = {
+				v_trade_consumer = -1
+			}
+			set_temp_variable = {
 				v_trade_bonus = v_trade
 			}
 			divide_temp_variable = {
@@ -935,6 +1036,9 @@ trade_decisions = {
 			multiply_temp_variable = {
 				v_trade_intel = 40
 			}
+			set_variable = { 
+				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
+			} 
 			set_variable = { 
 				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
 			} 
@@ -1035,6 +1139,15 @@ economy_decisions = {
 						v_trade = 0.25
 					}
 					set_temp_variable = {
+						v_trade_consumer = v_trade
+					}
+					divide_temp_variable = {
+						v_trade_consumer = 10
+					}
+					multiply_temp_variable = {
+						v_trade_consumer = -1
+					}
+					set_temp_variable = {
 						v_trade_bonus = v_trade
 					}
 					divide_temp_variable = {
@@ -1051,6 +1164,10 @@ economy_decisions = {
 			add_dynamic_modifier = {
 				modifier = Flexible_trade_policy
 			}
+			add_to_variable = { 
+				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
+				tooltip = consumer_goods_factor_tt
+			} 
 			add_to_variable = { 
 				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
 				tooltip = production_speed_buildings_factor_tt

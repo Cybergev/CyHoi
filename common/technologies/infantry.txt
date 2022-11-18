@@ -2047,4 +2047,19 @@ technologies = {
 			penal_battalion
 		}
 	}
+
+	######### FROM GER ##########
+	ss_infantry = {
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+
+		enable_subunits = {
+			ss_unit
+		}
+	}
 }

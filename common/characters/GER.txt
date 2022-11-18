@@ -1635,6 +1635,12 @@ characters={
 		allowed_civil_war = {
 			has_government = fascism
 		}
+		country_leader={
+			ideology=nazism
+			traits={ reichsfuhrer_ss }
+			expire="1964.1.1.1"
+			id=-1
+		}
 		advisor={
 			slot = political_advisor
 			idea_token = heinrich_himmler
@@ -1645,13 +1651,16 @@ characters={
 				OR = {
 					has_government = fascism 
 					has_country_flag = GER_reinstated_nazi_leadership 
+					NOT = {
+						has_country_leader = GER_heinrich_himmler
+					}
 				}
 			}
 			on_add = {
 				custom_effect_tooltip = GER_SS_himmler_recruit
 			}
 			traits = {
-				prince_of_terror 
+				reichsfuhrer_ss 
 			}
 		}
 	}

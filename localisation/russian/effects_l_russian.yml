@@ -417,7 +417,7 @@
  drift_defence_factor_tt:0 "$MODIFIER_DRIFT_DEFENCE_FACTOR$: $RIGHT|=%+$"
  replace_tt:0 "$MODIFIER_replace$: $RIGHT|=%+$"
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
- consumer_goods_factor_tt:0 "$MODIFIER_CONSUMER_GOODS_FACTOR$: $RIGHT|=1%-$"
+ consumer_goods_factor_tt:0 "$MODIFIER_CONSUMER_GOODS_FACTOR$: $RIGHT|=1%Y$"
  replace_tt:0 "$MODIFIER_replace$: $RIGHT|=1%+$"
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
  autonomy_gain_tt:0 "$MODIFIER_AUTONOMY_GAIN$: $RIGHT|=1*+$"

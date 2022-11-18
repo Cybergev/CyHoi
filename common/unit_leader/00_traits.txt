@@ -1034,6 +1034,13 @@ leader_traits = {
 			OR = {
 				temperature < -15
 				temperature > 27
+				is_fighting_in_terrain = desert
+				is_fighting_in_terrain = marsh
+				is_fighting_in_terrain = mountain
+				is_fighting_in_terrain = hills
+				is_fighting_in_terrain = jungle
+				is_fighting_in_terrain = forest
+				is_fighting_in_terrain = urban
 				has_combat_modifier = paradrop
 				has_combat_modifier = amphibious_attack
 			}

@@ -17,6 +17,16 @@ equipments = {
 		#Misc Abilities
 		reliability = 0.8
 
+	}
+
+	anti_air_equipment_1 = {
+		year = 1936
+
+		archetype = anti_air_equipment
+		priority = 80
+		visual_level = 0
+
+
 		#Defensive Abilities
 		defense = 4
 		breakthrough = 1
@@ -35,17 +45,9 @@ equipments = {
 		build_cost_ic = 4
 		resources = {
 			steel = 1
+			tungsten = 1
 			rubber = 1
 		}
-		
-	}
-
-	anti_air_equipment_1 = {
-		year = 1936
-
-		archetype = anti_air_equipment
-		priority = 80
-		visual_level = 0
 	}
 	
 	anti_air_equipment_2 = {
@@ -64,6 +66,7 @@ equipments = {
 		build_cost_ic = 5
 		resources = {
 			steel = 2
+			tungsten = 1
 			rubber = 1
 		}
 	}
@@ -84,6 +87,7 @@ equipments = {
 		build_cost_ic = 6
 		resources = {
 			steel = 3
+			tungsten = 1
 			rubber = 1
 		}
 	}
@@ -104,6 +108,15 @@ equipments = {
 
 		#Misc Abilities
 		reliability = 0.8
+
+	}
+
+	artillery_equipment_1 = {
+		year = 1934
+
+		archetype = artillery_equipment
+		priority = 50
+		visual_level = 0
 
 		#Defensive Abilities
 		defense = 10
@@ -126,14 +139,6 @@ equipments = {
 			tungsten = 1
 			rubber = 1
 		}
-	}
-
-	artillery_equipment_1 = {
-		year = 1934
-
-		archetype = artillery_equipment
-		priority = 50
-		visual_level = 0
 	}
 	
 	artillery_equipment_2 = {
@@ -194,6 +199,15 @@ equipments = {
 		#Misc Abilities
 		reliability = 0.8
 
+	}
+	
+	rocket_artillery_equipment_1 = {
+		year = 1940
+
+		archetype = rocket_artillery_equipment
+		priority = 60
+		visual_level = 0
+
 		#Defensive Abilities
 		defense = 12
 		breakthrough = 9
@@ -212,14 +226,6 @@ equipments = {
 			tungsten = 2
 			rubber = 1
 		}
-	}
-	
-	rocket_artillery_equipment_1 = {
-		year = 1940
-
-		archetype = rocket_artillery_equipment
-		priority = 60
-		visual_level = 0
 	}
 	
 	rocket_artillery_equipment_2 = {
@@ -258,8 +264,17 @@ equipments = {
 		interface_category = interface_category_land
 		
 		#Misc Abilities
-		maximum_speed = 15
 		reliability = 0.8
+	}
+	
+	motorized_rocket_equipment_1 = {
+		year = 1939
+
+		archetype = motorized_rocket_equipment
+		priority = 70
+		visual_level = 0
+		
+		maximum_speed = 15
 		
 		#Defensive Abilities
 		defense = 15
@@ -283,14 +298,6 @@ equipments = {
 		fuel_consumption = 0.12
 	}
 	
-	motorized_rocket_equipment_1 = {
-		year = 1939
-
-		archetype = motorized_rocket_equipment
-		priority = 70
-		visual_level = 0
-	}
-	
 	anti_tank_equipment = {
 		year = 1934
 
@@ -307,6 +314,14 @@ equipments = {
 
 		#Misc Abilities
 		reliability = 0.8
+	}
+
+	anti_tank_equipment_1 = {
+		year = 1936
+
+		archetype = anti_tank_equipment
+		priority = 90
+		visual_level = 0
 
 		#Defensive Abilities
 		defense = 4
@@ -329,14 +344,6 @@ equipments = {
 			tungsten = 1
 			rubber = 1
 		}
-	}
-
-	anti_tank_equipment_1 = {
-		year = 1936
-
-		archetype = anti_tank_equipment
-		priority = 90
-		visual_level = 0
 	}
 	
 	anti_tank_equipment_2 = {

@@ -1039,6 +1039,7 @@ Flexible_trade_policy = {
 	enable = { always = yes }
 	icon = GFX_idea_CZE_skoda_works
 	
+	consumer_goods_factor = Flexible_trade_policy_consumer_goods_factor
 	production_speed_buildings_factor = Flexible_trade_policy_production_speed_buildings_factor
 	research_speed_factor = Flexible_trade_policy_research_speed_factor
 	industrial_capacity_factory = Flexible_trade_policy_industrial_capacity_factory
