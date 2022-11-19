@@ -1122,6 +1122,12 @@ ideas = {
 				tag = SOV #Main SOV
 			}
 
+			cancel = {
+				NOT = {
+					has_decision = SOV_desperate_defense
+				}
+			}
+	
 			modifier = {
 				mobilization_speed = 0.50
 				conscription = 0.1
@@ -1130,12 +1136,12 @@ ideas = {
 				dig_in_speed_factor = 0.50
 				max_dig_in_factor = 1
 				surrender_limit = 0.50
+				army_attack_factor = 0.50
 				army_defence_factor = 0.50
 				training_time_factor = -0.50
-				minimum_training_level = -0.5
-				command_abilities_cost_factor = -0.5
-				command_power_gain_mult = 0.5
-				mobilization_laws_cost_factor = -1
+				minimum_training_level = -0.50
+				command_abilities_cost_factor = -0.50
+				command_power_gain_mult = 0.50
 			}
 		}
 
