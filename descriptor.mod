@@ -3,4 +3,4 @@ tags={
 	"Gameplay"
 }
 name="CYMOD"
-supported_version="1.11.11"
+supported_version="1.12*"

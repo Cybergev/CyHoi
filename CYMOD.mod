@@ -3,5 +3,5 @@ tags={
 	"Gameplay"
 }
 name="CYMOD"
-supported_version="1.11.11"
+supported_version="1.12*"
 path="C:/Users/Public/Documents/Paradox Interactive/Hearts of Iron IV/mod/CYMOD"
