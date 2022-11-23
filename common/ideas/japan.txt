@@ -354,26 +354,6 @@ ideas = {
 			}
 		}
 
-		MAN_militarism = {
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				always = yes
-			}
-			
-			removal_cost = -1
-
-			picture = man_militarism
-			
-			modifier = {
-				mobilization_laws_cost_factor = -0.15
-				mobilization_speed = 0.15
-				conscription = 0.05
-			}
-		}
-
 		JAP_hirohito = {
 			allowed = {
 				always = no

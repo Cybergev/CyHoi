@@ -9,15 +9,80 @@ set_technology = {
 	
 }
 
-if = {
-	limit = { has_dlc = "Waking the Tiger" }
-	set_country_flag = MAN_northern_bandits
-	set_country_flag = MAN_eastern_bandits
-	set_country_flag = MAN_western_bandits
-	add_ideas = MAN_banditry
-	add_ideas = MAN_kwantung_veto
-	add_ideas = MAN_low_legitimacy_5
+set_country_flag = MAN_northern_bandits
+set_country_flag = MAN_eastern_bandits
+set_country_flag = MAN_western_bandits
+add_ideas = MAN_banditry
+add_ideas = MAN_kwantung_veto
+
+set_variable = {
+	man_pdm_political_power_factor = -0.30
 }
+set_variable = {
+	man_pdm_stability_factor = -0.30
+}
+set_variable = {
+	man_pdm_war_support_factor = -0.30
+}
+set_variable = {
+	man_pdm_drift_defence_factor = -0.30
+}
+add_dynamic_modifier = { modifier = MAN_nationalism }
+
+set_variable = {
+	man_economy_local_resources_factor = -0.10
+}
+set_variable = {
+	man_economy_production_speed_buildings_factor = -0.10
+}
+set_variable = {
+	man_economy_production_lack_of_resource_penalty_factor = 0.10
+}
+set_variable = {
+	man_economy_research_speed_factor = -0.20
+}
+set_variable = {
+	man_economy_industrial_capacity_factory = -0.20
+}
+set_variable = {
+	man_economy_industrial_capacity_dockyard = -0.20
+}
+add_dynamic_modifier = { modifier = MAN_economy }
+
+set_variable = {
+	man_army_mobilization_speed = -0.50
+}
+set_variable = {
+	man_army_army_org_factor = -0.50
+}
+set_variable = {
+	man_army_org_loss_when_moving = 0.50
+}
+set_variable = {
+	man_army_org_loss_at_low_org_factor = 0.50
+}
+set_variable = {
+	man_army_attrition = 0.50
+}
+set_variable = {
+	man_army_out_of_supply_factor = 0.50
+}
+set_variable = {
+	man_army_army_org_regain = -0.50
+}
+set_variable = {
+	man_army_dig_in_speed_factor = -0.50
+}
+set_variable = {
+	man_army_planning_speed = -0.50
+}
+set_variable = {
+	man_army_max_planning = -0.50
+}
+set_variable = {
+	man_army_command_power_gain_mult = -0.50
+}
+add_dynamic_modifier = { modifier = MAN_army }
 
 recruit_character = MAN_aisin_gioro_puyi
 recruit_character = MAN_zhang_haipeng

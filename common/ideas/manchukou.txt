@@ -45,8 +45,8 @@ ideas = {
 			picture = chi_army_corruption2
 			
 			modifier = {
-				stability_factor = -0.1
-				war_support_factor = -0.1
+				stability_factor = -0.20
+				war_support_factor = -0.20
 			}
 		}
 
@@ -69,237 +69,6 @@ ideas = {
 				trade_laws_cost_factor = 0.25
 				mobilization_laws_cost_factor = 0.25
 				economy_cost_factor = 0.25
-			}
-		}
-
-		MAN_low_legitimacy_5 = {
-			
-			name = MAN_low_legitimacy
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				original_tag = MAN
-			}
-			
-			removal_cost = -1
-
-			picture = man_low_legitimacy
-			
-			modifier = {
-				stability_factor = -0.5
-				war_support_factor = -0.5
-			}
-		}
-		MAN_low_legitimacy_4 = {
-			
-			name = MAN_low_legitimacy
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				original_tag = MAN
-			}
-			
-			removal_cost = -1
-
-			picture = man_low_legitimacy2
-			
-			modifier = {
-				stability_factor = -0.4
-				war_support_factor = -0.4
-			}
-		}
-		MAN_low_legitimacy_3 = {
-			
-			name = MAN_low_legitimacy
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				original_tag = MAN
-			}
-			
-			removal_cost = -1
-
-			picture = man_low_legitimacy3
-			
-			modifier = {
-				stability_factor = -0.3
-				war_support_factor = -0.3
-			}
-		}
-		MAN_low_legitimacy_2 = {
-			
-			name = MAN_low_legitimacy
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				original_tag = MAN
-			}
-			
-			removal_cost = -1
-
-			picture = man_low_legitimacy4
-			
-			modifier = {
-				stability_factor = -0.2
-				war_support_factor = -0.2
-			}
-		}
-		MAN_low_legitimacy_1 = {
-			
-			name = MAN_low_legitimacy
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				original_tag = MAN
-			}
-			
-			removal_cost = -1
-
-			picture = man_low_legitimacy5
-			
-			modifier = {
-				stability_factor = -0.1
-				war_support_factor = -0.1
-			}
-		}
-
-		MAN_national_defense_state = {
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				original_tag = MAN
-			}
-			
-			removal_cost = -1
-
-			picture = ast_naval_auxiliary_patrol
-			
-			modifier = {
-				industrial_capacity_factory = 0.05
-			}
-		}
-
-		MAN_five_people_armies_1 = {
-
-			name = MAN_mukden_military_academy
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				original_tag = MAN
-			}
-			
-			removal_cost = -1
-
-			picture = generic_army_war_college
-			
-			modifier = {
-				dig_in_speed_factor = 0.025
-				land_reinforce_rate = 0.025
-				max_dig_in_factor = 0.025
-			}
-		}
-
-		MAN_five_people_armies_2 = {
-
-			name = MAN_mukden_military_academy_2
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				original_tag = MAN
-			}
-			
-			removal_cost = -1
-
-			picture = generic_army_war_college
-			
-			modifier = {
-				attrition = -0.05
-				terrain_penalty_reduction = -0.05
-				out_of_supply_factor = -0.05
-				dig_in_speed_factor = 0.05
-				land_reinforce_rate = 0.05
-				max_dig_in_factor = 0.05
-				terrain_penalty_reduction = 0.05
-			}
-		}
-
-		MAN_five_people_armies_3 = {
-
-			name = MAN_expand_the_imperial_guards
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				original_tag = MAN
-			}
-			
-			removal_cost = -1
-
-			picture = generic_infantry_bonus
-			
-			modifier = {
-				attrition = -0.075
-				terrain_penalty_reduction = -0.075
-				out_of_supply_factor = -0.075
-				dig_in_speed_factor = 0.075
-				land_reinforce_rate = 0.075
-				max_dig_in_factor = 0.075
-				terrain_penalty_reduction = 0.075
-				special_forces_cap = 0.075
-			}
-		}
-
-		MAN_five_people_armies_4 = {
-
-			name = MAN_five_people_armies
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				original_tag = MAN
-			}
-			
-			removal_cost = -1
-
-			picture = generic_manpower_bonus
-			
-			modifier = {
-				attrition = -0.1
-				terrain_penalty_reduction = -0.1
-				out_of_supply_factor = -0.1
-				dig_in_speed_factor = 0.1
-				land_reinforce_rate = 0.1
-				max_dig_in_factor = 0.1
-				terrain_penalty_reduction = 0.1
-				special_forces_cap = 0.1
 			}
 		}
 
@@ -391,6 +160,7 @@ ideas = {
 				}
 			}
 		}
+
 		MAN_arms_seized_1 = {
 
 			allowed = {
@@ -407,10 +177,12 @@ ideas = {
 			
 			targeted_modifier = {
 				tag = MAN
-				attack_bonus_against = -0.1
-				defense_bonus_against = -0.1
+				attack_bonus_against = -0.10
+				defense_bonus_against = -0.10
+				breakthrough_bonus_against = -0.10
 			}
 		}
+
 		MAN_arms_seized_2 = {
 
 			allowed = {
@@ -429,8 +201,10 @@ ideas = {
 				tag = MAN
 				attack_bonus_against = -0.25
 				defense_bonus_against = -0.25
+				breakthrough_bonus_against = -0.25
 			}
 		}
+
 		MAN_arms_seized_3 = {
 
 			allowed = {
@@ -447,125 +221,12 @@ ideas = {
 			
 			targeted_modifier = {
 				tag = MAN
-				attack_bonus_against = -0.4
-				defense_bonus_against = -0.4
+				attack_bonus_against = -0.40
+				defense_bonus_against = -0.40
+				breakthrough_bonus_against = -0.40
 			}
 		}
 
-		MAN_nationalism = {
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				has_government = fascism
-			}
-			
-			removal_cost = -1
-
-			picture = man_nationalism
-			
-			modifier = {
-				production_speed_buildings_factor = 0.02
-				research_speed_factor = 0.02
-				industrial_capacity_factory = 0.02
-				industrial_capacity_dockyard = 0.02
-				fascism_drift = 0.2
-			}
-		}
-
-		MAN_nationalism_2 = {
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				has_government = fascism
-			}
-			
-			removal_cost = -1
-
-			picture = man_nationalism
-			
-			modifier = {
-				production_speed_buildings_factor = 0.04
-				research_speed_factor = 0.04
-				industrial_capacity_factory = 0.04
-				industrial_capacity_dockyard = 0.04
-				fascism_drift = 0.4
-			}
-		}
-		
-		MAN_nationalism_3 = {
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				has_government = fascism
-			}
-			
-			removal_cost = -1
-
-			picture = man_nationalism
-			
-			modifier = {
-				production_speed_buildings_factor = 0.06
-				research_speed_factor = 0.06
-				industrial_capacity_factory = 0.06
-				industrial_capacity_dockyard = 0.06
-				fascism_drift = 0.6
-			}
-		}
-
-		MAN_nationalism_4 = {
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				has_government = fascism
-			}
-			
-			removal_cost = -1
-
-			picture = man_nationalism
-			
-			modifier = {
-				production_speed_buildings_factor = 0.08
-				research_speed_factor = 0.08
-				industrial_capacity_factory = 0.08
-				industrial_capacity_dockyard = 0.08
-				fascism_drift = 0.8
-			}
-		}
-
-		MAN_national_unity = {
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				has_government = fascism
-			}
-			
-			removal_cost = -1
-
-			picture = man_national_unity
-			
-			modifier = {
-				production_speed_buildings_factor = 0.10
-				research_speed_factor = 0.10
-				industrial_capacity_factory = 0.10
-				industrial_capacity_dockyard = 0.10
-				fascism_drift = 1.0
-			}
-		}
 	}
 
 	political_advisor = {

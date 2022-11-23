@@ -3102,33 +3102,80 @@ form_persian_empire_category = {
 					}
 				}
 			}
+			IF = {
+				limit = {
+					original_tag = TAJ
+				}
+				AFG = {
+					OR = {
+						is_subject_of = ROOT
+						all_core_state = {
+							is_controlled_by = ROOT
+							is_core_or_compliance_60 = YES
+						}
+					}
+				}
+				PER = {
+					OR = {
+						is_subject_of = ROOT
+						all_core_state = {
+							is_controlled_by = ROOT
+							is_core_or_compliance_60 = YES
+						}
+					}
+				}
+			}
 		}
 
 		visible = {
 			OR = {
-				original_tag = PER
 				original_tag = AFG
+				original_tag = PER
 				original_tag = TAJ
 			}
 			OR = {
 				AFG = {
 					all_core_state = {
-						NOT = {
-							is_core_of = ROOT
+						OR = {
+							NOT = {
+								is_core_of = AFG
+							}
+							NOT = {
+								is_core_of = PER
+							}
+							NOT = {
+								is_core_of = TAJ
+							}
 						}
 					}
 				}
 				PER = {
 					all_core_state = {
-						NOT = {
-							is_core_of = ROOT
+						OR = {
+							NOT = {
+								is_core_of = AFG
+							}
+							NOT = {
+								is_core_of = PER
+							}
+							NOT = {
+								is_core_of = TAJ
+							}
 						}
 					}
 				}
 				TAJ = {
 					all_core_state = {
-						NOT = {
-							is_core_of = ROOT
+						OR = {
+							NOT = {
+								is_core_of = AFG
+							}
+							NOT = {
+								is_core_of = PER
+							}
+							NOT = {
+								is_core_of = TAJ
+							}
 						}
 					}
 				}
@@ -3136,66 +3183,28 @@ form_persian_empire_category = {
 		}
 
 		complete_effect = {
-			IF = {
-				AFG = {
-					if = {
-						limit = {
-							is_subject_of = ROOT
-						}
-						ROOT = {
-							annex_country = {
-								target = PREV
-							}
+			every_possible_country = {
+				limit = {
+					OR = {
+						original_tag = AFG
+						original_tag = PER
+						original_tag = TAJ
+					}
+				}
+				if = {
+					limit = {
+						is_subject_of = ROOT
+					}
+					ROOT = {
+						annex_country = {
+							target = PREV
 						}
 					}
 				}
-				PER = {
-					if = {
-						limit = {
-							is_subject_of = ROOT
-						}
-						ROOT = {
-							annex_country = {
-								target = PREV
-							}
-						}
-					}
-				}
-				TAJ = {
-					if = {
-						limit = {
-							is_subject_of = ROOT
-						}
-						ROOT = {
-							annex_country = {
-								target = PREV
-							}
-						}
-					}
-				}
-			}
-			AFG = {
-				every_core_state = {
-					add_core_of = PER
-					add_core_of = TAJ
-				}
-				every_character = {
-					set_nationality = ROOT
-				}
-			}
-			PER = {
-				every_core_state = {
-					add_core_of = AFG
-					add_core_of = TAJ
-				}
-				every_character = {
-					set_nationality = ROOT
-				}
-			}
-			TAJ = {
 				every_core_state = {
 					add_core_of = AFG
 					add_core_of = PER
+					add_core_of = TAJ
 				}
 				every_character = {
 					set_nationality = ROOT
@@ -3219,58 +3228,112 @@ form_persian_empire_category = {
 
 		available = {
 			is_subject = no
-			230 = { is_controlled_by = ROOT }
-			229 = { is_controlled_by = ROOT }
-			231 = { is_controlled_by = ROOT }
-			BUK = {
-				all_core_state = { is_controlled_by = ROOT }
+			if = {
+				limit = {
+					AND = {
+						AFG = {
+							NOT = {
+								has_cosmetic_tag = PER_UNIFIED
+							}
+						}
+						PER = {
+							NOT = {
+								has_cosmetic_tag = PER_UNIFIED
+							}
+						}
+						TAJ = {
+							NOT = {
+								has_cosmetic_tag = PER_UNIFIED
+							}
+						}
+					}
+				}
+				230 = { is_controlled_by = ROOT }
+				229 = { is_controlled_by = ROOT }
+				231 = { is_controlled_by = ROOT }
+				BUK = {
+					all_core_state = { is_controlled_by = ROOT }
+				}
+				405 = { is_controlled_by = ROOT }
+				TMS = {
+					all_core_state = { is_controlled_by = ROOT }
+				}
+				KYR = {
+					all_core_state = { is_controlled_by = ROOT }
+				}
+				619 = { is_controlled_by = ROOT }
+				PAK = {
+					440 = { is_controlled_by = ROOT }
+					787 = { is_controlled_by = ROOT }
+					441 = { is_controlled_by = ROOT }
+					442 = { is_controlled_by = ROOT }
+					443 = { is_controlled_by = ROOT }
+					444 = { is_controlled_by = ROOT }
+					445 = { is_controlled_by = ROOT }
+				}
+				TUR = {
+					all_core_state = { is_controlled_by = ROOT }
+				}
+				KUR = {
+					all_core_state = { is_controlled_by = ROOT }
+				}
+				CYP = {
+					all_core_state = { is_controlled_by = ROOT }
+				}
+				SYR = {
+					all_core_state = { is_controlled_by = ROOT }
+				}
+				LEB = {
+					all_core_state = { is_controlled_by = ROOT }
+				}
+				PAL = {
+					all_core_state = { is_controlled_by = ROOT }
+				}
+				JOR = {
+					all_core_state = { is_controlled_by = ROOT }
+				}
+				IRQ = {
+					all_core_state = { is_controlled_by = ROOT }
+				}
+				KUW = {
+					all_core_state = { is_controlled_by = ROOT }
+				}
+				EGY = {
+					all_core_state = { is_controlled_by = ROOT }
+				}
 			}
-			405 = { is_controlled_by = ROOT }
-			TMS = {
-				all_core_state = { is_controlled_by = ROOT }
-			}
-			KYR = {
-				all_core_state = { is_controlled_by = ROOT }
-			}
-			619 = { is_controlled_by = ROOT }
-			PAK = {
-				440 = { is_controlled_by = ROOT }
-				787 = { is_controlled_by = ROOT }
-				441 = { is_controlled_by = ROOT }
-				442 = { is_controlled_by = ROOT }
-				443 = { is_controlled_by = ROOT }
-				444 = { is_controlled_by = ROOT }
-				445 = { is_controlled_by = ROOT }
-			}
-			TUR = {
-				all_core_state = { is_controlled_by = ROOT }
-			}
-			KUR = {
-				all_core_state = { is_controlled_by = ROOT }
-			}
-			CYP = {
-				all_core_state = { is_controlled_by = ROOT }
-			}
-			SYR = {
-				all_core_state = { is_controlled_by = ROOT }
-			}
-			LEB = {
-				all_core_state = { is_controlled_by = ROOT }
-			}
-			PAL = {
-				all_core_state = { is_controlled_by = ROOT }
-			}
-			JOR = {
-				all_core_state = { is_controlled_by = ROOT }
-			}
-			IRQ = {
-				all_core_state = { is_controlled_by = ROOT }
-			}
-			KUW = {
-				all_core_state = { is_controlled_by = ROOT }
-			}
-			EGY = {
-				all_core_state = { is_controlled_by = ROOT }
+			if = {
+				limit = {
+					OR = {
+						AFG = {
+							has_cosmetic_tag = PER_UNIFIED
+						}
+						PER = {
+							has_cosmetic_tag = PER_UNIFIED
+						}
+						TAJ = {
+							has_cosmetic_tag = PER_UNIFIED
+						}
+					}
+				}
+				AFG = {
+					all_core_state = {
+						is_core_of = ROOT
+						is_controlled_by = ROOT
+					}
+				}
+				PER = {
+					all_core_state = {
+						is_core_of = ROOT
+						is_controlled_by = ROOT
+					}
+				}
+				TAJ = {
+					all_core_state = {
+						is_core_of = ROOT
+						is_controlled_by = ROOT
+					}
+				}
 			}
 		}
 
@@ -3280,185 +3343,75 @@ form_persian_empire_category = {
 				original_tag = PER
 				original_tag = TAJ
 			}
-			AND = {
-				NOT = { has_global_flag = form_persian_empire_flag }
-				AFG = {
-					all_core_state = {
-						is_core_of = ROOT
-					}
-				}
-				PER = {
-					all_core_state = {
-						is_core_of = ROOT
-					}
-				}
-				TAJ = {
-					all_core_state = {
-						is_core_of = ROOT
-					}
+			ROOT = {
+				NOT = {
+					has_cosmetic_tag = PER_UNIFIED
 				}
 			}
 		}
 
 		complete_effect = {
-			230 = { 
-				add_core_of = AFG 
-				add_core_of = PER 
-				add_core_of = TAJ 
+			if = {
+				every_state = {
+					limit = { 
+						OR = {
+							state = 230
+							state = 229
+							state = 231
+							state = 405
+							state = 619
+							state = 440
+							state = 787
+							state = 441
+							state = 442
+							state = 443
+							state = 444
+							state = 445
+						}
+					}
+					add_core_of = AFG 
+					add_core_of = PER 
+					add_core_of = TAJ 
+				}
 			}
-			229 = { 
-				add_core_of = AFG 
-				add_core_of = PER 
-				add_core_of = TAJ 
-			}
-			231 = { 
-				add_core_of = AFG 
-				add_core_of = PER 
-				add_core_of = TAJ 
-			}
-			BUK = {
+			every_possible_country = {
+				limit = {
+					OR = {
+						original_tag = BUK
+						original_tag = TMS
+						original_tag = KYR
+						original_tag = TUR
+						original_tag = KUR
+						original_tag = CYP
+						original_tag = SYR
+						original_tag = LEB
+						original_tag = PAL
+						original_tag = JOR
+						original_tag = IRQ
+						original_tag = KUW
+						original_tag = EGY
+					}
+				}
 				every_core_state = { 
 					add_core_of = AFG 
 					add_core_of = PER 
 					add_core_of = TAJ 
 				}
 			}
-			405 = { 
-				add_core_of = AFG 
-				add_core_of = PER 
-				add_core_of = TAJ 
-			}
-			TMS = {
-				every_core_state = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
+			if = {
+				every_possible_country = {
+					limit = {
+						has_cosmetic_tag = PER_UNIFIED
+					}
+					every_character = {
+						set_nationality = ROOT
+					}
+					drop_cosmetic_tag = yes
 				}
 			}
-			KYR = {
-				every_core_state = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-			}
-			619 = { 
-				add_core_of = AFG 
-				add_core_of = PER 
-				add_core_of = TAJ 
-			}
-			PAK = {
-				440 = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-				787 = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-				441 = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-				442 = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-				443 = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-				444 = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-				445 = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-			}
-			TUR = {
-				every_core_state = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-			}
-			KUR = {
-				every_core_state = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-			}
-			CYP = {
-				every_core_state = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-			}
-			SYR = {
-				every_core_state = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-			}
-			LEB = {
-				every_core_state = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-			}
-			PAL = {
-				every_core_state = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-			}
-			JOR = {
-				every_core_state = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-			}
-			IRQ = {
-				every_core_state = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-			}
-			KUW = {
-				every_core_state = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-			}
-			EGY = {
-				every_core_state = { 
-					add_core_of = AFG 
-					add_core_of = PER 
-					add_core_of = TAJ 
-				}
-			}
-				set_cosmetic_tag = PER_UNIFIED
+			set_cosmetic_tag = PER_UNIFIED
 			hidden_effect = {
 				news_event = { id = wtt_news.65 hours = 6 }
-				set_global_flag = form_persian_empire_flag
-				set_country_flag = persian_empire
 			}
 		}
 
@@ -3477,8 +3430,8 @@ form_persian_empire_category = {
 			OR = {
 				original_tag = AFG
 				original_tag = PER
+				original_tag = TAJ
 			}
-			has_dlc = "Waking the Tiger"
 		}
 
 		available = {
@@ -3486,14 +3439,31 @@ form_persian_empire_category = {
 		}
 
 		visible = {
-			has_global_flag = form_persian_empire_flag
-			has_country_flag = persian_empire
+			OR = {
+				original_tag = AFG
+				original_tag = PER
+				original_tag = TAJ
+			}
+			ROOT = {
+				has_cosmetic_tag = PER_UNIFIED
+			}
 			all_state = {
 				OR = {
 					region = 196
 					region = 236
 					region = 237
 					region = 238
+				}
+				OR = {
+					NOT = {
+						is_core_of = AFG
+					}
+					NOT = {
+						is_core_of = PER
+					}
+					NOT = {
+						is_core_of = TAJ
+					}
 				}
 				is_controlled_by = ROOT
 			}
@@ -7868,7 +7838,10 @@ form_siberia_category = {
 					original_tag = YAM # Yamalia
 					original_tag = OVO # Ostyak-Vogulia
 					original_tag = TAN # Tannu Tuva
-					original_tag = MAN
+					AND = {
+						original_tag = MAN
+						has_completed_focus = MAN_five_equal_peoples
+					}
 					original_tag = MON
 					original_tag = MEN
 				}
@@ -8081,24 +8054,6 @@ form_siberia_category = {
 
 		icon = generic_form_nation
 
-		allowed = {
-			OR = {
-				original_tag = YAK # Yakutia
-				original_tag = FER # Far Eastern Republic
-				original_tag = CKK # Chukotka
-				original_tag = VLA # Vladivostok
-				original_tag = BYA # Buryatia
-				original_tag = TAY # Taymyria
-				original_tag = ALT # Altai
-				original_tag = YAM # Yamalia
-				original_tag = OVO # Ostyak-Vogulia
-				original_tag = TAN # Tannu Tuva
-				original_tag = MAN
-				original_tag = MON
-				original_tag = MEN
-			}
-		}
-
 		available = {
 			is_subject = no
 			FROM = {
@@ -8118,6 +8073,24 @@ form_siberia_category = {
 		}
 
 		visible = {
+			OR = {
+				original_tag = YAK # Yakutia
+				original_tag = FER # Far Eastern Republic
+				original_tag = CKK # Chukotka
+				original_tag = VLA # Vladivostok
+				original_tag = BYA # Buryatia
+				original_tag = TAY # Taymyria
+				original_tag = ALT # Altai
+				original_tag = YAM # Yamalia
+				original_tag = OVO # Ostyak-Vogulia
+				original_tag = TAN # Tannu Tuva
+				AND = {
+					original_tag = MAN
+					has_completed_focus = MAN_five_equal_peoples
+				}
+				original_tag = MON
+				original_tag = MEN
+			}
 			FROM = {
 				is_controlled_by = ROOT
 				NOT = { is_core_of = ROOT }
@@ -8503,24 +8476,6 @@ form_siberia_category = {
 
 		icon = generic_form_nation
 
-		allowed = {
-			OR = {
-				original_tag = YAK # Yakutia
-				original_tag = FER # Far Eastern Republic
-				original_tag = CKK # Chukotka
-				original_tag = VLA # Vladivostok
-				original_tag = BYA # Buryatia
-				original_tag = TAY # Taymyria
-				original_tag = ALT # Altai
-				original_tag = YAM # Yamalia
-				original_tag = OVO # Ostyak-Vogulia
-				original_tag = TAN # Tannu Tuva
-				original_tag = MAN
-				original_tag = MON
-				original_tag = MEN
-			}
-		}
-
 		available = {
 			is_subject = no
 			FROM = {
@@ -8540,6 +8495,24 @@ form_siberia_category = {
 		}
 
 		visible = {
+			OR = {
+				original_tag = YAK # Yakutia
+				original_tag = FER # Far Eastern Republic
+				original_tag = CKK # Chukotka
+				original_tag = VLA # Vladivostok
+				original_tag = BYA # Buryatia
+				original_tag = TAY # Taymyria
+				original_tag = ALT # Altai
+				original_tag = YAM # Yamalia
+				original_tag = OVO # Ostyak-Vogulia
+				original_tag = TAN # Tannu Tuva
+				AND = {
+					original_tag = MAN
+					has_completed_focus = MAN_five_equal_peoples
+				}
+				original_tag = MON
+				original_tag = MEN
+			}
 			FROM = {
 				is_controlled_by = ROOT
 				NOT = { is_core_of = ROOT }

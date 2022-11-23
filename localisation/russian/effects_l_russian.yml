@@ -391,8 +391,10 @@
 
 # === [LocEditor:OrphanedKeys] Keys that do not exist in English ===
  EFFECT_CREATE_COUNTRY_LEADER:0 "$NAME|Y$ станет лидером партии $IDEOLOGY|Y$."
-
- CZE_skoda_works_tt:0 "§Y$CZE_skoda_works$§!:"
+ MAN_nationalism_tt:0 "§Y$MAN_nationalism$§!:"
+ MAN_national_unity_tt:0 "§Y$MAN_national_unity$§!:"
+ MAN_economy_tt:0 "§Y$MAN_economy$§!:"
+ MAN_army_tt:0 "§Y$MAN_army$§!:"
  SPR_anarchist_society_tt:0 "$SPR_anarchist_society$:"
  SPR_collective_army_tt:0 "$SPR_collective_army$:"
  SOV_the_red_army_tt:0 "$SOV_the_red_army_dynamic_modifier$:"
@@ -402,6 +404,7 @@
  SOV_five_year_plan_tt:0 "$SOV_second_five_year_plan_dynamic_modifier$:"
  SOV_five_year_plan_can_improved_tt:0 "Может быть улучшен с помощью зарубежных специалистов."
  SOV_defense_industry_tt:0 "$SOV_defense_industry_dynamic_modifier$:"
+ CZE_skoda_works_tt:0 "§Y$CZE_skoda_works$§!:"
  Flexible_trade_policy_tt:0 "§Y$Flexible_trade_policy$§!:"
 
 # country===================================================================================================================================================
@@ -412,7 +415,7 @@
  stability_factor_tt:0 "$MODIFIER_STABILITY_FACTOR$: $RIGHT|=%+$"
  stability_weekly_tt:0 "$MODIFIER_STABILITY_WEEKLY$: $RIGHT|=%+$"
  surrender_limit_tt:0 "$MODIFIER_SURRENDER_LIMIT$: $RIGHT|=%+$"
- war_support_factor_tt:0 "$MODIFIER_WAR_SUPPORT$: $RIGHT|=%+$"
+ war_support_factor_tt:0 "$MODIFIER_WAR_SUPPORT_FACTOR$: $RIGHT|=%+$"
  war_support_weekly_tt:0 "$MODIFIER_WAR_SUPPORT_WEEKLY$: $RIGHT|=%+$"
  drift_defence_factor_tt:0 "$MODIFIER_DRIFT_DEFENCE_FACTOR$: $RIGHT|=%+$"
  replace_tt:0 "$MODIFIER_replace$: $RIGHT|=%+$"
@@ -420,7 +423,7 @@
  consumer_goods_factor_tt:0 "$MODIFIER_CONSUMER_GOODS_FACTOR$: $RIGHT|=1%Y$"
  replace_tt:0 "$MODIFIER_replace$: $RIGHT|=1%+$"
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
- autonomy_gain_tt:0 "$MODIFIER_AUTONOMY_GAIN$: $RIGHT|=1*+$"
+ autonomy_gain_tt:0 "$MODIFIER_AUTONOMY_GAIN$: $RIGHT|=2*+$"
  civilian_intel_to_others_tt:0 "$MODIFIER_CIVILIAN_INTEL_TO_OTHERS$: $RIGHT|=1*%-$"
  army_intel_to_others_tt:0 "$MODIFIER_ARMY_INTEL_TO_OTHERS$: $RIGHT|=1*%-$"
  navy_intel_to_others_tt:0 "$MODIFIER_NAVY_INTEL_TO_OTHERS$: $RIGHT|=1*%-$"
@@ -606,7 +609,7 @@
  replace_tt:0 "$MODIFIER_replace$: $RIGHT|=2%+$"
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
  operative_slot_tt:0 "$MODIFIER_OPERATIVE_SLOT$: $RIGHT|=0+$"
- attrition_factor_tt:0 "$MODIFIER_ATTRITION_FACTOR$: $RIGHT|=0%-$"
+ attrition_tt:0 "$MODIFIER_ATTRITION_FACTOR$: $RIGHT|=0%-$"
  minimum_training_level_tt:0 "$MODIFIER_MINIMUM_TRAINING_LEVEL$: $RIGHT|=0%-$"
  command_power_gain_mult_tt:0 "$MODIFIER_COMMAND_POWER_GAIN_MULT$: $RIGHT|=0%+$"
  modifier_army_sub_unit_cavalry_speed_factor_tt:0 "$modifier_army_sub_unit_cavalry_speed_factor$: $RIGHT|=0%+$"

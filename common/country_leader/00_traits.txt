@@ -969,51 +969,6 @@ leader_traits = {
 		drift_defence_factor = 0.15
 	}
 
-	nationalist_symbol = {
-		random = no
-		political_power_factor = 0.03
-		stability_weekly = 0.003
-		war_support_weekly = 0.003
-		drift_defence_factor = 0.03
-		autonomy_gain = 1
-	}
-	
-	nationalist_symbol_2 = {
-		random = no
-		political_power_factor = 0.06
-		stability_weekly = 0.006
-		war_support_weekly = 0.006
-		drift_defence_factor = 0.06
-		autonomy_gain = 2
-	}
-	
-	nationalist_symbol_3 = {
-		random = no
-		political_power_factor = 0.09
-		stability_weekly = 0.009
-		war_support_weekly = 0.009
-		drift_defence_factor = 0.09
-		autonomy_gain = 3
-	}
-	
-	nationalist_symbol_4 = {
-		random = no
-		political_power_factor = 0.12
-		stability_weekly = 0.012
-		war_support_weekly = 0.012
-		drift_defence_factor = 0.12
-		autonomy_gain = 4
-	}
-	
-	nationalist_symbol_5 = {
-		random = no
-		political_power_factor = 0.15
-		stability_weekly = 0.015
-		war_support_weekly = 0.015
-		drift_defence_factor = 0.15
-		autonomy_gain = 5
-	}
-
 	strict_austerity_adherent = {
 		random = no
 		stability_factor = -0.15

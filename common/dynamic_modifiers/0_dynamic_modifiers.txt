@@ -1018,13 +1018,71 @@ SPR_collective_army = {
 	dig_in_speed_factor = spr_collective_army_dig_in_speed_factor
 	army_intel_to_others = SPR_collective_army_army_intel_to_others
 }
+
+MAN_nationalism = {
+	enable = { always = yes }
+	icon = GFX_idea_man_nationalism
+
+	political_power_factor = man_pdm_political_power_factor
+	stability_factor = man_pdm_stability_factor
+	stability_weekly = man_pdm_stability_weekly
+	war_support_factor = man_pdm_war_support_factor
+	war_support_weekly = man_pdm_war_support_weekly
+	drift_defence_factor = man_pdm_drift_defence_factor
+	fascism_drift = man_pdm_fascism_drift
+	autonomy_gain = man_pdm_autonomy_gain
+}
+
+MAN_national_unity = {
+	enable = { always = yes }
+	icon = GFX_idea_man_national_unity
+
+	political_power_factor = man_pdm_political_power_factor
+	stability_factor = man_pdm_stability_factor
+	stability_weekly = man_pdm_stability_weekly
+	war_support_factor = man_pdm_war_support_factor
+	war_support_weekly = man_pdm_war_support_weekly
+	drift_defence_factor = man_pdm_drift_defence_factor
+	fascism_drift = man_pdm_fascism_drift
+	autonomy_gain = man_pdm_autonomy_gain
+}
+
+MAN_economy = {
+	enable = { always = yes }
+	icon = GFX_idea_SOV_third_five_year_plan
+
+	local_resources_factor = man_economy_local_resources_factor
+	production_speed_buildings_factor = man_economy_production_speed_buildings_factor
+	research_speed_factor = man_economy_research_speed_factor
+	production_lack_of_resource_penalty_factor = man_economy_production_lack_of_resource_penalty_factor
+	industrial_capacity_factory = man_economy_industrial_capacity_factory
+	industrial_capacity_dockyard = man_economy_industrial_capacity_dockyard
+}
+
+MAN_army = {
+	enable = { always = yes }
+	icon = GFX_idea_man_militarism
+
+	mobilization_speed = man_army_mobilization_speed
+	army_org_factor = man_army_army_org_factor
+	org_loss_when_moving = man_army_org_loss_when_moving
+	org_loss_at_low_org_factor = man_army_org_loss_at_low_org_factor
+	attrition = man_army_attrition
+	out_of_supply_factor = man_army_out_of_supply_factor
+	army_org_regain = man_army_army_org_regain
+	dig_in_speed_factor = man_army_dig_in_speed_factor
+	land_reinforce_rate = man_army_land_reinforce_rate
+	planning_speed = man_army_planning_speed
+	max_planning = man_army_max_planning
+	max_dig_in = man_army_max_dig_in
+	command_power_gain_mult = man_army_command_power_gain_mult
+	terrain_penalty_reduction = man_army_terrain_penalty_reduction
+	special_forces_cap = man_army_special_forces_cap
+}
+
 CZE_skoda_works = {
 	enable = { always = yes }
 	icon = GFX_idea_CZE_skoda_works
-
-	research_bonus = {
-		industry = 0.15
-	}
 
 	conversion_cost_civ_to_mil_factor = CZE_skoda_conversion_cost_civ_to_mil_factor
 	conversion_cost_mil_to_civ_factor = CZE_skoda_conversion_cost_mil_to_civ_factor
@@ -1035,6 +1093,7 @@ CZE_skoda_works = {
 	industrial_capacity_factory = CZE_skoda_industrial_capacity_factory
 	industrial_capacity_dockyard = CZE_skoda_industrial_capacity_dockyard
 }
+
 Flexible_trade_policy = {
 	enable = { always = yes }
 	icon = GFX_idea_CZE_skoda_works

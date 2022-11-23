@@ -3767,6 +3767,16 @@ spriteTypes = {
 		texturefile = "gfx/interface/ideas/idea_man_militarism.dds"
 	}
 	
+	spriteType = {
+		name = "GFX_idea_man_nationalism"
+		texturefile = "gfx/interface/ideas/idea_man_nationalism.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_man_national_unity"
+		texturefile = "gfx/interface/ideas/idea_man_national_unity.dds"
+	}
+	
 	### MEX
 	
 	spriteType = {
