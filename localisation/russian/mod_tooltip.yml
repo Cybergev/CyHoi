@@ -1,9 +1,0 @@
-﻿
- replace@_tt:0 "$MODIFIER_@replace$: $RIGHT|=%Y$"
- replace@_tt:0 "$MODIFIER_@replace$: $RIGHT|=*%Y$"
- replace@_tt:0 "$MODIFIER_@replace$: $RIGHT|=1%Y$"
- replace@_tt:0 "$MODIFIER_@replace$: $RIGHT|=1*%Y$"
- replace@_tt:0 "$MODIFIER_@replace$: $RIGHT|=2%Y$"
- replace@_tt:0 "$MODIFIER_@replace$: $RIGHT|=2*%Y$"
- replace@_tt:0 "$MODIFIER_@replace$: $RIGHT|=3%Y$"
- replace@_tt:0 "$MODIFIER_@replace$: $RIGHT|=3*%Y$"

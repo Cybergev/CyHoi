@@ -109,9 +109,11 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+				mobilization_speed = 0.05
+				attrition = -0.05
+				out_of_supply_factor = -0.05
+				land_reinforce_rate = 0.05
 				army_leader_start_logistics_level = 1
-				mobilization_speed = 0.1
-				land_reinforce_rate = 0.1
 			}
 		}
 
@@ -130,8 +132,9 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				dig_in_speed_factor = 0.1
-				max_dig_in = 10
+				dig_in_speed_factor = 0.05
+				max_dig_in = 5
+				terrain_penalty_reduction = 0.05
 			}
 		}
 

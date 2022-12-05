@@ -80,6 +80,7 @@
 
 		}
 
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			add_political_power = 200
 			unlock_decision_category_tooltip = MAN_banditry_category
@@ -841,6 +842,7 @@
 
 		}
 
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			716 = {
 				add_extra_state_shared_building_slots = 2
@@ -1102,6 +1104,9 @@
 			effect_tooltip = {
 				add_ideas = SOV_military_reorganization_ns
 			}
+			hidden_effect = {
+				remove_ideas = SOV_military_reorganization_ns
+			}
 			custom_effect_tooltip = MAN_army_tt
 			add_to_variable = {
 				man_army_mobilization_speed = 0.20
@@ -1224,63 +1229,63 @@
 		completion_reward = {
 			custom_effect_tooltip = MAN_army_tt
 			add_to_variable = {
-				man_army_mobilization_speed = 0.10
+				man_army_mobilization_speed = 0.05
 				tooltip = mobilization_speed_tt
 			}
 			add_to_variable = {
-				man_army_army_org_factor = 0.10
+				man_army_army_org_factor = 0.05
 				tooltip = army_org_factor_tt
 			}
 			add_to_variable = {
-				man_army_org_loss_when_moving = -0.10
+				man_army_org_loss_when_moving = -0.05
 				tooltip = org_loss_when_moving_tt
 			}
 			add_to_variable = {
-				man_army_org_loss_at_low_org_factor = -0.10
+				man_army_org_loss_at_low_org_factor = -0.05
 				tooltip = org_loss_at_low_org_factor_tt
 			}
 			add_to_variable = {
-				man_army_attrition = -0.10
+				man_army_attrition = -0.05
 				tooltip = attrition_tt
 			}
 			add_to_variable = {
-				man_army_out_of_supply_factor = -0.10
+				man_army_out_of_supply_factor = -0.05
 				tooltip = out_of_supply_factor_tt
 			}
 			add_to_variable = {
-				man_army_army_org_regain = 0.10
+				man_army_army_org_regain = 0.05
 				tooltip = army_org_regain_tt
 			}
 			add_to_variable = {
-				man_army_dig_in_speed_factor = 0.10
+				man_army_dig_in_speed_factor = 0.05
 				tooltip = dig_in_speed_factor_tt
 			}
 			add_to_variable = {
-				man_army_land_reinforce_rate = 0.10
+				man_army_land_reinforce_rate = 0.05
 				tooltip = land_reinforce_rate_tt
 			}
 			add_to_variable = {
-				man_army_planning_speed = 0.10
+				man_army_planning_speed = 0.05
 				tooltip = planning_speed_tt
 			}
 			add_to_variable = {
-				man_army_max_planning = 0.10
+				man_army_max_planning = 0.05
 				tooltip = max_planning_tt
 			}
 			add_to_variable = {
-				man_army_max_dig_in = 10
+				man_army_max_dig_in = 05
 				tooltip = max_dig_in_tt
 			}
 			add_to_variable = {
-				man_army_command_power_gain_mult = 0.10
+				man_army_command_power_gain_mult = 0.05
 				tooltip = command_power_gain_mult_tt
 			}
 			add_to_variable = {
-				man_army_terrain_penalty_reduction = 0.10
+				man_army_terrain_penalty_reduction = 0.05
 				tooltip = terrain_penalty_reduction_tt
 			}
 			add_to_variable = {
-				man_army_special_forces_cap = 0.10
+				man_army_special_forces_cap = 0.05
 				tooltip = special_forces_cap_tt
 			}
 		}
@@ -1316,9 +1321,65 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			add_political_power = 120
+			add_ai_strategy = {
+				type = protect
+				id = JAP		
+				value = 50
+			}
+			add_ai_strategy = {
+				type = support
+				id = JAP
+				value = 50
+			}
+			add_ai_strategy = {
+				type = send_volunteers_desire
+				id = JAP
+				value = 50
+			}
+			add_ai_strategy = {
+				type = alliance
+				id = JAP		
+				value = 50
+			}
+			add_ai_strategy = {
+				type = befriend
+				id = JAP		
+				value = 50
+			}
+			JAP = {
+				add_ai_strategy = {
+					type = protect
+					id = MAN		
+					value = 50
+				}
+				add_ai_strategy = {
+					type = support
+					id = MAN
+					value = 50
+				}
+				add_ai_strategy = {
+					type = send_volunteers_desire
+					id = MAN
+					value = 50
+				}
+				add_ai_strategy = {
+					type = alliance
+					id = MAN		
+					value = 50
+				}
+				add_ai_strategy = {
+					type = befriend
+					id = MAN		
+					value = 50
+				}
+				set_autonomy = {
+					target = MAN
+					autonomy_state = autonomy_wtt_imperial_subject
+				}
+			}
 			custom_effect_tooltip = MAN_nationalism_tt
 			add_to_variable = {
 				man_pdm_political_power_factor = 0.05
@@ -1365,7 +1426,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		search_filters = { FOCUS_FILTER_STABILITY }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 		complete_tooltip = {
 
 		}
@@ -1422,7 +1483,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_RESEARCH }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			remove_ideas = MAN_kwantung_veto
 			add_doctrine_cost_reduction = {
@@ -1481,7 +1542,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			add_ideas = tot_economic_mobilisation
 			custom_effect_tooltip = MAN_nationalism_tt
@@ -1534,7 +1595,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			custom_effect_tooltip = MAN_nationalism_tt
 			add_to_variable = {
@@ -1567,7 +1628,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 1
+			factor = 10
 		}
 
 		available = {
@@ -1586,11 +1647,12 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
-			every_state = {
-				limit = { is_core_of = CHI }
-				add_core_of = ROOT
+			CHI = {
+				every_core_state = {
+					add_core_of = ROOT
+				}
 			}
 			custom_effect_tooltip = MAN_nationalism_tt
 			add_to_variable = {
@@ -1653,7 +1715,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			add_autonomy_ratio = {
 				value = 0.15
@@ -1693,10 +1755,50 @@
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			set_country_flag = MAN_assertiveness
-			JAP = { 
+			add_ai_strategy = {
+				type = declare_war
+				id = JAP		
+				value = 100
+			}
+			add_ai_strategy = {
+				type = invade
+				id = JAP
+				value = 100
+			}
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = JAP
+				value = 100
+			}
+			add_ai_strategy = {
+				type = antagonize
+				id = JAP		
+				value = 100
+			}
+			JAP = {
+				add_ai_strategy = {
+					type = declare_war
+					id = MAN		
+					value = 100
+				}
+				add_ai_strategy = {
+					type = invade
+					id = MAN
+					value = 100
+				}
+				add_ai_strategy = {
+					type = prepare_for_war
+					id = MAN
+					value = 100
+				}
+				add_ai_strategy = {
+					type = antagonize
+					id = MAN		
+					value = 100
+				}
 				set_autonomy = {
 					target = MAN
 					autonomy_state = autonomy_wtt_imperial_subject
@@ -1756,7 +1858,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		search_filters = { FOCUS_FILTER_MANPOWER }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			add_political_power = 200
 			unlock_decision_tooltip = MAN_recruit_bandits_generic
@@ -1819,7 +1921,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
 			set_country_leader_ideology = fascism_ideology
 			unlock_decision_tooltip = form_siberian
@@ -1841,11 +1943,11 @@
 				tooltip = drift_defence_factor_tt
 			}
 			add_to_variable = {
-				man_pdm_fascism_drift = 0.10
+				man_pdm_fascism_drift = 0.20
 				tooltip = fascism_drift_tt
 			}
 			add_to_variable = {
-				man_pdm_autonomy_gain = 0.10
+				man_pdm_autonomy_gain = 0.20
 				tooltip = autonomy_gain_tt
 			}
 		}
@@ -1878,7 +1980,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		search_filters = { FOCUS_FILTER_STABILITY }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			custom_effect_tooltip = MAN_nationalism_tt
 			add_to_variable = {
@@ -1898,11 +2000,11 @@
 				tooltip = drift_defence_factor_tt
 			}
 			add_to_variable = {
-				man_pdm_fascism_drift = 0.10
+				man_pdm_fascism_drift = 0.20
 				tooltip = fascism_drift_tt
 			}
 			add_to_variable = {
-				man_pdm_autonomy_gain = 0.10
+				man_pdm_autonomy_gain = 0.20
 				tooltip = autonomy_gain_tt
 			}
 		}
@@ -1934,6 +2036,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			add_political_power = 150
 			custom_effect_tooltip = MAN_nationalism_tt
@@ -1990,6 +2093,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			unlock_decision_tooltip = MAN_prepare_to_seize_arms
 			if = {
@@ -2056,7 +2160,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_STABILITY }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			custom_effect_tooltip = MAN_nationalism_tt
 			add_to_variable = {
@@ -2304,7 +2408,7 @@
 
 		will_lead_to_war_with = JAP
 
-		search_filters = { FOCUS_FILTER_ANNEXATION }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			hidden_effect = { set_variable = { MAN_independence_target = OVERLORD } } #We're using a variable here because the saved event target becomes invalidated deep in ScopedEventTarget
 			OVERLORD = { set_autonomy = { target = ROOT autonomy_state = autonomy_free } }
@@ -2427,7 +2531,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
 			every_possible_country = {
 				limit = {
@@ -2515,7 +2619,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_ANNEXATION }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
 			every_country = {
 				limit = {
@@ -2583,6 +2687,7 @@
 
 		}
 
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			set_capital = { state = 608 }
 			custom_effect_tooltip = MAN_nationalism_tt
@@ -2679,7 +2784,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_ANNEXATION }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ANNEXATION }
 		completion_reward = {	
 			MAN_low_legitimacy_clear_all = yes
 			every_possible_country = {

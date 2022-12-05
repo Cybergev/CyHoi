@@ -19,7 +19,7 @@ autonomy_state = {
 	}
 	
 	modifier = {
-		master_ideology_drift = 0.08
+		master_ideology_drift = 0.9
 		autonomy_manpower_share = 0.9
 		can_master_build_for_us = 1
 		conscription_factor = -0.5

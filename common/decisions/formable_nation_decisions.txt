@@ -1733,25 +1733,6 @@ form_european_union_category = {
 
 		icon = generic_form_nation
 
-		allowed = {
-			AND = {
-				OR = {
-					original_tag = HOL
-					original_tag = BEL
-					original_tag = LUX
-					original_tag = FRA
-					original_tag = ITA
-					original_tag = GER
-					original_tag = WGR
-					has_completed_focus = ENG_imperial_federation
-				}
-			}
-			OR = {
-			has_dlc = "Waking the Tiger"
-			has_dlc = "Man the Guns"
-			}
-		}
-
 		available = {
 			is_subject = no
 			# Netherlands
@@ -1821,6 +1802,7 @@ form_european_union_category = {
 		}
 
 		remove_effect = {
+			add_country_leader_trait = Uniter_of_Europe
 			hidden_effect = {
 				every_country = {
 					limit = {
@@ -1832,244 +1814,83 @@ form_european_union_category = {
 					add_to_faction = EUR
 				}
 			}
-			# Netherlands
-			HOL = {
-				every_core_state = { 
-					add_core_of = EUR 
-				}
-			}
-			# Belgium
-			BEL = {
-				every_core_state = { 
-					add_core_of = EUR 
-				}
-			}
-			# Luxemburg
-			LUX = {
-				every_core_state = { 
-					add_core_of = EUR 
-				}
-			}
-			# France
-			FRA = {
-				every_core_state = { 
-					add_core_of = EUR 
-				}
-			}
-			# Italy
-			ITA = {
-				every_core_state = { 
-					add_core_of = EUR 
-				}
-			}
-			# Germany
-			GER = {
-				every_core_state = { 
-					add_core_of = EUR 
-				}
-			}
-			If = {
+			every_possible_country = {
 				limit = {
-					original_tag = ENG
+					OR = {
+						original_tag = HOL
+						original_tag = BEL
+						original_tag = LUX
+						original_tag = FRA
+						original_tag = ITA
+						original_tag = GER
+						AND = {
+							OR = {
+								is_subject_of = ROOT
+								OVERLORD = {
+									is_subject_of = ROOT
+								}
+								all_core_state = {
+									is_owned_by = ROOT
+								}
+							}
+							OR = {
+								all_core_state = {
+									is_on_continent = europe
+								}
+								any_core_state = {
+									is_on_continent = europe
+								}
+							}
+						}
+					}
 				}
-				ROOT = {
+				If = {
 					If = {
 						limit = {
 							OR = {
-								ROOT = { has_cosmetic_tag = ENG_imperial_federation_unified }
-								ROOT = { has_cosmetic_tag = ENG_imperial_federation_india_unified }
+								has_cosmetic_tag = ENG_imperial_federation_unified
+								has_cosmetic_tag = ENG_imperial_federation_india_unified
 							}
 						}
+						drop_cosmetic_tag = yes
 						EUR = {
 							set_cosmetic_tag = EUR_imperial_federation_unified
 						}
 					}
-					drop_cosmetic_tag = yes
-					every_core_state = { 
-						add_core_of = EUR 
-					}	
-					hidden_effect = {
-						every_controlled_state = {
+					every_state = {
+						if = {
 							limit = {
-								NOT = { is_owned_by = PREV }
+								OR = {
+									is_core_of = PREV
+								}
+								is_on_continent = europe
 							}
-							set_state_controller_to = EUR
+							add_core_of = EUR
 						}
-						every_state = {
+						if = {
 							limit = {
 								is_claimed_by = PREV
 								is_on_continent = europe
 							}
-							add_claim_by = EUR
+							 add_claim_by = EUR
 						}
-						every_character = {
+						if = {
 							limit = {
-								OR = {
-									is_advisor = yes
-									is_air_chief = yes
-									is_army_chief = yes
-									is_navy_chief = yes
-									is_unit_leader = yes
-									is_operative = yes
-								}
-							}
-							set_nationality = EUR
-						}
-						send_equipment_fraction = {
-							value = 1
-							target = EUR
-						}
-						transfer_navy = {
-							target = EUR
-						}
-					}
-				}
-			}
-			every_subject_country = {
-				If = {
-					limit = {
-						all_core_state = {
-							is_on_continent = europe
-						}
-					}
-					every_core_state = {
-						add_core_of = EUR
-					}
-					hidden_effect = {
-						every_controlled_state = {
-							limit = {
+								is_controlled_by = PREV
 								NOT = { is_owned_by = PREV }
 							}
 							set_state_controller_to = EUR
 						}
-						every_state = {
-							limit = {
-								is_claimed_by = PREV
-								is_on_continent = europe
-							}
-							add_claim_by = EUR
-						}
-						every_character = {
-							limit = {
-								OR = {
-									is_advisor = yes
-									is_air_chief = yes
-									is_army_chief = yes
-									is_navy_chief = yes
-									is_unit_leader = yes
-									is_operative = yes
-								}
-							}
-							set_nationality = EUR
-						}
-						send_equipment_fraction = {
-							value = 1
-							target = EUR
-						}
-						transfer_navy = {
-							target = EUR
-						}
-						THIS = {
-							every_subject_country = {
-								limit = {
-									all_core_state = {
-										is_on_continent = europe
-									}
-								}
-								every_core_state = {
-									add_core_of = EUR
-								}
-								every_state = {
-									limit = {
-										is_claimed_by = PREV
-										is_on_continent = europe
-									}
-									add_claim_by = EUR
-								}
-								EUR = {
-									annex_country = {
-										target = PREV
-										transfer_troops = yes
-									}
-								}
-							}
-						}
 					}
-				}
-				If = {
-					limit ={ 
-						any_core_state = {
-							is_on_continent = europe
-						}
+					every_character = {
+						set_nationality = EUR
 					}
-					every_owned_state = {
-						limit = {
-							is_on_continent = europe
-						}
-						add_core_of = EUR
+					send_equipment_fraction = {
+						value = 1
+						target = EUR
 					}
-					hidden_effect = {
-						every_controlled_state = {
-							limit = {
-								NOT = { is_owned_by = PREV }
-							}
-							set_state_controller_to = EUR
-						}
-						every_state = {
-							limit = {
-								is_claimed_by = PREV
-								is_on_continent = europe
-							}
-							add_claim_by = EUR
-						}
-						every_character = {
-							limit = {
-								OR = {
-									is_advisor = yes
-									is_air_chief = yes
-									is_army_chief = yes
-									is_navy_chief = yes
-									is_unit_leader = yes
-									is_operative = yes
-								}
-							}
-							set_nationality = EUR
-						}
-						send_equipment_fraction = {
-							value = 1
-							target = EUR
-						}
-						transfer_navy = {
-							target = EUR
-						}
-						THIS = {
-							every_subject_country = {
-								limit = {
-									any_core_state = {
-										is_on_continent = europe
-									}
-								}
-								every_owned_state = {
-									limit = {
-										is_on_continent = europe
-									}
-									add_core_of = EUR
-								}
-								every_state = {
-									limit = {
-										is_claimed_by = PREV
-										is_on_continent = europe
-									}
-									add_claim_by = EUR
-								}
-								EUR = {
-									annex_country = {
-										target = PREV
-										transfer_troops = yes
-									}
-								}
-							}
-						}
+					transfer_navy = {
+						target = EUR
 					}
 				}
 				EUR = {
@@ -2120,14 +1941,30 @@ form_european_union_category = {
 					kill_ideology_leader = fascism
 					kill_ideology_leader = neutrality
 				}
+				random_character = {
+					limit = {
+						has_trait = Uniter_of_Europe
+					}
+					promote_character = yes
+				}
 				change_tag_from = ROOT
 			}
 			If = {
-				limit = { NOT = { original_tag = ENG } }
+				limit = {
+					NOT = {
+						has_cosmetic_tag = ENG_imperial_federation_unified
+						has_cosmetic_tag = ENG_imperial_federation_india_unified
+					}
+				}
 				custom_effect_tooltip = form_european_union_tt
 			}
 			If = {
-				limit = { original_tag = ENG }
+				limit = {
+					OR = {
+						has_cosmetic_tag = ENG_imperial_federation_unified
+						has_cosmetic_tag = ENG_imperial_federation_india_unified
+					}
+				}
 				custom_effect_tooltip = integration_in_fediration_tt
 			}
 			hidden_effect = {
@@ -2147,7 +1984,6 @@ form_european_union_category = {
 				}
 				EUR = {
 					ROOT = {
-						add_country_leader_trait = Uniter_of_Europe
 						every_character = {
 							limit = {
 								OR = {
@@ -2568,6 +2404,257 @@ form_mutapa_category = {
 	}
 }
 
+greater_italy_category = {
+	
+	proclaim_greater_italy = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = ITA # Italy
+		}
+
+		available = {
+			has_completed_focus = ITA_towards_a_greater_italy
+			custom_trigger_tooltip = {
+				tooltip = greater_italy_required_states
+				controls_state = 852 # Istria
+				controls_state = 736 # Litorale
+				controls_state = 160 # Veneto
+				controls_state = 39 # Alto Adige
+				controls_state = 850 # Trentino
+				controls_state = 159 # Lombardia
+				controls_state = 158 # Piedmonte
+				controls_state = 161 # Emilia Romagna
+				controls_state = 162 # Toscana 
+				controls_state = 157 # Abruzzo
+				controls_state = 2 # Latium
+				controls_state = 849 # Puglia
+				controls_state = 117 # Campania
+				controls_state = 156 # Calabria
+				controls_state = 115 # Sicilia
+				controls_state = 114 # Sardegna
+			}  
+			custom_trigger_tooltip = {
+				tooltip = greater_italy_required_other_states 
+				AND = {
+					OR = {
+						ITA = { 
+						controls_state = 1 # Corsica 
+						}
+						any_country = {
+							is_subject_of = ITA
+							controls_state = 1 # Corsica
+						}
+					}
+					OR = {
+						ITA = { 
+						controls_state = 846 # Ticino 
+						}
+						any_country = {
+							is_subject_of = ITA
+							controls_state = 846 # Ticino
+						}
+					}
+					OR = {
+						ITA = { 
+						controls_state = 735 # Savoy 
+						}
+						any_country = {
+							is_subject_of = ITA
+							controls_state = 735 # Savoy
+						}
+					}
+					OR = {
+						ITA = { 
+						controls_state = 163 # Zara 
+						}
+						any_country = {
+							is_subject_of = ITA
+							controls_state = 163 # Zara
+						}
+					}
+					OR = {
+						ITA = { 
+						controls_state = 103 # Dalmatia 
+						}
+						any_country = {
+							is_subject_of = ITA
+							controls_state = 103 # Dalmatia
+						}
+					}
+					OR = {
+						ITA = { 
+						controls_state = 853 # Ljubljana 
+						}
+						any_country = {
+							is_subject_of = ITA
+							controls_state = 853 # Ljubljana
+						}
+					}
+					OR = {
+						ITA = { 
+						controls_state = 116 # Malta 
+						}
+						any_country = {
+							is_subject_of = ITA
+							controls_state = 116 # Malta
+						}
+					}
+					OR = {
+						ITA = { 
+						controls_state = 182 # Crete 
+						}
+						any_country = {
+							is_subject_of = ITA
+							controls_state = 182 # Crete
+						}
+					}
+					OR = {
+						ITA = { 
+						controls_state = 164 # Dodecaneso 
+						}
+						any_country = {
+							is_subject_of = ITA
+							controls_state = 164 # Dodecaneso
+						}
+					}
+				}
+			}
+			
+			
+			
+		}
+
+		visible = {
+			original_tag = ITA # Italy
+			has_completed_focus = ITA_towards_a_greater_italy
+			NOT = { has_global_flag = greater_italy_flag }
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = greater_italy 
+			
+			custom_effect_tooltip = greater_italy_effect_tooltip
+			
+			add_ideas = ITA_italia_irredenta_achieved
+			
+			hidden_effect = { 
+
+				# Corsica
+				ITA = {
+					transfer_state = 1
+				}
+				1 = { 
+					add_core_of = ROOT
+					set_state_name = ITA_italian_corsica_name
+				}
+				set_province_name = {
+				    id = 3838 
+				    name = ITA_italian_ajaccio_name   
+				} 
+				
+				# Ticino
+				ITA = {
+					transfer_state = 846
+				}
+				846 = { add_core_of = ROOT }
+				
+				# Savoy
+				ITA = {
+					transfer_state = 735
+				}
+				735 = { 
+					add_core_of = ROOT
+					set_state_name = ITA_italian_savoy_name
+				}
+				set_province_name = {
+				    id = 9909 
+				    name = ITA_italian_nice_name
+				} 
+				set_province_name = {
+				    id = 778  
+				    name = ITA_italian_annecy_name
+				} 
+				 
+				# Zara
+				ITA = {
+					transfer_state = 163
+				} 
+				163 = { add_core_of = ROOT }
+				
+				# Dalmatia
+				ITA = {
+					transfer_state = 103
+				}
+				103 = { 
+					add_core_of = ROOT 
+					set_state_name = ITA_italian_dalmatia_name
+				}
+				set_province_name = {
+				    id = 3924
+				    name = ITA_italian_split_name
+				} 
+				set_province_name = {
+				    id = 6889  
+				    name = ITA_italian_dubrovnik_name
+				} 
+	 
+				# Ljubljana
+				ITA = {
+					transfer_state = 853
+				}
+				853 = { 
+					add_core_of = ROOT 
+					set_state_name = ITA_italian_ljubljana_state_name
+				}
+				set_province_name = {
+				    id = 9627
+				    name = ITA_italian_ljubljana_name
+				}
+
+				# Malta
+				ITA = {
+					transfer_state = 116
+				}
+				116 = { add_core_of = ROOT }
+
+				# Crete
+				ITA = {
+					transfer_state = 182
+				}
+				182 = { 
+					add_core_of = ROOT 
+					set_state_name = ITA_italian_crete_name
+				}
+				set_province_name = {
+				    id = 12058  
+				    name = ITA_italian_chania_name 
+				} 
+				set_province_name = {
+				    id = 9940  
+				    name = ITA_italian_heraklion_name 
+				} 
+
+				# Dodecaneso
+				ITA = {
+					transfer_state = 164
+				}
+				164 = { add_core_of = ROOT }
+
+				news_event = { id = bba_italian_formables_news.1 hours = 8 }	
+
+				set_global_flag = greater_italy_flag
+
+			}
+		}
+
+		ai_will_do = {
+			factor = 500
+		}
+	}
+}
+
 form_roman_empire_category = {
 
 	form_roman_empire = {
@@ -2581,6 +2668,7 @@ form_roman_empire_category = {
 
 		available = {
 			is_subject = no
+			has_completed_focus = ITA_mare_nostrum_bba
 			# Some Dutch states
 			controls_state = 7
 			controls_state = 35
@@ -2817,6 +2905,7 @@ form_roman_empire_category = {
 
 		visible = {
 			original_tag = ITA
+			has_completed_focus = ITA_mare_nostrum_bba
 			NOT = { has_global_flag = form_roman_empire_flag }
 		}
 
@@ -6905,7 +6994,8 @@ form_turkestan_category = {
 						}
 					}
 					FROM = {
-						is_controlled_by = ROOT
+						is_owned_and_controlled_by = ROOT
+						is_core_of = ROOT
 						is_capital = YES
 						NOT = { has_global_flag = form_turkestan_flag }
 					}
@@ -6933,7 +7023,10 @@ form_turkestan_category = {
 					}
 					OR = {
 						NOT = { is_core_of = ROOT }
-						is_capital = YES
+						AND = {
+							is_capital = YES
+							is_core_of = ROOT
+						}
 					}
 				}
 			}
@@ -6950,7 +7043,6 @@ form_turkestan_category = {
 					limit = {
 						NOT = {
 							is_core_of = ROOT
-							is_capital = YES
 						}
 					}
 					if = {
@@ -7840,110 +7932,14 @@ form_siberia_category = {
 					original_tag = TAN # Tannu Tuva
 					AND = {
 						original_tag = MAN
-						has_completed_focus = MAN_five_equal_peoples
+						has_completed_focus = MAN_civic_nationalism
 					}
 					original_tag = MON
 					original_tag = MEN
 				}
 			}
 			OR = {
-				AND = {
-					FROM = {
-						OR = {
-							state = 40
-							state = 329
-							state = 403
-							state = 408
-							state = 409
-							state = 516
-							state = 560
-							state = 561
-							state = 562
-							state = 563
-							state = 564
-							state = 565
-							state = 566
-							state = 567
-							state = 568
-							state = 569
-							state = 570
-							state = 571
-							state = 572
-							state = 573
-							state = 574
-							state = 575
-							state = 576
-							state = 577
-							state = 578
-							state = 579
-							state = 580
-							state = 582
-							state = 637
-							state = 644
-							state = 653
-							state = 654
-							state = 655
-							state = 657
-							state = 822
-							state = 824
-						}
-						is_controlled_by = ROOT
-						is_core_of = SOV
-						NOT = {
-							is_core_of = ROOT
-						}
-						
-					}
-				}
-				AND = {
-					40 = { is_core_of = ROOT }
-					329 = { is_core_of = ROOT }
-					403 = { is_core_of = ROOT }
-					408 = { is_core_of = ROOT }
-					409 = { is_core_of = ROOT }
-					516 = { is_core_of = ROOT }
-					560 = { is_core_of = ROOT }
-					561 = { is_core_of = ROOT }
-					562 = { is_core_of = ROOT }
-					563 = { is_core_of = ROOT }
-					564 = { is_core_of = ROOT }
-					565 = { is_core_of = ROOT }
-					566 = { is_core_of = ROOT }
-					567 = { is_core_of = ROOT }
-					568 = { is_core_of = ROOT }
-					569 = { is_core_of = ROOT }
-					570 = { is_core_of = ROOT }
-					571 = { is_core_of = ROOT }
-					572 = { is_core_of = ROOT }
-					573 = { is_core_of = ROOT }
-					574 = { is_core_of = ROOT }
-					575 = { is_core_of = ROOT }
-					576 = { is_core_of = ROOT }
-					577 = { is_core_of = ROOT }
-					578 = { is_core_of = ROOT }
-					579 = { is_core_of = ROOT }
-					580 = { is_core_of = ROOT }
-					582 = { is_core_of = ROOT }
-					637 = { is_core_of = ROOT }
-					644 = { is_core_of = ROOT }
-					653 = { is_core_of = ROOT }
-					654 = { is_core_of = ROOT }
-					655 = { is_core_of = ROOT }
-					657 = { is_core_of = ROOT }
-					822 = { is_core_of = ROOT }
-					824 = { is_core_of = ROOT }
-					FROM = {
-						is_controlled_by = ROOT
-						is_capital = YES
-						NOT = { has_global_flag = form_siberian_republic_flag }
-					}
-				}
-			}
-		}
-
-		target_trigger = {
-			FROM = {
-				OR = {
+				FROM = {
 					OR = {
 						state = 40
 						state = 329
@@ -7981,10 +7977,127 @@ form_siberia_category = {
 						state = 657
 						state = 822
 						state = 824
+						state = 874
+						state = 876
+						state = 877
+						state = 878
+					}
+					is_controlled_by = ROOT
+					NOT = {
+						is_core_of = ROOT
+					}
+				}
+				AND = {
+					40 = { is_core_of = ROOT }
+					329 = { is_core_of = ROOT }
+					403 = { is_core_of = ROOT }
+					408 = { is_core_of = ROOT }
+					409 = { is_core_of = ROOT }
+					516 = { is_core_of = ROOT }
+					560 = { is_core_of = ROOT }
+					561 = { is_core_of = ROOT }
+					562 = { is_core_of = ROOT }
+					563 = { is_core_of = ROOT }
+					564 = { is_core_of = ROOT }
+					565 = { is_core_of = ROOT }
+					566 = { is_core_of = ROOT }
+					567 = { is_core_of = ROOT }
+					568 = { is_core_of = ROOT }
+					569 = { is_core_of = ROOT }
+					570 = { is_core_of = ROOT }
+					571 = { is_core_of = ROOT }
+					572 = { is_core_of = ROOT }
+					573 = { is_core_of = ROOT }
+					574 = { is_core_of = ROOT }
+					575 = { is_core_of = ROOT }
+					576 = { is_core_of = ROOT }
+					577 = { is_core_of = ROOT }
+					578 = { is_core_of = ROOT }
+					579 = { is_core_of = ROOT }
+					580 = { is_core_of = ROOT }
+					582 = { is_core_of = ROOT }
+					583 = { is_core_of = ROOT }
+					588 = { is_core_of = ROOT }
+					590 = { is_core_of = ROOT }
+					637 = { is_core_of = ROOT }
+					644 = { is_core_of = ROOT }
+					653 = { is_core_of = ROOT }
+					654 = { is_core_of = ROOT }
+					655 = { is_core_of = ROOT }
+					657 = { is_core_of = ROOT }
+					822 = { is_core_of = ROOT }
+					824 = { is_core_of = ROOT }
+					874 = { is_core_of = ROOT }
+					876 = { is_core_of = ROOT }
+					877 = { is_core_of = ROOT }
+					878 = { is_core_of = ROOT }
+					FROM = {
+						is_owned_and_controlled_by = ROOT
+						is_core_of = ROOT
+						is_capital = YES
+						NOT = { has_global_flag = form_siberian_republic_flag }
+					}
+				}
+			}
+		}
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					AND = {
+						OR = {
+							state = 40
+							state = 329
+							state = 403
+							state = 408
+							state = 409
+							state = 516
+							state = 560
+							state = 561
+							state = 562
+							state = 563
+							state = 564
+							state = 565
+							state = 566
+							state = 567
+							state = 568
+							state = 569
+							state = 570
+							state = 571
+							state = 572
+							state = 573
+							state = 574
+							state = 575
+							state = 576
+							state = 577
+							state = 578
+							state = 579
+							state = 580
+							state = 582
+							state = 583
+							state = 588
+							state = 590
+							state = 637
+							state = 644
+							state = 653
+							state = 654
+							state = 655
+							state = 657
+							state = 822
+							state = 824
+							state = 874
+							state = 876
+							state = 877
+							state = 878
+						}
+						NOT = { is_core_of = ROOT }
 					}
 					OR = {
-						NOT = { is_core_of = ROOT }
-						is_capital = YES
+						AND = {
+							is_owned_and_controlled_by = ROOT
+							is_core_of = ROOT
+							is_capital = YES
+						}
 					}
 				}
 			}
@@ -8001,7 +8114,6 @@ form_siberia_category = {
 					limit = {
 						NOT = {
 							is_core_of = ROOT
-							is_capital = YES
 						}
 					}
 					if = {
@@ -8023,7 +8135,7 @@ form_siberia_category = {
 					IF = {
 						limit = {
 							NOT = {
-								original_tag = MAN
+								has_cosmetic_tag = MAN_restored
 							}
 						}
 						set_cosmetic_tag = siberia_unified
@@ -8086,7 +8198,7 @@ form_siberia_category = {
 				original_tag = TAN # Tannu Tuva
 				AND = {
 					original_tag = MAN
-					has_completed_focus = MAN_five_equal_peoples
+					has_completed_focus = MAN_civic_nationalism
 				}
 				original_tag = MON
 				original_tag = MEN
@@ -8508,7 +8620,7 @@ form_siberia_category = {
 				original_tag = TAN # Tannu Tuva
 				AND = {
 					original_tag = MAN
-					has_completed_focus = MAN_five_equal_peoples
+					has_completed_focus = MAN_civic_nationalism
 				}
 				original_tag = MON
 				original_tag = MEN
@@ -8609,6 +8721,10 @@ form_take_back_siberia_category = {
 					state = 657
 					state = 822
 					state = 824
+					state = 874
+					state = 876
+					state = 877
+					state = 878
 				}
 				has_active_resistance = no
 				NOT = {
@@ -8658,6 +8774,10 @@ form_take_back_siberia_category = {
 						state = 657
 						state = 822
 						state = 824
+						state = 874
+						state = 876
+						state = 877
+						state = 878
 					}
 					NOT = { is_core_of = ROOT }
 					is_claimed_by = ROOT
@@ -8705,6 +8825,10 @@ form_take_back_siberia_category = {
 						state = 657
 						state = 822
 						state = 824
+						state = 874
+						state = 876
+						state = 877
+						state = 878
 					}
 					NOT = { is_core_of = ROOT }
 					is_claimed_by = ROOT
@@ -9887,260 +10011,6 @@ form_horn_of_africa_africa_category = {
 	}
 }
 
-
-greater_italy_category = {
-	
-	proclaim_greater_italy = { 
-
-		icon = generic_form_nation
-
-		allowed = {
-			original_tag = ITA # Italy
-		}
-
-		available = {
-			has_completed_focus = ITA_towards_a_greater_italy
-			custom_trigger_tooltip = {
-				tooltip = greater_italy_required_states
-				controls_state = 852 # Istria
-				controls_state = 736 # Litorale
-				controls_state = 160 # Veneto
-				controls_state = 39 # Alto Adige
-				controls_state = 850 # Trentino
-				controls_state = 159 # Lombardia
-				controls_state = 158 # Piedmonte
-				controls_state = 161 # Emilia Romagna
-				controls_state = 162 # Toscana 
-				controls_state = 157 # Abruzzo
-				controls_state = 2 # Latium
-				controls_state = 849 # Puglia
-				controls_state = 117 # Campania
-				controls_state = 156 # Calabria
-				controls_state = 115 # Sicilia
-				controls_state = 114 # Sardegna
-			}  
-			custom_trigger_tooltip = {
-				tooltip = greater_italy_required_other_states 
-				AND = {
-					OR = {
-						ITA = { 
-						controls_state = 1 # Corsica 
-						}
-						any_country = {
-							is_subject_of = ITA
-							controls_state = 1 # Corsica
-						}
-					}
-					OR = {
-						ITA = { 
-						controls_state = 846 # Ticino 
-						}
-						any_country = {
-							is_subject_of = ITA
-							controls_state = 846 # Ticino
-						}
-					}
-					OR = {
-						ITA = { 
-						controls_state = 735 # Savoy 
-						}
-						any_country = {
-							is_subject_of = ITA
-							controls_state = 735 # Savoy
-						}
-					}
-					OR = {
-						ITA = { 
-						controls_state = 163 # Zara 
-						}
-						any_country = {
-							is_subject_of = ITA
-							controls_state = 163 # Zara
-						}
-					}
-					OR = {
-						ITA = { 
-						controls_state = 103 # Dalmatia 
-						}
-						any_country = {
-							is_subject_of = ITA
-							controls_state = 103 # Dalmatia
-						}
-					}
-					OR = {
-						ITA = { 
-						controls_state = 853 # Ljubljana 
-						}
-						any_country = {
-							is_subject_of = ITA
-							controls_state = 853 # Ljubljana
-						}
-					}
-					OR = {
-						ITA = { 
-						controls_state = 116 # Malta 
-						}
-						any_country = {
-							is_subject_of = ITA
-							controls_state = 116 # Malta
-						}
-					}
-					OR = {
-						ITA = { 
-						controls_state = 182 # Crete 
-						}
-						any_country = {
-							is_subject_of = ITA
-							controls_state = 182 # Crete
-						}
-					}
-					OR = {
-						ITA = { 
-						controls_state = 164 # Dodecaneso 
-						}
-						any_country = {
-							is_subject_of = ITA
-							controls_state = 164 # Dodecaneso
-						}
-					}
-				}
-			}
-			
-			
-			
-		}
-
-		visible = {
-			OR = {
-				original_tag = ITA # Italy
-			}
-			
-			NOT = { has_global_flag = greater_italy_flag }
-			
-		}
-
-		complete_effect = {
-			set_cosmetic_tag = greater_italy 
-			
-			custom_effect_tooltip = greater_italy_effect_tooltip
-			
-			add_ideas = ITA_italia_irredenta_achieved
-			
-			hidden_effect = { 
-
-				# Corsica
-				ITA = {
-					transfer_state = 1
-				}
-				1 = { 
-					add_core_of = ROOT
-					set_state_name = ITA_italian_corsica_name
-				}
-				set_province_name = {
-				    id = 3838 
-				    name = ITA_italian_ajaccio_name   
-				} 
-				
-				# Ticino
-				ITA = {
-					transfer_state = 846
-				}
-				846 = { add_core_of = ROOT }
-				
-				# Savoy
-				ITA = {
-					transfer_state = 735
-				}
-				735 = { 
-					add_core_of = ROOT
-					set_state_name = ITA_italian_savoy_name
-				}
-				set_province_name = {
-				    id = 9909 
-				    name = ITA_italian_nice_name
-				} 
-				set_province_name = {
-				    id = 778  
-				    name = ITA_italian_annecy_name
-				} 
-				 
-				# Zara
-				ITA = {
-					transfer_state = 163
-				} 
-				163 = { add_core_of = ROOT }
-				
-				# Dalmatia
-				ITA = {
-					transfer_state = 103
-				}
-				103 = { 
-					add_core_of = ROOT 
-					set_state_name = ITA_italian_dalmatia_name
-				}
-				set_province_name = {
-				    id = 3924
-				    name = ITA_italian_split_name
-				} 
-				set_province_name = {
-				    id = 6889  
-				    name = ITA_italian_dubrovnik_name
-				} 
-	 
-				# Ljubljana
-				ITA = {
-					transfer_state = 853
-				}
-				853 = { 
-					add_core_of = ROOT 
-					set_state_name = ITA_italian_ljubljana_state_name
-				}
-				set_province_name = {
-				    id = 9627
-				    name = ITA_italian_ljubljana_name
-				}
-
-				# Malta
-				ITA = {
-					transfer_state = 116
-				}
-				116 = { add_core_of = ROOT }
-
-				# Crete
-				ITA = {
-					transfer_state = 182
-				}
-				182 = { 
-					add_core_of = ROOT 
-					set_state_name = ITA_italian_crete_name
-				}
-				set_province_name = {
-				    id = 12058  
-				    name = ITA_italian_chania_name 
-				} 
-				set_province_name = {
-				    id = 9940  
-				    name = ITA_italian_heraklion_name 
-				} 
-
-				# Dodecaneso
-				ITA = {
-					transfer_state = 164
-				}
-				164 = { add_core_of = ROOT }
-
-				news_event = { id = bba_italian_formables_news.1 hours = 8 }	
-
-				set_global_flag = greater_italy_flag
-
-			}
-		}
-
-		ai_will_do = {
-			factor = 500
-		}
-	}
-}
 
 
 form_panslavic_union_category = {

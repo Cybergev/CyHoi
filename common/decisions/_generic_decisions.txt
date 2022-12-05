@@ -1474,24 +1474,22 @@ economy_decisions = {
 			has_decision = begin_infrastructure_building_addition
 			FROM = {
 				is_owned_and_controlled_by = ROOT
-				OR = {
-					AND = {
-						free_building_slots = {
-							building = industrial_complex
-							size < 30
-							include_locked = no
-						}
+				AND = {
+					free_building_slots = {
+						building = industrial_complex
+						size < 30
+						include_locked = no
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = {
 						free_building_slots = {
 							building = industrial_complex
 							size > 0
-							include_locked = yes
-						}
-						NOT = {
-							free_building_slots = {
-								building = industrial_complex
-								size > 0
-								include_locked = no
-							}
+							include_locked = no
 						}
 					}
 				}
@@ -1526,6 +1524,40 @@ economy_decisions = {
 
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				factor = 10
+				all_core_state = {
+					is_controlled_by = ROOT
+					NOT = {
+						AND = {
+							free_building_slots = {
+								building = industrial_complex
+								size < 30
+								include_locked = no
+							}
+							free_building_slots = {
+								building = industrial_complex
+								size > 0
+								include_locked = yes
+							}
+							NOT = {
+								free_building_slots = {
+									building = industrial_complex
+									size > 0
+									include_locked = no
+								}
+							}
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 1
+				FROM = {
+					is_core_of = ROOT
+					is_capital = yes
+				}
+			}
 			modifier = {
 				factor = 0
 				FROM = {
@@ -1572,24 +1604,22 @@ economy_decisions = {
 			has_decision = begin_infrastructure_building_addition
 			FROM = {
 				is_owned_and_controlled_by = ROOT
-				OR = {
-					AND = {
-						free_building_slots = {
-							building = industrial_complex
-							size < 30
-							include_locked = no
-						}
+				AND = {
+					free_building_slots = {
+						building = industrial_complex
+						size < 30
+						include_locked = no
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = {
 						free_building_slots = {
 							building = industrial_complex
 							size > 0
-							include_locked = yes
-						}
-						NOT = {
-							free_building_slots = {
-								building = industrial_complex
-								size > 0
-								include_locked = no
-							}
+							include_locked = no
 						}
 					}
 				}
@@ -1761,7 +1791,12 @@ economy_decisions = {
 		ai_will_do = {
 			base = 0
 			modifier = {
-				add = 200 # oh shit they are getting close!
+				add = 200
+				ROOT = {
+					any_controlled_state = {
+						is_core_of = ROOT
+					}
+				}
 				FROM = {
 					NOT = { is_core_of = ROOT }
 				}
@@ -1893,7 +1928,12 @@ economy_decisions = {
 		ai_will_do = {
 			base = 0
 			modifier = {
-				add = 200 # oh shit they are getting close!
+				add = 200
+				ROOT = {
+					any_controlled_state = {
+						is_core_of = ROOT
+					}
+				}
 				FROM = {
 					NOT = { is_core_of = ROOT }
 				}
@@ -2025,7 +2065,12 @@ economy_decisions = {
 		ai_will_do = {
 			base = 0
 			modifier = {
-				add = 200 # oh shit they are getting close!
+				add = 200
+				ROOT = {
+					any_controlled_state = {
+						is_core_of = ROOT
+					}
+				}
 				FROM = {
 					NOT = { is_core_of = ROOT }
 				}
@@ -2157,7 +2202,12 @@ economy_decisions = {
 		ai_will_do = {
 			base = 0
 			modifier = {
-				add = 200 # oh shit they are getting close!
+				add = 200
+				ROOT = {
+					any_controlled_state = {
+						is_core_of = ROOT
+					}
+				}
 				FROM = {
 					NOT = { is_core_of = ROOT }
 				}
