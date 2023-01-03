@@ -981,12 +981,12 @@ ideas = {
 			picture = GFX_idea_JAP_warrior_spirit
 			
 			modifier = {
-				max_surrender_limit_offset = 0.1
 				army_morale_factor = 0.1
+				dig_in_speed_factor = 0.1
+				max_surrender_limit_offset = 0.1
 				army_attack_factor = 0.1
 				army_defence_factor = 0.1
 				max_dig_in_factor = 0.1
-				dig_in_speed_factor = 0.1
 			}
 		}
 

@@ -64,14 +64,6 @@
 			factor = 1
 		}
 
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
@@ -101,14 +93,6 @@
 
 		ai_will_do = {
 			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -153,14 +137,6 @@
 			factor = 1
 		}
 
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
@@ -192,14 +168,6 @@
 
 		ai_will_do = {
 			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -239,14 +207,6 @@
 
 		ai_will_do = {
 			factor = 4
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -318,10 +278,6 @@
 					is_fully_controlled_by = ROOT
 				}
 			}
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -397,14 +353,6 @@
 			factor = 2
 		}
 
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
@@ -455,10 +403,6 @@
 			716 = { is_fully_controlled_by = ROOT }
 		}
 
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
@@ -504,14 +448,6 @@
 			factor = 10
 		}
 
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
@@ -548,10 +484,6 @@
 		available = {
 			NOT = { has_idea = MAN_banditry }
 			NOT = { has_war_with = JAP }
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -613,10 +545,6 @@
 
 		available = {
 			NOT = { has_war_with = JAP }
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -688,10 +616,6 @@
 			}
 		}
 
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
@@ -723,14 +647,6 @@
 
 		ai_will_do = {
 			factor = 8
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -789,10 +705,6 @@
 			}
 		}
 
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
@@ -824,14 +736,6 @@
 
 		ai_will_do = {
 			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -919,10 +823,6 @@
 			716 = { is_fully_controlled_by = ROOT }
 		}
 
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
@@ -964,14 +864,6 @@
 			factor = 1
 		}
 
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
@@ -1008,10 +900,6 @@
 
 		}
 
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
@@ -1034,14 +922,6 @@
 
 		ai_will_do = {
 			factor = 1
-		}
-
-		available = {
-
-		}	
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -1169,10 +1049,6 @@
 			factor = 4
 		}
 
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
@@ -1211,14 +1087,6 @@
 
 		ai_will_do = {
 			factor = 3
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -1305,14 +1173,6 @@
 			factor = 6
 		}
 
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
@@ -1377,7 +1237,7 @@
 				}
 				set_autonomy = {
 					target = MAN
-					autonomy_state = autonomy_wtt_imperial_subject
+					autonomy_state = autonomy_wtt_imperial_protectorate
 				}
 			}
 			custom_effect_tooltip = MAN_nationalism_tt
@@ -1412,14 +1272,6 @@
 
 		ai_will_do = {
 			factor = 2
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -1465,14 +1317,6 @@
 
 		ai_will_do = {
 			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -1526,14 +1370,6 @@
 			factor = 5
 		}
 
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
@@ -1579,14 +1415,6 @@
 			factor = 1
 		}
 
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
@@ -1629,14 +1457,6 @@
 
 		ai_will_do = {
 			factor = 10
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -1703,10 +1523,6 @@
 			}
 		}
 
-		bypass = {
-			is_subject = no
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
@@ -1745,10 +1561,6 @@
 
 		available = {
 
-		}
-
-		bypass = {
-			is_subject = no
 		}
 
 		cancel_if_invalid = yes
@@ -1801,7 +1613,7 @@
 				}
 				set_autonomy = {
 					target = MAN
-					autonomy_state = autonomy_wtt_imperial_subject
+					autonomy_state = autonomy_wtt_imperial_protectorate
 				}
 			}
 			custom_effect_tooltip = MAN_nationalism_tt
@@ -1844,14 +1656,6 @@
 
 		ai_will_do = {
 			factor = 10
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -1903,14 +1707,6 @@
 
 		ai_will_do = {
 			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -1968,14 +1764,6 @@
 			factor = 1
 		}
 
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
@@ -2022,14 +1810,6 @@
 
 		ai_will_do = {
 			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -2079,14 +1859,6 @@
 
 		ai_will_do = {
 			factor = 10
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-			is_subject = no
 		}
 
 		cancel_if_invalid = yes
@@ -2142,14 +1914,6 @@
 
 		ai_will_do = {
 			factor = 5
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -2213,10 +1977,6 @@
 					is_fully_controlled_by = ROOT
 				}
 			}
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -2285,14 +2045,6 @@
 
 		ai_will_do = {
 			factor = 6
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -2392,14 +2144,6 @@
 				factor = 2
 			}
 			
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-			is_subject = no
 		}
 
 		cancel_if_invalid = no
@@ -2519,10 +2263,6 @@
 			is_subject = no
 		}
 
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
@@ -2607,10 +2347,6 @@
 			is_subject = no
 		}
 
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
@@ -2673,10 +2409,6 @@
 		available = {
 			is_subject = no
 			608 = { is_fully_controlled_by = ROOT }
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -2770,10 +2502,6 @@
 				}
 				is_core_or_compliance_60 = YES
 			}
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes

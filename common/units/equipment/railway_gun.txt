@@ -7,6 +7,12 @@ equipments = {
 		can_license = yes
 		picture = archetype_artillery_equipment		
 		type = railway_gun
+		
+		upgrades = {
+			tank_reliability_upgrade
+			mech_cost_upgrade
+		}
+
 		group_by = archetype
 		
 		interface_category = interface_category_land

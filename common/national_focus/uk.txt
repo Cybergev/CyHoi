@@ -6374,98 +6374,83 @@ focus_tree = {
 		}
 
 		available = {
-			CAN = {
-				OR = {
-					AND = {
-						is_subject_of = ENG
-						has_government = ROOT
-					}
-					exists = no
-				}
-			}
-			SAF = {
-				OR = {
-					AND = {
-						is_subject_of = ENG
-						has_government = ROOT
-					}
-					exists = no
-				}
-			}
 			AST = {
 				OR = {
 					AND = {
-						is_subject_of = ENG
 						has_government = ROOT
+						all_core_state = {
+							controls_or_subject_of = yes
+						}
 					}
-					exists = no
-				}
-			}
-			NZL = {
-				OR = {
 					AND = {
-						is_subject_of = ENG
-						has_government = ROOT
-					}
-					exists = no
-				}
-			}
-			NOT = {
-				any_state = {
-					OR = {
-						is_core_of = ENG
-						is_core_of = CAN
-						is_core_of = SAF
-						is_core_of = AST
-						is_core_of = NZL
-					}
-					NOT = { state = 331 }
-					OWNER = {
-						NOT = {
-							OR = {
-								tag = ENG
-								tag = CAN
-								tag = SAF
-								tag = AST
-								tag = NZL
-							}
+						exists = no
+						all_core_state = {
+							controls_or_subject_of = yes
 						}
 					}
 				}
 			}
-
-		}
-
-		bypass = {
 			CAN = {
-				exists = no
-			}
-			SAF = {
-				exists = no
+				OR = {
+					AND = {
+						has_government = ROOT
+						all_core_state = {
+							controls_or_subject_of = yes
+						}
+					}
+					AND = {
+						exists = no
+						all_core_state = {
+							controls_or_subject_of = yes
+						}
+					}
+				}
 			}
 			RAJ = {
 				OR = {
-					exists = no
-					NOT = { is_subject_of = ENG }
+					AND = {
+						has_government = ROOT
+						all_core_state = {
+							controls_or_subject_of = yes
+						}
+					}
+					AND = {
+						exists = no
+						all_core_state = {
+							controls_or_subject_of = yes
+						}
+					}
 				}
 			}
-			AST = {
-				exists = no
-			}
 			NZL = {
-				exists = no
-			}
-			NOT = {
-				any_state = {
-					OR = {
-						is_core_of = ENG
-						is_core_of = CAN
-						is_core_of = SAF
-						is_core_of = AST
-						is_core_of = NZL
+				OR = {
+					AND = {
+						has_government = ROOT
+						all_core_state = {
+							controls_or_subject_of = yes
+						}
 					}
-					OWNER = {
-						NOT = { tag = ENG }
+					AND = {
+						exists = no
+						all_core_state = {
+							controls_or_subject_of = yes
+						}
+					}
+				}
+			}
+			SAF = {
+				OR = {
+					AND = {
+						has_government = ROOT
+						all_core_state = {
+							controls_or_subject_of = yes
+						}
+					}
+					AND = {
+						exists = no
+						all_core_state = {
+							controls_or_subject_of = yes
+						}
 					}
 				}
 			}
@@ -6526,420 +6511,85 @@ focus_tree = {
 		id = ENG_imperial_federation
 		prerequisite = { focus = ENG_imperial_conference }
 		available = {
-			if = {
-				limit = {
-					has_dlc = "Together for Victory"
-					has_dlc = "Death or Dishonor"
-				}
-				CAN = {
-					OR = {
-						AND = {
-							is_subject_of = ENG
-							OR = {
-								has_autonomy_state = autonomy_integrated_puppet
-								has_autonomy_state = autonomy_reichskommissariat
-							}
-						}
-						AND = {
-							exists = no
-							NOT = {
-								any_state = {
-									is_core_of = CAN
-									NOT = { is_owned_by = ROOT }
-								}
-							}
+			AST = {
+				OR = {
+					AND = {
+						has_government = ROOT
+						all_core_state = {
+							controls_or_subject_of = yes
 						}
 					}
-				}
-				SAF = {
-					OR = {
-						AND = {
-							is_subject_of = ENG
-							OR = {
-								has_autonomy_state = autonomy_integrated_puppet
-								has_autonomy_state = autonomy_reichskommissariat
-							}
-						}
-						AND = {
-							exists = no
-							NOT = {
-								any_state = {
-									is_core_of = SAF
-									NOT = { is_owned_by = ROOT }
-								}
-							}
-						}
-					}
-				}
-				if = {
-					limit = {
-						RAJ = { has_country_flag = ENG_accepted_federation }
-					}
-					RAJ = {
-						OR = {
-							AND = {
-								is_subject_of = ENG
-								OR = {
-									has_autonomy_state = autonomy_integrated_puppet
-									has_autonomy_state = autonomy_reichskommissariat
-								}
-							}
-							AND = {
-								exists = no
-								NOT = {
-									any_state = {
-										is_core_of = RAJ
-										NOT = { state = 320 }
-										NOT = { state = 321 }
-										NOT = { is_owned_by = ROOT }
-									}
-								}
-							}
-						}
-					}
-				}
-				AST = {
-					OR = {
-						AND = {
-							is_subject_of = ENG
-							OR = {
-								has_autonomy_state = autonomy_integrated_puppet
-								has_autonomy_state = autonomy_reichskommissariat
-							}
-						}
-						AND = {
-							exists = no
-							NOT = {
-								any_state = {
-									is_core_of = AST
-									NOT = { is_owned_by = ROOT }
-								}
-							}
-						}
-					}
-				}
-				NZL = {
-					OR = {
-						AND = {
-							is_subject_of = ENG
-							OR = {
-								has_autonomy_state = autonomy_integrated_puppet
-								has_autonomy_state = autonomy_reichskommissariat
-							}
-						}
-						AND = {
-							exists = no
-							NOT = {
-								any_state = {
-									is_core_of = NZL
-									NOT = { is_owned_by = ROOT }
-								}
-							}
+					AND = {
+						exists = no
+						all_core_state = {
+							controls_or_subject_of = yes
 						}
 					}
 				}
 			}
-			else_if = {
-				limit = {
-					has_dlc = "Together for Victory"
-					NOT = { has_dlc = "Death or Dishonor" }
-				}
-				CAN = {
-					OR = {
-						AND = {
-							is_subject_of = ENG
-							has_autonomy_state = autonomy_integrated_puppet
-						}
-						AND = {
-							exists = no
-							NOT = {
-								any_state = {
-									is_core_of = CAN
-									NOT = { is_owned_by = ROOT }
-								}
-							}
+			CAN = {
+				OR = {
+					AND = {
+						has_government = ROOT
+						all_core_state = {
+							controls_or_subject_of = yes
 						}
 					}
-				}
-				SAF = {
-					OR = {
-						AND = {
-							is_subject_of = ENG
-							has_autonomy_state = autonomy_integrated_puppet
-						}
-						AND = {
-							exists = no
-							NOT = {
-								any_state = {
-									is_core_of = SAF
-									NOT = { is_owned_by = ROOT }
-								}
-							}
-						}
-					}
-				}
-				if = {
-					limit = {
-						RAJ = { has_country_flag = ENG_accepted_federation }
-					}
-					RAJ = {
-						OR = {
-							AND = {
-								is_subject_of = ENG
-								has_autonomy_state = autonomy_integrated_puppet
-							}
-							AND = {
-								exists = no
-								NOT = {
-									any_state = {
-										is_core_of = RAJ
-										NOT = { state = 320 }
-										NOT = { state = 321 }
-										NOT = { is_owned_by = ROOT }
-									}
-								}
-							}
-						}
-					}
-				}
-				AST = {
-					OR = {
-						AND = {
-							is_subject_of = ENG
-							has_autonomy_state = autonomy_integrated_puppet
-						}
-						AND = {
-							exists = no
-							NOT = {
-								any_state = {
-									is_core_of = AST
-									NOT = { is_owned_by = ROOT }
-								}
-							}
-						}
-					}
-				}
-				NZL = {
-					OR = {
-						AND = {
-							is_subject_of = ENG
-							has_autonomy_state = autonomy_integrated_puppet
-						}
-						AND = {
-							exists = no
-							NOT = {
-								any_state = {
-									is_core_of = NZL
-									NOT = { is_owned_by = ROOT }
-								}
-							}
+					AND = {
+						exists = no
+						all_core_state = {
+							controls_or_subject_of = yes
 						}
 					}
 				}
 			}
-			else_if = {
-				limit = {
-					NOT = { has_dlc = "Together for Victory" }
-					has_dlc = "Death or Dishonor"
-					has_government = fascism
-				}
-				CAN = {
-					OR = {
-						AND = {
-							is_subject_of = ENG
-							has_autonomy_state = autonomy_reichskommissariat
-						}
-						AND = {
-							exists = no
-							NOT = {
-								any_state = {
-									is_core_of = CAN
-									NOT = { is_owned_by = ROOT }
-								}
-							}
+			RAJ = {
+				OR = {
+					AND = {
+						has_government = ROOT
+						all_core_state = {
+							controls_or_subject_of = yes
 						}
 					}
-				}
-				SAF = {
-					OR = {
-						AND = {
-							is_subject_of = ENG
-							has_autonomy_state = autonomy_reichskommissariat
-						}
-						AND = {
-							exists = no
-							NOT = {
-								any_state = {
-									is_core_of = SAF
-									NOT = { is_owned_by = ROOT }
-								}
-							}
-						}
-					}
-				}
-				if = {
-					limit = {
-						RAJ = { has_country_flag = ENG_accepted_federation }
-					}
-					RAJ = {
-						OR = {
-							AND = {
-								is_subject_of = ENG
-								has_autonomy_state = autonomy_reichskommissariat
-							}
-							AND = {
-								exists = no
-								NOT = {
-									any_state = {
-										is_core_of = RAJ
-										NOT = { state = 320 }
-										NOT = { state = 321 }
-										NOT = { is_owned_by = ROOT }
-									}
-								}
-							}
-						}
-					}
-				}
-				AST = {
-					OR = {
-						AND = {
-							is_subject_of = ENG
-							has_autonomy_state = autonomy_reichskommissariat
-						}
-						AND = {
-							exists = no
-							NOT = {
-								any_state = {
-									is_core_of = AST
-									NOT = { is_owned_by = ROOT }
-								}
-							}
-						}
-					}
-				}
-				NZL = {
-					OR = {
-						AND = {
-							is_subject_of = ENG
-							has_autonomy_state = autonomy_reichskommissariat
-						}
-						AND = {
-							exists = no
-							NOT = {
-								any_state = {
-									is_core_of = NZL
-									NOT = { is_owned_by = ROOT }
-								}
-							}
+					AND = {
+						exists = no
+						all_core_state = {
+							controls_or_subject_of = yes
 						}
 					}
 				}
 			}
-			else = {
-				CAN = {
-					OR = {
-						AND = {
-							is_subject_of = ENG
-							compare_autonomy_progress_ratio < 0.1
-						}
-						AND = {
-							exists = no
-							NOT = {
-								any_state = {
-									is_core_of = CAN
-									NOT = { is_owned_by = ROOT }
-								}
-							}
+			NZL = {
+				OR = {
+					AND = {
+						has_government = ROOT
+						all_core_state = {
+							controls_or_subject_of = yes
 						}
 					}
-				}
-				SAF = {
-					OR = {
-						AND = {
-							is_subject_of = ENG
-							compare_autonomy_progress_ratio < 0.1
-						}
-						AND = {
-							exists = no
-							NOT = {
-								any_state = {
-									is_core_of = SAF
-									NOT = { is_owned_by = ROOT }
-								}
-							}
-						}
-					}
-				}
-				if = {
-					limit = {
-						RAJ = { has_country_flag = ENG_accepted_federation }
-					}
-					RAJ = {
-						OR = {
-							AND = {
-								is_subject_of = ENG
-								compare_autonomy_progress_ratio < 0.1
-							}
-							AND = {
-								exists = no
-								NOT = {
-									any_state = {
-										is_core_of = RAJ
-										NOT = { state = 320 }
-										NOT = { state = 321 }
-										NOT = { is_owned_by = ROOT }
-									}
-								}
-							}
-						}
-					}
-				}
-				AST = {
-					OR = {
-						AND = {
-							is_subject_of = ENG
-							compare_autonomy_progress_ratio < 0.1
-						}
-						AND = {
-							exists = no
-							NOT = {
-								any_state = {
-									is_core_of = AST
-									NOT = { is_owned_by = ROOT }
-								}
-							}
-						}
-					}
-				}
-				NZL = {
-					OR = {
-						AND = {
-							is_subject_of = ENG
-							compare_autonomy_progress_ratio < 0.1
-						}
-						AND = {
-							exists = no
-							NOT = {
-								any_state = {
-									is_core_of = NZL
-									NOT = { is_owned_by = ROOT }
-								}
-							}
+					AND = {
+						exists = no
+						all_core_state = {
+							controls_or_subject_of = yes
 						}
 					}
 				}
 			}
-			if = {
-				limit = {
-					OR = {
-						CAN = { exists = yes }
-						SAF = { exists = yes }
-						AST = { exists = yes }
-						NZL = { exists = yes }
+			SAF = {
+				OR = {
+					AND = {
+						has_government = ROOT
+						all_core_state = {
+							controls_or_subject_of = yes
+						}
+					}
+					AND = {
+						exists = no
+						all_core_state = {
+							controls_or_subject_of = yes
+						}
 					}
 				}
-				has_country_flag = ENG_dominions_accepted_federation
 			}
 		}
 
@@ -10408,7 +10058,7 @@ focus_tree = {
 		prerequisite = { focus = ENG_concessions_to_the_trade_unions focus = ENG_the_kings_party focus = ENG_organize_the_blackshirts }
 		available = {
 			is_subject = no
-			has_war = no
+			has_civil_war = no
 			NOT = {
 				has_government = democratic
 			}

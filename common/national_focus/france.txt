@@ -1591,7 +1591,7 @@
 	focus = {
 		id = FRA_invite_communist_ministers
 		icon = GFX_goal_support_communism
-		x = -3
+		x = -4
 		y = 1
 		offset = {
 			x = 0
@@ -1733,8 +1733,7 @@
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			add_ideas = { FRA_womens_suffrage }
-			add_political_power = 60
+			add_political_power = 200
 			add_popularity = { ideology = communism popularity = 0.1}
 		}
 	}
@@ -1889,11 +1888,9 @@
 			x = 0
 			y = 0
 		}
-		prerequisite = {
-			focus = FRA_celebrate_the_commune
-			focus = FRA_legal_equality
-		}
-		mutually_exclusive = { }
+		prerequisite = { focus = FRA_celebrate_the_commune }
+		prerequisite = { focus = FRA_agricultural_collectivization }
+		prerequisite = { focus = FRA_legal_equality }
 		relative_position_id = FRA_celebrate_the_commune
 		cost = 10
 
@@ -2007,8 +2004,8 @@
 	focus = {
 		id = FRA_anti_fascist_coalition
 		icon = GFX_goal_generic_military_deal
-		x = -1
-		y = 2
+		x = 0
+		y = 1
 		offset = {
 			x = 0
 			y = 0
@@ -2017,7 +2014,7 @@
 			focus = FRA_constitutional_convention
 		}
 		mutually_exclusive = { focus = FRA_loyalty_to_moscow focus = FRA_loyalty_to_the_cause }
-		relative_position_id = FRA_reconciliation
+		relative_position_id = FRA_constitutional_convention
 		cost = 10
 
 		ai_will_do = {
@@ -2108,8 +2105,8 @@
 	focus = {
 		id = FRA_invite_anti_fascist_emigrants
 		icon = GFX_goal_generic_national_unity
-		x = -1
-		y = 3
+		x = 0
+		y = 1
 		offset = {
 			x = 0
 			y = 0
@@ -2117,7 +2114,7 @@
 		prerequisite = {
 			focus = FRA_anti_fascist_coalition
 		}
-		relative_position_id = FRA_reconciliation
+		relative_position_id = FRA_anti_fascist_coalition
 		cost = 10
 
 		ai_will_do = {
@@ -2143,8 +2140,8 @@
 	focus = {
 		id = FRA_reconnect_to_the_balkans
 		icon = GFX_goal_generic_military_sphere
-		x = -1
-		y = 4
+		x = 0
+		y = 1
 		offset = {
 			x = 0
 			y = 0
@@ -2152,7 +2149,7 @@
 		prerequisite = {
 			focus = FRA_invite_anti_fascist_emigrants
 		}
-		relative_position_id = FRA_reconciliation
+		relative_position_id = FRA_invite_anti_fascist_emigrants
 		cost = 10
 
 		ai_will_do = {
@@ -2229,7 +2226,7 @@
 	focus = {
 		id = FRA_pre_empt_the_fascist_attack
 		icon = GFX_focus_focus_fra_fascist_threat
-		x = 0
+		x = 1
 		y = 5
 		offset = {
 			x = 0
@@ -2501,18 +2498,18 @@
 		}
 	}
 	focus = {
-		id = FRA_revolutionary_zeal
-		icon = GFX_goal_generic_war_with_comintern
-		x = 3
-		y = 1
+		id = FRA_crush_capital
+		icon = GFX_goal_generic_soviet_construction
+		x = 0
+		y = 4
 		offset = {
 			x = 0
 			y = 0
 		}
-		prerequisite = {
-			focus = FRA_destroy_the_counter_revolution
-		}
-		relative_position_id = FRA_destroy_the_counter_revolution
+		prerequisite = { focus = FRA_destroy_the_counter_revolution }
+		prerequisite = { focus = FRA_national_champions }
+		prerequisite = { focus = FRA_dirigisme }
+		relative_position_id = FRA_general_work_council
 		cost = 10
 
 		ai_will_do = {
@@ -2520,7 +2517,13 @@
 		}
 
 		available = {
-			
+			OR = {
+				has_idea = civilian_economy
+				has_idea = low_economic_mobilisation
+				has_idea = partial_economic_mobilisation
+				has_idea = war_economy
+				has_idea = tot_economic_mobilisation
+			}
 		}
 		
 		bypass = {
@@ -2532,14 +2535,17 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-			add_ideas = { FRA_revolutionary_zeal}
+			remove_ideas = FRA_matignon_agreements
+			remove_ideas = FRA_dirigisme
+			remove_ideas = FRA_agricultural_collectivization
+			add_ideas = FRA_socialist_economy
 		}
 	}
 	focus = {
 		id = FRA_loyalty_to_the_cause
 		icon = GFX_goal_generic_demand_territory
-		x = 1
-		y = 2
+		x = 0
+		y = 1
 		offset = {
 			x = 0
 			y = 0
@@ -2548,7 +2554,7 @@
 			focus = FRA_destroy_the_counter_revolution
 		}
 		mutually_exclusive = { focus = FRA_loyalty_to_moscow focus = FRA_anti_fascist_coalition }
-		relative_position_id = FRA_revolution_to_the_utmost
+		relative_position_id = FRA_destroy_the_counter_revolution
 		cost = 10
 
 		ai_will_do = {
@@ -2592,8 +2598,8 @@
 		}
 	}
 	focus = {
-		id = FRA_carry_the_revolution_north
-		icon = GFX_goal_generic_position_armies
+		id = FRA_revolutionary_zeal
+		icon = GFX_goal_generic_war_with_comintern
 		x = 0
 		y = 1
 		offset = {
@@ -2604,6 +2610,41 @@
 			focus = FRA_loyalty_to_the_cause
 		}
 		relative_position_id = FRA_loyalty_to_the_cause
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = FRA_revolutionary_zeal
+		}
+	}
+	focus = {
+		id = FRA_carry_the_revolution_north
+		icon = GFX_goal_generic_position_armies
+		x = 0
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = {
+			focus = FRA_revolutionary_zeal
+		}
+		relative_position_id = FRA_revolutionary_zeal
 		cost = 10
 
 		ai_will_do = {
@@ -2835,7 +2876,10 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-			add_ideas = { FRA_egalite_liberte_solidarite }
+			swap_ideas = {
+				remove_idea = FRA_revolutionary_zeal
+				add_idea = FRA_egalite_liberte_solidarite
+			}
 		}
 	}
 	focus = {
@@ -3080,7 +3124,7 @@
 	focus = {
 		id = FRA_dirigisme
 		icon = GFX_focus_generic_the_giant_wakes
-		x = -1
+		x = 1
 		y = 1
 		offset = {
 			x = 0
@@ -3115,7 +3159,7 @@
 	focus = {
 		id = FRA_national_champions
 		icon = GFX_focus_generic_industry_3
-		x = 1
+		x = -1
 		y = 1
 		offset = {
 			x = 0
@@ -3408,7 +3452,6 @@
 		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
 			remove_ideas = FRA_expanded_citizenship
-			remove_ideas = FRA_womens_suffrage
 			add_ideas = FRA_france_undividable
 			every_owned_state = {
 				limit = {

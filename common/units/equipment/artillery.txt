@@ -10,6 +10,13 @@ equipments = {
 			anti_air
 			infantry #adding infantry type
 		}
+
+		upgrades = {
+			tank_reliability_upgrade
+			tank_aa_upgrade
+			mech_cost_upgrade
+		}
+
 		group_by = archetype
 		
 		interface_category = interface_category_land
@@ -102,6 +109,13 @@ equipments = {
 			infantry #adding infantry type
 			#motorized #Removing motorized type
 		}
+
+		upgrades = {
+			tank_reliability_upgrade
+			tank_gun_upgrade
+			mech_cost_upgrade
+		}
+
 		group_by = archetype
 		
 		interface_category = interface_category_land
@@ -192,6 +206,13 @@ equipments = {
 			rocket
 			infantry
 		}
+
+		upgrades = {
+			tank_reliability_upgrade
+			tank_art_upgrade
+			mech_cost_upgrade
+		}
+
 		group_by = archetype
 		
 		interface_category = interface_category_land
@@ -259,6 +280,13 @@ equipments = {
 			rocket
 			motorized
 		}
+
+		upgrades = {
+			tank_reliability_upgrade
+			tank_art_upgrade
+			mech_cost_upgrade
+		}
+
 		group_by = archetype
 		
 		interface_category = interface_category_land
@@ -308,6 +336,13 @@ equipments = {
 			anti_tank
 			infantry #adding infantry type
 		}
+
+		upgrades = {
+			tank_reliability_upgrade
+			tank_at_upgrade
+			mech_cost_upgrade
+		}
+
 		group_by = archetype
 		
 		interface_category = interface_category_land

@@ -1,9 +1,9 @@
 autonomy_state = {
 	id = autonomy_satellite
 	
-	min_freedom_level = 0.6
+	min_freedom_level = 0.60
 	
-	manpower_influence = 0.5
+	manpower_influence = 0.40
 	
 	rule = {
 		desc = "RULE_DESC_IS_A_SUBJECT"
@@ -16,12 +16,15 @@ autonomy_state = {
 	}
 	
 	modifier = {
-		master_ideology_drift = 0.4
-		autonomy_manpower_share = 0.4
-		extra_trade_to_overlord_factor = 0.4
-		overlord_trade_cost_factor = -0.4
-		license_subject_master_purchase_cost = -1
-		autonomy_gain_global_factor = -0.3
+		master_ideology_drift = 0.40
+		autonomy_manpower_share = 0.40
+		extra_trade_to_overlord_factor = 0.40
+		overlord_trade_cost_factor = -0.40
+		license_subject_master_purchase_cost = -0.40
+		cic_to_overlord_factor = 0.40
+		mic_to_overlord_factor = 0.40
+		research_sharing_per_country_bonus_factor = -0.40
+		can_master_build_for_us = 1
 	}
 	
 	ai_subject_wants_higher = {
@@ -38,13 +41,19 @@ autonomy_state = {
 
 	allowed = {
 		has_dlc = "Death or Dishonor"
-		OVERLORD = { has_government = fascism }
-		NOT = { OVERLORD = { original_tag = JAP } }
-		NOT = { OVERLORD = { original_tag = MAN } }
-		NOT = { OVERLORD = { original_tag = MEN } }
-		NOT = { OVERLORD = { original_tag = MON } }
-		NOT = { OVERLORD = { original_tag = TAN } }
-		NOT = { OVERLORD = { is_literally_china = YES } }
+		OR = {
+			FROM = { has_government = fascism }
+			FROM = { 
+				has_government = neutrality
+				original_tag = GER
+			}
+		}
+		FROM = { NOT = { original_tag = JAP } }
+		FROM = { NOT = { original_tag = MAN } }
+		FROM = { NOT = { original_tag = MEN } }
+		FROM = { NOT = { original_tag = MON } }
+		FROM = { NOT = { original_tag = TAN } }
+		FROM = { NOT = { is_literally_china = YES } }
 	}
 	
 	can_take_level = {

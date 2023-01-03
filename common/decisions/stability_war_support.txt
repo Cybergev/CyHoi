@@ -1,0 +1,1112 @@
+crisis = {
+
+	draft_dodging = {
+
+		icon = generic_civil_support
+
+		allowed = {
+			always = yes
+		}
+
+		available = {
+			OR = {
+				has_civil_war = yes
+				has_country_flag = crisis_in_progress
+			}
+			NOT = {
+				has_country_flag = crisis_solution_in_progress
+			}
+			OR = {
+				has_idea = draft_dodging
+				has_idea = draft_dodging_2
+				has_idea = draft_dodging_3
+			}
+		}
+
+		cost = 0
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			OR = {
+				has_civil_war = yes
+				has_country_flag = crisis_in_progress
+			}
+			NOT = {
+				has_country_flag = crisis_solution_in_progress
+			}
+			OR = {
+				has_idea = draft_dodging
+				has_idea = draft_dodging_2
+				has_idea = draft_dodging_3
+			}
+									
+		}
+
+		complete_effect = {
+			country_event = stability.21
+		}
+	}
+
+	strikes_1 = {
+
+		icon = generic_civil_support
+
+		allowed = {
+			always = yes
+		}
+
+		available = {
+			OR = {
+				has_civil_war = yes
+				has_country_flag = crisis_in_progress
+			}
+			NOT = {
+				has_country_flag = crisis_solution_in_progress
+			}
+			OR = {
+				has_idea = strikes_1
+				has_idea = strikes_2
+				has_idea = strikes_3
+			}
+		}
+
+		cost = 0
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				has_idea = strikes_3
+				factor = 500
+			}
+		}
+		
+		visible = {
+			OR = {
+				has_idea = strikes_1
+				has_idea = strikes_2
+				has_idea = strikes_3
+			}
+			OR = {
+				has_country_flag = crisis_in_progress
+				has_civil_war = yes
+			}
+			NOT = {
+				has_country_flag = crisis_solution_in_progress
+			}
+		}
+
+
+		complete_effect = {
+			country_event = stability.22
+		}
+	}
+	
+	draft_dodging_mission = {
+
+		icon = generic_civil_support
+		
+		available = {
+			NOT = {
+				OR = {
+					has_idea = draft_dodging
+					has_idea = draft_dodging_2
+					has_idea = draft_dodging_3
+				}
+			}
+		}
+
+		days_mission_timeout = 90
+
+		activation = {
+			OR = {
+				has_idea = draft_dodging
+				has_idea = draft_dodging_2
+				has_idea = draft_dodging_3
+			}
+		}
+		visible = {
+			OR = {
+				has_idea = draft_dodging
+				has_idea = draft_dodging_2
+				has_idea = draft_dodging_3
+			}
+		}
+		complete_effect = {
+			
+		}
+		timeout_effect = {
+			if = {
+				limit = {
+					has_idea = draft_dodging_3
+					has_stability < 0.21
+					NOT = {
+						has_government = communism
+					}
+				}
+				start_civil_war = {
+					ideology = communism
+				}
+			}
+			if = {
+				limit = {
+					has_idea = draft_dodging_3
+					has_stability < 0.21
+					has_government = communism
+					
+				}
+				start_civil_war = {
+					ideology = democratic
+				}
+			}
+			if = {
+				limit = {
+					has_idea = draft_dodging_3
+					has_stability < 0.41
+					NOT = {
+						has_government = communism
+					}
+				}
+				add_popularity = { ideology = communism popularity = 0.1}
+			}
+			if = {
+				limit = {
+					has_idea = draft_dodging_3
+					has_stability < 0.41
+					has_government = communism
+					
+				}
+				add_popularity = { ideology = democratic popularity = 0.1}
+			}
+			if = {
+				limit = {
+					has_idea = draft_dodging_3
+					has_stability > 0.4
+				}
+				add_stability = -0.1
+			}
+			if = {
+				limit = { 
+					has_idea = draft_dodging_2
+				}
+				swap_ideas = {
+					remove_idea = draft_dodging_2
+					add_idea = draft_dodging_3
+				}
+			}
+			if = {
+				limit = { 
+					has_idea = draft_dodging
+				}
+				swap_ideas = {
+					remove_idea = draft_dodging
+					add_idea = draft_dodging_2
+				}
+			}	
+		}
+	}
+	strikes_mission = {
+
+		icon = generic_civil_support
+		
+		available = {
+			NOT = {
+				OR = {
+					has_idea = strikes_1
+					has_idea = strikes_2
+					has_idea = strikes_3
+				}
+				has_country_flag = crisis_in_progress
+			}
+		}
+
+		days_mission_timeout = 90
+
+		activation = {
+			OR = {
+				has_idea = strikes_1
+				has_idea = strikes_2
+				has_idea = strikes_3
+			}
+			OR = {
+				has_country_flag = crisis_in_progress #needed to avoid doubling up with demob strikes
+				has_civil_war = yes
+			}
+		}
+		visible = {
+			OR = {
+				has_idea = strikes_1 
+				has_idea = strikes_2
+				has_idea = strikes_3	
+			}
+			OR = {
+				has_country_flag = crisis_in_progress
+				has_civil_war = yes
+			}
+		}
+		complete_effect = {
+			
+		}
+		timeout_effect = {
+			if = {
+				limit = {
+					has_idea = strikes_3
+					has_stability < 0.21
+					NOT = {
+						has_government = communism
+					}
+				}
+				start_civil_war = {
+					ideology = communism
+				}
+			}
+			if = {
+				limit = {
+					has_idea = strikes_3
+					has_stability < 0.21
+					has_government = communism
+					
+				}
+				start_civil_war = {
+					ideology = democratic
+				}
+			}
+			if = {
+				limit = {
+					has_idea = strikes_3
+					has_stability < 0.41
+					NOT = {
+						has_government = communism
+					}
+				}
+				add_popularity = { ideology = communism popularity = 0.1}
+			}
+			if = {
+				limit = {
+					has_idea = strikes_3
+					has_stability < 0.41
+					has_government = communism
+					
+				}
+				add_popularity = { ideology = democratic popularity = 0.1}
+			}
+			if = {
+				limit = {
+					has_idea = strikes_3
+					has_stability > 0.4
+				}
+				add_stability = -0.1
+			}
+			if = {
+				limit = { 
+					has_idea = strikes_2
+				}
+				swap_ideas = {
+					remove_idea = strikes_2
+					add_idea = strikes_3
+				}
+			}
+			if = {
+				limit = { 
+					has_idea = strikes_1
+				}
+				swap_ideas = {
+					remove_idea = strikes_1
+					add_idea = strikes_2
+				}
+			}	
+		}
+	}
+	mutiny_1 = {
+
+		icon = generic_civil_support
+
+		allowed = {
+			always = yes
+		}
+
+		available = {
+			OR = {
+				has_country_flag = crisis_in_progress #needed to avoid doubling up with demob strikes
+				has_civil_war = yes
+			}
+			OR = {
+				has_idea = mutiny_1
+				has_idea = mutiny_2
+				has_idea = mutiny_3
+			}
+		}
+
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			OR = {
+				has_country_flag = crisis_in_progress #needed to avoid doubling up with demob strikes
+				has_civil_war = yes
+			}
+			NOT = {
+				has_country_flag = crisis_solution_in_progress
+			}
+			OR = {
+				has_idea = mutiny_1
+				has_idea = mutiny_2
+				has_idea = mutiny_3
+			}
+		}
+
+		complete_effect = {
+			country_event = stability.23
+		}
+	}
+	mutiny_mission = {
+
+		icon = generic_civil_support
+		
+		available = {
+			NOT = {
+				OR = {
+					has_idea = mutiny_1
+					has_idea = mutiny_2
+					has_idea = mutiny_3
+				}
+				has_country_flag = crisis_in_progress
+			}
+		}
+
+		days_mission_timeout = 90
+
+		activation = {
+			OR = {
+				has_idea = mutiny_1
+				has_idea = mutiny_2
+				has_idea = mutiny_3
+			}
+			OR = {
+				has_country_flag = crisis_in_progress #needed to avoid doubling up with demob strikes
+				has_civil_war = yes
+			} 
+		}
+		visible = {
+			OR = {
+				has_idea = mutiny_1 
+				has_idea = mutiny_2
+				has_idea = mutiny_3	
+			}
+			OR = {
+				has_country_flag = crisis_in_progress #needed to avoid doubling up with demob strikes
+				has_civil_war = yes
+			}
+		}
+		complete_effect = {
+			
+		}
+		timeout_effect = {
+			if = {
+				limit = {
+					has_idea = mutiny_3
+					has_stability < 0.21
+					NOT = {
+						has_government = communism
+					}
+				}
+				start_civil_war = {
+					ideology = communism
+				}
+			}
+			if = {
+				limit = {
+					has_idea = mutiny_3
+					has_stability < 0.21
+					has_government = communism
+					
+				}
+				start_civil_war = {
+					ideology = democratic
+				}
+			}
+			if = {
+				limit = {
+					has_idea = mutiny_3
+					has_stability < 0.41
+					NOT = {
+						has_government = communism
+					}
+				}
+				add_popularity = { ideology = communism popularity = 0.1}
+			}
+			if = {
+				limit = {
+					has_idea = mutiny_3
+					has_stability < 0.41
+					has_government = communism
+					
+				}
+				add_popularity = { ideology = democratic popularity = 0.1}
+			}
+			if = {
+				limit = {
+					has_idea = mutiny_3
+					has_stability > 0.4
+				}
+				add_stability = -0.1
+			}
+			if = {
+				limit = { 
+					has_idea = mutiny_2
+				}
+				swap_ideas = {
+					remove_idea = mutiny_2
+					add_idea = mutiny_3
+				}
+			}
+			if = {
+				limit = { 
+					has_idea = mutiny_1
+				}
+				swap_ideas = {
+					remove_idea = mutiny_1
+					add_idea = mutiny_2
+				}
+			}	
+		}
+	}
+}
+demobilization = {
+	demobilization_economic = {
+
+		icon = generic_industry
+		
+		is_good = no
+
+		available = {
+			OR = {
+				has_unsupported_economic_law = yes
+				AND = {
+					set_temp_variable = {
+						ws = Flexible_economy_policy_consumer_goods_factor
+					}
+					IF = {
+						limit = {
+							NOT = {
+								check_variable = {
+									Flexible_economy_policy_consumer_goods_factor < 0.20
+								}
+							}
+						}
+						multiply_temp_variable = {
+							ws = 2
+						}
+						add_to_temp_variable = {
+							ws = 0.10
+						}
+					}
+					NOT = {
+						has_war_support > ws
+					}
+				}
+			}
+			has_war = no
+		}
+
+		activation = {OR = {
+			has_unsupported_economic_law = yes
+			AND = {
+				set_temp_variable = {
+					ws = Flexible_economy_policy_consumer_goods_factor
+				}
+				IF = {
+					limit = {
+						NOT = {
+							check_variable = {
+								Flexible_economy_policy_consumer_goods_factor < 0.20
+							}
+						}
+					}
+					multiply_temp_variable = {
+						ws = 2
+					}
+					add_to_temp_variable = {
+						ws = 0.10
+					}
+				}
+				NOT = {
+					has_war_support > ws
+				}
+			}
+		}
+
+		has_war = no
+		
+		}
+		cost = 50
+
+		visible = {
+			OR = {
+				has_unsupported_economic_law = yes
+				AND = {
+					set_temp_variable = {
+						ws = Flexible_economy_policy_military_point
+					}
+					IF = {
+						limit = {
+							NOT = {
+								check_variable = {
+									Flexible_economy_policy_military_point < 0.20
+								}
+							}
+						}
+						multiply_temp_variable = {
+							ws = 2
+						}
+						add_to_temp_variable = {
+							ws = 0.10
+						}
+					}
+					NOT = {
+						has_war_support > ws
+					}
+				}
+			}
+			has_war = no
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					has_war_support < 0.15
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = Flexible_economy_policy
+						}
+					}
+				}
+				add_ideas = civilian_economy
+			}
+			else_if = {
+				limit = {
+					has_war_support < 0.15
+					has_dynamic_modifier = {
+						modifier = Flexible_economy_policy
+					}
+				}
+				set_temp_variable = {
+					v_consumer_bonus = 0.2
+				}
+				add_to_temp_variable = {
+					v_economy_civilian_point = v_consumer_bonus
+				}
+				subtract_from_temp_variable = {
+					v_economy_military_point = v_consumer_bonus
+				}
+			}
+			else_if = {
+				limit = {
+					has_war_support < 0.25
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = Flexible_economy_policy
+						}
+					}
+				}
+				add_ideas = low_economic_mobilisation
+			}
+			else_if = {
+				limit = {
+					has_war_support < 0.25
+					has_dynamic_modifier = {
+						modifier = Flexible_economy_policy
+					}
+				}
+				set_temp_variable = {
+					v_consumer_bonus = 0.1
+				}
+				add_to_temp_variable = {
+					v_economy_civilian_point = v_consumer_bonus
+				}
+				subtract_from_temp_variable = {
+					v_economy_military_point = v_consumer_bonus
+				}
+			}
+			else_if = {
+				limit = {
+					has_war_support < 0.5
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = Flexible_economy_policy
+						}
+					}
+				}
+				add_ideas = partial_economic_mobilisation
+			}
+			else_if = {
+				limit = {
+					has_war_support < 0.5
+					has_dynamic_modifier = {
+						modifier = Flexible_economy_policy
+					}
+				}
+				set_temp_variable = {
+					v_consumer_bonus = 0.1
+				}
+				subtract_from_temp_variable = {
+					v_economy_civilian_point = v_consumer_bonus
+				}
+				add_to_temp_variable = {
+					v_economy_military_point = v_consumer_bonus
+				}
+			}
+			else_if = {
+				limit = {
+					has_war_support < 0.8
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = Flexible_economy_policy
+						}
+					}
+				}
+				add_ideas = war_economy
+			}
+			else_if = {
+				limit = {
+					has_war_support < 0.8
+					has_dynamic_modifier = {
+						modifier = Flexible_economy_policy
+					}
+				}
+				set_temp_variable = {
+					v_consumer_bonus = 0.2
+				}
+				subtract_from_temp_variable = {
+					v_economy_civilian_point = v_consumer_bonus
+				}
+				add_to_temp_variable = {
+					v_economy_military_point = v_consumer_bonus
+				}
+			}
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = Flexible_economy_policy
+					}
+				}
+				add_to_variable = {
+					Flexible_economy_policy_civilian_point = v_economy_civilian_point
+				}
+				add_to_variable = {
+					Flexible_economy_policy_military_point = v_economy_military_point
+				}
+				add_to_variable = {
+					Flexible_economy_policy_consumer_goods_factor = v_consumer_bonus
+					tooltip = consumer_goods_factor_tt
+				}
+				subtract_from_variable = {
+					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = Flexible_economy_policy_civilian_point
+					tooltip = conversion_cost_civ_to_mil_factor_tt
+				}
+				subtract_from_variable = {
+					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = Flexible_economy_policy_military_point
+					tooltip = conversion_cost_mil_to_civ_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_production_speed_buildings_factor = 0
+					tooltip = production_speed_buildings_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_industrial_capacity_factory = Flexible_economy_policy_military_point
+					tooltip = industrial_capacity_factory_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_industrial_capacity_dockyard = Flexible_economy_policy_military_point
+					tooltip = industrial_capacity_dockyard_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_fuel_gain_factor = Flexible_economy_policy_military_point
+					tooltip = fuel_gain_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_max_fuel_factor = Flexible_economy_policy_military_point
+					tooltip = max_fuel_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_production_speed_infrastructure_factor = Flexible_economy_policy_civilian_point
+					tooltip = production_speed_infrastructure_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_production_speed_industrial_complex_factor = Flexible_economy_policy_civilian_point
+					tooltip = production_speed_industrial_complex_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_production_speed_arms_factory_factor = Flexible_economy_policy_military_point
+					tooltip = production_speed_arms_factory_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_production_speed_dockyard_factor = Flexible_economy_policy_military_point
+					tooltip = production_speed_dockyard_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_production_speed_synthetic_refinery_factor = Flexible_economy_policy_military_point
+					tooltip = production_speed_synthetic_refinery_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_production_speed_nuclear_reactor_factor = Flexible_economy_policy_military_point
+					tooltip = production_speed_nuclear_reactor_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_production_speed_rocket_site_factor = Flexible_economy_policy_military_point
+					tooltip = production_speed_rocket_site_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_production_speed_air_base_factor = Flexible_economy_policy_military_point
+					tooltip = production_speed_air_base_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_production_speed_supply_node_factor = Flexible_economy_policy_military_point
+					tooltip = production_speed_supply_node_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_production_speed_naval_base_factor = Flexible_economy_policy_military_point
+					tooltip = production_speed_naval_base_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_production_speed_bunker_factor = Flexible_economy_policy_military_point
+					tooltip = production_speed_bunker_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_production_speed_coastal_bunker_factor = Flexible_economy_policy_military_point
+					tooltip = production_speed_coastal_bunker_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_production_speed_anti_air_building_factor = Flexible_economy_policy_military_point
+					tooltip = production_speed_anti_air_building_factor_tt
+				}
+				add_to_variable = {
+					Flexible_economy_policy_production_speed_radar_station_factor = Flexible_economy_policy_military_point
+					tooltip = production_speed_radar_station_factor_tt
+				}
+			}
+			if = {
+				limit = {
+					has_idea = strikes_1
+				}
+				remove_ideas = strikes_1
+			}
+			if = {
+				limit = {
+					has_idea = strikes_2
+				}
+				remove_ideas = strikes_2
+			}
+			if = {
+				limit = {
+					has_idea = strikes_3
+				}
+				remove_ideas = strikes_3
+			}
+		}
+		ai_will_do = {
+			factor = 500 #should really get on this
+		}
+		
+	}
+	demob_economic_mission = {
+		available = {
+			OR = {
+				has_unsupported_economic_law = yes
+				AND = {
+					set_temp_variable = {
+						ws = Flexible_economy_policy_military_point
+					}
+					IF = {
+						limit = {
+							NOT = {
+								check_variable = {
+									Flexible_economy_policy_military_point < 0.20
+								}
+							}
+						}
+						multiply_temp_variable = {
+							ws = 2
+						}
+						add_to_temp_variable = {
+							ws = 0.10
+						}
+					}
+					NOT = {
+						has_war_support > ws
+					}
+				}
+			}
+			has_war = no
+		}
+
+		activation = {
+			OR = {
+				has_unsupported_economic_law = yes
+				AND = {
+					set_temp_variable = {
+						ws = Flexible_economy_policy_military_point
+					}
+					IF = {
+						limit = {
+							NOT = {
+								check_variable = {
+									Flexible_economy_policy_military_point < 0.20
+								}
+							}
+						}
+						multiply_temp_variable = {
+							ws = 2
+						}
+						add_to_temp_variable = {
+							ws = 0.10
+						}
+					}
+					NOT = {
+						has_war_support > ws
+					}
+				}
+			}
+			has_war = no
+		}
+		icon = revolt
+		is_good = no
+		days_mission_timeout = 120
+		complete_effect = {
+			if = {
+				limit = {
+					has_idea = strikes_1
+				}
+				remove_ideas = strikes_1
+			}
+			if = {
+				limit = {
+					has_idea = strikes_2
+				}
+				remove_ideas = strikes_2
+			}
+			if = {
+				limit = {
+					has_idea = strikes_3
+				}
+				remove_ideas = strikes_3
+			}
+		}
+		timeout_effect = {
+			activate_mission = demob_economic_mission
+			if = {
+				limit = {
+					has_idea = strikes_3
+					has_stability < 0.21
+					NOT = {
+						has_government = communism
+					}
+				}
+				start_civil_war = {
+					ideology = communism
+				}
+			}
+			if = {
+				limit = {
+					has_idea = strikes_3
+					has_stability < 0.21
+					has_government = communism
+					
+				}
+				start_civil_war = {
+					ideology = democratic
+				}
+			}
+			if = {
+				limit = {
+					has_idea = strikes_3
+					has_stability < 0.41
+					NOT = {
+						has_government = communism
+					}
+				}
+				add_popularity = { ideology = communism popularity = 0.1}
+			}
+			if = {
+				limit = {
+					has_idea = strikes_3
+					has_stability < 0.41
+					has_government = communism
+					
+				}
+				add_popularity = { ideology = democratic popularity = 0.1}
+			}
+			if = {
+				limit = {
+					has_idea = strikes_3
+					has_stability > 0.4
+				}
+				add_stability = -0.1
+			}
+			if = {
+				limit = { 
+					has_idea = strikes_2
+				}
+				swap_ideas = {
+					remove_idea = strikes_2
+					add_idea = strikes_3
+				}
+			}
+			if = {
+				limit = { 
+					has_idea = strikes_1
+				}
+				swap_ideas = {
+					remove_idea = strikes_1
+					add_idea = strikes_2
+				}
+			}
+			if = {
+				limit = { 
+					NOT = { 
+						OR = {
+							has_idea = strikes_1
+							has_idea = strikes_2
+							has_idea = strikes_3
+						}
+					}
+				}
+				add_ideas = strikes_1
+			}	
+		}
+	}
+	demobilization_manpower = {
+
+		icon = generic_prepare_civil_war
+
+		icon = revolt
+		is_good = no
+
+		available = {
+			has_unsupported_manpower_law = yes
+			has_war = no
+		}
+
+		allowed = {
+			always = yes
+		}
+
+		cost = 50
+		ai_will_do = {
+			factor = 500
+		}
+		
+
+		visible = {
+			has_unsupported_manpower_law = yes
+			has_war = no
+			if = {
+				limit = { original_tag = GRE }
+				NOT = {
+					has_completed_focus = GRE_request_communist_support
+				}
+			}
+
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					has_war_support < 0.1
+				}
+				add_ideas = volunteer_only
+			}
+			else_if = {
+				limit = {
+					has_war_support < 0.2
+				}
+				add_ideas = limited_conscription
+			}
+			else_if = {
+				limit = {
+					has_war_support < 0.6
+				}
+				add_ideas = extensive_conscription
+			}
+			else = {
+				add_ideas = service_by_requirement
+			}
+		}
+
+		
+
+	}
+	demob_manpower_mission = {
+
+		icon = revolt
+		is_good = no
+		days_mission_timeout = 120
+		available = {
+			OR = {
+				has_unsupported_manpower_law = no
+				has_war = yes
+			}
+		}
+		activation = {
+			has_unsupported_manpower_law = yes
+			has_war = no
+			if = {
+				limit = {
+					original_tag = GRE
+				}
+				NOT = {
+					has_completed_focus = GRE_request_communist_support
+				}
+			}
+		}
+		visible = {
+			if = {
+				limit = {
+					original_tag = GRE
+				}
+				NOT = {
+					has_completed_focus = GRE_request_communist_support #put here in lieu of a cancel trigger
+				}
+			}		
+		}
+		cancel_if_not_visible = yes
+		timeout_effect = {
+			if = {
+				limit = {
+					has_government = communism
+					has_stability < 0.2
+				}
+				start_civil_war = {
+					ideology = democratic
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_government = communism }
+					has_stability < 0.3
+				}
+				start_civil_war = {
+					ideology = communism
+				}
+			}
+			if = {
+				limit = {
+					has_stability > 0.2
+				}
+				add_stability = -0.1
+			}
+			if = {
+				limit = {
+					has_government = communism
+				}
+				add_popularity = { ideology = democratic popularity = 0.1 }
+			}
+			if = {
+				limit = {
+					NOT = { has_government = communism }
+				}
+				add_popularity = { ideology = communism popularity = 0.1 }
+			}
+		}
+	}
+}

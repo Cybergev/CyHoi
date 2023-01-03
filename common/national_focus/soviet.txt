@@ -1062,7 +1062,7 @@ focus_tree = {
 					tooltip = industrial_capacity_factory_tt
 				}
 				add_to_variable = {
-					SOV_defense_industry_industrial_capacity_factory = 0.05
+					SOV_defense_industry_industrial_dockyard_factory = 0.05
 					tooltip = industrial_capacity_dockyard_tt
 				}
 			}
@@ -3567,11 +3567,15 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = SOV_defense_industry_tt
 			add_to_variable = {
-				SOV_defense_industry_refit_ic_cost = 0.05
+				SOV_defense_industry_refit_speed = 0.1
+				tooltip = refit_speed_tt
+			}
+			add_to_variable = {
+				SOV_defense_industry_refit_ic_cost = -0.1
 				tooltip = refit_ic_cost_tt
 			}
 			add_to_variable = {
-				SOV_defense_industry_repair_speed_factor = 0.05
+				SOV_defense_industry_repair_speed_factor = 0.1
 				tooltip = repair_speed_factor_tt
 			}
 			if = {

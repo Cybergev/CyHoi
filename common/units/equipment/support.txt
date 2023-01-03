@@ -10,6 +10,12 @@ equipments = {
 			support
 			infantry
 		}
+
+		upgrades = {
+			tank_reliability_upgrade
+			mech_cost_upgrade
+		}
+
 		group_by = archetype
 		
 		interface_category = interface_category_land

@@ -1,4 +1,7 @@
 ﻿l_russian:
+# dynamic modifiers========================================================================================================================================
+ Flexible_trade_policy_tt:0 "§Y$Flexible_trade_policy$§!:"
+ Flexible_economy_policy_tt:0 "§Y$Flexible_economy_policy$§!:"
  MAN_nationalism_tt:0 "§Y$MAN_nationalism$§!:"
  MAN_national_unity_tt:0 "§Y$MAN_national_unity$§!:"
  MAN_economy_tt:0 "§Y$MAN_economy$§!:"
@@ -10,11 +13,24 @@
  SOV_soviet_airforce_tt:0 "$SOV_the_red_army_dynamic_modifier$:"
  SOV_soviet_airforce_alt_tt:0 "$SOV_the_red_army_dynamic_modifier_alt$:"
  SOV_five_year_plan_tt:0 "$SOV_second_five_year_plan_dynamic_modifier$:"
- SOV_five_year_plan_can_improved_tt:0 "Может быть улучшен с помощью зарубежных специалистов."
  SOV_defense_industry_tt:0 "$SOV_defense_industry_dynamic_modifier$:"
  CZE_skoda_works_tt:0 "§Y$CZE_skoda_works$§!:"
- Flexible_trade_policy_tt:0 "§Y$Flexible_trade_policy$§!:"
-
+# other=====================================================================================================================================================
+ Emigration_civ_industry_tt:0 "§Y$industrial_complex_plural$§! в эмиграции: §Y[?Emigration_civ_industry]§! \n"
+ Emigration_mil_industry_tt:0 "§Y$arms_factory_plural$§! в эмиграции: §Y[?Emigration_mil_industry]§! \n"
+ Emigration_doc_industry_tt:0 "§Y$dockyard_plural$§! в эмиграции: §Y[?Emigration_doc_industry]§! \n"
+ Emigration_ref_industry_tt:0 "§Y$synthetic_refinery_plural$§! в эмиграции: §Y[?Emigration_ref_industry]§! \n"
+ Emigrate_civ_industry_tt:0 "§Y$industrial_complex_plural$§! в эмиграции: $RIGHT|=0Y$ \n"
+ Emigrate_mil_industry_tt:0 "§Y$arms_factory_plural$§! в эмиграции: $RIGHT|=0Y$ \n"
+ Emigrate_doc_industry_tt:0 "§Y$dockyard_plural$§! в эмиграции: $RIGHT|=0Y$ \n"
+ Emigrate_ref_industry_tt:0 "§Y$synthetic_refinery_plural$§! в эмиграции: $RIGHT|=0Y$ \n"
+ Flexible_economy_policy_civilian_economy_level_tt:0 "§Y$civilian_economy$§!: [?Flexible_economy_policy_civilian_point|%Y]"
+ Flexible_economy_policy_military_economy_level_tt:0 "§G$war_economy$§!: [?Flexible_economy_policy_military_point|%G]"
+ Flexible_economy_policy_civilian_economy_tt: "§Y$civilian_economy$§!: $RIGHT|%+$"
+ Flexible_economy_policy_military_economy_tt: "§G$war_economy$§!: $RIGHT|%+$"
+ Flexible_economy_policy_multiplier_tt: "Объем: $RIGHT|%$"
+ SOV_five_year_plan_can_improved_tt:0 "Может быть улучшен с помощью зарубежных специалистов."
+ form_european_union_tt:0 "Откроются §Yрешения§! по интеграции континентальных европейских территорий. \nИнтегрирование территорий с §Yпретензией§! обходится дешевле и быстрее."
 # country===================================================================================================================================================
  political_power_gain_tt:0 "$MODIFIER_POLITICAL_POWER_GAIN$: $RIGHT|=%+$"
  local_non_core_manpower_tt:0 "$MODIFIER_LOCAL_NON_CORE_MANPOWER$: $RIGHT|=%+$"
@@ -85,6 +101,8 @@
  production_lack_of_resource_penalty_factor_tt:0 "$MODIFIER_PRODUCTION_LACK_OF_RESOURCE_PENALTY_FACTOR$: $RIGHT|=%-$"
  industrial_capacity_factory_tt:0 "$MODIFIER_INDUSTRIAL_CAPACITY_FACTOR$: $RIGHT|=%+$"
  industrial_capacity_dockyard_tt:0 "$MODIFIER_INDUSTRIAL_CAPACITY_DOCKYARD_FACTOR$: $RIGHT|=%+$"
+ fuel_gain_factor_tt:0 "$MODIFIER_FUEL_GAIN_FACTOR$: $RIGHT|=%+$"
+ max_fuel_factor_tt:0 "$MODIFIER_MAX_FUEL_FACTOR$: $RIGHT|=%+$"
  replindustry_air_damage_factorace_tt:0 "$MODIFIER_INDUSTRY_AIR_DAMAGE_FACTOR$: $RIGHT|=%-$"
  replace_tt:0 "$MODIFIER_replace$: $RIGHT|=%+$"
 # building===================================================================================================================================================
@@ -100,6 +118,8 @@
  production_speed_nuclear_reactor_factor_tt:0 "$modifier_production_speed_nuclear_reactor_factor$: $RIGHT|=%+$"
  production_speed_rocket_site_factor_tt:0 "$modifier_production_speed_rocket_site_factor$: $RIGHT|=%+$"
  production_speed_air_base_factor_tt:0 "$modifier_production_speed_air_base_factor$: $RIGHT|=%+$"
+ production_speed_supply_node_factor_tt:0 "$modifier_production_speed_supply_node_factor$: $RIGHT|=%+$"
+ production_speed_naval_base_factor_tt:0 "$modifier_production_speed_naval_base_factor$: $RIGHT|=%+$"
  production_speed_rail_way_factor_tt:0 "$modifier_production_speed_rail_way_factor$: $RIGHT|=%+$"
  production_speed_bunker_factor_tt:0 "$modifier_production_speed_bunker_factor$: $RIGHT|=%+$"
  production_speed_coastal_bunker_factor_tt:0 "$modifier_production_speed_coastal_bunker_factor$: $RIGHT|=%+$"

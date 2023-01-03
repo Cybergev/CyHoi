@@ -75,9 +75,11 @@ ideas = {
 
 		civilian_economy = {
 
-			allowed = {
+			available = {
 				NOT = {
-					has_idea = no_economic_law
+					has_dynamic_modifier = {
+						modifier = Flexible_economy_policy
+					}
 				}
 			}
 
@@ -85,13 +87,13 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				consumer_goods_factor = 0.30
+				consumer_goods_factor = 0.20
 				conversion_cost_civ_to_mil_factor= 0.20
 				conversion_cost_mil_to_civ_factor = -0.20
 				industrial_capacity_factory = -0.20
 				industrial_capacity_dockyard = -0.20
-				max_fuel_factor = -0.20
 				fuel_gain_factor = -0.20
+				max_fuel_factor = -0.20
 				production_speed_infrastructure_factor = 0.20
 				production_speed_industrial_complex_factor = 0.20
 				production_speed_arms_factory_factor = -0.20
@@ -124,14 +126,13 @@ ideas = {
 
 		low_economic_mobilisation = {
 
-			allowed = {
-				NOT = {
-					has_idea = no_economic_law
-				}
-			}
-
 			available = {
 				has_war_support > 0.15
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_economy_policy
+					}
+				}
 				if = {
 					limit = {
 						original_tag = HUN
@@ -176,13 +177,13 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				consumer_goods_factor = 0.25
+				consumer_goods_factor = 0.10
 				conversion_cost_civ_to_mil_factor= 0.10
 				conversion_cost_mil_to_civ_factor = -0.10
 				industrial_capacity_factory = -0.10
 				industrial_capacity_dockyard = -0.10
-				max_fuel_factor = -0.10
 				fuel_gain_factor = -0.10
+				max_fuel_factor = -0.10
 				production_speed_infrastructure_factor = 0.10
 				production_speed_industrial_complex_factor = 0.10
 				production_speed_arms_factory_factor = -0.10
@@ -230,15 +231,13 @@ ideas = {
 
 		partial_economic_mobilisation = {
 
-			allowed = {
-				NOT = {
-					has_idea = no_economic_law
-				}
-			}
-
 			available = {
 				has_war_support > 0.25
-
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_economy_policy
+					}
+				}
 				if = {
 					limit = {
 						original_tag = HUN
@@ -276,13 +275,13 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				consumer_goods_factor = 0.25
+				consumer_goods_factor = 0.10
 				conversion_cost_civ_to_mil_factor= -0.10
 				conversion_cost_mil_to_civ_factor = 0.10
 				industrial_capacity_factory = 0.10
 				industrial_capacity_dockyard = 0.10
-				max_fuel_factor = 0.10
 				fuel_gain_factor = 0.10
+				max_fuel_factor = 0.10
 				production_speed_infrastructure_factor = -0.10
 				production_speed_industrial_complex_factor = -0.10
 				production_speed_arms_factory_factor = 0.10
@@ -329,13 +328,12 @@ ideas = {
 
 		war_economy = {
 
-			allowed = {
-				NOT = {
-					has_idea = no_economic_law
-				}
-			}
-
 			available = {
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_economy_policy
+					}
+				}
 				if = {
 					limit = {
 						has_war = no
@@ -390,12 +388,14 @@ ideas = {
 
 			modifier = {
 				consumer_goods_factor = 0.20
+				stability_weekly = -0.005
+				war_support_weekly = -0.005
 				conversion_cost_civ_to_mil_factor= -0.20
 				conversion_cost_mil_to_civ_factor = 0.20
 				industrial_capacity_factory = 0.20
 				industrial_capacity_dockyard = 0.20
-				max_fuel_factor = 0.20
 				fuel_gain_factor = 0.20
+				max_fuel_factor = 0.20
 				production_speed_infrastructure_factor = -0.20
 				production_speed_industrial_complex_factor = -0.20
 				production_speed_arms_factory_factor = 0.20
@@ -471,14 +471,13 @@ ideas = {
 
 		tot_economic_mobilisation = {
 
-			allowed = {
-				NOT = {
-					has_idea = no_economic_law
-				}
-			}
-
 			available = {
 				has_war = yes
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_economy_policy
+					}
+				}
 				OR = {
 					surrender_progress > 0.3
 					any_enemy_country = {
@@ -607,7 +606,9 @@ ideas = {
 
 			modifier = {
 				conscription = -0.05
-				consumer_goods_factor = 0.15
+				consumer_goods_factor = 0.10
+				stability_weekly = -0.01
+				war_support_weekly = -0.01
 				conversion_cost_civ_to_mil_factor = -0.20
 				conversion_cost_mil_to_civ_factor = -0.20
 				production_speed_buildings_factor = 0.20
@@ -790,14 +791,6 @@ ideas = {
 						}
 					}
 				}
-				if = {
-					limit = {
-						has_dynamic_modifier = {
-							modifier = Flexible_trade_policy
-						}
-					}
-					add_ideas = no_trade_law
-				}
 			}
 			
 			cancel_if_invalid = no
@@ -812,6 +805,11 @@ ideas = {
 			}
 
 			available = {
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_trade_policy
+					}
+				}
 				if = {
 					limit = {
 						original_tag = SPR
@@ -824,17 +822,6 @@ ideas = {
 			cancel = {
 				has_dynamic_modifier = {
 					modifier = Flexible_trade_policy
-				}
-			}
-
-			on_remove = {
-				if = {
-					limit = {
-						has_dynamic_modifier = {
-							modifier = Flexible_trade_policy
-						}
-					}
-					add_ideas = no_trade_law
 				}
 			}
 
@@ -891,7 +878,11 @@ ideas = {
 			}
 
 			available = {
-
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_trade_policy
+					}
+				}
 				if = {
 					limit = {
 						original_tag = CHI
@@ -911,17 +902,6 @@ ideas = {
 			cancel = {
 				has_dynamic_modifier = {
 					modifier = Flexible_trade_policy
-				}
-			}
-
-			on_remove = {
-				if = {
-					limit = {
-						has_dynamic_modifier = {
-							modifier = Flexible_trade_policy
-						}
-					}
-					add_ideas = no_trade_law
 				}
 			}
 
@@ -977,6 +957,11 @@ ideas = {
 			}
 
 			available = {
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_trade_policy
+					}
+				}
 				OR = {
 					AND = {
 						has_government = democratic
@@ -1018,17 +1003,6 @@ ideas = {
 			cancel = {
 				has_dynamic_modifier = {
 					modifier = Flexible_trade_policy
-				}
-			}
-
-			on_remove = {
-				if = {
-					limit = {
-						has_dynamic_modifier = {
-							modifier = Flexible_trade_policy
-						}
-					}
-					add_ideas = no_trade_law
 				}
 			}
 
@@ -1086,6 +1060,11 @@ ideas = {
 
 			available = {
 				has_war = yes
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_trade_policy
+					}
+				}
 				OR = {
 					has_government = fascism
 					has_government = communism
@@ -1111,17 +1090,6 @@ ideas = {
 			cancel = {
 				has_dynamic_modifier = {
 					modifier = Flexible_trade_policy
-				}
-			}
-
-			on_remove = {
-				if = {
-					limit = {
-						has_dynamic_modifier = {
-							modifier = Flexible_trade_policy
-						}
-					}
-					add_ideas = no_trade_law
 				}
 			}
 
@@ -1167,30 +1135,5 @@ ideas = {
 				}
    			}
 		}
-
-		no_trade_law = {
-
-			picture = no_icon
-
-			allowed = {
-				always = no
-			}
-
-			allowed_to_remove = {
-				always = no
-			}
-
-			removal_cost = -1
-
-			modifier = {
-			}
-			
-			cancel_if_invalid = no
-
-			ai_will_do = {
-   				factor = 0
-   			}
-		}
-
 	}
 }

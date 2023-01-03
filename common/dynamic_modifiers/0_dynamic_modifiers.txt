@@ -692,6 +692,7 @@ SOV_defense_industry_dynamic_modifier = { #NATIONAL SPIRIT
 	aircraft_manufacturer_cost_factor = SOV_defense_industry_aircraft_manufacturer_cost_factor #-0.25 -> Expand the Aircraft Industry
 	tank_manufacturer_cost_factor = SOV_defense_industry_tank_manufacturer_cost_factor
 	materiel_manufacturer_cost_factor = SOV_defense_industry_materiel_manufacturer_cost_factor
+	refit_speed = SOV_defense_industry_refit_speed
 	refit_ic_cost = SOV_defense_industry_refit_ic_cost #-0.05
 	repair_speed_factor = SOV_defense_industry_repair_speed_factor #0.05
 	land_equipment_upgrade_xp_cost = SOV_defense_industry_land_equipment_upgrade_xp_cost
@@ -1094,9 +1095,15 @@ CZE_skoda_works = {
 	industrial_capacity_dockyard = CZE_skoda_industrial_capacity_dockyard
 }
 
+Flexible_mobilization_policy = {
+	enable = { always = yes }
+	icon = GFX_idea_volunteer_only
+	
+}
+
 Flexible_trade_policy = {
 	enable = { always = yes }
-	icon = GFX_idea_CZE_skoda_works
+	icon = GFX_idea_free_trade
 	
 	consumer_goods_factor = Flexible_trade_policy_consumer_goods_factor
 	production_speed_buildings_factor = Flexible_trade_policy_production_speed_buildings_factor
@@ -1106,4 +1113,32 @@ Flexible_trade_policy = {
 	min_export = Flexible_trade_policy_min_export
 	civilian_intel_to_others = Flexible_trade_policy_civilian_intel_to_others
 	navy_intel_to_others = Flexible_trade_policy_navy_intel_to_others
+}
+
+Flexible_economy_policy = {
+	enable = { always = yes }
+	icon = GFX_idea_civilian_economy
+	
+	consumer_goods_factor = Flexible_economy_policy_consumer_goods_factor
+	conversion_cost_civ_to_mil_factor = Flexible_economy_policy_conversion_cost_civ_to_mil_factor
+	conversion_cost_mil_to_civ_factor = Flexible_economy_policy_conversion_cost_mil_to_civ_factor
+	production_speed_buildings_factor = Flexible_economy_policy_production_speed_buildings_factor
+	industrial_capacity_factory = Flexible_economy_policy_industrial_capacity_factory
+	industrial_capacity_dockyard = Flexible_economy_policy_industrial_capacity_dockyard
+	fuel_gain_factor = Flexible_economy_policy_fuel_gain_factor
+	max_fuel_factor = Flexible_economy_policy_max_fuel_factor
+	production_speed_infrastructure_factor = Flexible_economy_policy_production_speed_infrastructure_factor
+	production_speed_industrial_complex_factor = Flexible_economy_policy_production_speed_industrial_complex_factor
+	production_speed_arms_factory_factor = Flexible_economy_policy_production_speed_arms_factory_factor
+	production_speed_dockyard_factor = Flexible_economy_policy_production_speed_dockyard_factor
+	production_speed_synthetic_refinery_factor = Flexible_economy_policy_production_speed_synthetic_refinery_factor
+	production_speed_nuclear_reactor_factor = Flexible_economy_policy_production_speed_nuclear_reactor_factor
+	production_speed_rocket_site_factor = Flexible_economy_policy_production_speed_rocket_site_factor
+	production_speed_air_base_factor = Flexible_economy_policy_production_speed_air_base_factor
+	production_speed_supply_node_factor = Flexible_economy_policy_production_speed_supply_node_factor
+	production_speed_naval_base_factor = Flexible_economy_policy_production_speed_naval_base_factor
+	production_speed_bunker_factor = Flexible_economy_policy_production_speed_bunker_factor
+	production_speed_coastal_bunker_factor = Flexible_economy_policy_production_speed_coastal_bunker_factor
+	production_speed_anti_air_building_factor = Flexible_economy_policy_production_speed_anti_air_building_factor
+	production_speed_radar_station_factor = Flexible_economy_policy_production_speed_radar_station_factor
 }
