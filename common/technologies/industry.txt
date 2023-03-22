@@ -9,7 +9,6 @@ technologies = {
 		industrial_capacity_dockyard = 0.1
 		equipment_conversion_speed = 0.1
 
-		
 		path = {
 			leads_to_tech = improved_machine_tools 
 			research_cost_coeff = 1

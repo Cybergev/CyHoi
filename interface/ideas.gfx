@@ -1155,10 +1155,6 @@ spriteTypes = {
 	
 	### ECONOMY LAWS
 	spriteType = {
-		name = "GFX_idea_no_icon"
-		texturefile = "gfx/interface/ideas/no_icon.dds"
-	}
-	spriteType = {
 		name = "GFX_idea_undisturbed_isolation"
 		texturefile = "gfx/interface/ideas/idea_undisturbed_isolation.dds"
 	}
