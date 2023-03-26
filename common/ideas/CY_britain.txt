@@ -1,0 +1,119 @@
+ideas = {
+
+	country = {
+		
+		ENG_colonial_elite = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					has_government = communism
+				}
+			}
+
+			picture = generic_research_bonus
+			
+			removal_cost = -1
+			
+			modifier = {
+				research_speed_factor = 0.1
+			}
+		}
+		
+		ENG_special_air_service_idea = {
+
+			name = ENG_special_air_service
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				special_forces_cap = 0.1
+			}
+
+			picture = eng_special_air_service
+			
+			removal_cost = -1			
+			
+		}
+
+		ENG_a_change_in_course_idea = {
+
+			name = ENG_a_change_in_course
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				democratic_drift = -0.1
+				stability_weekly = -0.002
+				war_support_weekly = 0.002
+				political_power_factor = 0.1
+			}
+
+			picture = eng_a_change_in_course
+			
+			removal_cost = -1	
+
+		}
+
+		ENG_the_mosley_memorandum_idea = {
+
+			name = ENG_the_mosley_memorandum_idea
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
+			}
+
+			picture = man_five_year_plan_industry
+			
+			removal_cost = -1	
+
+		}
+
+		ENG_expand_the_repair_yards = {
+
+			picture = generic_coastal_defense_ships
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				NOT = { has_government = communism }
+			}
+			
+			removal_cost = -1
+						
+			modifier = {
+				refit_speed = 0.1
+				refit_ic_cost = -0.1
+				repair_speed_factor = 0.1
+			}
+		}
+		
+	}
+
+}

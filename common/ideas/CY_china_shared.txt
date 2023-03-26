@@ -1,0 +1,144 @@
+ideas = {
+
+	country = {
+		
+		CHI_chinese_general_staff = {
+
+			picture = general_staff
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				mobilization_speed = 0.05
+				army_org_factor = 0.05
+				org_loss_when_moving = -0.05
+				org_loss_at_low_org_factor = -0.05
+				army_org_regain = 0.05
+				planning_speed = 0.05
+				max_planning = 0.05
+				command_power_gain_mult = 0.05
+			}
+		}
+	
+		CHI_chinese_strategic_staff = {
+
+			picture = general_staff
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				mobilization_speed = 0.05
+				army_org_factor = 0.05
+				org_loss_when_moving = -0.05
+				org_loss_at_low_org_factor = -0.05
+				army_org_regain = 0.05
+				planning_speed = 0.05
+				max_planning = 0.05
+				command_power_gain_mult = 0.05
+				experience_gain_army = 0.05
+				experience_gain_navy = 0.05
+				experience_gain_air = 0.05
+			}
+		}
+	
+		CHI_elite_mountaineers = {
+
+			picture = ast_volunteer_defence_corps
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				special_forces_cap = 0.05
+			}
+		}
+
+		CHI_modern_logistics = {
+
+			picture = FRA_motorized_focus
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				mobilization_speed = 0.05
+				attrition = -0.05
+				out_of_supply_factor = -0.05
+				land_reinforce_rate = 0.05
+				army_leader_start_logistics_level = 1
+			}
+		}
+
+		CHI_construction_battalions = {
+
+			picture = ast_all_in
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				dig_in_speed_factor = 0.05
+				max_dig_in = 5
+				terrain_penalty_reduction = 0.05
+			}
+		}
+		
+		CHI_train_marines = {
+
+			picture = generic_infantry_bonus
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				special_forces_cap = 0.05
+			}
+		}
+
+	}
+
+}

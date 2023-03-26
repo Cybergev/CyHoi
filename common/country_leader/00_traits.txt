@@ -5431,7 +5431,7 @@ leader_traits = {
 				air_range = 0.10
 			}
 			large_plane_maritime_patrol_plane_airframe = {
-				naval_strike_attack = 10
+				naval_strike_attack = 0.10
 				naval_strike_targetting = 10.0
 				maximum_speed = 0.10
 				air_range = 0.10

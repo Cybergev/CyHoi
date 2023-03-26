@@ -1,0 +1,107 @@
+ideas = {
+
+	country = {
+	
+		PRC_revolutionary_military_commission = {
+
+			picture = generic_communist_army
+
+			allowed = { original_tag = PRC }
+
+			removal_cost = -1
+
+			modifier = {
+				command_power_gain_mult = 0.15
+			}
+		}
+
+		PRC_central_military_commission = {
+
+			picture = generic_communist_army
+
+			allowed = { original_tag = PRC }
+
+			removal_cost = -1
+
+			modifier = {
+				command_power_gain_mult = 0.3
+			}
+		}
+
+		PRC_peoples_volunteer_army = {
+
+			picture = generic_morale_bonus
+
+			allowed = { original_tag = PRC }
+
+			removal_cost = -1
+
+			modifier = {
+				send_volunteer_size = 10
+				send_volunteers_tension = -1
+				send_volunteer_divisions_required = -1
+			}
+		}
+
+		PRC_focus_on_china = {
+
+			picture = generic_war_preparation
+
+			allowed = { original_tag = PRC }
+
+			removal_cost = -1
+
+			modifier = {
+				army_core_defence_factor = 0.10
+				army_core_attack_factor = 0.10
+			}
+		}
+
+		PRC_protracted_warfare = {
+
+			picture = HUN_secret_rearmament
+
+			allowed = { original_tag = PRC }
+
+			removal_cost = -1
+
+			modifier = {
+				terrain_penalty_reduction = 0.10
+				max_dig_in_factor = 0.10
+			}
+		}
+
+		PRC_mobile_warfare = {
+
+			picture = FRA_scw_intervention_nationalists_focus
+
+			allowed = { original_tag = PRC }
+
+			removal_cost = -1
+
+			modifier = {
+				org_loss_when_moving = -0.10
+				army_org_regain = 0.10
+			}
+		}
+
+		PRC_peoples_war = {
+
+			picture = ideological_fanaticism
+
+			allowed = { original_tag = PRC }
+
+			removal_cost = -1
+
+			modifier = {
+				resistance_target_on_our_occupied_states = 0.3
+				resistance_decay_on_our_occupied_states = -0.3
+				resistance_growth_on_our_occupied_states = 0.3
+				compliance_growth_on_our_occupied_states = -0.3
+				resistance_damage_to_garrison_on_our_occupied_states = 0.3
+			}
+		}
+		
+	}
+
+}

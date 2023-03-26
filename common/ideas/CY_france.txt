@@ -1,0 +1,317 @@
+ideas = {
+
+	country = {
+
+		FRA_agricultural_collectivization = {
+			picture = generic_agrarian_reform
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = -0.05
+				monthly_population = 0.20
+			}
+		}
+		
+		FRA_league_of_french_bolshevist_volunteers = {
+			picture = fourth_international
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				send_volunteer_size = 5
+			}
+		}
+
+		FRA_revolutionary_zeal = {
+			picture = generic_morale_bonus
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_morale_factor = 0.1
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+			}
+		}
+
+		FRA_egalite_liberte_solidarite = {
+			picture = FRA_liberte_egalite_solidarite
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_morale_factor = 0.1
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+				max_surrender_limit_offset = 0.1
+				industrial_capacity_dockyard = 0.1
+				industrial_capacity_factory = 0.1
+			}
+		}
+
+		FRA_dirigisme = {
+			picture = tur_etatism_bonus
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				conversion_cost_mil_to_civ_factor = -0.20
+				conversion_cost_civ_to_mil_factor = -0.20
+				economy_cost_factor = -0.20
+			}
+		}
+
+		FRA_expanded_citizenship = {
+			picture = generic_army_war_college
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				NOT = { has_government = fascism }
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				non_core_manpower = 0.05
+				resistance_target = -0.05
+				resistance_decay = 0.05
+				compliance_growth = 0.05
+			}
+		}
+
+		FRA_france_undividable = {
+			picture = FRA_undividable
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				NOT = { has_government = fascism }
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				non_core_manpower = 0.1
+				political_power_gain = 1
+				resistance_target = -0.1
+				resistance_decay = 0.1
+				compliance_growth = 0.1
+			}
+		}
+		
+		FRA_firepower = {
+			picture = generic_artillery_regiments
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			equipment_bonus = {
+				artillery = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+			}
+
+			modifier = {
+				
+			}
+		}
+
+		FRA_air_dominance_1 = {
+			name = FRA_air_dominance
+			picture = generic_air_bonus
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			equipment_bonus = {
+				fighter_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+				CAS_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+				tac_bomber_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+			}
+
+			modifier = {
+				
+			}
+		}
+
+		FRA_air_dominance_2 = {
+			name = FRA_air_dominance
+			picture = generic_air_bonus
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			equipment_bonus = {
+				fighter_equipment = {
+					air_attack = 0.10
+					build_cost_ic = -0.10
+					instant = yes
+				}
+				CAS_equipment = {
+					air_ground_attack = 0.10
+					build_cost_ic = -0.10
+					instant = yes
+				}
+				tac_bomber_equipment = {
+					air_ground_attack = 0.10
+					build_cost_ic = -0.10
+					instant = yes
+				}
+			}
+
+			modifier = {
+				
+			}
+		}
+		
+		FRA_motorized_focus = {
+		
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			equipment_bonus = {
+				motorized_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+		}
+		
+		FRA_mechanized_focus = {
+		
+			picture = FRA_motorized_focus
+
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			equipment_bonus = {
+				motorized_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				mechanized_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+		}
+
+		FRA_light_medium_armor = {
+		
+			picture = FRA_motorized_focus
+
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			equipment_bonus = {
+				motorized_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				mechanized_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				armored_car_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+		}
+	}
+}

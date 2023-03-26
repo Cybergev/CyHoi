@@ -1,0 +1,180 @@
+ideas = {
+
+	country = {
+	
+		SPR_military_reorganization = {
+
+			picture = generic_army_problems
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via focus
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				army_speed_factor = -1
+				experience_gain_army_factor = -1
+				mobilization_speed = -1
+				army_org_factor = -1
+				army_org_regain = -1
+				dig_in_speed_factor = -1
+				army_attack_factor = -1
+				army_defence_factor = -1
+				training_time_factor = 1
+				land_reinforce_rate = -1
+				planning_speed = -1
+				max_planning = -1
+				max_dig_in_factor = -1
+				MAX_COMMAND_POWER_MULT = -1
+				custom_modifier_tooltip = SPR_military_reorganization_removal_tt
+			}
+		}
+
+		SPR_seized_gold_reserves = {
+
+			picture = SPR_seize_the_gold_reserves
+
+			allowed = {
+				original_tag = SPR
+				NOT = { has_government = fascism }
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				political_power_factor = 0.2
+				consumer_goods_factor = -0.05
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		SPR_the_threats_abound_1 = {
+
+			name = SPR_the_threats_abound
+
+			picture = generic_fortify_the_borders
+
+			allowed = {
+				original_tag = SPR
+				NOT = { has_government = fascism }
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				army_core_defence_factor = 0.1
+			}
+		}
+
+		SPR_the_threats_abound_2 = {
+
+			name = SPR_the_threats_abound
+
+			picture = generic_fortify_the_borders
+
+			allowed = {
+				original_tag = SPR
+				NOT = { has_government = fascism }
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				army_core_defence_factor = 0.1
+				army_morale_factor = 0.1
+			}
+		}
+
+		SPR_the_threats_abound_3 = {
+
+			name = SPR_the_threats_abound
+
+			picture = generic_fortify_the_borders
+
+			allowed = {
+				original_tag = SPR
+				NOT = { has_government = fascism }
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				army_core_defence_factor = 0.1
+				training_time_factor = -0.1
+				army_morale_factor = 0.1
+				mobilization_speed = 0.1
+			}
+		}
+
+		SPR_torchbearers_of_tomorrow = {
+
+			picture = generic_research_bonus
+
+			allowed = {
+				original_tag = SPR
+				NOT = { has_government = fascism }
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				research_speed_factor = 0.05
+			}
+		}
+
+		SPR_the_inevitable_counterblow = {
+
+			picture = generic_wall_line
+
+			allowed = {
+				original_tag = SPR
+				NOT = { has_government = fascism }
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				production_speed_bunker_factor = 0.1
+				production_speed_coastal_bunker_factor = 0.1
+			}
+		}
+
+		SPR_improve_military_infrastructure = {
+
+			picture = generic_build_infrastructure
+
+			allowed = {
+				original_tag = SPR
+				NOT = { has_government = fascism }
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
+			}
+		}
+
+	}
+
+}

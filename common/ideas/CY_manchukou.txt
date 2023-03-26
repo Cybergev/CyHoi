@@ -1,0 +1,72 @@
+ideas = {
+
+	country = {
+	
+		MAN_arms_seized_1 = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				original_tag = MAN
+			}
+			
+			removal_cost = -1
+
+			picture = generic_army_problems
+			
+			targeted_modifier = {
+				tag = MAN
+				attack_bonus_against = -0.10
+				defense_bonus_against = -0.10
+				breakthrough_bonus_against = -0.10
+			}
+		}
+
+		MAN_arms_seized_2 = {
+
+			allowed = {
+				always = no
+			}
+			name = MAN_arms_seized_1
+			allowed_civil_war = {
+				original_tag = MAN
+			}
+			
+			removal_cost = -1
+
+			picture = generic_army_problems
+			
+			targeted_modifier = {
+				tag = MAN
+				attack_bonus_against = -0.25
+				defense_bonus_against = -0.25
+				breakthrough_bonus_against = -0.25
+			}
+		}
+
+		MAN_arms_seized_3 = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				original_tag = MAN
+			}
+			
+			removal_cost = -1
+			name = MAN_arms_seized_1
+			picture = generic_army_problems
+			
+			targeted_modifier = {
+				tag = MAN
+				attack_bonus_against = -0.40
+				defense_bonus_against = -0.40
+				breakthrough_bonus_against = -0.40
+			}
+		}
+
+	}
+}

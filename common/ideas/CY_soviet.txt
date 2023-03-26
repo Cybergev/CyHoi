@@ -1,0 +1,535 @@
+ideas = {
+
+	country = {
+	
+		SOV_desperate_measures_ns = {
+			name = SOV_desperate_measures
+
+			picture = tfv_can_conscription_crisis
+			
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via event
+			}
+
+			allowed_civil_war = {
+				tag = SOV #Main SOV
+			}
+
+			cancel = {
+				NOT = {
+					has_decision = SOV_desperate_defense
+				}
+			}
+	
+			modifier = {
+				mobilization_speed = 0.50
+				conscription = 0.1
+				org_loss_at_low_org_factor = -0.50
+				army_morale_factor = 0.50
+				dig_in_speed_factor = 0.50
+				max_dig_in_factor = 1
+				surrender_limit = 0.50
+				army_attack_factor = 0.50
+				army_defence_factor = 0.50
+				training_time_factor = -0.50
+				minimum_training_level = -0.50
+				command_abilities_cost_factor = -0.50
+				command_power_gain_mult = 0.50
+			}
+		}
+
+		SOV_nkvd = {
+			name = nkvd
+
+			picture = nkvd_2
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via focus
+			}
+
+			allowed_civil_war = {
+				tag = SOV
+			}
+			
+			modifier = {
+				subversive_activites_upkeep = -0.1
+				resistance_decay = 0.1
+				resistance_growth = -0.1
+				resistance_damage_to_garrison = -0.1
+				intelligence_agency_defense = 1
+				root_out_resistance_effectiveness_factor = 0.1
+				operative_slot = 1
+			}
+		}
+
+		SOV_nkvd_smersh = {
+			name = nkvd
+
+			picture = nkvd_2
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via focus
+			}
+
+			allowed_civil_war = {
+				tag = SOV
+			}
+			
+			modifier = {
+				subversive_activites_upkeep = -0.2
+				resistance_decay = 0.2
+				resistance_growth = -0.2
+				resistance_damage_to_garrison = -0.2
+				intelligence_agency_defense = 2
+				root_out_resistance_effectiveness_factor = 0.2
+				operative_slot = 2
+			}
+		}
+
+		SOV_stakhanovite_movement = {
+
+			picture = SOV_stakhanovite_movement
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via focus
+			}
+
+			allowed_civil_war = {
+				original_tag = SOV
+			}
+			
+			modifier = {
+				production_speed_buildings_factor = 0.10
+				industrial_capacity_factory = 0.10
+				industrial_capacity_dockyard = 0.10
+			}
+		}
+
+		SOV_collectivist_propaganda_ns = {
+			name = SOV_collectivist_propaganda
+
+			picture = generic_production_bonus
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via focus
+			}
+
+			allowed_civil_war = {
+				original_tag = SOV
+			}
+			
+			modifier = {
+				stability_factor = 0.1
+				conscription_factor = 0.15
+				non_core_manpower = 0.05
+				army_morale_factor = 0.05
+			}
+		}
+
+		SOV_comecon_sov_default = {
+			picture = generic_flexible_foreign_policy
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via event
+			}
+
+			modifier = {
+				consumer_goods_factor  = -0.05
+			}
+		}
+
+		SOV_comecon_sov_industrialization = {
+			name = SOV_comecon_sov_default
+
+			picture = generic_flexible_foreign_policy
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via event
+			}
+
+			modifier = {
+				consumer_goods_factor  = 0.3
+			}
+		}
+
+		SOV_comecon_sov_military = {
+			name = SOV_comecon_sov_default
+
+			picture = generic_flexible_foreign_policy
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via event
+			}
+
+			modifier = {
+				consumer_goods_factor  = 0.3
+			}
+		}
+
+		SOV_comecon_puppet_default = {
+			name = SOV_comecon_sov_default
+
+			picture = generic_flexible_foreign_policy
+
+			removal_cost = -1
+			
+			available = {
+				is_in_faction_with = SOV
+			}
+
+			modifier = {
+				consumer_goods_factor  = -0.05
+			}
+		}
+
+		SOV_comecon_puppet_industrialization = {
+			name = SOV_comecon_sov_default
+
+			picture = generic_flexible_foreign_policy
+
+			removal_cost = -1
+			
+			available = {
+				is_in_faction_with = SOV
+			}
+
+			modifier = {
+				ai_focus_peaceful_factor = 1.0
+				production_speed_industrial_complex_factor = 0.15
+				production_speed_synthetic_refinery_factor = 0.15
+				production_speed_infrastructure_factor = 0.15
+				production_speed_rail_way_factor = 0.15
+				consumer_goods_factor = -0.1
+			}
+		}
+
+		SOV_comecon_puppet_military = {
+			name = SOV_comecon_sov_default
+
+			picture = generic_flexible_foreign_policy
+
+			removal_cost = -1
+			
+			available = {
+				is_in_faction_with = SOV
+			}
+
+			modifier = {
+				AI_FOCUS_WAR_PRODUCTION_FACTOR = 1.0
+				AI_FOCUS_MILITARY_ADVANCEMENTS_FACTOR = 1.0
+				AI_FOCUS_MILITARY_EQUIPMENT_FACTOR = 1.0
+				production_speed_arms_factory_factor = 0.15
+				production_speed_coastal_bunker_factor = 0.15
+				production_speed_bunker_factor = 0.15
+				production_speed_radar_station_factor = 0.15
+				production_speed_anti_air_building_factor = 0.15
+				production_speed_rocket_site_factor = 0.15
+				production_speed_nuclear_reactor_factor = 0.15
+				consumer_goods_factor = -0.1
+			}
+		}
+
+		SOV_common_economic_space_sov_default = {
+			picture = generic_flexible_foreign_policy
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via event
+			}
+
+			modifier = {
+				consumer_goods_factor  = -0.05
+			}
+		}
+
+		SOV_common_economic_space_sov_industrialization = {
+			name = SOV_common_economic_space_sov_default
+
+			picture = generic_flexible_foreign_policy
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via event
+			}
+
+			modifier = {
+				consumer_goods_factor  = 0.3
+			}
+		}
+
+		SOV_common_economic_space_sov_military = {
+			name = SOV_common_economic_space_sov_default
+
+			picture = generic_flexible_foreign_policy
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via event
+			}
+
+			modifier = {
+				consumer_goods_factor  = 0.3
+			}
+		}
+
+		SOV_common_economic_space_puppet_default = {
+			name = SOV_common_economic_space_sov_default
+
+			picture = generic_flexible_foreign_policy
+
+			removal_cost = -1
+			
+			available = {
+				always = no # Added via event
+			}
+
+			modifier = {
+				is_in_faction_with = SOV
+			}
+		}
+
+		SOV_common_economic_space_puppet_industrialization = {
+			name = SOV_common_economic_space_sov_default
+
+			picture = generic_flexible_foreign_policy
+
+			removal_cost = -1
+			
+			available = {
+				is_in_faction_with = SOV
+			}
+
+			modifier = {
+				ai_focus_peaceful_factor = 1.0
+				production_speed_industrial_complex_factor = 0.15
+				production_speed_synthetic_refinery_factor = 0.15
+				production_speed_infrastructure_factor = 0.15
+				production_speed_rail_way_factor = 0.15
+				consumer_goods_factor = -0.1
+			}
+		}
+
+		SOV_common_economic_space_puppet_military = {
+			name = SOV_common_economic_space_sov_default
+
+			picture = generic_flexible_foreign_policy
+
+			removal_cost = -1
+			
+			available = {
+				is_in_faction_with = SOV
+			}
+
+			modifier = {
+				AI_FOCUS_WAR_PRODUCTION_FACTOR = 1.0
+				AI_FOCUS_MILITARY_ADVANCEMENTS_FACTOR = 1.0
+				AI_FOCUS_MILITARY_EQUIPMENT_FACTOR = 1.0
+				production_speed_arms_factory_factor = 0.15
+				production_speed_coastal_bunker_factor = 0.15
+				production_speed_bunker_factor = 0.15
+				production_speed_radar_station_factor = 0.15
+				production_speed_anti_air_building_factor = 0.15
+				production_speed_rocket_site_factor = 0.15
+				production_speed_nuclear_reactor_factor = 0.15
+				consumer_goods_factor = -0.1
+			}
+		}
+
+		SOV_soviet_international_idea = {
+
+			picture = ger_the_great_red_menace
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via decision
+			}
+
+			available = {
+				has_government = communism
+			}
+
+			allowed_civil_war = {
+				always = yes 
+			}
+			
+			modifier = {
+				send_volunteer_divisions_required = -1.0
+				send_volunteer_factor = 0.5
+				max_surrender_limit_offset = 0.1
+			}
+			rule = {
+				can_send_volunteers = yes
+			}
+		}
+
+		SOV_fascist_womens_movement_idea = {
+	
+			picture = SOV_fascist_womens_movement
+	
+			removal_cost = -1
+			
+			allowed = {
+				always = no 
+			}
+	
+			allowed_civil_war = {
+				original_tag = SOV
+			}
+			
+			modifier = {
+				production_speed_buildings_factor = 0.1
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+			}
+		}
+
+		SOV_memories_of_1905_idea = {
+
+			picture = generic_japanese_conflict
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no 
+			}
+	
+			allowed_civil_war = {
+				original_tag = SOV
+			}
+			
+			modifier = {
+				production_speed_dockyard_factor = 0.2
+				industrial_capacity_dockyard = 0.2
+				war_support_weekly = 0.002
+			}
+		}
+
+		SOV_legacy_of_rome = {
+			picture = generic_monarchist_uprising
+			removal_cost = -1
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				original_tag = SOV
+			}
+
+			modifier = {
+				political_power_factor = 0.10
+				non_core_manpower = 0.1
+				stability_weekly = 0.001
+				war_support_weekly = 0.001
+			}
+		}
+		
+		SOV_politicized_military = {
+
+			picture = generic_reserve_divisions
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via focus
+			}
+
+			modifier = {
+				drift_defence_factor = 0.1
+				planning_speed = -0.1
+				max_planning = -0.1
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+				command_abilities_cost_factor = 0.1
+				air_doctrine_cost_factor = 0.1
+				land_doctrine_cost_factor = 0.1
+				naval_doctrine_cost_factor = 0.1
+			}
+		}
+
+		SOV_politicized_military_keep = {
+			name = SOV_politicized_military
+
+			picture = generic_reserve_divisions
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via focus
+			}
+
+			modifier = {
+				drift_defence_factor = 0.2
+				planning_speed = -0.1
+				max_planning = -0.1
+				army_core_defence_factor = 0.1
+				army_core_attack_factor = 0.1
+				command_abilities_cost_factor = 0.1
+				air_doctrine_cost_factor = 0.1
+				land_doctrine_cost_factor = 0.1
+				naval_doctrine_cost_factor = 0.1
+			}
+		}
+
+		SOV_politicized_military_swap = {
+
+			picture = generic_reserve_divisions
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via focus
+			}
+
+			modifier = {
+				drift_defence_factor = 0.1
+				planning_speed = 0.1
+				max_planning = 0.1
+				command_power_gain_mult = 0.1
+			}
+		}
+
+		SOV_politicized_military_battle_priests = { #Exiles version of Keep Commissars
+			picture = YUG_orthodox_church_support
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via focus
+			}
+
+			modifier = {
+				drift_defence_factor = 0.2
+				planning_speed = -0.1
+				max_planning = -0.1
+				army_core_defence_factor = 0.1
+				army_core_attack_factor = 0.1
+				command_abilities_cost_factor = 0.1
+				air_doctrine_cost_factor = 0.1
+				land_doctrine_cost_factor = 0.1
+				naval_doctrine_cost_factor = 0.1
+			}
+		}
+
+	}
+
+}

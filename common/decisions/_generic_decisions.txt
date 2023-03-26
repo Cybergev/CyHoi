@@ -1204,6 +1204,9 @@ economy_decisions = {
 					}
 				}
 			}
+			add_dynamic_modifier = {
+				modifier = Flexible_trade_policy
+			}
 			add_to_variable = { 
 				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
 				tooltip = consumer_goods_factor_tt

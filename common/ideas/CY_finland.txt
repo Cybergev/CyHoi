@@ -1,0 +1,54 @@
+ideas = {
+
+	country = {
+	
+		sisu = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					has_government = communism
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				max_surrender_limit_offset = 0.1
+				army_morale_factor = 0.1
+				attrition = -0.1
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+			}
+		}
+
+		winter_war_ns = {
+			picture = tur_sub_zero_survival_training
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			cancel = {
+				NOT = { has_war_with = SOV }
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				conscription = 0.10
+				mobilization_speed = 1
+				winter_attrition_factor = -0.1
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+			}
+		}
+	}
+	
+}

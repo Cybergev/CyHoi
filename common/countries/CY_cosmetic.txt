@@ -1,0 +1,30 @@
+
+PER_UNIFIED = {
+	color = rgb { 250 200 0 }
+	color_ui = rgb { 250 200 0 }
+}
+
+GER_greater_german_reich = {
+	color = rgb { 100 100 100 }
+	color_ui = rgb { 115 115 115 }
+}
+
+ENG_imperial_federation_unified = {
+	color = rgb { 255 0 0 }
+	color_ui = rgb { 255 0 0 }
+}
+
+ENG_imperial_federation_india_unified = {
+	color = rgb { 255 0 0 }
+	color_ui = rgb { 255 0 0 }
+}
+
+EUR_imperial_federation_unified = {
+	color = rgb { 255 255 255 }
+	color_ui = rgb { 255 255 255 }
+}
+
+Anarchist_collaboration_government = {
+	color = rgb { 204 0 0 }
+	color_ui = rgb { 35 35 35 }
+}

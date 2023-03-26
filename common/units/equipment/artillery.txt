@@ -13,7 +13,6 @@ equipments = {
 
 		upgrades = {
 			tank_reliability_upgrade
-			tank_aa_upgrade
 			mech_cost_upgrade
 		}
 
@@ -112,7 +111,6 @@ equipments = {
 
 		upgrades = {
 			tank_reliability_upgrade
-			tank_gun_upgrade
 			mech_cost_upgrade
 		}
 
@@ -209,7 +207,6 @@ equipments = {
 
 		upgrades = {
 			tank_reliability_upgrade
-			tank_art_upgrade
 			mech_cost_upgrade
 		}
 
@@ -283,7 +280,6 @@ equipments = {
 
 		upgrades = {
 			tank_reliability_upgrade
-			tank_art_upgrade
 			mech_cost_upgrade
 		}
 
@@ -339,7 +335,6 @@ equipments = {
 
 		upgrades = {
 			tank_reliability_upgrade
-			tank_at_upgrade
 			mech_cost_upgrade
 		}
 

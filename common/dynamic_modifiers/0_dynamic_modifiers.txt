@@ -28,7 +28,9 @@
 
 sabotaged_resources = {
 	remove_trigger = { 
-		has_resistance = no
+		ROOT = {
+			has_resistance = no
+		}
 	}
 	
 	icon = GFX_modifiers_sabotaged_resource
@@ -88,7 +90,11 @@ kurdish_separatism = {
 
 dense_rural_infrastructure = { #State Modifier
 	enable = { always = yes }
-	remove_trigger = { infrastructure > 4 }
+	remove_trigger = {
+		ROOT = {
+			infrastructure > 4
+		}
+	}
 
 	icon = GFX_modifiers_SOV_civilian_labor_in_defense
 	
@@ -971,53 +977,19 @@ SOV_capital_of_the_tsars = {
 	state_production_speed_buildings_factor = 0.25
 }
 
-SPR_anarchist_society = {
+RAJ_agrarian_society_dynamic = { #NATIONAL SPIRIT
 	enable = { always = yes }
-	icon = GFX_idea_SPR_anarchist_society
 
-	political_power_factor = SPR_anarchist_society_political_power_factor
-	conscription = SPR_anarchist_society_conscription
-	consumer_goods_factor = SPR_anarchist_society_consumer_goods_factor
-	stability_factor = SPR_anarchist_society_stability_factor
-	stability_weekly = SPR_anarchist_society_stability_weekly
-	war_support = SPR_anarchist_society_war_support
-	war_support_weekly = SPR_anarchist_society_war_support_weekly
-	surrender_limit = SPR_anarchist_society_surrender_limit
-	production_speed_buildings_factor = SPR_anarchist_society_production_speed_buildings_factor
-	research_speed_factor = SPR_anarchist_society_research_speed_factor
-	conversion_cost_civ_to_mil_factor = SPR_anarchist_society_conversion_cost_civ_to_mil_factor
-	conversion_cost_mil_to_civ_factor = SPR_anarchist_society_conversion_cost_mil_to_civ_factor
-	industrial_capacity_factory = SPR_anarchist_society_industrial_capacity_factory
-	industrial_capacity_dockyard = SPR_anarchist_society_industrial_capacity_dockyard
-	drift_defence_factor = SPR_anarchist_society_drift_defence_factor
-	resistance_target = SPR_anarchist_society_resistance_target
-	compliance_growth = SPR_anarchist_society_compliance_growth
-	resistance_target_on_our_occupied_states = SPR_anarchist_society_resistance_target_on_our_occupied_states
-	resistance_decay_on_our_occupied_states = SPR_anarchist_society_resistance_decay_on_our_occupied_states
-	resistance_growth_on_our_occupied_states = SPR_anarchist_society_resistance_growth_on_our_occupied_states
-	resistance_damage_to_garrisons_on_our_occupied_states = SPR_anarchist_society_resistance_damage_to_garrisons_on_our_occupied_states
-	compliance_growth_on_our_occupied_states = SPR_anarchist_society_compliance_growth_on_our_occupied_states
-	civilian_intel_to_others = SPR_anarchist_society_civilian_intel_to_others
-	neutrality_drift = SPR_anarchist_society_neutrality_drift
-	justify_war_goal_time = SPR_anarchist_society_justify_war_goal_time
-	autonomy_gain = SPR_anarchist_society_AUTONOMY_GAIN
+	icon = GFX_idea_generic_agrarian_society
+	
+	conscription_factor = RAJ_agrarian_society_value
 }
 
-SPR_collective_army = {
+RAJ_industrialized_personnel = {
 	enable = { always = yes }
-	icon = GFX_idea_tfv_can_conscription_crisis
-
-	command_power_gain_mult = spr_collective_army_command_power_gain_mult
-	planning_speed = spr_collective_army_planning_speed
-	max_planning = spr_collective_army_max_planning
-	mobilization_speed = spr_collective_army_mobilization_speed
-	training_time_factor = spr_collective_army_training_time_factor
-	special_forces_cap = spr_collective_army_special_forces_cap
-	land_reinforce_rate = spr_collective_army_land_reinforce_rate
-	army_morale_factor = spr_collective_army_army_morale_factor
-	max_dig_in = spr_collective_army_max_dig_in
-	dig_in_speed_factor = spr_collective_army_dig_in_speed_factor
-	army_intel_to_others = SPR_collective_army_army_intel_to_others
+	icon = GFX_modifiers_generic_military_plans
+	state_resources_factor = 0.15
+	state_production_speed_buildings_factor = 0.15
 }
 
 MAN_nationalism = {
@@ -1033,7 +1005,6 @@ MAN_nationalism = {
 	fascism_drift = man_pdm_fascism_drift
 	autonomy_gain = man_pdm_autonomy_gain
 }
-
 MAN_national_unity = {
 	enable = { always = yes }
 	icon = GFX_idea_man_national_unity

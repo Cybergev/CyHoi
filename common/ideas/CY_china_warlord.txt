@@ -1,0 +1,72 @@
+ideas = {
+
+	country = {
+		
+		CHI_embrace_the_opium_trade = {
+			allowed = { always = no }
+
+			picture = prc_permit_opium_trade
+
+
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = -0.10
+			}
+		}
+
+		CHI_war_taxes = {
+			allowed = { always = no }
+
+			picture =  generic_foreign_capital
+
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = -0.05
+			}
+		}
+
+		CHI_defensive_posture = {
+			allowed = { always = no }
+
+			picture =  YUG_federal_defense_council
+
+			removal_cost = -1
+
+			modifier = {
+				army_defence_factor = 0.1
+			}
+		}
+
+		CHI_long_term_economic_planning = {
+			allowed = { always = no }
+
+			picture =  chi_hyper_inflation1
+
+			removal_cost = -1
+
+			modifier = {
+				production_speed_infrastructure_factor = 0.05
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_arms_factory_factor = 0.05
+			}
+		}
+
+		CHI_long_term_economic_planning_final = {
+			name = CHI_long_term_economic_planning
+			allowed = { always = no }
+
+			picture =  chi_hyper_inflation2
+
+			removal_cost = -1
+
+			modifier = {
+				production_speed_infrastructure_factor = 0.10
+				production_speed_industrial_complex_factor = 0.10
+				production_speed_arms_factory_factor = 0.10
+			}
+		}
+	}
+
+}
