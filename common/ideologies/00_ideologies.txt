@@ -49,7 +49,8 @@ ideologies = {
 			join_faction_tension = 0.80
 			lend_lease_tension = 0.50
 			send_volunteers_tension = 0.50
-			guarantee_tension = 0.25
+			guarantee_tension = 0.50
+			guarantee_cost = -0.5
 			# annex_cost_factor = 0.5 # Deprecated, use common\peace_conference\00_generic_peace.txt instead
 			embargo_cost_factor = -0.5
 			embargo_threshold_factor = -0.5
@@ -114,14 +115,10 @@ ideologies = {
 
 		modifiers = {
 			justify_war_goal_time = -0.50
-			civilian_intel_to_others = 15.0
-			army_intel_to_others = 15.0
-			navy_intel_to_others = 15.0
-			airforce_intel_to_others = 15.0
 		}
 
 		faction_modifiers = {
-
+			faction_trade_opinion_factor = 0.50
 		}
 
 	}
@@ -174,7 +171,10 @@ ideologies = {
 
 		modifiers = {
 			justify_war_goal_time = -0.50
-			embargo_cost_factor = 1
+		}
+
+		faction_modifiers = {
+			faction_trade_opinion_factor = 0.50
 		}
 
 		ai_fascist = yes # uses the fascist AI behaviour
@@ -232,13 +232,10 @@ ideologies = {
 			ai_get_ally_desire_factor = -100
 			ai_join_ally_desire_factor = -50
 			drift_defence_factor = 0.5
-			civilian_intel_to_others = 10.0
-			army_intel_to_others = 10.0
-			navy_intel_to_others = 10.0
-			airforce_intel_to_others = 10.0
 		}
 
 		faction_modifiers = {
+			faction_trade_opinion_factor = 0.50
 		}
 
 		ai_neutral = yes #

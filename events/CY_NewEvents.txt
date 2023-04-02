@@ -1,0 +1,42 @@
+add_namespace = news
+
+news_event = {
+	id = news.14
+	title = news.14.t
+	desc = news.14.d
+	picture = GFX_news_event_006
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.14.a
+		trigger = {
+			NOT = {
+				TAG = SOV
+			}
+			OR = {
+				is_in_faction_with = SOV
+				has_opinion = {
+					target = SOV
+					value > 60
+				}
+			}
+		}
+	}
+	option = {
+		name = news.14.b
+		trigger = {
+			NOT = {
+				TAG = SOV
+			}
+		}
+	}
+	option = {
+		name = news.14.c
+		trigger = { 
+			TAG = SOV 
+		}
+	}
+}

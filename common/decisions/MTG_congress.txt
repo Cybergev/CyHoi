@@ -450,11 +450,36 @@ USA_congress = {
 				is_owned_and_controlled_by = ROOT
 			}
 			set_temp_variable = { v_statehood_cost = FROM.state_population_k }
-			divide_temp_variable = { v_statehood_cost = FROM.compliance }
-			add_to_temp_variable = { v_statehood_cost = FROM.resistance }
 			set_temp_variable = { v_statehood_days = FROM.state_population_k }
-			divide_temp_variable = { v_statehood_days = FROM.compliance }
-			add_to_temp_variable = { v_statehood_days = FROM.resistance }
+			If = {
+				limit = {
+					FROM = {
+						has_resistance = yes
+					}
+				}
+				If = {
+					limit = {
+						FROM = {
+							compliance > 0
+						}
+					}
+					divide_temp_variable = { v_statehood_cost = FROM.compliance }
+					add_to_temp_variable = { v_statehood_cost = FROM.resistance }
+				}
+				If = {
+					limit = {
+						FROM = {
+							resistance > 0
+						}
+					}
+					divide_temp_variable = { v_statehood_days = FROM.compliance }
+					add_to_temp_variable = { v_statehood_days = FROM.resistance }
+				}
+			}
+			else = {
+				divide_temp_variable = { v_statehood_cost = 100 }
+				divide_temp_variable = { v_statehood_days = 100 }
+			}
 			If = {
 				limit = {
 					FROM = {
@@ -476,8 +501,8 @@ USA_congress = {
 						}
 					}
 				}
-				multiply_temp_variable = { v_statehood_cost = 1,5 }
-				multiply_temp_variable = { v_statehood_days = 1,5 }
+				multiply_temp_variable = { v_statehood_cost = 2 }
+				multiply_temp_variable = { v_statehood_days = 2 }
 			}
 			If = {
 				limit = {
@@ -539,18 +564,30 @@ USA_congress = {
 			base = 0
 			modifier = {
 				add = 25
-				compliance > 99
-				is_on_continent = north_america
+				FROM = { 
+					compliance > 99
+					is_on_continent = north_america
+				}
 			}
 			modifier = {
 				add = 25
-				compliance > 99
-				is_on_continent = south_america
+				FROM = {
+					compliance > 99
+					is_on_continent = south_america
+				}
 			}
 			modifier = {
 				add = 25
-				compliance > 99
-				is_claimed_by = ROOT
+				FROM = {
+					compliance > 99
+					is_claimed_by = ROOT
+				}
+			}
+			modifier = {
+				add = 25
+				FROM = {
+					has_resistance = no
+				}
 			}
 		}
 	}

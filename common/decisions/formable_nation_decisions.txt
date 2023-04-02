@@ -209,6 +209,25 @@ form_nordic_league_category = {
 				143 = { add_core_of = ROOT }
 				144 = { add_core_of = ROOT }
 			}
+
+			if = {
+				limit = {
+					NOR = {
+						is_subject_of = ROOT
+					}
+				}
+				
+				NOR = {
+					every_unit_leader = {
+						set_nationality = ROOT
+					}
+				}
+				
+				annex_country = {
+					target = NOR
+					transfer_troops = yes
+				}
+			}
 			# Sweden
 			custom_effect_tooltip = form_country_sweden_coring_states_tt
 			hidden_effect = {
@@ -219,6 +238,26 @@ form_nordic_league_category = {
 				141 = { add_core_of = ROOT }
 				38 = { add_core_of = ROOT }
 				666 = { add_core_of = ROOT }
+
+			}
+
+			if = {
+				limit = {
+					SWE = {
+						is_subject_of = ROOT
+					}
+				}
+				
+				SWE = {
+					every_unit_leader = {
+						set_nationality = ROOT
+					}
+				}
+				
+				annex_country = {
+					target = SWE
+					transfer_troops = yes
+				}
 			}
 			# Denmark
 			custom_effect_tooltip = form_country_denmark_coring_states_tt
@@ -229,6 +268,26 @@ form_nordic_league_category = {
 				101 = { add_core_of = ROOT }
 				337 = { add_core_of = ROOT }
 			}
+
+			if = {
+				limit = {
+					DEN = {
+						is_subject_of = ROOT
+					}
+				}
+				
+				DEN = {
+					every_unit_leader = {
+						set_nationality = ROOT
+					}
+				}				
+				
+				annex_country = {
+					target = DEN
+					transfer_troops = yes
+				}
+			}
+			
 			# Finland
 			custom_effect_tooltip = form_country_finland_coring_states_tt
 			hidden_effect = {
@@ -238,6 +297,34 @@ form_nordic_league_category = {
 				149 = { add_core_of = ROOT }
 				150 = { add_core_of = ROOT }
 			}
+			
+			if = {
+				limit = {
+					FIN = {
+						is_subject_of = ROOT
+						OR = {
+							is_subject_of = ROOT
+							all_core_state = {
+								controller = {
+									tag = ROOT
+								} 
+							}
+						}
+					}
+				}
+				
+				FIN = {
+					every_unit_leader = {
+						set_nationality = ROOT
+					}
+				}
+
+				annex_country = {
+					target = FIN
+					transfer_troops = yes
+				}
+			}
+			
 			hidden_effect = {
 				if = {
 					limit = { NOT = { original_tag = EST } }
@@ -258,7 +345,7 @@ form_nordic_league_category = {
 			}
 		}
 	}
-}
+} 
 
 form_gran_colombia_category = {
 
@@ -380,6 +467,7 @@ form_austria_hungary_category = {
 		available = {
 			is_subject = no
 			controls_state = 102
+			controls_state = 853
 			controls_state = 103
 			controls_state = 104
 			controls_state = 804
@@ -393,6 +481,7 @@ form_austria_hungary_category = {
 			# Austria
 			custom_trigger_tooltip = {
 				tooltip = form_country_austria_required_states_tt
+				controls_state = 848
 				controls_state = 153
 				controls_state = 152
 				controls_state = 4
@@ -437,6 +526,7 @@ form_austria_hungary_category = {
 				AUS = { set_cosmetic_tag = AUS_NOT_WHITE }
 			}
 			102 = { add_core_of = ROOT }
+			853 = { add_core_of = ROOT }
 			103 = { add_core_of = ROOT }
 			104 = { add_core_of = ROOT }
 			804 = { add_core_of = ROOT }
@@ -448,11 +538,14 @@ form_austria_hungary_category = {
 			39 = { add_core_of = ROOT }
 			163 = { add_core_of = ROOT }
 			736 = { add_core_of = ROOT }
+			852 = { add_core_of = ROOT }
+			850 = { add_core_of = ROOT }
 			764 = { add_core_of = ROOT }
 			82 = { add_core_of = ROOT }
 			# Austria
 			custom_effect_tooltip = form_country_austria_coring_states_tt
 			hidden_effect = {
+				848 = { add_core_of = ROOT }
 				153 = { add_core_of = ROOT }
 				152 = { add_core_of = ROOT }
 				4 = { add_core_of = ROOT }
@@ -507,6 +600,7 @@ form_austria_hungary_category = {
 			controls_state = 43
 			controls_state = 154
 			controls_state = 102
+			controls_state = 853
 			controls_state = 103
 			controls_state = 104
 			controls_state = 804
@@ -530,6 +624,7 @@ form_austria_hungary_category = {
 			43 = { add_core_of = ROOT }
 			154 = { add_core_of = ROOT }
 			102 = { add_core_of = ROOT }
+			853 = { add_core_of = ROOT }
 			103 = { add_core_of = ROOT }
 			104 = { add_core_of = ROOT }
 			804 = { add_core_of = ROOT }
@@ -541,6 +636,8 @@ form_austria_hungary_category = {
 			39 = { add_core_of = ROOT }
 			163 = { add_core_of = ROOT }
 			736 = { add_core_of = ROOT }
+			852 = { add_core_of = ROOT }
+			850 = { add_core_of = ROOT }
 			764 = { add_core_of = ROOT }
 			82 = { add_core_of = ROOT }
 			set_global_flag = reintegrate_the_empire_flag
@@ -1889,8 +1986,8 @@ form_european_union_category = {
 							limit = {
 								OR = {
 									is_core_of = PREV
+									is_on_continent = europe
 								}
-								is_on_continent = europe
 							}
 							add_core_of = EUR
 						}
@@ -1899,7 +1996,7 @@ form_european_union_category = {
 								is_claimed_by = PREV
 								is_on_continent = europe
 							}
-							 add_claim_by = EUR
+							add_claim_by = EUR
 						}
 						if = {
 							limit = {
@@ -2060,8 +2157,36 @@ form_european_union_category = {
 				is_fully_controlled_by = EUR
 			}
 			set_temp_variable = { v_integration_in_union_cost = FROM.state_population_k }
-			divide_temp_variable = { v_integration_in_union_cost = FROM.compliance }
-			add_to_temp_variable = { v_integration_in_union_cost = FROM.resistance }
+			set_temp_variable = { v_integration_in_union_days = FROM.state_population_k }
+			If = {
+				limit = {
+					FROM = {
+						has_resistance = yes
+					}
+				}
+				If = {
+					limit = {
+						FROM = {
+							compliance > 0
+						}
+					}
+					divide_temp_variable = { v_integration_in_union_cost = FROM.compliance }
+					add_to_temp_variable = { v_integration_in_union_cost = FROM.resistance }
+				}
+				If = {
+					limit = {
+						FROM = {
+							resistance > 0
+						}
+					}
+					divide_temp_variable = { v_integration_in_union_days = FROM.compliance }
+					add_to_temp_variable = { v_integration_in_union_days = FROM.resistance }
+				}
+			}
+			else = {
+				divide_temp_variable = { v_integration_in_union_cost = 100 }
+				divide_temp_variable = { v_integration_in_union_days = 100 }
+			}
 			If = {
 				limit = {
 					FROM = {
@@ -2069,17 +2194,6 @@ form_european_union_category = {
 					}
 				}
 				divide_temp_variable = { v_integration_in_union_cost = 2 }
-			}
-
-			set_temp_variable = { v_integration_in_union_days = FROM.state_population_k }
-			divide_temp_variable = { v_integration_in_union_days = FROM.compliance }
-			add_to_temp_variable = { v_integration_in_union_days = FROM.resistance }
-			If = {
-				limit = {
-					FROM = {
-						is_claimed_by = EUR
-					}
-				}
 				divide_temp_variable = { v_integration_in_union_days = 2 }
 			}
 		}
@@ -2275,7 +2389,36 @@ EUR_imperial_fediration_cat = {
 				is_fully_controlled_by = EUR
 			}
 			set_temp_variable = { v_integration_in_union_cost = FROM.state_population_k }
-			divide_temp_variable = { v_integration_in_union_cost = 10 }
+			set_temp_variable = { v_integration_in_union_days = FROM.state_population_k }
+			If = {
+				limit = {
+					FROM = {
+						has_resistance = yes
+					}
+				}
+				If = {
+					limit = {
+						FROM = {
+							compliance > 0
+						}
+					}
+					divide_temp_variable = { v_integration_in_union_cost = FROM.compliance }
+					add_to_temp_variable = { v_integration_in_union_cost = FROM.resistance }
+				}
+				If = {
+					limit = {
+						FROM = {
+							resistance > 0
+						}
+					}
+					divide_temp_variable = { v_integration_in_union_days = FROM.compliance }
+					add_to_temp_variable = { v_integration_in_union_days = FROM.resistance }
+				}
+			}
+			else = {
+				divide_temp_variable = { v_integration_in_union_cost = 100 }
+				divide_temp_variable = { v_integration_in_union_days = 100 }
+			}
 			If = {
 				limit = {
 					FROM = {
@@ -2283,20 +2426,8 @@ EUR_imperial_fediration_cat = {
 					}
 				}
 				divide_temp_variable = { v_integration_in_union_cost = 2 }
-			}
-			round_temp_variable = v_integration_in_union_cost
-
-			set_temp_variable = { v_integration_in_union_days = FROM.state_population_k }
-			divide_temp_variable = { v_integration_in_union_days = 10 }
-			If = {
-				limit = {
-					FROM = {
-						is_claimed_by = EUR
-					}
-				}
 				divide_temp_variable = { v_integration_in_union_days = 2 }
 			}
-			round_temp_variable = v_integration_in_union_days
 		}
 
 		visible = {

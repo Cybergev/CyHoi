@@ -80,6 +80,24 @@ ideas = {
 					has_dynamic_modifier = {
 						modifier = Flexible_economy_policy
 					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier_alt
+					}
 				}
 			}
 
@@ -131,6 +149,24 @@ ideas = {
 				NOT = {
 					has_dynamic_modifier = {
 						modifier = Flexible_economy_policy
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier_alt
 					}
 				}
 				if = {
@@ -237,6 +273,24 @@ ideas = {
 					has_dynamic_modifier = {
 						modifier = Flexible_economy_policy
 					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier_alt
+					}
 				}
 				if = {
 					limit = {
@@ -332,6 +386,24 @@ ideas = {
 				NOT = {
 					has_dynamic_modifier = {
 						modifier = Flexible_economy_policy
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier_alt
 					}
 				}
 				if = {
@@ -476,6 +548,24 @@ ideas = {
 				NOT = {
 					has_dynamic_modifier = {
 						modifier = Flexible_economy_policy
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier_alt
 					}
 				}
 				OR = {
@@ -636,7 +726,7 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				custom_effect_tooltip = soviet_economic_tt
+				custom_modifier_tooltip = soviet_economic_tt
 			}
 
 			cancel_if_invalid = no
@@ -715,9 +805,6 @@ ideas = {
 		uncontrolled_exports = {
 
 			allowed = {
-				NOT = {
-					has_idea = no_trade_law
-				}
 			}
 
 			allowed = {
@@ -777,9 +864,6 @@ ideas = {
 		free_trade = {
 
 			allowed = {
-				NOT = {
-					has_idea = no_trade_law
-				}
 			}
 
 			available = {
@@ -850,9 +934,6 @@ ideas = {
 		export_focus = {
 
 			allowed = {
-				NOT = {
-					has_idea = no_trade_law
-				}
 			}
 
 			available = {
@@ -929,9 +1010,6 @@ ideas = {
 		limited_exports = {
 			
 			allowed = {
-				NOT = {
-					has_idea = no_trade_law
-				}
 			}
 
 			available = {
@@ -1031,9 +1109,6 @@ ideas = {
 		closed_economy = {
 
 			allowed = {
-				NOT = {
-					has_idea = no_trade_law
-				}
 			}
 
 			available = {

@@ -741,7 +741,6 @@ set_country_flag = SOV_TEST_REMOVE_VANILLA_ADVISORS_flag
 
 add_ideas = {	
 	home_of_revolution
-	no_economic_law
 	trotskyite_plot_nsb
 	SOV_politicized_military
 
@@ -760,7 +759,6 @@ add_ideas = {
 		stalingrad_tractor_factory
 		SOV_tula_arms_plant
 		#laws
-		no_economic_law
 		extensive_conscription
 	}
 
