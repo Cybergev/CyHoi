@@ -24,10 +24,6 @@ technologies = {
 			additional_machine_guns
 		}
 		
-		enable_subunits = {
-			infantry
-		}
-		
 		path = {
 			leads_to_tech = infantry_weapons1
 			research_cost_coeff = 1
@@ -1487,10 +1483,6 @@ technologies = {
 	
 	motorised_infantry = {
 
-		enable_subunits = {
-			motorized
-		}
-
 		enable_equipments = {
 			motorized_equipment_1
 		}
@@ -1567,9 +1559,6 @@ technologies = {
 	}
 	motorized_rocket_unit = {
 
-		enable_subunits = {
-			motorized_rocket_brigade
-		}
 		enable_equipments = {
 			motorized_rocket_equipment_1
 		}
@@ -1637,10 +1626,6 @@ technologies = {
 		}
 	}
 	armored_car1 = {
-
-		enable_subunits = {
-			armored_car
-		}
 
 		enable_equipments = {
 			gw_armored_car_equipment
@@ -1821,10 +1806,6 @@ technologies = {
 
 	mechanised_infantry = {
 
-		enable_subunits = {
-			mechanized
-		}
-
 		enable_equipments = {
 			mechanized_equipment_1
 		}
@@ -1889,10 +1870,6 @@ technologies = {
 
 		allow_branch = {
 			has_dlc = "Man the Guns"
-		}
-
-		enable_subunits = {
-			amphibious_mechanized
 		}
 
 		path = {
@@ -2064,6 +2041,131 @@ technologies = {
 
 		enable_subunits = {
 			ss_unit
+		}
+	}
+	ss_mot = {
+		
+		allow = {
+			always = no
+		}
+
+		dependencies = {
+			tech_engineers2 = 1
+            tech_support2 = 1
+        }
+
+		research_cost = 1
+		start_year = 1936
+		show_effect_as_desc = yes
+		ss_unit = {
+			need = {
+				motorized_equipment = 100
+			}
+		}
+	}
+	ss_mech = {
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+		show_effect_as_desc = yes
+		ss_unit = {
+			need = {
+				mechanized_equipment = 100
+			}
+		}
+	}
+	ss_car = {
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+		show_effect_as_desc = yes
+		ss_unit = {
+			need = {
+				armored_car_equipment = 100
+			}
+		}
+	}
+	ss_armor_light = {
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+		show_effect_as_desc = yes
+		ss_unit = {
+			need = {
+				light_tank_chassis = 100
+			}
+		}
+	}
+	ss_armor_medium = {
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+		show_effect_as_desc = yes
+		ss_unit = {
+			need = {
+				medium_tank_chassis = 100
+			}
+		}
+	}
+	ss_armor_heavy = {
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+		show_effect_as_desc = yes
+		ss_unit = {
+			need = {
+				heavy_tank_chassis = 100
+			}
+		}
+	}
+	ss_armor_super_heavy = {
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+		show_effect_as_desc = yes
+		ss_unit = {
+			need = {
+				super_heavy_tank_chassis = 100
+			}
+		}
+	}
+	ss_armor_modern = {
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+		show_effect_as_desc = yes
+		ss_unit = {
+			need = {
+				modern_tank_chassis = 100
+			}
 		}
 	}
 }

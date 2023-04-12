@@ -682,7 +682,770 @@ SS_demands = {
 			set_technology = { ss_infantry = 1 }
 		}
 	}
+	
+	SS_units_inf = {
+
+		icon = generic_army_support
+
+		available = {
+			has_idea = heinrich_himmler
+			NOT = {
+				has_political_power < 50
+				command_power < 50
+			}
+		}
+
+		visible = {
+			has_tech = ss_infantry
+			OR = {
+				has_tech = ss_mot
+				has_tech = ss_mech
+				has_tech = ss_car
+				has_tech = ss_armor_light
+				has_tech = ss_armor_medium
+				has_tech = ss_armor_heavy
+				has_tech = ss_armor_super_heavy
+				has_tech = ss_armor_modern
+			}
+		}
+		
+		complete_effect = {
+			add_political_power = -50
+			add_command_power = -50
+			If = {
+				limit = {
+					has_tech = ss_mot
+				}
+				set_technology = { ss_mot = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_mech
+				}
+				set_technology = { ss_mech = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_car
+				}
+				set_technology = { ss_car = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_light
+				}
+				set_technology = { ss_armor_light = 0 }
+				add_to_variable = { var = SS_anger value = 2 }
+				add_to_variable = { var = wehrmacht_anger value = -2 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_medium
+				}
+				set_technology = { ss_armor_medium = 0 }
+				add_to_variable = { var = SS_anger value = 4 }
+				add_to_variable = { var = wehrmacht_anger value = -4 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_heavy
+				}
+				set_technology = { ss_armor_heavy = 0 }
+				add_to_variable = { var = SS_anger value = 6 }
+				add_to_variable = { var = wehrmacht_anger value = -6 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_super_heavy
+				}
+				set_technology = { ss_armor_super_heavy = 0 }
+				add_to_variable = { var = SS_anger value = 8 }
+				add_to_variable = { var = wehrmacht_anger value = -8 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_modern
+				}
+				set_technology = { ss_armor_modern = 0 }
+				add_to_variable = { var = SS_anger value = 10 }
+				add_to_variable = { var = wehrmacht_anger value = -10 } #shitty little upstart
+			}
+		}
+	}
+	SS_units_mot = {
+
+		icon = generic_army_support
+
+		available = {
+			has_idea = heinrich_himmler
+			NOT = {
+				has_political_power < 50
+				command_power < 50
+			}
+		}
+
+		visible = {
+			has_tech = ss_infantry
+			NOT = {
+				has_tech = ss_mot
+			}
+		}
+		
+		complete_effect = {
+			add_political_power = -50
+			add_command_power = -50
+			If = {
+				limit = {
+					NOT = {
+						has_tech = ss_mot
+					}
+				}
+				set_technology = { ss_mot = 1 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_mech
+				}
+				set_technology = { ss_mech = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_car
+				}
+				set_technology = { ss_car = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_light
+				}
+				set_technology = { ss_armor_light = 0 }
+				add_to_variable = { var = SS_anger value = 2 }
+				add_to_variable = { var = wehrmacht_anger value = -2 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_medium
+				}
+				set_technology = { ss_armor_medium = 0 }
+				add_to_variable = { var = SS_anger value = 4 }
+				add_to_variable = { var = wehrmacht_anger value = -4 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_heavy
+				}
+				set_technology = { ss_armor_heavy = 0 }
+				add_to_variable = { var = SS_anger value = 6 }
+				add_to_variable = { var = wehrmacht_anger value = -6 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_super_heavy
+				}
+				set_technology = { ss_armor_super_heavy = 0 }
+				add_to_variable = { var = SS_anger value = 8 }
+				add_to_variable = { var = wehrmacht_anger value = -8 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_modern
+				}
+				set_technology = { ss_armor_modern = 0 }
+				add_to_variable = { var = SS_anger value = 10 }
+				add_to_variable = { var = wehrmacht_anger value = -10 } #shitty little upstart
+			}
+		}
+	}
+	SS_units_mech = {
+
+		icon = generic_army_support
+
+		available = {
+			has_idea = heinrich_himmler
+			NOT = {
+				has_political_power < 80
+				command_power < 80
+			}
+		}
+
+		visible = {
+			has_tech = ss_infantry
+			NOT = {
+				has_tech = ss_mech
+			}
+		}
+		
+		complete_effect = {
+			add_political_power = -80
+			add_command_power = -80
+			If = {
+				limit = {
+					has_tech = ss_mot
+				}
+				set_technology = { ss_mot = 0 }
+			}
+			If = {
+				limit = {
+					NOT = {
+						has_tech = ss_mech
+					}
+				}
+				set_technology = { ss_mech = 1 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_car
+				}
+				set_technology = { ss_car = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_light
+				}
+				set_technology = { ss_armor_light = 0 }
+				add_to_variable = { var = SS_anger value = 2 }
+				add_to_variable = { var = wehrmacht_anger value = -2 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_medium
+				}
+				set_technology = { ss_armor_medium = 0 }
+				add_to_variable = { var = SS_anger value = 4 }
+				add_to_variable = { var = wehrmacht_anger value = -4 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_heavy
+				}
+				set_technology = { ss_armor_heavy = 0 }
+				add_to_variable = { var = SS_anger value = 6 }
+				add_to_variable = { var = wehrmacht_anger value = -6 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_super_heavy
+				}
+				set_technology = { ss_armor_super_heavy = 0 }
+				add_to_variable = { var = SS_anger value = 8 }
+				add_to_variable = { var = wehrmacht_anger value = -8 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_modern
+				}
+				set_technology = { ss_armor_modern = 0 }
+				add_to_variable = { var = SS_anger value = 10 }
+				add_to_variable = { var = wehrmacht_anger value = -10 } #shitty little upstart
+			}
+		}
+	}
+	SS_units_car = {
+
+		icon = generic_army_support
+
+		available = {
+			has_idea = heinrich_himmler
+			NOT = {
+				has_political_power < 100
+				command_power < 100
+			}
+		}
+
+		visible = {
+			has_tech = ss_infantry
+			NOT = {
+				has_tech = ss_car
+			}
+		}
+		
+		complete_effect = {
+			add_political_power = -100
+			add_command_power = -100
+			If = {
+				limit = {
+					has_tech = ss_mot
+				}
+				set_technology = { ss_mot = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_mech
+				}
+				set_technology = { ss_mech = 0 }
+			}
+			If = {
+				limit = {
+					NOT = {
+						has_tech = ss_car
+					}
+				}
+				set_technology = { ss_car = 1 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_light
+				}
+				set_technology = { ss_armor_light = 0 }
+				add_to_variable = { var = SS_anger value = 2 }
+				add_to_variable = { var = wehrmacht_anger value = -2 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_medium
+				}
+				set_technology = { ss_armor_medium = 0 }
+				add_to_variable = { var = SS_anger value = 4 }
+				add_to_variable = { var = wehrmacht_anger value = -4 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_heavy
+				}
+				set_technology = { ss_armor_heavy = 0 }
+				add_to_variable = { var = SS_anger value = 6 }
+				add_to_variable = { var = wehrmacht_anger value = -6 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_super_heavy
+				}
+				set_technology = { ss_armor_super_heavy = 0 }
+				add_to_variable = { var = SS_anger value = 8 }
+				add_to_variable = { var = wehrmacht_anger value = -8 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_modern
+				}
+				set_technology = { ss_armor_modern = 0 }
+				add_to_variable = { var = SS_anger value = 10 }
+				add_to_variable = { var = wehrmacht_anger value = -10 } #shitty little upstart
+			}
+		}
+	}
+	SS_units_armor_light = {
+
+		icon = generic_army_support
+
+		available = {
+			has_idea = heinrich_himmler
+			NOT = {
+				has_political_power < 120
+				command_power < 120
+			}
+		}
+
+		visible = {
+			has_tech = ss_infantry
+			NOT = {
+				has_tech = ss_armor_light
+			}
+		}
+		
+		complete_effect = {
+			add_political_power = -120
+			add_command_power = -120
+			If = {
+				limit = {
+					has_tech = ss_mot
+				}
+				set_technology = { ss_mot = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_mech
+				}
+				set_technology = { ss_mech = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_car
+				}
+				set_technology = { ss_car = 0 }
+			}
+			If = {
+				limit = {
+					NOT = {
+						has_tech = ss_armor_light
+					}
+				}
+				set_technology = { ss_armor_light = 1 }
+				add_to_variable = { var = SS_anger value = 2 }
+				add_to_variable = { var = wehrmacht_anger value = -2 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_medium
+				}
+				set_technology = { ss_armor_medium = 0 }
+				add_to_variable = { var = SS_anger value = 4 }
+				add_to_variable = { var = wehrmacht_anger value = -4 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_heavy
+				}
+				set_technology = { ss_armor_heavy = 0 }
+				add_to_variable = { var = SS_anger value = 6 }
+				add_to_variable = { var = wehrmacht_anger value = -6 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_super_heavy
+				}
+				set_technology = { ss_armor_super_heavy = 0 }
+				add_to_variable = { var = SS_anger value = 8 }
+				add_to_variable = { var = wehrmacht_anger value = -8 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_modern
+				}
+				set_technology = { ss_armor_modern = 0 }
+				add_to_variable = { var = SS_anger value = 10 }
+				add_to_variable = { var = wehrmacht_anger value = -10 } #shitty little upstart
+			}
+		}
+	}
+	SS_units_armor_medium = {
+
+		icon = generic_army_support
+
+		available = {
+			has_idea = heinrich_himmler
+			NOT = {
+				has_political_power < 140
+				command_power < 140
+			}
+		}
+
+		visible = {
+			has_tech = ss_infantry
+			NOT = {
+				has_tech = ss_armor_medium
+			}
+		}
+		
+		complete_effect = {
+			add_political_power = -140
+			add_command_power = -140
+			If = {
+				limit = {
+					has_tech = ss_mot
+				}
+				set_technology = { ss_mot = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_mech
+				}
+				set_technology = { ss_mech = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_car
+				}
+				set_technology = { ss_car = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_light
+				}
+				set_technology = { ss_armor_light = 0 }
+				add_to_variable = { var = SS_anger value = 2 }
+				add_to_variable = { var = wehrmacht_anger value = -2 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					NOT = {
+						has_tech = ss_armor_medium
+					}
+				}
+				set_technology = { ss_armor_medium = 1 }
+				add_to_variable = { var = SS_anger value = 4 }
+				add_to_variable = { var = wehrmacht_anger value = -4 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_heavy
+				}
+				set_technology = { ss_armor_heavy = 0 }
+				add_to_variable = { var = SS_anger value = 6 }
+				add_to_variable = { var = wehrmacht_anger value = -6 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_super_heavy
+				}
+				set_technology = { ss_armor_super_heavy = 0 }
+				add_to_variable = { var = SS_anger value = 8 }
+				add_to_variable = { var = wehrmacht_anger value = -8 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_modern
+				}
+				set_technology = { ss_armor_modern = 0 }
+				add_to_variable = { var = SS_anger value = 10 }
+				add_to_variable = { var = wehrmacht_anger value = -10 } #shitty little upstart
+			}
+		}
+	}
+	SS_units_armor_heavy = {
+
+		icon = generic_army_support
+
+		available = {
+			has_idea = heinrich_himmler
+			NOT = {
+				has_political_power < 160
+				command_power < 160
+			}
+		}
+
+		visible = {
+			has_tech = ss_infantry
+			NOT = {
+				has_tech = ss_armor_heavy
+			}
+		}
+		
+		complete_effect = {
+			add_political_power = -160
+			add_command_power = -160
+			If = {
+				limit = {
+					has_tech = ss_mot
+				}
+				set_technology = { ss_mot = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_mech
+				}
+				set_technology = { ss_mech = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_car
+				}
+				set_technology = { ss_car = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_light
+				}
+				set_technology = { ss_armor_light = 0 }
+				add_to_variable = { var = SS_anger value = 2 }
+				add_to_variable = { var = wehrmacht_anger value = -2 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_medium
+				}
+				set_technology = { ss_armor_medium = 0 }
+				add_to_variable = { var = SS_anger value = 4 }
+				add_to_variable = { var = wehrmacht_anger value = -4 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					NOT = {
+						has_tech = ss_armor_heavy
+					}
+				}
+				set_technology = { ss_armor_heavy = 1 }
+				add_to_variable = { var = SS_anger value = 6 }
+				add_to_variable = { var = wehrmacht_anger value = -6 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_super_heavy
+				}
+				set_technology = { ss_armor_super_heavy = 0 }
+				add_to_variable = { var = SS_anger value = 8 }
+				add_to_variable = { var = wehrmacht_anger value = -8 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_modern
+				}
+				set_technology = { ss_armor_modern = 0 }
+				add_to_variable = { var = SS_anger value = 10 }
+				add_to_variable = { var = wehrmacht_anger value = -10 } #shitty little upstart
+			}
+		}
+	}
+	SS_units_armor_super_heavy = {
+
+		icon = generic_army_support
+
+		available = {
+			has_idea = heinrich_himmler
+			NOT = {
+				has_political_power < 180
+				command_power < 180
+			}
+		}
+
+		visible = {
+			has_tech = ss_infantry
+			NOT = {
+				has_tech = ss_armor_super_heavy
+			}
+		}
+		
+		complete_effect = {
+			add_political_power = -180
+			add_command_power = -180
+			If = {
+				limit = {
+					has_tech = ss_mot
+				}
+				set_technology = { ss_mot = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_mech
+				}
+				set_technology = { ss_mech = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_car
+				}
+				set_technology = { ss_car = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_light
+				}
+				set_technology = { ss_armor_light = 0 }
+				add_to_variable = { var = SS_anger value = 2 }
+				add_to_variable = { var = wehrmacht_anger value = -2 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_medium
+				}
+				set_technology = { ss_armor_medium = 0 }
+				add_to_variable = { var = SS_anger value = 4 }
+				add_to_variable = { var = wehrmacht_anger value = -4 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_heavy
+				}
+				set_technology = { ss_armor_heavy = 0 }
+				add_to_variable = { var = SS_anger value = 6 }
+				add_to_variable = { var = wehrmacht_anger value = -6 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					NOT = {
+						has_tech = ss_armor_super_heavy
+					}
+				}
+				set_technology = { ss_armor_super_heavy = 1 }
+				add_to_variable = { var = SS_anger value = 8 }
+				add_to_variable = { var = wehrmacht_anger value = -8 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_modern
+				}
+				set_technology = { ss_armor_modern = 0 }
+				add_to_variable = { var = SS_anger value = 10 }
+				add_to_variable = { var = wehrmacht_anger value = -10 } #shitty little upstart
+			}
+		}
+	}
+	SS_units_armor_modern = {
+
+		icon = generic_army_support
+
+		available = {
+			has_idea = heinrich_himmler
+			NOT = {
+				has_political_power < 200
+				command_power < 200
+			}
+		}
+
+		visible = {
+			has_tech = ss_infantry
+			NOT = {
+				has_tech = ss_armor_modern
+			}
+		}
+		
+		complete_effect = {
+			add_political_power = -200
+			add_command_power = -200
+			If = {
+				limit = {
+					has_tech = ss_mot
+				}
+				set_technology = { ss_mot = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_mech
+				}
+				set_technology = { ss_mech = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_car
+				}
+				set_technology = { ss_car = 0 }
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_light
+				}
+				set_technology = { ss_armor_light = 0 }
+				add_to_variable = { var = SS_anger value = 2 }
+				add_to_variable = { var = wehrmacht_anger value = -2 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_medium
+				}
+				set_technology = { ss_armor_medium = 0 }
+				add_to_variable = { var = SS_anger value = 4 }
+				add_to_variable = { var = wehrmacht_anger value = -4 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_heavy
+				}
+				set_technology = { ss_armor_heavy = 0 }
+				add_to_variable = { var = SS_anger value = 6 }
+				add_to_variable = { var = wehrmacht_anger value = -6 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					has_tech = ss_armor_super_heavy
+				}
+				set_technology = { ss_armor_super_heavy = 0 }
+				add_to_variable = { var = SS_anger value = 8 }
+				add_to_variable = { var = wehrmacht_anger value = -8 } #shitty little upstart
+			}
+			If = {
+				limit = {
+					NOT = {
+						has_tech = ss_armor_modern
+					}
+				}
+				set_technology = { ss_armor_modern = 1 }
+				add_to_variable = { var = SS_anger value = 10 }
+				add_to_variable = { var = wehrmacht_anger value = -10 } #shitty little upstart
+			}
+		}
+	}
 }
+
 wehrmacht_demands = {
 	
 }

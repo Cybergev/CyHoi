@@ -476,3 +476,16 @@ greater_italy_category = {
 		
 	}
 }
+
+form_world_soviet_socialist_republic_category = {
+	
+	priority = 100
+	
+	icon = generic_formable_nations
+
+	picture = GFX_decision_cat_world_soviet_socialist_republic
+	
+	allowed = {
+		original_tag = SOV
+	}
+}

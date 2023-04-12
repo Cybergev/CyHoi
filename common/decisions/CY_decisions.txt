@@ -6109,6 +6109,7 @@ foreign_support = {
 		}
 	}
 }
+
 foreign_influence = {
 	
 	instantiate_collaboration = {
@@ -6127,12 +6128,6 @@ foreign_influence = {
 		
         visible = {
 			has_rule = can_create_collaboration_government
-			NOT = {
-				core_compliance = {
-					occupied_country_tag = FROM
-					value < 100
-				}
-			}
         }
 
 		complete_effect = {

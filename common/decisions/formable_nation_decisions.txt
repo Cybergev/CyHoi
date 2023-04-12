@@ -2172,13 +2172,6 @@ form_european_union_category = {
 					}
 					divide_temp_variable = { v_integration_in_union_cost = FROM.compliance }
 					add_to_temp_variable = { v_integration_in_union_cost = FROM.resistance }
-				}
-				If = {
-					limit = {
-						FROM = {
-							resistance > 0
-						}
-					}
 					divide_temp_variable = { v_integration_in_union_days = FROM.compliance }
 					add_to_temp_variable = { v_integration_in_union_days = FROM.resistance }
 				}
@@ -2404,13 +2397,6 @@ EUR_imperial_fediration_cat = {
 					}
 					divide_temp_variable = { v_integration_in_union_cost = FROM.compliance }
 					add_to_temp_variable = { v_integration_in_union_cost = FROM.resistance }
-				}
-				If = {
-					limit = {
-						FROM = {
-							resistance > 0
-						}
-					}
 					divide_temp_variable = { v_integration_in_union_days = FROM.compliance }
 					add_to_temp_variable = { v_integration_in_union_days = FROM.resistance }
 				}
@@ -4656,96 +4642,56 @@ form_arabia_category = {
 		}
 
 		available = {
-			any_controlled_state = {
-				OR = {
-					is_core_of = ALG
-					is_core_of = EGY
-					is_core_of = IRQ
-					is_core_of = JOR
-					is_core_of = KUW
-					is_core_of = LBA
-					is_core_of = LEB
-					is_core_of = MOR
-					is_core_of = MRT
-					is_core_of = OMA
-					is_core_of = PAL
-					is_core_of = QAT
-					is_core_of = SAU
-					is_core_of = SUD
-					is_core_of = SYR
-					is_core_of = TUN
-					is_core_of = UAE
-					is_core_of = WES
-					is_core_of = YEM
-				}
+			FROM = {
 				NOT = {
-					is_core_of = ROOT
+					core_compliance = {
+						occupied_country_tag = THIS
+						value < 100
+					}
 				}
-				has_active_resistance = no
-				NOT = {
-					compliance < 100
+				all_core_state = {
+					is_controlled_by = ROOT
 				}
 			}
 		}
 
 		visible = {
-			OR = {
-				original_tag = ALG
-				original_tag = EGY
-				original_tag = IRQ
-				original_tag = JOR
-				original_tag = KUW
-				original_tag = LBA
-				original_tag = LEB
-				original_tag = MOR
-				original_tag = MRT
-				original_tag = OMA
-				original_tag = PAL
-				original_tag = QAT
-				original_tag = SAU
-				original_tag = SUD
-				original_tag = SYR
-				original_tag = TUN
-				original_tag = UAE
-				original_tag = WES
-				original_tag = YEM
-			}
 			NOT = { has_global_flag = form_arabia_flag }
-		}
-
-		complete_effect = {
-			every_controlled_state = {
-				limit = {
-					OR = {
-						is_core_of = ALG
-						is_core_of = EGY
-						is_core_of = IRQ
-						is_core_of = JOR
-						is_core_of = KUW
-						is_core_of = LBA
-						is_core_of = LEB
-						is_core_of = MOR
-						is_core_of = MRT
-						is_core_of = OMA
-						is_core_of = PAL
-						is_core_of = QAT
-						is_core_of = SAU
-						is_core_of = SUD
-						is_core_of = SYR
-						is_core_of = TUN
-						is_core_of = UAE
-						is_core_of = WES
-						is_core_of = YEM
-					}
+			FROM = {
+				any_core_state = {
 					NOT = {
 						is_core_of = ROOT
 					}
-					has_active_resistance = no
-					NOT = {
-						compliance < 50
+					is_controlled_by = ROOT
+				}
+			}
+		}
+
+		target_non_existing = yes
+
+		targets = {
+			ALG EGY IRQ JOR KUW LBA LEB MOR MRT OMA PAL QAT SAU SUD SYR TUN UAE WES YEM
+		}
+
+
+		complete_effect = {
+			FROM = {
+				if = {
+					limit = {
+						exists = yes
+					}
+					ROOT = {
+						annex_country = {
+							target = PREV
+						}
 					}
 				}
-				add_core_of = ROOT
+				every_core_state = {
+					add_core_of = ROOT
+				}
+				every_character = {
+					set_nationality = ROOT
+				}
 			}
 			If = {
 				limit = {
@@ -4845,32 +4791,6 @@ form_arabia_category = {
 						}
 					}
 					NOT = { has_global_flag = form_arabia_flag }
-				}
-				every_character = {
-					limit = {
-						OR = {
-							has_nationality = ALG
-							has_nationality = EGY
-							has_nationality = IRQ
-							has_nationality = JOR
-							has_nationality = KUW
-							has_nationality = LBA
-							has_nationality = LEB
-							has_nationality = MOR
-							has_nationality = MRT
-							has_nationality = OMA
-							has_nationality = PAL
-							has_nationality = QAT
-							has_nationality = SAU
-							has_nationality = SUD
-							has_nationality = SYR
-							has_nationality = TUN
-							has_nationality = UAE
-							has_nationality = WES
-							has_nationality = YEM
-						}
-					}
-					set_nationality = ROOT
 				}
 				set_cosmetic_tag = ARA_UNIFIED
 				set_global_flag = form_arabia_flag
@@ -10339,8 +10259,6 @@ form_horn_of_africa_africa_category = {
 	}
 }
 
-
-
 form_panslavic_union_category = {
 
 	form_integrate_slavic = {
@@ -10350,26 +10268,49 @@ form_panslavic_union_category = {
 			is_subject = no
 			FROM = {
 				is_controlled_by = ROOT
-				set_temp_variable = { v_integration_in_panslavic_union_cost = FROM.state_population_k }
-				divide_temp_variable = { v_integration_in_panslavic_union_cost = FROM.compliance }
-				add_to_temp_variable = { v_integration_in_panslavic_union_cost = FROM.resistance }
-				IF = {
+			}
+			set_temp_variable = { v_integration_in_panslavic_union_cost = FROM.state_population_k }
+			set_temp_variable = { v_integration_in_panslavic_union_days = FROM.state_population_k }
+			If = {
+				limit = {
+					FROM = {
+						has_resistance = yes
+					}
+				}
+				If = {
 					limit = {
 						FROM = {
-							is_claimed_by = ROOT
+							compliance > 0
 						}
 					}
-					divide_temp_variable = { v_integration_in_panslavic_union_cost = 2 }
+					divide_temp_variable = { v_integration_in_panslavic_union_cost = FROM.compliance }
+					add_to_temp_variable = { v_integration_in_panslavic_union_cost = FROM.resistance }
+					divide_temp_variable = { v_integration_in_panslavic_union_days = FROM.compliance }
+					add_to_temp_variable = { v_integration_in_panslavic_union_days = FROM.resistance }
 				}
-				IF = {
-					limit = {
-						FROM = {
-							is_core_of = ROOT
-							is_capital = yes
-						}
+			}
+			else = {
+				divide_temp_variable = { v_integration_in_panslavic_union_cost = 100 }
+				divide_temp_variable = { v_integration_in_panslavic_union_days = 100 }
+			}
+			If = {
+				limit = {
+					FROM = {
+						is_claimed_by = EUR
 					}
-					set_temp_variable = { v_integration_in_panslavic_union_cost = 0 }
 				}
+				divide_temp_variable = { v_integration_in_panslavic_union_cost = 2 }
+				divide_temp_variable = { v_integration_in_panslavic_union_days = 2 }
+			}
+			IF = {
+				limit = {
+					FROM = {
+						is_core_of = ROOT
+						is_capital = yes
+					}
+				}
+				set_temp_variable = { v_integration_in_panslavic_union_cost = 0 }
+				set_temp_variable = { v_integration_in_panslavic_union_days = 0 }
 			}
 		}
 
@@ -10550,12 +10491,26 @@ form_panslavic_union_category = {
 			}
 		}
 		
+		cancel_trigger = {
+			FROM = { 
+				is_core_of = ROOT
+				NOT = { is_owned_and_controlled_by = ROOT }
+			}
+		}
+
+		cancel_effect = {
+			FROM = {
+				add_claim_by = ROOT
+			}
+		}
+
 		state_target = yes
 		on_map_mode = map_and_decisions_view
 
 		cost = v_integration_in_panslavic_union_cost
+		days_remove = v_integration_in_panslavic_union_days
 
-		complete_effect = {
+		remove_effect = {
 			IF = {
 				limit = {
 					FROM = {
@@ -10625,4 +10580,334 @@ form_panslavic_union_category = {
 
 }
 
+form_world_soviet_socialist_republic_category = {
+	
+	WSSR_integration_republic = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			AND = {
+				original_tag = SOV
+			}
+		}
+
+		available = {
+			FROM = {
+				has_autonomy_state = autonomy_collaboration_government
+				all_core_state = {
+					is_owned_and_controlled_by = FROM
+				}
+			}
+			set_temp_variable = { WSSR_cost = 0 }
+			
+			set_temp_variable = { temp_target_stability = FROM.stability }
+			set_temp_variable = { temp_target_tech = FROM.num_researched_technologies }
+			set_temp_variable = { temp_target_research_slots = FROM.amount_research_slots }
+			set_temp_variable = { temp_target_research_speed = FROM.modifier@research_speed_factor }
+			set_temp_variable = { temp_target_nukes = FROM.num_of_nukes }
+			set_temp_variable = { temp_target_army = FROM.num_battalions }
+			set_temp_variable = { temp_target_manpower = FROM.max_manpower_k }
+			set_temp_variable = { temp_target_states = FROM.num_core_states }
+			set_temp_variable = { temp_target_factories = FROM.num_of_owned_factories }
+			set_temp_variable = { temp_target_resources = 0 }
+			add_to_temp_variable = { temp_target_resources = FROM.resource_produced@aluminium }
+			add_to_temp_variable = { temp_target_resources = FROM.resource_produced@chromium }
+			add_to_temp_variable = { temp_target_resources = FROM.resource_produced@oil }
+			add_to_temp_variable = { temp_target_resources = FROM.resource_produced@rubber }
+			add_to_temp_variable = { temp_target_resources = FROM.resource_produced@steel }
+			add_to_temp_variable = { temp_target_resources = FROM.resource_produced@tungsten }
+
+
+			set_temp_variable = { temp_sov_potetial = 0 }
+			set_temp_variable = { temp_sov_stability = ROOT.stability }
+			set_temp_variable = { temp_sov_tech = ROOT.num_researched_technologies }
+			set_temp_variable = { temp_sov_research_slots = ROOT.amount_research_slots }
+			set_temp_variable = { temp_sov_research_speed = ROOT.modifier@research_speed_factor }
+			set_temp_variable = { temp_sov_nukes = ROOT.num_of_nukes }
+			set_temp_variable = { temp_sov_army = ROOT.num_battalions }
+			set_temp_variable = { temp_sov_manpower = ROOT.max_manpower_k }
+			set_temp_variable = { temp_sov_states = ROOT.num_core_states }
+			set_temp_variable = { temp_sov_factories = ROOT.num_of_owned_factories }
+			set_temp_variable = { temp_sov_resources = 0 }
+			add_to_temp_variable = { temp_sov_resources = ROOT.resource_produced@aluminium }
+			add_to_temp_variable = { temp_sov_resources = ROOT.resource_produced@chromium }
+			add_to_temp_variable = { temp_sov_resources = ROOT.resource_produced@oil }
+			add_to_temp_variable = { temp_sov_resources = ROOT.resource_produced@rubber }
+			add_to_temp_variable = { temp_sov_resources = ROOT.resource_produced@steel }
+			add_to_temp_variable = { temp_sov_resources = ROOT.resource_produced@tungsten }
+
+
+			if = {
+				limit = {
+					any_home_area_neighbor_country = {
+						original_tag = FROM
+					}
+				}
+				add_to_temp_variable = { temp_sov_potetial = 10 }
+			}
+
+			if = {
+				limit = {
+					FROM = {
+						has_opinion_modifier = same_ruling_party
+					}
+				}
+				add_to_temp_variable = { temp_sov_potetial = 10 }
+			}
+
+			if = {
+				limit = {
+					check_variable = {
+						temp_sov_stability > temp_target_stability
+					}
+				}
+				add_to_temp_variable = { temp_sov_potetial = 10 }
+			}
+
+			if = {
+				limit = {
+					check_variable = {
+						temp_sov_tech > temp_target_tech
+					}
+				}
+				add_to_temp_variable = { temp_sov_potetial = 10 }
+			}
+
+			if = {
+				limit = {
+					check_variable = {
+						temp_sov_research_slots > temp_target_research_slots
+					}
+				}
+				add_to_temp_variable = { temp_sov_potetial = 10 }
+			}
+
+			if = {
+				limit = {
+					check_variable = {
+						temp_sov_research_speed > temp_target_research_speed
+					}
+				}
+				add_to_temp_variable = { temp_sov_potetial = 10 }
+			}
+
+			if = {
+				limit = {
+					check_variable = {
+						temp_target_nukes > temp_sov_nukes
+					}
+				}
+				add_to_temp_variable = { temp_sov_potetial = 10 }
+			}
+
+			if = {
+				limit = {
+					check_variable = {
+						temp_sov_army > temp_target_army
+					}
+				}
+				add_to_temp_variable = { temp_sov_potetial = 10 }
+			}
+
+			if = {
+				limit = {
+					check_variable = {
+						temp_sov_manpower > temp_target_manpower
+					}
+				}
+				add_to_temp_variable = { temp_sov_potetial = 10 }
+			}
+
+			if = {
+				limit = {
+					check_variable = {
+						temp_sov_states > temp_target_states
+					}
+				}
+				add_to_temp_variable = { temp_sov_potetial = 10 }
+			}
+
+			if = {
+				limit = {
+					check_variable = {
+						temp_sov_factories > temp_target_factories
+					}
+				}
+				add_to_temp_variable = { temp_sov_potetial = 10 }
+			}
+
+			if = {
+				limit = {
+					check_variable = {
+						temp_sov_resources > temp_target_resources
+					}
+				}
+				add_to_temp_variable = { temp_sov_potetial = 10 }
+			}
+
+			add_to_temp_variable = { WSSR_cost = temp_target_manpower }
+			divide_temp_variable = { WSSR_cost = temp_sov_potetial }
+			
+			if = {
+				limit = {
+					check_variable = {
+						WSSR_cost < 300
+					}
+				}
+				set_temp_variable = { WSSR_cost = 300 }
+			}
+
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = SOV_father_of_nations
+				has_completed_focus = SOV_the_supreme_soviet
+				is_debug = yes
+			}
+		}
+
+		target_array = subjects
+
+		target_trigger = {
+			FROM = {
+				has_autonomy_state = autonomy_collaboration_government
+			}
+		}
+
+		cost = WSSR_cost
+
+		complete_effect = {
+			FROM = {
+				ROOT = {
+					annex_country = {
+						target = FROM
+					}
+				}
+				every_character = {
+					set_nationality = ROOT
+				}
+				every_core_state = {
+					add_core_of = ROOT
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	
+	WSSR_integration_state = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		available = {
+			FROM = { 
+				NOT = { is_core_of = ROOT }
+				is_owned_and_controlled_by = ROOT
+			}
+			set_temp_variable = { v_integration_state_cost = FROM.state_population_k }
+			set_temp_variable = { v_integration_state_days = FROM.state_population_k }
+			If = {
+				limit = {
+					FROM = {
+						has_resistance = yes
+					}
+				}
+				If = {
+					limit = {
+						FROM = {
+							compliance > 0
+						}
+					}
+					divide_temp_variable = { v_integration_state_cost = FROM.compliance }
+					add_to_temp_variable = { v_integration_state_cost = FROM.resistance }
+					divide_temp_variable = { v_integration_state_days = FROM.compliance }
+					add_to_temp_variable = { v_integration_state_days = FROM.resistance }
+				}
+			}
+			else = {
+				divide_temp_variable = { v_integration_state_cost = 100 }
+				divide_temp_variable = { v_integration_state_days = 100 }
+			}
+			If = {
+				limit = {
+					FROM = {
+						is_claimed_by = ROOT
+					}
+				}
+				divide_temp_variable = { v_integration_state_cost = 2 }
+				divide_temp_variable = { v_integration_state_days = 2 }
+			}
+
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = SOV_father_of_nations
+				has_completed_focus = SOV_the_supreme_soviet
+				is_debug = yes
+			}
+		}
+
+		target_trigger = {
+			FROM = {
+				NOT = { is_core_of = ROOT }
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+		
+		cancel_trigger = {
+			FROM = { 
+				is_core_of = ROOT
+				NOT = { is_owned_and_controlled_by = ROOT }
+			}
+		}
+
+		cancel_effect = {
+			FROM = {
+				add_claim_by = ROOT
+			}
+		}
+
+		state_target = yes
+		on_map_mode = map_only
+
+		days_remove = v_statehood_days
+		cost = v_statehood_cost
+
+		remove_effect = {
+			FROM = { 
+				add_core_of = ROOT 
+				If = {
+					limit = { is_claimed_by = ROOT }
+					remove_claim_by = ROOT
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 25
+				FROM = {
+					compliance > 99
+					is_claimed_by = ROOT
+				}
+			}
+			modifier = {
+				add = 25
+				FROM = {
+					has_resistance = no
+				}
+			}
+		}
+	}
+
+}
 

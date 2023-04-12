@@ -1,0 +1,67 @@
+spriteTypes = {
+
+	### decisions
+
+	spriteType = {
+		name = "GFX_decision_Emigrate_civ_industry"
+		texturefile = "gfx/interface/decisions/decision_Emigrate_civ_industry.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_decision_Emigrate_mil_industry"
+		texturefile = "gfx/interface/decisions/decision_Emigrate_mil_industry.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_decision_Emigrate_doc_industry"
+		texturefile = "gfx/interface/decisions/decision_Emigrate_doc_industry.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_decision_Emigrate_ref_industry"
+		texturefile = "gfx/interface/decisions/decision_Emigrate_ref_industry.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_decision_Immigrate_civ_industry"
+		texturefile = "gfx/interface/decisions/decision_Immigrate_civ_industry.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_decision_Immigrate_mil_industry"
+		texturefile = "gfx/interface/decisions/decision_Immigrate_mil_industry.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_decision_Immigrate_doc_industry"
+		texturefile = "gfx/interface/decisions/decision_Immigrate_doc_industry.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_decision_Immigrate_ref_industry"
+		texturefile = "gfx/interface/decisions/decision_Immigrate_ref_industry.dds"
+	}
+
+	### categories
+	
+	spriteType = {
+		name = "GFX_decision_cat_ENG_imperial_fediration"
+		texturefile = "gfx/interface/decisions/decision_cat_ENG_imperial_fediration.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_decision_cat_ENG_imperial_fediration_india"
+		texturefile = "gfx/interface/decisions/decision_cat_ENG_imperial_fediration_india.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_decision_cat_EUR_imperial_fediration"
+		texturefile = "gfx/interface/decisions/decision_cat_EUR_imperial_fediration.dds"
+	}
+
+	spriteType = {
+		name = "GFX_decision_cat_form_world_soviet_socialist_republic_category"
+		texturefile = "gfx/interface/decisions/decision_cat_form_world_soviet_socialist_republic_category.dds"
+	}
+
+}

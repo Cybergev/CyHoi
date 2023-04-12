@@ -465,13 +465,6 @@ USA_congress = {
 					}
 					divide_temp_variable = { v_statehood_cost = FROM.compliance }
 					add_to_temp_variable = { v_statehood_cost = FROM.resistance }
-				}
-				If = {
-					limit = {
-						FROM = {
-							resistance > 0
-						}
-					}
 					divide_temp_variable = { v_statehood_days = FROM.compliance }
 					add_to_temp_variable = { v_statehood_days = FROM.resistance }
 				}

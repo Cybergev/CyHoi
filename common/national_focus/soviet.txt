@@ -8415,6 +8415,7 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_MANPOWER FOCUS_FILTER_STABILITY}
 
 		completion_reward = {
+			unlock_decision_category_tooltip = world_soviet_socialist_republic_category
 			swap_ruler_traits = {
 				remove = stalin_heart_of_steel
 				add = stalin_father_of_nations
@@ -11533,6 +11534,7 @@ focus_tree = {
 				}
 				promote_leader = yes 
 			}
+			unlock_decision_category_tooltip = world_soviet_socialist_republic_category
 			hidden_effect = {
 			remove_dynamic_modifier = { modifier = SOV_factionalism_modifier }
 			add_dynamic_modifier = { modifier = SOV_decentralization_modifier }
@@ -15118,11 +15120,7 @@ ai_will_do = {
 		cost = 5
 
 		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 1
-				is_ally_with = CHI
-			}	
+			factor = 0
 		}
 		
 		mutually_exclusive = { focus = SOV_two_red_flags focus = SOV_support_the_kuomintang }
@@ -15244,11 +15242,7 @@ ai_will_do = {
 		cost = 5
 
 		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 2
-				is_ally_with = CHI
-			}	
+			factor = 10
 		}
 		
 		mutually_exclusive = { focus = SOV_the_gobi_gambit focus = SOV_support_the_kuomintang }
@@ -15304,10 +15298,6 @@ ai_will_do = {
 
 		ai_will_do = {
 			factor = 0
-			modifier = {
-				factor = 1
-				is_ally_with = CHI
-			}	
 		}
 		
 		mutually_exclusive = { focus = SOV_the_gobi_gambit focus = SOV_two_red_flags }

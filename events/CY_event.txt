@@ -2232,7 +2232,49 @@ country_event = {
 	
 	option = { # Accept
 		name = soviet.14.a
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				strength_ratio = {
+				    tag = FROM
+				    ratio > 0.8
+				}
+			}
+			modifier = {
+				factor = 1
+				has_opinion = {
+				    target = FROM
+				    value > 50
+				}
+			}
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+				    target = FROM
+				    value > 75
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+				    target = FROM
+				    value > 95
+				}
+			}
+			modifier = {
+				factor = 2
+				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 5
+				ROOT = { has_government = FROM }
+			}
+			modifier = {
+				factor = 5
+				is_subject_of = FROM
+			}
+		}
 		SOV = {
 			country_event = { id = soviet.16 }
 		}
@@ -2245,6 +2287,73 @@ country_event = {
 	}
 	option = { # Refuse
 		name = soviet.14.b
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				is_subject_of = FROM
+			}
+			modifier = {
+				factor = 0.2
+				any_country = {
+					is_major = yes
+					OR = {
+						has_wargoal_against = ROOT
+						has_war_with = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				surrender_progress > 0
+			}
+			modifier = {
+				factor = 0.8
+				strength_ratio = {
+				    tag = FROM
+				    ratio < 0.05
+				}
+			}
+			modifier = {
+				factor = 0.8
+				has_war = yes
+			}
+			modifier = {
+				factor = 1.2
+				has_opinion = {
+				    target = FROM
+				    value < 0
+				}
+			}
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+				    target = FROM
+				    value < -50
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+				    target = FROM
+				    value < -75
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+				    target = FROM
+				    value < -90
+				}
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = {
+				    tag = FROM
+				    ratio > 0.5
+				}
+			}
+		}
 		SOV = {
 			country_event = { id = soviet.15 }
 		}
@@ -2262,13 +2371,15 @@ country_event = {
 	option = {
 		name = soviet.15.a
 		FROM = {
-			limit = {
-				any_core_state ={
-					is_core_of = ROOT
+			IF = {
+				limit = {
+					any_core_state ={
+						is_core_of = ROOT
+					}
 				}
-			}
-			every_core_state = {
-				remove_core_of = ROOT
+				every_core_state = {
+					remove_core_of = ROOT
+				}
 			}
 		}
 	}
@@ -2287,6 +2398,9 @@ country_event = {
 		FROM = {
 			every_core_state = {
 				add_core_of = ROOT
+			}
+			every_character = {
+				set_nationality = ROOT
 			}
 		}
 		annex_country = { 
@@ -2572,7 +2686,7 @@ country_event = {
 	option = {
 		name = NSB_soviet_fascist_tsarist.1.b
 		ai_chance = {
-			base = 90
+			base = 100
 			modifier = {
 				factor = 0
 				is_subject_of = FROM
