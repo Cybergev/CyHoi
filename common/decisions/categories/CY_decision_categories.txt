@@ -1,0 +1,177 @@
+
+##################################################FORMABLE
+
+form_panslavic_union_category = {
+	priority = 2
+	icon = generic_formable_nations
+
+	allowed = {
+		has_dlc = "No Step Back"
+	}
+
+}
+
+form_siberia_category = {
+
+	priority = 2
+	
+	icon = generic_formable_nations
+
+	#picture = GFX_decision_cat_picture_form_turan
+	
+	allowed = {
+		has_dlc = "No Step Back"
+	}
+}
+
+form_take_back_siberia_category = {
+
+	priority = 2
+	
+	icon = generic_formable_nations
+
+	#picture = GFX_decision_cat_picture_form_turan
+	
+	allowed = {
+		has_dlc = "No Step Back"
+	}
+}
+
+##################################################FORMABLE
+
+##################################################GENRIC
+
+Flexible_conscription_policy = {
+	priority = 90
+	icon = generic_economy
+}
+
+flexible_trade_policy_category = {
+	icon = generic_economy
+}
+
+flexible_economy_policy_category = {
+	icon = generic_economy
+}
+
+##################################################GENRIC
+
+##################################################NATIONAL
+
+##########CHI
+
+CHI_border_clashes = {
+	priority = 90
+	picture = generic_border_conflicts
+	icon = border_conflicts
+	allowed = {
+		OR = {
+			is_literally_china = yes
+			original_tag = TAN
+			original_tag = MON
+			original_tag = MEN
+		}
+	}	
+}
+
+##########CHI
+
+##########ENG
+
+ENG_imperial_fediration_cat = {
+	
+	priority = 1000
+
+	icon = generic_formable_nations
+
+	picture = GFX_decision_cat_ENG_imperial_fediration
+
+	allowed = {
+		has_cosmetic_tag = ENG_imperial_federation_unified
+	}
+
+	visible_when_empty = YES
+}
+
+ENG_imperial_fediration_india_cat = {
+	
+	priority = 1000
+
+	icon = generic_formable_nations
+
+	picture = GFX_decision_cat_ENG_imperial_fediration_india
+
+	allowed = {
+		has_cosmetic_tag = ENG_imperial_federation_india_unified
+	}
+
+	visible_when_empty = YES
+}
+
+##########ENG
+
+##########EUR
+
+EUR_imperial_fediration_cat = {
+
+	priority = 1000
+	
+	icon = generic_formable_nations
+
+	picture = GFX_decision_cat_EUR_imperial_fediration
+
+	allowed = {
+		has_dlc = "Waking the Tiger"
+		has_cosmetic_tag = EUR_imperial_federation_unified
+	}
+	visible_when_empty = YES
+}
+
+##########EUR
+
+##########SOV
+
+SOV_gosproyektstroy_decision_category = {
+	priority = 29
+
+	icon = generic_industry
+
+	picture = SOV_civil_puppet_interaction 
+
+	allowed = {
+		original_tag = SOV
+	}
+
+	visible = {
+		has_completed_focus = SOV_foreign_experts
+	}
+}
+
+SOV_world_soviet_socialist_republic_category = {
+	
+	priority = 10000
+	
+	icon = generic_formable_nations
+
+	picture = GFX_decision_cat_SOV_world_soviet_socialist_republic_category
+	
+	allowed = {
+		original_tag = SOV
+	}
+}
+
+#BROKEN
+SOV_panslavic_nationalism = {
+	priority = 75
+
+	allowed = {
+		original_tag = SOV
+	}
+
+	visible = {
+		always = no
+	}
+}
+#BROKEN
+
+##########SOV

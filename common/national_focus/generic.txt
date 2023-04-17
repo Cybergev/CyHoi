@@ -2302,7 +2302,6 @@ focus_tree = {
 				random_character = {
 					limit = {
 						is_country_leader = YES
-						is_unit_leader = NO
 					}
 					add_field_marshal_role = {
 						skill = 1

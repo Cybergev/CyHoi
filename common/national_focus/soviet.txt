@@ -1981,7 +1981,7 @@ focus_tree = {
 					}
 				}
 				add_to_variable = {
-					SOV_defense_industrial_capacity_factory = SOV_fyp_industrial_capacity_factory
+					SOV_defense_industry_industrial_capacity_factory = SOV_fyp_industrial_capacity_factory
 					tooltip = industrial_capacity_factory_tt
 				}
 			}
@@ -6514,10 +6514,6 @@ focus_tree = {
 		relative_position_id = SOV_desperate_measures
 		cost = 10
 
-		available = {
-			has_idea = SOV_desperate_measures_ns
-		}
-		
 		search_filters = {FOCUS_FILTER_ARMY_XP}
 
 		completion_reward = {
@@ -6535,7 +6531,6 @@ focus_tree = {
 				}
 				remove_unit_leader_trait =  trait_SOV_cowed_by_stalin_navy
 			}
-			remove_ideas = SOV_desperate_measures_ns
 
 			IF = {
 				limit = {
@@ -6622,14 +6617,15 @@ focus_tree = {
 
 		available = {
 			has_country_flag = SOV_great_patriotic_war_flag
-			surrender_progress > 0.2
+			NOT = {
+				surrender_progress < 0.2
+			}
 		}
 		
 		search_filters = {}
 
 		completion_reward = {
-			add_ideas = SOV_desperate_measures_ns
-
+			unlock_decision_tooltip = SOV_desperate_defense
 			custom_effect_tooltip = SOV_desperate_measures_decisions_unlocked_tt
 		}
 	}
@@ -6950,7 +6946,7 @@ focus_tree = {
 
 		available = {
 			has_country_flag = SOV_great_patriotic_war_flag
-			surrender_progress < 0.2
+			surrender_progress = 0
 		}
 		
 		search_filters = {FOCUS_FILTER_ARMY_XP}
@@ -6986,8 +6982,8 @@ focus_tree = {
 		}
 
 		available = {
-			has_war = yes
-			surrender_progress < 0.05
+			has_country_flag = SOV_great_patriotic_war_flag
+			surrender_progress = 0
 		}
 		
 		search_filters = {FOCUS_FILTER_ARMY_XP}
@@ -8415,7 +8411,9 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_MANPOWER FOCUS_FILTER_STABILITY}
 
 		completion_reward = {
-			unlock_decision_category_tooltip = world_soviet_socialist_republic_category
+			unlock_decision_category_tooltip = SOV_world_soviet_socialist_republic_category
+			unlock_decision_tooltip = WSSR_integration_republic
+			unlock_decision_tooltip = WSSR_integration_state
 			swap_ruler_traits = {
 				remove = stalin_heart_of_steel
 				add = stalin_father_of_nations
@@ -11534,7 +11532,9 @@ focus_tree = {
 				}
 				promote_leader = yes 
 			}
-			unlock_decision_category_tooltip = world_soviet_socialist_republic_category
+			unlock_decision_category_tooltip = SOV_world_soviet_socialist_republic_category
+			unlock_decision_tooltip = WSSR_integration_republic
+			unlock_decision_tooltip = WSSR_integration_state
 			hidden_effect = {
 			remove_dynamic_modifier = { modifier = SOV_factionalism_modifier }
 			add_dynamic_modifier = { modifier = SOV_decentralization_modifier }

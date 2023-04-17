@@ -10580,7 +10580,7 @@ form_panslavic_union_category = {
 
 }
 
-form_world_soviet_socialist_republic_category = {
+SOV_world_soviet_socialist_republic_category = {
 	
 	WSSR_integration_republic = {
 
@@ -10761,6 +10761,7 @@ form_world_soviet_socialist_republic_category = {
 		}
 
 		visible = {
+			has_government = communism
 			OR = {
 				has_completed_focus = SOV_father_of_nations
 				has_completed_focus = SOV_the_supreme_soviet
@@ -10786,6 +10787,13 @@ form_world_soviet_socialist_republic_category = {
 					}
 				}
 				every_character = {
+					limit = {
+						OR = {
+							has_trait = peasant_sympathiser
+							has_trait = JAP_communist_sympathizer
+							has_ideology_group = communism
+						}
+					}
 					set_nationality = ROOT
 				}
 				every_core_state = {
@@ -10848,6 +10856,7 @@ form_world_soviet_socialist_republic_category = {
 		}
 
 		visible = {
+			has_government = communism
 			OR = {
 				has_completed_focus = SOV_father_of_nations
 				has_completed_focus = SOV_the_supreme_soviet
@@ -10876,10 +10885,10 @@ form_world_soviet_socialist_republic_category = {
 		}
 
 		state_target = yes
-		on_map_mode = map_only
+		on_map_mode = map_and_decisions_view
 
-		days_remove = v_statehood_days
-		cost = v_statehood_cost
+		cost = v_integration_state_cost
+		days_remove = v_integration_state_days
 
 		remove_effect = {
 			FROM = { 

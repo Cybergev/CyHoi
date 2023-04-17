@@ -15,7 +15,8 @@ technologies = {
 		}
 		
 		army_speed_factor = 0.10
-		org_loss_when_moving = -0.1
+		org_loss_when_moving = -0.10
+		planning_speed = 0.10
 		enable_tactic = tactic_unexpected_thrust
 
 		doctrine = yes	
@@ -694,6 +695,7 @@ technologies = {
 			leads_to_tech = modern_blitzkrieg 
 			research_cost_coeff = 1
 		}
+		planning_speed = 0.10
 		initiative_factor = 0.10
 		coordination_bonus = 0.10
 		enable_tactic = tactic_backhand_blow
@@ -738,6 +740,7 @@ technologies = {
 			max_organisation = 05
 			maximum_speed = 0.05
 		}
+		planning_speed = 0.05
 		doctrine = yes	
 		research_cost = 4.5
 		

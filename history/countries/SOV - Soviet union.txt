@@ -745,6 +745,7 @@ add_ideas = {
 	SOV_politicized_military
 
 	SOV_genrikh_yagoda #NKVD Chief (political advisor)
+	soviet_economic
 }
 
 1939.1.1 = {
@@ -760,6 +761,7 @@ add_ideas = {
 		SOV_tula_arms_plant
 		#laws
 		extensive_conscription
+		soviet_economic
 	}
 
 

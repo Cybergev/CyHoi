@@ -60,8 +60,8 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = "GFX_decision_cat_form_world_soviet_socialist_republic_category"
-		texturefile = "gfx/interface/decisions/decision_cat_form_world_soviet_socialist_republic_category.dds"
+		name = "GFX_decision_cat_SOV_world_soviet_socialist_republic_category"
+		texturefile = "gfx/interface/decisions/decision_cat_SOV_world_soviet_socialist_republic_category.dds"
 	}
 
 }

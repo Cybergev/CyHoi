@@ -400,6 +400,10 @@ leader_traits = {
 			}
 		}
 		
+		modifier = {
+			experience_gain_infantry_combat_factor = 0.5
+		}
+
 		trait_xp_factor = {
 			infantry_leader = 1     #+100%
 		}
@@ -1856,7 +1860,7 @@ leader_traits = {
 		cost = 500
 		modifier = {
 			cas_damage_reduction = 0.5
-			air_superiority_bonus_in_combat = -0.5
+			enemy_army_bonus_air_superiority_factor = -0.5
 		}
 		
 		ai_will_do = {

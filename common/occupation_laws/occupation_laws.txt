@@ -82,16 +82,13 @@ autonomous_occupation = {
 	sound_effect = "Martial_Law_Interface_Autonomous_Occupation_Unique_DEM"
 
 	visible = {
-		OR = {
-			has_government = democratic
-			has_government = neutrality
-		}
+		has_government = neutrality
 	}
 
 	state_modifier = {
-		resistance_decay 				= 0.30
-		resistance_damage_to_garrison	= -0.30
-		compliance_gain 				= 0.30
+		resistance_decay 				= 0.20
+		resistance_damage_to_garrison	= -0.20
+		compliance_gain 				= 0.20
 	}
 
 	ai_will_do = {
@@ -112,16 +109,13 @@ foreign_civilian_oversight = {
 			has_government = communism
 		}
 		NOT = {
-			has_government = democratic
-		}
-		NOT = {
 			has_government = neutrality
 		}
 	}
 	state_modifier = {
-		resistance_decay 				= 0.20
-		resistance_damage_to_garrison	= -0.20
-		compliance_gain 				= 0.20
+		resistance_decay 				= 0.10
+		resistance_damage_to_garrison	= -0.10
+		compliance_gain 				= 0.10
 	}
 	starting_law = yes
 
@@ -143,9 +137,9 @@ liberate_workers_occupation = {
 	}
 
 	state_modifier = {
-		resistance_decay 				= 0.20
-		resistance_damage_to_garrison	= -0.20
-		compliance_gain 				= 0.20
+		resistance_decay 				= 0.10
+		resistance_damage_to_garrison	= -0.10
+		compliance_gain 				= 0.10
 	}
 
 	ai_will_do = {

@@ -101,6 +101,32 @@ ideas = {
 				}
 			}
 
+			remove_trigger = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = Flexible_economy_policy
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier_alt
+					}
+				}
+			}
+
 			cost = 0
 			removal_cost = -1
 
@@ -206,6 +232,32 @@ ideas = {
 						has_defensive_war = no
 					}
 					USA_congress_large_opposition = yes
+				}
+			}
+
+			remove_trigger = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = Flexible_economy_policy
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier_alt
+					}
 				}
 			}
 
@@ -321,6 +373,32 @@ ideas = {
 							has_active_mission = TUR_etatism_crisis_3
 							has_active_mission = TUR_etatism_crisis_4
 						}
+					}
+				}
+			}
+
+			remove_trigger = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = Flexible_economy_policy
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier_alt
 					}
 				}
 			}
@@ -451,6 +529,32 @@ ideas = {
 							has_active_mission = TUR_etatism_crisis_2
 							has_active_mission = TUR_etatism_crisis_4
 						}
+					}
+				}
+			}
+
+			remove_trigger = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = Flexible_economy_policy
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier_alt
 					}
 				}
 			}
@@ -626,6 +730,33 @@ ideas = {
 					USA_congress_large_opposition = yes
 				}
 			}
+
+			remove_trigger = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = Flexible_economy_policy
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_second_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_third_five_year_plan_dynamic_modifier_alt
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier
+					}
+					has_dynamic_modifier = {
+						modifier = SOV_fourth_five_year_plan_dynamic_modifier_alt
+					}
+				}
+			}
+
 			ai_will_do = {
    				factor = 1
 
@@ -764,38 +895,6 @@ ideas = {
 			cancel_if_invalid = no
 		}
 		
-		SPR_collectivized_society = {
-
-			picture = SPR_collectivized_society		
-			
-			allowed = {
-				always = no
-			}
-			removal_cost = -1
-		
-			modifier = {
-				resistance_target = -0.2
-				consumer_goods_factor = 0.15
-				production_speed_industrial_complex_factor = 0.15
-				production_speed_arms_factory_factor = 0.3
-				conversion_cost_civ_to_mil_factor= -0.3
-				conversion_cost_mil_to_civ_factor = -0.3
-				global_building_slots_factor = 0.1
-				industrial_capacity_factory = 0.7
-				industrial_capacity_dockyard = 0.7
-				research_speed_factor = -0.1
-				production_factory_efficiency_gain_factor = -0.2
-				production_factory_max_efficiency_factor = -0.2
-				line_change_production_efficiency_factor = 0.1
-			}
-			
-			allowed_to_remove = {
-				always = no
-			}
-			
-			cancel_if_invalid = no
-		}
-		
 	}
 
 	trade_laws = {
@@ -881,7 +980,7 @@ ideas = {
 				}
 			}
 
-			cancel = {
+			remove_trigger = {
 				has_dynamic_modifier = {
 					modifier = Flexible_trade_policy
 				}
@@ -958,7 +1057,7 @@ ideas = {
 				}
 			}
 
-			cancel = {
+			remove_trigger = {
 				has_dynamic_modifier = {
 					modifier = Flexible_trade_policy
 				}
@@ -1056,7 +1155,7 @@ ideas = {
 				}
 			}
 
-			cancel = {
+			remove_trigger = {
 				has_dynamic_modifier = {
 					modifier = Flexible_trade_policy
 				}
@@ -1140,7 +1239,7 @@ ideas = {
 				}
 			}
 
-			cancel = {
+			remove_trigger = {
 				has_dynamic_modifier = {
 					modifier = Flexible_trade_policy
 				}

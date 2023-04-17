@@ -1072,6 +1072,24 @@ Flexible_mobilization_policy = {
 	
 }
 
+Flexible_conscription_policy = {
+	enable = { always = yes }
+	icon = GFX_idea_volunteer_only
+	
+	conscription = Flexible_conscription_policy_conscription
+	conscription_factor = Flexible_conscription_policy_conscription_factor
+	consumer_goods_factor = Flexible_conscription_policy_consumer_goods_factor
+	production_speed_buildings_factor = Flexible_conscription_policy_production_speed_buildings_factor
+	industrial_capacity_factory = Flexible_conscription_policy_industrial_capacity_factory
+	industrial_capacity_dockyard = Flexible_conscription_policy_industrial_capacity_dockyard
+	army_org_factor = Flexible_conscription_policy_army_org_factor
+	army_org_regain = Flexible_conscription_policy_army_org_regain
+	org_loss_at_low_org_factor = Flexible_conscription_policy_org_loss_at_low_org_factor
+	org_loss_when_moving = Flexible_conscription_policy_org_loss_when_moving
+	training_time_factor = Flexible_conscription_policy_training_time_factor
+	minimum_training_level = Flexible_conscription_policy_minimum_training_level
+}
+
 Flexible_trade_policy = {
 	enable = { always = yes }
 	icon = GFX_idea_free_trade
