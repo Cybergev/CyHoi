@@ -536,8 +536,8 @@ SOV_soviet_imports = { #STATE MODIFIER
 }
 
 ####
-#### SOVIET NATIONAL SPIRITS ####
-####
+#### SOVIET NATIONAL SPIRITS #### 
+#### SOV_fyp_
 SOV_second_five_year_plan_dynamic_modifier = { #NATIONAL SPIRIT
 	enable = { always = yes }
 
@@ -556,6 +556,7 @@ SOV_second_five_year_plan_dynamic_modifier = { #NATIONAL SPIRIT
 	conversion_cost_mil_to_civ_factor = SOV_fyp_conversion_cost_mil_to_civ_factor
 	industrial_capacity_factory = SOV_fyp_industrial_capacity_factory 
 	industrial_capacity_dockyard = SOV_fyp_industrial_capacity_dockyard 
+	fuel_gain_factor = SOV_fyp_fuel_gain_factor
 	industrial_concern_cost_factor = SOV_fyp_industrial_concern_cost_factor
 	industry_repair_factor = SOV_fyp_industry_repair_factor  
 }
@@ -578,6 +579,7 @@ SOV_second_five_year_plan_dynamic_modifier_alt = { #NATIONAL SPIRIT
 	conversion_cost_mil_to_civ_factor = SOV_fyp_conversion_cost_mil_to_civ_factor
 	industrial_capacity_factory = SOV_fyp_industrial_capacity_factory 
 	industrial_capacity_dockyard = SOV_fyp_industrial_capacity_dockyard 
+	fuel_gain_factor = SOV_fyp_fuel_gain_factor
 	industrial_concern_cost_factor = SOV_fyp_industrial_concern_cost_factor
 	industry_repair_factor = SOV_fyp_industry_repair_factor  
 }
@@ -600,6 +602,7 @@ SOV_third_five_year_plan_dynamic_modifier = { #NATIONAL SPIRIT - Civilian
 	conversion_cost_mil_to_civ_factor = SOV_fyp_conversion_cost_mil_to_civ_factor
 	industrial_capacity_factory = SOV_fyp_industrial_capacity_factory 
 	industrial_capacity_dockyard = SOV_fyp_industrial_capacity_dockyard 
+	fuel_gain_factor = SOV_fyp_fuel_gain_factor
 	industrial_concern_cost_factor = SOV_fyp_industrial_concern_cost_factor
 	industry_repair_factor = SOV_fyp_industry_repair_factor  
 }
@@ -622,6 +625,7 @@ SOV_third_five_year_plan_dynamic_modifier_alt = { #NATIONAL SPIRIT - Civilian
 	conversion_cost_mil_to_civ_factor = SOV_fyp_conversion_cost_mil_to_civ_factor
 	industrial_capacity_factory = SOV_fyp_industrial_capacity_factory 
 	industrial_capacity_dockyard = SOV_fyp_industrial_capacity_dockyard 
+	fuel_gain_factor = SOV_fyp_fuel_gain_factor
 	industrial_concern_cost_factor = SOV_fyp_industrial_concern_cost_factor
 	industry_repair_factor = SOV_fyp_industry_repair_factor  
 }
@@ -644,6 +648,7 @@ SOV_fourth_five_year_plan_dynamic_modifier = { #NATIONAL SPIRIT
 	conversion_cost_mil_to_civ_factor = SOV_fyp_conversion_cost_mil_to_civ_factor
 	industrial_capacity_factory = SOV_fyp_industrial_capacity_factory 
 	industrial_capacity_dockyard = SOV_fyp_industrial_capacity_dockyard 
+	fuel_gain_factor = SOV_fyp_fuel_gain_factor
 	industrial_concern_cost_factor = SOV_fyp_industrial_concern_cost_factor
 	industry_repair_factor = SOV_fyp_industry_repair_factor  
 }
@@ -666,6 +671,7 @@ SOV_fourth_five_year_plan_dynamic_modifier_alt = { #NATIONAL SPIRIT
 	conversion_cost_mil_to_civ_factor = SOV_fyp_conversion_cost_mil_to_civ_factor
 	industrial_capacity_factory = SOV_fyp_industrial_capacity_factory 
 	industrial_capacity_dockyard = SOV_fyp_industrial_capacity_dockyard 
+	fuel_gain_factor = SOV_fyp_fuel_gain_factor
 	industrial_concern_cost_factor = SOV_fyp_industrial_concern_cost_factor
 	industry_repair_factor = SOV_fyp_industry_repair_factor  
 }
@@ -683,6 +689,11 @@ SOV_defense_industry_dynamic_modifier = { #NATIONAL SPIRIT
 	production_lack_of_resource_penalty_factor = SOV_defense_industry_production_lack_of_resource_penalty_factor
 	industrial_capacity_factory = SOV_defense_industry_industrial_capacity_factory
 	industrial_capacity_dockyard = SOV_defense_industry_industrial_capacity_dockyard
+	fuel_gain_factor = SOV_fyp_fuel_gain_factor
+	refit_speed = SOV_defense_industry_refit_speed
+	refit_ic_cost = SOV_defense_industry_refit_ic_cost #-0.05
+	repair_speed_factor = SOV_defense_industry_repair_speed_factor #0.05
+	land_equipment_upgrade_xp_cost = SOV_defense_industry_land_equipment_upgrade_xp_cost
 	production_speed_arms_factory_factor = SOV_defense_industry_production_speed_arms_factory_factor 
 	production_speed_dockyard_factor = SOV_defense_industry_production_speed_dockyard_factor
 	production_speed_nuclear_reactor_factor = SOV_defense_industry_production_speed_nuclear_reactor_factor
@@ -698,10 +709,6 @@ SOV_defense_industry_dynamic_modifier = { #NATIONAL SPIRIT
 	aircraft_manufacturer_cost_factor = SOV_defense_industry_aircraft_manufacturer_cost_factor #-0.25 -> Expand the Aircraft Industry
 	tank_manufacturer_cost_factor = SOV_defense_industry_tank_manufacturer_cost_factor
 	materiel_manufacturer_cost_factor = SOV_defense_industry_materiel_manufacturer_cost_factor
-	refit_speed = SOV_defense_industry_refit_speed
-	refit_ic_cost = SOV_defense_industry_refit_ic_cost #-0.05
-	repair_speed_factor = SOV_defense_industry_repair_speed_factor #0.05
-	land_equipment_upgrade_xp_cost = SOV_defense_industry_land_equipment_upgrade_xp_cost
 
 }
 
@@ -915,6 +922,24 @@ SOV_the_politburo_good_dynamic_modifier = {
 	operative_slot = SOV_the_politburo_operative_slot # 1 -> Behead the Snake
 	political_advisor_cost_factor = SOV_the_politburo_political_advisor_cost_factor #-0.15 -> Freedom of Debate, Unity of Action
 	opinion_gain_monthly_same_ideology_factor = SOV_the_politburo_opinion_gain_monthly_same_ideology_factor #0.25 -> The Construction of Communism
+
+	#GENERAL FOCUS SOV_gf_
+	non_core_manpower = SOV_gf_non_core_manpower
+	army_morale_factor = SOV_gf_army_morale_factor
+	political_power_factor = SOV_gf_political_power_factor
+	stability_factor = SOV_gf_stability_factor
+	consumer_goods_factor = SOV_gf_consumer_goods_factor
+	drift_defence_factor = SOV_gf_drift_defence_factor
+	party_popularity_stability_factor = SOV_gf_party_popularity_stability_factor
+	line_change_production_efficiency_factor = SOV_gf_line_change_production_efficiency_factor
+	production_factory_start_efficiency_factor = SOV_gf_production_factory_start_efficiency_factor
+	production_factory_efficiency_gain_factor = SOV_gf_production_factory_efficiency_gain_factor
+	production_speed_buildings_factor = SOV_gf_production_speed_buildings_factor
+	industrial_capacity_factory = SOV_gf_industrial_capacity_factory
+	industrial_capacity_dockyard = SOV_gf_industrial_capacity_dockyard
+	global_building_slots_factor = SOV_gf_global_building_slots_factor
+	communism_drift = SOV_gf_communism_drift
+	political_advisor_cost_factor = SOV_gf_political_advisor_cost_factor
 }
 
 SOV_factionalism_modifier = { 
@@ -931,6 +956,21 @@ SOV_factionalism_modifier = {
 	communism_drift = SOV_factionalism_communism_drift
 
 	custom_modifier_tooltip = SOV_factionalism_modifier_tt
+	
+	#GENERAL FOCUS SOV_gf_
+	non_core_manpower = SOV_gf_non_core_manpower
+	army_morale_factor = SOV_gf_army_morale_factor
+	political_power_factor = SOV_gf_political_power_factor
+	stability_factor = SOV_gf_stability_factor
+	consumer_goods_factor = SOV_gf_consumer_goods_factor
+	drift_defence_factor = SOV_gf_drift_defence_factor
+	party_popularity_stability_factor = SOV_gf_party_popularity_stability_factor
+	production_speed_buildings_factor = SOV_gf_production_speed_buildings_factor
+	industrial_capacity_factory = SOV_gf_industrial_capacity_factory
+	industrial_capacity_dockyard = SOV_gf_industrial_capacity_dockyard
+	global_building_slots_factor = SOV_gf_global_building_slots_factor
+	communism_drift = SOV_gf_communism_drift
+	political_advisor_cost_factor = SOV_gf_political_advisor_cost_factor
 }
 
 SOV_decentralization_modifier = { 
@@ -947,6 +987,21 @@ SOV_decentralization_modifier = {
 	communism_drift = SOV_factionalism_communism_drift
 
 	custom_modifier_tooltip = SOV_decentralization_modifier_tt
+	
+	#GENERAL FOCUS SOV_gf_
+	non_core_manpower = SOV_gf_non_core_manpower
+	army_morale_factor = SOV_gf_army_morale_factor
+	political_power_factor = SOV_gf_political_power_factor
+	stability_factor = SOV_gf_stability_factor
+	consumer_goods_factor = SOV_gf_consumer_goods_factor
+	drift_defence_factor = SOV_gf_drift_defence_factor
+	party_popularity_stability_factor = SOV_gf_party_popularity_stability_factor
+	production_speed_buildings_factor = SOV_gf_production_speed_buildings_factor
+	industrial_capacity_factory = SOV_gf_industrial_capacity_factory
+	industrial_capacity_dockyard = SOV_gf_industrial_capacity_dockyard
+	global_building_slots_factor = SOV_gf_global_building_slots_factor
+	communism_drift = SOV_gf_communism_drift
+	political_advisor_cost_factor = SOV_gf_political_advisor_cost_factor
 }
 
 SOV_opposition_popular_support = { 
@@ -1087,7 +1142,7 @@ Flexible_conscription_policy = {
 	org_loss_at_low_org_factor = Flexible_conscription_policy_org_loss_at_low_org_factor
 	org_loss_when_moving = Flexible_conscription_policy_org_loss_when_moving
 	training_time_factor = Flexible_conscription_policy_training_time_factor
-	minimum_training_level = Flexible_conscription_policy_minimum_training_level
+#	minimum_training_level = Flexible_conscription_policy_minimum_training_level
 }
 
 Flexible_trade_policy = {
@@ -1116,6 +1171,9 @@ Flexible_economy_policy = {
 	industrial_capacity_dockyard = Flexible_economy_policy_industrial_capacity_dockyard
 	fuel_gain_factor = Flexible_economy_policy_fuel_gain_factor
 	max_fuel_factor = Flexible_economy_policy_max_fuel_factor
+	refit_speed = Flexible_economy_policy_refit_speed
+	refit_ic_cost = Flexible_economy_policy_refit_ic_cost
+	repair_speed_factor = Flexible_economy_policy_repair_speed_factor
 	production_speed_infrastructure_factor = Flexible_economy_policy_production_speed_infrastructure_factor
 	production_speed_industrial_complex_factor = Flexible_economy_policy_production_speed_industrial_complex_factor
 	production_speed_arms_factory_factor = Flexible_economy_policy_production_speed_arms_factory_factor

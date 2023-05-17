@@ -1,20 +1,27 @@
 ﻿l_russian:
 # dynamic modifiers========================================================================================================================================
- Flexible_trade_policy_tt:0 "§Y$Flexible_trade_policy$§!:"
- Flexible_economy_policy_tt:0 "§Y$Flexible_economy_policy$§!:"
+# politic==========
  MAN_nationalism_tt:0 "§Y$MAN_nationalism$§!:"
  MAN_national_unity_tt:0 "§Y$MAN_national_unity$§!:"
+ SOV_the_politburo_tt:0 "§Y$SOV_the_politburo_good_dynamic_modifier$§!:"
+ SOV_factionalism_tt:0 "§Y$SOV_factionalism_modifier$§!:"
+ SOV_decentralization_tt:0 "§Y$SOV_decentralization_modifier$§!:"
+# politic==========
+# economic==========
+ Flexible_trade_policy_tt:0 "§Y$Flexible_trade_policy$§!:"
+ Flexible_economy_policy_tt:0 "§Y$Flexible_economy_policy$§!:"
  MAN_economy_tt:0 "§Y$MAN_economy$§!:"
+ SOV_five_year_plan_tt:0 "$SOV_second_five_year_plan_dynamic_modifier$:"
+ SOV_defense_industry_tt:0 "$SOV_defense_industry_dynamic_modifier$:"
+ CZE_skoda_works_tt:0 "§Y$CZE_skoda_works$§!:"
+# economic==========
+# military==========
  MAN_army_tt:0 "§Y$MAN_army$§!:"
- SPR_anarchist_society_tt:0 "$SPR_anarchist_society$:"
- SPR_collective_army_tt:0 "$SPR_collective_army$:"
  SOV_the_red_army_tt:0 "$SOV_the_red_army_dynamic_modifier$:"
  SOV_the_red_army_alt_tt:0 "$SOV_the_red_army_dynamic_modifier_alt$:"
  SOV_soviet_airforce_tt:0 "$SOV_the_red_army_dynamic_modifier$:"
  SOV_soviet_airforce_alt_tt:0 "$SOV_the_red_army_dynamic_modifier_alt$:"
- SOV_five_year_plan_tt:0 "$SOV_second_five_year_plan_dynamic_modifier$:"
- SOV_defense_industry_tt:0 "$SOV_defense_industry_dynamic_modifier$:"
- CZE_skoda_works_tt:0 "§Y$CZE_skoda_works$§!:"
+# military==========
 # other=====================================================================================================================================================
  Flexible_economy_policy_civilian_economy_level_tt:0 "§Y$civilian_economy$§!: [?Flexible_economy_policy_civilian_point|%Y]"
  Flexible_economy_policy_military_economy_level_tt:0 "§G$war_economy$§!: [?Flexible_economy_policy_military_point|%G]"
@@ -25,7 +32,7 @@
  form_european_union_tt:0 "Откроются §Yрешения§! по интеграции континентальных европейских территорий. \nИнтегрирование территорий с §Yпретензией§! обходится дешевле и быстрее."
 # country===================================================================================================================================================
  political_power_gain_tt:0 "$MODIFIER_POLITICAL_POWER_GAIN$: $RIGHT|=%+$"
- local_non_core_manpower_tt:0 "$MODIFIER_LOCAL_NON_CORE_MANPOWER$: $RIGHT|=%+$"
+ non_core_manpower_tt:0 "$MODIFIER_GLOBAL_NON_CORE_MANPOWER$: $RIGHT|=%+$"
  mobilization_speed_tt:0 "$MODIFIER_MOBILIZATION_SPEED$: $RIGHT|=%+$"
  conscription_tt:0 "$MODIFIER_CONSCRIPTION_FACTOR$: $RIGHT|=%Y$"
  stability_factor_tt:0 "$MODIFIER_STABILITY_FACTOR$: $RIGHT|=%+$"
@@ -164,7 +171,7 @@
  heat_attrition_factor_tt:0 "$MODIFIER_HEAT_ATTRITION_FACTOR$: $RIGHT|=%-$"
  org_loss_at_low_org_factor_tt:0 "$MODIFIER_ORG_LOSS_AT_LOW_ORG_FACTOR$: $RIGHT|=%-$"
  army_org_regain_tt:0 "$MODIFIER_ARMY_ORG_REGAIN$: $RIGHT|=%+$"
- army_strength_factor_tt:0 "$MODIFIER_ARMY_STRENGTH_FACTOR$: $RIGHT|=%+$"
+ army_strength_factor_tt:0 "$MODIFIER_ARMY_STRENGTH$: $RIGHT|=%+$"
  enemy_army_bonus_air_superiority_factor_tt:0 "$MODIFIER_ENEMY_ARMY_BONUS_AIR_SUPERIORITY_FACTOR$: $RIGHT|=%-$"
  training_time_factor_tt:0 "$MODIFIER_TRAINING_TIME_FACTOR$: $RIGHT|=%-$"
  breakthrough_factor_tt:0 "$MODIFIER_BREAKTHROUGH$: $RIGHT|=%+$"

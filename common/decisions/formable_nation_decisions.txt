@@ -7102,22 +7102,6 @@ form_turkestan_category = {
 
 		icon = generic_form_nation
 
-		allowed = {
-			OR = {
-				original_tag = TUR # Turkey
-				original_tag = TAN # Tannu Tuva
-				original_tag = KAZ # Kazakhstan
-				original_tag = UZB # Uzbekistan
-				original_tag = KYR # Kyrgyzstan
-				original_tag = TMS # Turkmenistan
-				original_tag = SIK # Sinkiang
-				original_tag = BUK # Bukhara
-				original_tag = KHI # Khiva
-				original_tag = KKP # Karakalpakstan
-				original_tag = AZR # Azerbaijan
-			}
-		}
-
 		available = {
 			is_subject = no
 			FROM = {
@@ -7148,7 +7132,6 @@ form_turkestan_category = {
 		visible = {
 			ROOT = {
 				OR = {
-					original_tag = TUR # Turkey
 					original_tag = TAN # Tannu Tuva
 					original_tag = KAZ # Kazakhstan
 					original_tag = UZB # Uzbekistan
@@ -7156,16 +7139,15 @@ form_turkestan_category = {
 					original_tag = TMS # Turkmenistan
 					original_tag = SIK # Sinkiang
 					original_tag = BUK # Bukhara
+					original_tag = KHA # Khakassia
 					original_tag = KHI # Khiva
 					original_tag = KKP # Karakalpakstan
-					original_tag = AZR # Azerbaijan
 				}
 			}
 			OR = {
 				AND = {
 					FROM = {
 						OR = {
-							is_core_of = TUR
 							is_core_of = TAN
 							is_core_of = KAZ
 							is_core_of = UZB
@@ -7173,21 +7155,17 @@ form_turkestan_category = {
 							is_core_of = TMS
 							is_core_of = SIK
 							is_core_of = BUK
+							is_core_of = KHA
 							is_core_of = KHI
 							is_core_of = KKP
-							is_core_of = AZR
 							is_core_of = ALT
+							state = 818
 						}
 						is_controlled_by = ROOT
 						NOT = { is_core_of = ROOT }
 					}
 				}
 				AND = {
-					TUR = {
-						all_core_state = {
-							is_core_of = ROOT
-						}
-					}
 					TAN = {
 						all_core_state = {
 							is_core_of = ROOT
@@ -7223,6 +7201,11 @@ form_turkestan_category = {
 							is_core_of = ROOT
 						}
 					}
+					KHA = {
+						all_core_state = {
+							is_core_of = ROOT
+						}
+					}
 					KHI = {
 						all_core_state = {
 							is_core_of = ROOT
@@ -7233,21 +7216,18 @@ form_turkestan_category = {
 							is_core_of = ROOT
 						}
 					}
-					AZR = {
-						all_core_state = {
-							is_core_of = ROOT
-						}
-					}
 					ALT = {
 						all_core_state = {
 							is_core_of = ROOT
 						}
 					}
+					818 = {
+						is_core_of = ROOT
+					}
 					FROM = {
 						is_owned_and_controlled_by = ROOT
 						is_core_of = ROOT
 						is_capital = YES
-						NOT = { has_global_flag = form_turkestan_flag }
 					}
 				}
 			}
@@ -7257,7 +7237,6 @@ form_turkestan_category = {
 			FROM = {
 				OR = {
 					OR = {
-						is_core_of = TUR
 						is_core_of = TAN
 						is_core_of = KAZ
 						is_core_of = UZB
@@ -7265,10 +7244,11 @@ form_turkestan_category = {
 						is_core_of = TMS
 						is_core_of = SIK
 						is_core_of = BUK
+						is_core_of = KHA
 						is_core_of = KHI
 						is_core_of = KKP
-						is_core_of = AZR
 						is_core_of = ALT
+						state = 818
 					}
 					OR = {
 						NOT = { is_core_of = ROOT }
@@ -7288,18 +7268,34 @@ form_turkestan_category = {
 
 		complete_effect = {
 			FROM = {
-				IF = {
+				if = {
+					limit = {
+						is_claimed_by = ROOT
+					}
+					remove_claim_by = ROOT
+				}
+				if = {
+					limit = {
+						is_core_of = SOV
+					}
+					remove_core_of = SOV
+					add_claim_by = SOV
+				}
+				if = {
 					limit = {
 						NOT = {
 							is_core_of = ROOT
 						}
 					}
-					if = {
-						limit = { is_core_of = SOV }
-						remove_core_of = SOV
-						add_claim_by = SOV
-					}
 					add_core_of = ROOT
+				}
+				if = {
+					limit = {
+						NOT = {
+							is_owned_by = ROOT
+						}
+					}
+					set_state_owner_to = ROOT
 				}
 			}
 			IF = {
@@ -7309,32 +7305,36 @@ form_turkestan_category = {
 						is_capital = YES
 					}
 				}
-				ROOT = {
-					every_country = {
-						every_character = {
-							limit = {
-								OR = {
-									has_nationality = TUR
-									has_nationality = TAN
-									has_nationality = KAZ
-									has_nationality = UZB
-									has_nationality = KYR
-									has_nationality = TMS
-									has_nationality = SIK
-									has_nationality = BUK
-									has_nationality = KHI
-									has_nationality = KKP
-									has_nationality = AZR
-									has_nationality = ALT
-								}
+				every_country = {
+					every_character = {
+						limit = {
+							OR = {
+								has_nationality = TAN
+								has_nationality = KAZ
+								has_nationality = UZB
+								has_nationality = KYR
+								has_nationality = TMS
+								has_nationality = SIK
+								has_nationality = BUK
+								has_nationality = KHA
+								has_nationality = KHI
+								has_nationality = KKP
+								has_nationality = ALT
 							}
-							set_nationality = ROOT
 						}
+						set_nationality = ROOT
 					}
+				}
+				every_possible_country = {
+					limit = {
+						has_cosmetic_tag = turkestan_united
+					}
+					drop_cosmetic_tag = yes
+				}
+				ROOT = {
 					set_cosmetic_tag = turkestan_united
 					hidden_effect = {
 						news_event = { id = nsb_news.3 hours = 6 }
-						set_global_flag = form_turkestan_flag
 					}
 				}
 			}
@@ -7356,400 +7356,418 @@ form_turkestan_category = {
 }
 
 
+form_caucasian_gambit_category = {
 
-
-form_mountainous_republic_category = {
-	
 	form_mountainous_republic = { 
 
 		icon = generic_form_nation
 
-		allowed = {
-			OR = {
-				original_tag = DAG # Dagestan
-				original_tag = CIN # Chechnya-Ingushetia
-				original_tag = NOA # North Ossetia-Alania
-				original_tag = KBK # Kabardino-Balkaria
-				original_tag = ABK # Abkhazia
-			}
-		}
-
 		available = {
-			controls_state = 232 # Dagestan
-			controls_state = 233 # Sochi
-			controls_state = 821 # Chechnya-Ingushetia
-			controls_state = 828 # North Ossetia
-			controls_state = 827 # Kabardino-Balkaria
-			controls_state = 826 # Abkhazia
+			is_subject = no
+			any_controlled_state = {
+				OR = {
+					is_core_of = ABK
+					is_core_of = CIN
+					is_core_of = DAG
+					is_core_of = KBK
+					is_core_of = NOA
+					state = 233
+				}
+			}
 		}
 
 		visible = {
 			OR = {
-				original_tag = DAG # Dagestan
-				original_tag = CIN # Chechnya-Ingushetia
-				original_tag = NOA # North Ossetia-Alania
-				original_tag = KBK # Kabardino-Balkaria
 				original_tag = ABK # Abkhazia
+				original_tag = CIN # Chechnya-Ingushetia
+				original_tag = DAG # Dagestan
+				original_tag = KBK # Kabardino-Balkaria
+				original_tag = NOA # North Ossetia-Alania
+				has_cosmetic_tag = transcaucasia_unified
 			}
-			NOT = { has_global_flag = form_mountainous_republic_flag }
-
-				has_dlc = "No Step Back"
+			any_controlled_state = {
+				OR = {
+					is_core_of = ABK
+					is_core_of = CIN
+					is_core_of = DAG
+					is_core_of = KBK
+					is_core_of = NOA
+					state = 233
+				}
+				NOT = {
+					is_core_of = ROOT
+				}
+			}
 		}
 
 		complete_effect = {
-			set_cosmetic_tag = mountainous_republics_unified
-			
-			# Chechnya-Ingushetia
-			821 = { add_core_of = ROOT }
-			821 = { remove_core_of = SOV }
-			
-			# Abkhazia
-			826 = { add_core_of = ROOT }
-			826 = { remove_core_of = SOV }
-
-			# Kabardino-Balkaria
-			827 = { add_core_of = ROOT }
-			827 = { remove_core_of = SOV }
-
-			# North Ossetia
-			828 = { add_core_of = ROOT }
-			828 = { remove_core_of = SOV }
-			
-			# Dagestan
-			232 = { add_core_of = ROOT }
-			232 = { remove_core_of = SOV }
-			
-			# Sochi
-			233 = { add_core_of = ROOT }
-			233 = { remove_core_of = SOV }
-
-			# Khrasnodar
-			234 = { add_core_of = ROOT }
-			234 = { remove_core_of = SOV }
-
-			# Stavropol
-			235 = { add_core_of = ROOT }
-			235 = { remove_core_of = SOV }
-
-			
+			every_controlled_state = {
+				limit = {
+					OR = {
+						is_core_of = ABK
+						is_core_of = CIN
+						is_core_of = DAG
+						is_core_of = KBK
+						is_core_of = NOA
+						state = 233
+					}
+					NOT = {
+						is_core_of = ROOT
+					}
+				}
+				remove_core_of = SOV
+				add_claim_by = SOV
+				add_core_of = ROOT
+				transfer_state_to = ROOT
+			}
 			if = {
 				limit = {
-					NOT = { has_idea = soldiers_of_the_steppe }
+					ABK = {
+						all_core_state = {
+							is_controlled_by = ROOT
+						}
+					}
+					CIN = {
+						all_core_state = {
+							is_controlled_by = ROOT
+						}
+					}
+					DAG = {
+						all_core_state = {
+							is_controlled_by = ROOT
+						}
+					}
+					KBK = {
+						all_core_state = {
+							is_controlled_by = ROOT
+						}
+					}
+					NOA = {
+						all_core_state = {
+							is_controlled_by = ROOT
+						}
+					}
+					233 = {
+						is_controlled_by = ROOT
+					}
 				}
-				add_ideas = soldiers_of_the_steppe
-			}
-			
-			hidden_effect = { 
-				233 = { add_core_of = KBK }
-				234 = { add_core_of = KBK }
-				235 = { add_core_of = KBK }
-				news_event = { id = nsb_news.301 hours = 8 }
-				set_global_flag = form_mountainous_republic_flag
+				if = {
+					limit = {
+						ROOT = {
+							NOT = {
+								has_cosmetic_tag = transcaucasia_unified
+							}
+						}
+					}
+					every_possible_country = {
+						limit = {
+							has_cosmetic_tag = mountainous_republics_unified
+						}
+						drop_cosmetic_tag = yes
+					}
+					ROOT = {
+						set_cosmetic_tag = mountainous_republics_unified
+					}
+					hidden_effect = { 
+						news_event = { id = nsb_news.301 hours = 8 }
+					}
+				}
 			}
 		}
 
 		ai_will_do = {
 			factor = 200
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
 		}
 	}
-}
 
-
-form_transcaucasus_category = {
-	
 	form_transcaucasian_republic = { 
 
 		icon = generic_form_nation
 
-		allowed = {
-			OR = {
-				original_tag = GEO # Georgia
-				original_tag = ARM # Armenia
-				original_tag = AZR # Azerbaijan
-				original_tag = ABK # Abkhazia
-			}
-		}
-
 		available = {
-			controls_state = 826 # Abkhazia
-			controls_state = 231 # Georgia
-			controls_state = 230 # Armenia
-			controls_state = 229 # Azerbaijan
+			is_subject = no
+			any_controlled_state = {
+				OR = {
+					is_core_of = ABK
+					is_core_of = ARM
+					AND = {
+						is_core_of = AZR
+						NOT = {
+							state = 419
+							state = 420
+						}
+					}
+					is_core_of = GEO
+				}
+			}
 		}
 
 		visible = {
 			OR = {
-				original_tag = GEO # Georgia
+				original_tag = ABK # Abkhazia
 				original_tag = ARM # Armenia
 				original_tag = AZR # Azerbaijan
-				original_tag = ABK # Abkhazia
+				original_tag = GEO # Georgia
+				has_cosmetic_tag = mountainous_republics_unified
 			}
-			NOT = { has_global_flag = form_transcaucasia_flag }
-
-				has_dlc = "No Step Back"
+			any_controlled_state = {
+				OR = {
+					is_core_of = ABK
+					is_core_of = ARM
+					AND = {
+						is_core_of = AZR
+						NOT = {
+							state = 419
+							state = 420
+						}
+					}
+					is_core_of = GEO
+				}
+				NOT = {
+					is_core_of = ROOT
+				}
+			}
 		}
 
 		complete_effect = {
-			set_cosmetic_tag = transcaucasia_unified
-			
-			# Abkhazia
-			826 = { add_core_of = ROOT }
-			826 = { remove_core_of = SOV }
-			
-			# Georgia
-			231 = { add_core_of = ROOT }
-			231 = { remove_core_of = SOV }
-			 
-			# Armenia
-			230 = { add_core_of = ROOT }
-			230 = { remove_core_of = SOV }
-			
-			# Azerbaijan
-			229 = { add_core_of = ROOT }
-			229 = { remove_core_of = SOV }
-			
+			every_controlled_state = {
+				limit = {
+					OR = {
+						is_core_of = ABK
+						is_core_of = ARM
+						AND = {
+							is_core_of = AZR
+							NOT = {
+								state = 419
+								state = 420
+							}
+						}
+						is_core_of = GEO
+					}
+					NOT = {
+						is_core_of = ROOT
+					}
+				}
+				remove_core_of = SOV
+				add_claim_by = SOV
+				add_core_of = ROOT
+				transfer_state_to = ROOT
+			}
 			if = {
 				limit = {
-					NOT = { has_idea = soldiers_of_the_steppe }
+					ABK = {
+						all_core_state = {
+							is_controlled_by = ROOT
+						}
+					}
+					ARM = {
+						all_core_state = {
+							is_controlled_by = ROOT
+						}
+					}
+					NOA = {
+						all_core_state = {
+							is_controlled_by = ROOT
+						}
+					}
+					AZR = {
+						all_core_state = {
+							NOT = {
+								state = 419
+								state = 420
+							}
+							is_controlled_by = ROOT
+						}
+					}
+					GEO = {
+						all_core_state = {
+							is_controlled_by = ROOT
+						}
+					}
 				}
-				add_ideas = soldiers_of_the_steppe
-			}
-			
-			hidden_effect = { 
-				news_event = { id = nsb_news.302 hours = 8 }
-				set_global_flag = form_transcaucasia_flag
+				if = {
+					limit = {
+						ROOT = {
+							NOT = {
+								has_cosmetic_tag = mountainous_republics_unified
+							}
+						}
+					}
+					every_possible_country = {
+						limit = {
+							has_cosmetic_tag = transcaucasia_unified
+						}
+						drop_cosmetic_tag = yes
+					}
+					ROOT = {
+						set_cosmetic_tag = transcaucasia_unified
+					}
+					hidden_effect = { 
+						news_event = { id = nsb_news.302 hours = 8 }
+					}
+				}
 			}
 		}
 
 		ai_will_do = {
 			factor = 200
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
 		}
 	}
-	
-	
+
+	expand_north = {
+
+		icon = generic_form_nation
+
+		available = {
+			is_subject = no
+			any_state = {
+				OR = {
+					state = 234
+					state = 235
+				}
+				NOT = {
+					is_core_of = ROOT
+				}
+				is_controlled_by = ROOT
+			}
+		}
+
+		visible = {
+			OR = {
+				has_cosmetic_tag = mountainous_republics_unified
+				has_cosmetic_tag = transcaucasia_unified
+			}
+			any_state = {
+				OR = {
+					state = 234
+					state = 235
+				}
+				NOT = {
+					is_core_of = ROOT
+				}
+			}
+		}
+
+		complete_effect = {
+			every_controlled_state = {
+				limit = {
+					OR = {
+						state = 234
+						state = 235
+					}
+					NOT = {
+						is_core_of = ROOT
+					}
+				}
+				remove_core_of = SOV
+				add_claim_by = SOV
+				add_core_of = ROOT
+				transfer_state_to = ROOT
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
 	
 	unite_azeris = {  
 
 		icon = generic_form_nation
 
-		allowed = {
-			OR = {
-				original_tag = GEO # Georgia
-				original_tag = ARM # Armenia
-				original_tag = AZR # Azerbaijan
-				original_tag = ABK # Abkhazia
-			}
-		}
-
 		available = {
-			controls_state = 419 # Tabriz
-			controls_state = 420 # Gilan
+			is_subject = no
+			AZR = {
+				all_core_state = {
+					is_controlled_by = ROOT
+				}
+			}
 		}
 
 		visible = {
 			OR = {
-				original_tag = GEO # Georgia
-				original_tag = ARM # Armenia
-				original_tag = AZR # Azerbaijan
-				original_tag = ABK # Abkhazia
+				has_cosmetic_tag = mountainous_republics_unified
+				has_cosmetic_tag = transcaucasia_unified
 			}
-			has_global_flag = form_transcaucasia_flag
-			NOT = { has_global_flag = azeris_united_flag }
-
-				has_dlc = "No Step Back"
+			AZR = {
+				any_core_state = {
+					NOT = {
+						is_core_of = ROOT
+					}
+				}
+			}
 		}
 
 		complete_effect = {
-			
-			# Tabriz
-			419 = { add_core_of = ROOT }
-			419 = { remove_core_of = PER }
-			
-			# Gilan
-			420 = { add_core_of = ROOT }
-			420 = { remove_core_of = PER }
-			
-			if = {
-				limit = {
-					NOT = { has_idea = soldiers_of_the_steppe }
+			AZR = {
+				every_core_state = {
+					remove_core_of = PER
+					add_claim_by = PER
+					add_core_of = ROOT
+					transfer_state_to = ROOT
 				}
-				add_ideas = soldiers_of_the_steppe
-			}
-			
-			hidden_effect = { 
-				set_global_flag = azeris_united_flag
 			}
 		}
 
 		ai_will_do = {
 			factor = 200
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
 		}
 	}
-	
-	
-	claim_northern_caucasus = {  
-
-		icon = generic_form_nation
-
-		allowed = {
-			OR = {
-				original_tag = GEO # Georgia
-				original_tag = ARM # Armenia
-				original_tag = ABK # Abkhazia
-				original_tag = AZR # Azerbaijan
-			}
-		}
-
-		available = {
-			controls_state = 232 # Dagestan
-			controls_state = 821 # Chechnya-Ingushetia
-			controls_state = 828 # North Ossetia
-			controls_state = 827 # Kabardino-Balkaria
-			controls_state = 233 # Sochi
-		}
-
-		visible = {
-			OR = {
-				original_tag = GEO # Georgia
-				original_tag = ARM # Armenia
-				original_tag = ABK # Abkhazia
-				original_tag = AZR # Azerbaijan
-			}
-			has_global_flag = form_transcaucasia_flag
-			NOT = { has_global_flag = northern_caucasus_claimed_flag }
-
-				has_dlc = "No Step Back"
-		}
-
-		complete_effect = {
-			
-			# Chechnya-Ingushetia
-			821 = { add_core_of = ROOT }
-			821 = { remove_core_of = SOV }
-			
-			# Abkhazia
-			826 = { add_core_of = ROOT }
-			826 = { remove_core_of = SOV }
-
-			# Kabardino-Balkaria
-			827 = { add_core_of = ROOT }
-			827 = { remove_core_of = SOV }
-
-			# North Ossetia
-			828 = { add_core_of = ROOT }
-			828 = { remove_core_of = SOV }
-			
-			# Dagestan
-			232 = { add_core_of = ROOT }
-			232 = { remove_core_of = SOV }
-			
-			# Sochi
-			233 = { add_core_of = ROOT }
-			233 = { remove_core_of = SOV }
-
-			# Khrasnodar
-			234 = { add_core_of = ROOT }
-			234 = { remove_core_of = SOV }
-
-			# Stavropol
-			235 = { add_core_of = ROOT }
-			235 = { remove_core_of = SOV }
-
-			if = {
-				limit = {
-					NOT = { has_idea = soldiers_of_the_steppe }
-				}
-				add_ideas = soldiers_of_the_steppe
-			}
-			
-			hidden_effect = { 
-				set_global_flag = northern_caucasus_claimed_flag
-			}
-		}
-
-		ai_will_do = {
-			factor = 200
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
-		}
-	}
-	
 	
 	liberate_anatolian_peoples = {  
 
 		icon = generic_form_nation
 
-		allowed = {
-			OR = {
-				original_tag = GEO # Georgia
-				original_tag = ARM # Armenia
-				original_tag = AZR # Azerbaijan
-				original_tag = ABK # Abkhazia
-			}
-		}
-
 		available = {
 			is_subject = no
-			controls_state = 354 # Trabzon
-			controls_state = 800 # Van
+			any_state = {
+				OR = {
+					state = 354
+					state = 800
+				}
+				NOT = {
+					is_core_of = ROOT
+				}
+				is_controlled_by = ROOT
+			}
 		}
 
 		visible = {
 			OR = {
-				original_tag = GEO # Georgia
-				original_tag = ARM # Armenia
-				original_tag = AZR # Azerbaijan
-				original_tag = ABK # Abkhazia
+				has_cosmetic_tag = mountainous_republics_unified
+				has_cosmetic_tag = transcaucasia_unified
 			}
-			has_global_flag = form_transcaucasia_flag
-			NOT = { has_global_flag = anatolians_liberated_flag }
-
-				has_dlc = "No Step Back"
+			any_state = {
+				OR = {
+					state = 354
+					state = 800
+				}
+				NOT = {
+					is_core_of = ROOT
+				}
+			}
 		}
 
 		complete_effect = {
-			
-			# Trabzon
-			354 = { add_core_of = ROOT }
-			354 = { remove_core_of = TUR }
-			
-			# Van
-			800 = { add_core_of = ROOT }
-			800 = { remove_core_of = TUR }
-			
-			if = {
+			every_controlled_state = {
 				limit = {
-					NOT = { has_idea = soldiers_of_the_steppe }
+					OR = {
+						state = 354
+						state = 800
+					}
+					NOT = {
+						is_core_of = ROOT
+					}
 				}
-				add_ideas = soldiers_of_the_steppe
-			}
-			
-			hidden_effect = { 
-				800 = { add_core_of = ARM }
-				set_global_flag = anatolians_liberated_flag
+				remove_core_of = TUR
+				add_claim_by = TUR
+				add_core_of = ROOT
+				transfer_state_to = ROOT
 			}
 		}
 
 		ai_will_do = {
 			factor = 200
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
 		}
 	}
 	
@@ -7758,352 +7776,74 @@ form_transcaucasus_category = {
 
 		icon = generic_form_nation
 
-		allowed = {
-			OR = {
-				original_tag = GEO # Georgia
-				original_tag = ARM # Armenia
-				original_tag = AZR # Azerbaijan
-				original_tag = ABK # Abkhazia
-			} 
-		}
-  
 		available = {
 			is_subject = no
-			controls_state = 237 # Kalmykia
-			controls_state = 236 # Astrakhan
-			NOT = { has_government = communism }
-			NOT = { has_government = democratic }
+			any_state = {
+				region  = 135
+				is_core_of = KAL
+				NOT = {
+					is_core_of = ROOT
+				}
+			}
 		}
 
 		visible = {
 			OR = {
-				original_tag = GEO # Georgia
-				original_tag = ARM # Armenia
-				original_tag = AZR # Azerbaijan
-				original_tag = ABK # Abkhazia
+				has_cosmetic_tag = mountainous_republics_unified
+				has_cosmetic_tag = transcaucasia_unified
 			}
-			has_global_flag = form_transcaucasia_flag
-			NOT = { has_global_flag = kalmyk_khanate_restored_flag }
-
-				has_dlc = "No Step Back" 
+			any_state = {
+				region  = 135
+				is_core_of = KAL
+				is_controlled_by = ROOT
+			}
 		}
 
 		complete_effect = {
-			
-			custom_effect_tooltip = release_kalmyk_khanate_tt
-			
-			hidden_effect = { 
-			
-				set_global_flag = kalmyk_khanate_restored_flag
-				
-				# Astrakhan
-				236 = { add_core_of = KAL }
-				
-				KAL = {
-					transfer_state = 237
-					transfer_state = 236
-					if = {
-						limit = {
-							ROOT = { controls_state = 217 } #Stalingrad
-						}
-						add_state_core = 217
-						transfer_state = 217
-					}
-					if = {
-						limit = {
-							ROOT = { controls_state = 407 } #Uralsk
-						}
-						add_state_core = 407
-						transfer_state = 407
-					}
-					if = {
-						limit = {
-							ROOT = { controls_state = 406 } #Guryev
-						}
-						add_state_core = 406
-						transfer_state = 406
-					}
-					if = {
-						limit = {
-							ROOT = { controls_state = 401 } #Balakovo
-						}
-						add_state_core = 401
-						transfer_state = 401
-					}
-					if = {
-						limit = {
-							ROOT = { controls_state = 829 } #Engels-Marxstadt
-						}
-						add_state_core = 829
-						transfer_state = 829
-					}
-					if = {
-						limit = {
-							ROOT = { controls_state = 238 } #Volgodonsk
-						}
-						add_state_core = 238
-						transfer_state = 238
-					}
-					load_oob = "KAL_khanate_battalions"
-				}
-				
-				puppet = KAL
-				
-				if = {
-					limit = {
-						has_war_with = SOV
-					}
+			if = {
+				limit = {
 					KAL = {
-						add_to_war = {
-							targeted_alliance = PREV 
-							enemy = SOV
-							hostility_reason = asked_to_join
-						}
+						exists = no
 					}
 				}
-				
-				
-				
+				every_controlled_state = {
+					limit = {
+						region  = 135
+						NOT = {
+							is_core_of = ROOT
+						}
+					}
+					remove_core_of = SOV
+					add_claim_by = SOV
+					add_core_of = KAL
+				}
+				release_on_controlled = KAL
+				ROOT = {
+					puppet = KAL
+				}
+				load_oob = "KAL_khanate_battalions"
+			}
+			else = {
+				every_controlled_state = {
+					limit = {
+						region  = 135
+						NOT = {
+							is_core_of = ROOT
+						}
+					}
+					remove_core_of = SOV
+					add_claim_by = SOV
+					add_core_of = KAL
+					transfer_state_to = KAL
+				}
 			}
 		}
 
 		ai_will_do = {
 			factor = 200
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
-		}
-	}
-	
-	
-	restore_crimean_khanate = {  
-
-		icon = generic_form_nation
-
-		allowed = {
-			OR = {
-				original_tag = GEO # Georgia
-				original_tag = ARM # Armenia
-				original_tag = AZR # Azerbaijan
-				original_tag = ABK # Abkhazia
-			} 
-		}
-  
-		available = {
-			is_subject = no
-			controls_state = 137 # Crimea
-			controls_state = 196 # Kherson
-			NOT = { has_government = communism }
-			NOT = { has_government = democratic }
-		}
-
-		visible = {
-			OR = {
-				original_tag = GEO # Georgia
-				original_tag = ARM # Armenia
-				original_tag = AZR # Azerbaijan
-				original_tag = ABK # Abkhazia
-			}
-			has_global_flag = form_transcaucasia_flag
-			NOT = { has_global_flag = crimean_khanate_restored_flag }
-
-				has_dlc = "No Step Back"
-		}
-
-		complete_effect = {
-			
-			custom_effect_tooltip = restore_crimean_khanate_tt 
-			
-			
-			hidden_effect = { 
-			
-				set_global_flag = crimean_khanate_restored_flag
-				
-				CRI = {
-					transfer_state = 137 # Crimea
-					transfer_state = 196 # Kherson
-					if = {
-						limit = {
-							ROOT = { controls_state = 200 } #Zaporozhe
-						}
-						add_state_core = 200
-						transfer_state = 200
-					}
-					if = {
-						limit = {
-							ROOT = { controls_state = 227 } #Stalino
-						}
-						add_state_core = 227
-						transfer_state = 227
-					}
-					if = {
-						limit = {
-							ROOT = { controls_state = 218 } #Rostov
-						}
-						add_state_core = 218
-						transfer_state = 218
-					}
-					if = {
-						limit = {
-							ROOT = { controls_state = 228 } #Voroshilovgrad
-						}
-						add_state_core = 228
-						transfer_state = 228
-					}
-					if = {
-						limit = {
-							ROOT = { controls_state = 234 } #Krasnodar
-						}
-						add_state_core = 234
-						transfer_state = 234
-					}
-					if = {
-						limit = {
-							ROOT = { controls_state = 245 } #Millerovo
-						}
-						add_state_core = 245
-						transfer_state = 245
-					}
-					if = {
-						limit = {
-							ROOT = { controls_state = 226 } #Dnipropetrovsk
-						}
-						add_state_core = 226
-						transfer_state = 226
-					}
-					load_oob = "CRI_khanate_soldiers"
-				}
-				
-				puppet = CRI
-				
-				if = {
-					limit = {
-						has_war_with = SOV
-					}
-					CRI = {
-						add_to_war = {
-							targeted_alliance = ROOT 
-							enemy = SOV
-							hostility_reason = asked_to_join
-						}
-					}
-				}
-				if = {
-					limit = {
-						has_war_with = UKR
-					}
-					CRI = {
-						add_to_war = {
-							targeted_alliance = ROOT 
-							enemy = UKR
-							hostility_reason = asked_to_join
-						}
-					}
-				}
-				
-				
-				
-			}
-		}
-
-		ai_will_do = {
-			factor = 200
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
-		}
-	}
-	
-	
-	release_turkish_kurdistan = {  
-
-		icon = generic_form_nation
-
-		allowed = {
-			OR = {
-				original_tag = GEO # Georgia
-				original_tag = ARM # Armenia
-				original_tag = AZR # Azerbaijan
-				original_tag = ABK # Abkhazia
-			} 
-		}
-  
-		available = {
-			is_subject = no
-			controls_state = 352 # Hakkari
-			controls_state = 353 # Tunceli
-			controls_state = 350 # Diyarbakir
-		}
-
-		visible = {
-			OR = {
-				original_tag = GEO # Georgia
-				original_tag = ARM # Armenia
-				original_tag = AZR # Azerbaijan
-				original_tag = ABK # Abkhazia
-			}
-			has_global_flag = form_transcaucasia_flag
-			NOT = { has_global_flag = anatolian_kurds_subjugated_flag }
-
-				has_dlc = "No Step Back"
-		}
-
-		complete_effect = {
-			
-			custom_effect_tooltip = release_anatolian_kurdistan_tt 
-			
-			
-			hidden_effect = { 
-			
-				set_global_flag = anatolian_kurds_subjugated_flag
-				
-				KUR = {
-					transfer_state = 350 # Diyarbakir
-					transfer_state = 352 # Hakkari
-					transfer_state = 353 # Tunceli
-					if = {
-						limit = {
-							ROOT = { controls_state = 344 } #Malatya
-						}
-						add_state_core = 344
-						transfer_state = 344
-					}
-					load_oob = "KUR_liberation_troops"
-				}
-				
-				puppet = KUR
-				
-				if = {
-					limit = {
-						has_war_with = TUR
-					}
-					KUR = {
-						add_to_war = {
-							targeted_alliance = ROOT 
-							enemy = TUR
-							hostility_reason = asked_to_join
-						}
-					}
-				}
-				
-				
-				
-			}
-		}
-
-		ai_will_do = {
-			factor = 200
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
 		}
 	}
 }
-
-
 
 form_siberia_category = {
 	
@@ -8358,18 +8098,34 @@ form_siberia_category = {
 
 		complete_effect = {
 			FROM = {
-				IF = {
+				if = {
+					limit = {
+						is_claimed_by = ROOT
+					}
+					remove_claim_by = ROOT
+				}
+				if = {
+					limit = {
+						is_core_of = SOV
+					}
+					remove_core_of = SOV
+					add_claim_by = SOV
+				}
+				if = {
 					limit = {
 						NOT = {
 							is_core_of = ROOT
 						}
 					}
-					if = {
-						limit = { is_core_of = SOV }
-						remove_core_of = SOV
-						add_claim_by = SOV
-					}
 					add_core_of = ROOT
+				}
+				if = {
+					limit = {
+						NOT = {
+							is_owned_by = ROOT
+						}
+					}
+					set_state_owner_to = ROOT
 				}
 			}
 			IF = {
@@ -10511,6 +10267,30 @@ form_panslavic_union_category = {
 		days_remove = v_integration_in_panslavic_union_days
 
 		remove_effect = {
+			FROM = {
+				if = {
+					limit = {
+						is_claimed_by = ROOT
+					}
+					remove_claim_by = ROOT
+				}
+				if = {
+					limit = {
+						NOT = {
+							is_core_of = ROOT
+						}
+					}
+					add_core_of = ROOT
+				}
+				if = {
+					limit = {
+						NOT = {
+							is_owned_by = ROOT
+						}
+					}
+					set_state_owner_to = ROOT
+				}
+			}
 			IF = {
 				limit = {
 					FROM = {
@@ -10550,18 +10330,6 @@ form_panslavic_union_category = {
 					}
 				}
 			}
-			IF = {
-				limit = {
-					FROM = {
-						NOT = {
-							is_core_of = ROOT
-						}
-					}
-				}
-				FROM = {
-					add_core_of = ROOT
-				}
-			}
 		}
 
 		ai_will_do = {
@@ -10584,6 +10352,8 @@ SOV_world_soviet_socialist_republic_category = {
 	
 	WSSR_integration_republic = {
 
+		priority = 10
+
 		icon = generic_form_nation
 
 		allowed = {
@@ -10601,15 +10371,6 @@ SOV_world_soviet_socialist_republic_category = {
 			}
 			set_temp_variable = { WSSR_cost = 0 }
 			
-			set_temp_variable = { temp_target_stability = FROM.stability }
-			set_temp_variable = { temp_target_tech = FROM.num_researched_technologies }
-			set_temp_variable = { temp_target_research_slots = FROM.amount_research_slots }
-			set_temp_variable = { temp_target_research_speed = FROM.modifier@research_speed_factor }
-			set_temp_variable = { temp_target_nukes = FROM.num_of_nukes }
-			set_temp_variable = { temp_target_army = FROM.num_battalions }
-			set_temp_variable = { temp_target_manpower = FROM.max_manpower_k }
-			set_temp_variable = { temp_target_states = FROM.num_core_states }
-			set_temp_variable = { temp_target_factories = FROM.num_of_owned_factories }
 			set_temp_variable = { temp_target_resources = 0 }
 			add_to_temp_variable = { temp_target_resources = FROM.resource_produced@aluminium }
 			add_to_temp_variable = { temp_target_resources = FROM.resource_produced@chromium }
@@ -10659,7 +10420,7 @@ SOV_world_soviet_socialist_republic_category = {
 			if = {
 				limit = {
 					check_variable = {
-						temp_sov_stability > temp_target_stability
+						temp_sov_stability > FROM.stability
 					}
 				}
 				add_to_temp_variable = { temp_sov_potetial = 10 }
@@ -10668,7 +10429,7 @@ SOV_world_soviet_socialist_republic_category = {
 			if = {
 				limit = {
 					check_variable = {
-						temp_sov_tech > temp_target_tech
+						temp_sov_tech > FROM.num_researched_technologies
 					}
 				}
 				add_to_temp_variable = { temp_sov_potetial = 10 }
@@ -10677,7 +10438,7 @@ SOV_world_soviet_socialist_republic_category = {
 			if = {
 				limit = {
 					check_variable = {
-						temp_sov_research_slots > temp_target_research_slots
+						temp_sov_research_slots > FROM.amount_research_slots
 					}
 				}
 				add_to_temp_variable = { temp_sov_potetial = 10 }
@@ -10686,7 +10447,7 @@ SOV_world_soviet_socialist_republic_category = {
 			if = {
 				limit = {
 					check_variable = {
-						temp_sov_research_speed > temp_target_research_speed
+						temp_sov_research_speed > FROM.modifier@research_speed_factor
 					}
 				}
 				add_to_temp_variable = { temp_sov_potetial = 10 }
@@ -10695,7 +10456,7 @@ SOV_world_soviet_socialist_republic_category = {
 			if = {
 				limit = {
 					check_variable = {
-						temp_target_nukes > temp_sov_nukes
+						temp_target_nukes > FROM.num_of_nukes
 					}
 				}
 				add_to_temp_variable = { temp_sov_potetial = 10 }
@@ -10704,7 +10465,7 @@ SOV_world_soviet_socialist_republic_category = {
 			if = {
 				limit = {
 					check_variable = {
-						temp_sov_army > temp_target_army
+						temp_sov_army > FROM.num_battalions
 					}
 				}
 				add_to_temp_variable = { temp_sov_potetial = 10 }
@@ -10713,7 +10474,7 @@ SOV_world_soviet_socialist_republic_category = {
 			if = {
 				limit = {
 					check_variable = {
-						temp_sov_manpower > temp_target_manpower
+						temp_sov_manpower > FROM.max_manpower_k
 					}
 				}
 				add_to_temp_variable = { temp_sov_potetial = 10 }
@@ -10722,7 +10483,7 @@ SOV_world_soviet_socialist_republic_category = {
 			if = {
 				limit = {
 					check_variable = {
-						temp_sov_states > temp_target_states
+						temp_sov_states > FROM.num_core_states
 					}
 				}
 				add_to_temp_variable = { temp_sov_potetial = 10 }
@@ -10731,7 +10492,7 @@ SOV_world_soviet_socialist_republic_category = {
 			if = {
 				limit = {
 					check_variable = {
-						temp_sov_factories > temp_target_factories
+						temp_sov_factories > FROM.num_of_owned_factories
 					}
 				}
 				add_to_temp_variable = { temp_sov_potetial = 10 }
@@ -10746,7 +10507,7 @@ SOV_world_soviet_socialist_republic_category = {
 				add_to_temp_variable = { temp_sov_potetial = 10 }
 			}
 
-			add_to_temp_variable = { WSSR_cost = temp_target_manpower }
+			add_to_temp_variable = { WSSR_cost = FROM.max_manpower_k }
 			divide_temp_variable = { WSSR_cost = temp_sov_potetial }
 			
 			if = {
@@ -10773,7 +10534,7 @@ SOV_world_soviet_socialist_republic_category = {
 
 		target_trigger = {
 			FROM = {
-				has_autonomy_state = autonomy_collaboration_government
+				is_puppet_of = ROOT
 			}
 		}
 
@@ -10790,6 +10551,9 @@ SOV_world_soviet_socialist_republic_category = {
 					limit = {
 						OR = {
 							has_trait = peasant_sympathiser
+							has_trait = trait_BUL_ff_sympathizer
+							has_trait = trait_GRE_marxist_acolyte
+							has_trait = trait_SPR_stalinist_loyalties
 							has_trait = JAP_communist_sympathizer
 							has_ideology_group = communism
 						}
@@ -10807,6 +10571,8 @@ SOV_world_soviet_socialist_republic_category = {
 	}
 	
 	WSSR_integration_state = {
+
+		priority = 1
 
 		icon = generic_form_nation
 

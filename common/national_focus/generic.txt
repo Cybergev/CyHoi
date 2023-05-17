@@ -1819,8 +1819,14 @@ focus_tree = {
 		mutually_exclusive = { focus = liberty_ethos}
 		available = {
 			OR = {
-				communism > 0.3
-				fascism > 0.3
+				OR = {
+					communism > 0.3
+					has_government = communism
+				}
+				OR = {
+					fascism > 0.3
+					has_government = fascism
+				}
 			}
 		}
 		x = -1
@@ -1838,8 +1844,14 @@ focus_tree = {
 			modifier = {
 				factor = 5
 				OR = {
-					communism > 0.3
-					fascism > 0.3
+					OR = {
+						communism > 0.3
+						has_government = communism
+					}
+					OR = {
+						fascism > 0.3
+						has_government = fascism
+					}
 				}
 			}
 		}
@@ -1856,8 +1868,14 @@ focus_tree = {
 		mutually_exclusive = { focus = collectivist_ethos }
 		available = {
 			OR = {
-				democratic > 0.3
-				neutrality > 0.3
+				OR = {
+					democratic > 0.3
+					has_government = democratic
+				}
+				OR = {
+					neutrality > 0.3
+					has_government = neutrality
+				}
 			}
 		}
 		x = 1
@@ -1875,8 +1893,14 @@ focus_tree = {
 			modifier = {
 				factor = 5
 				OR = {
-					democratic > 0.3
-					neutrality > 0.3
+					OR = {
+						democratic > 0.3
+						has_government = democratic
+					}
+					OR = {
+						neutrality > 0.3
+						has_government = neutrality
+					}
 				}
 			}
 		}

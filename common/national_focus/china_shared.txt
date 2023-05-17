@@ -1128,7 +1128,6 @@ shared_focus = {
 shared_focus = {
 	id = CHI_reach_out_to_france
 	icon = GFX_focus_chi_reach_out_to_france
-	mutually_exclusive = { focus = CHI_british_cooperation }
 	prerequisite = { focus = CHI_invite_foreign_investors }
 	x = 5
 	y = 0
@@ -1193,11 +1192,75 @@ shared_focus = {
 }
 
 shared_focus = {
+	id = CHI_guarantee_the_hanoi_route
+	icon = GFX_goal_generic_intelligence_exchange
+	mutually_exclusive = { focus = CHI_burma_road }
+	prerequisite = { focus = CHI_reach_out_to_france }
+	x = 0
+	y = 1
+	relative_position_id = CHI_reach_out_to_france
+
+	cost = 10
+
+	ai_will_do = {
+		factor = 1
+		modifier = {
+			FRA = {
+				has_war = yes
+			}
+			factor = 0
+		}
+	}
+
+	available = {
+		all_other_country = { NOT = { has_completed_focus = CHI_guarantee_the_hanoi_route } }
+		FRA_will_support = yes
+		325 = { #Yunnan
+			CONTROLLER = {
+				OR = {
+					tag = ROOT
+					is_subject_of = ROOT
+					is_in_faction_with = ROOT
+				}
+			}
+		}
+		671 = { #Tonkin
+			CONTROLLER = {
+				NOT = { has_war_with = ROOT }
+				OR = {
+					original_tag = FRA
+					is_subject_of = FRA
+				}
+			}
+		}
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		671 = { #Tonkin
+			set_state_flag = CHI_needed_for_hanoi_route
+		}
+		325 = { #Yunnan
+			set_state_flag = CHI_needed_for_hanoi_route
+		}	
+		set_variable = { CHI_hanoi_route_current_level = 3 }
+		add_offsite_building = { type = arms_factory level = 3 }
+	}
+}
+
+shared_focus = {
 	id = CHI_small_arms_expertise
 	icon = GFX_focus_secret_rearmament
-	prerequisite = { focus = CHI_reach_out_to_france }
+	prerequisite = { focus = CHI_invite_soviet_advisers focus = CHI_small_arms_expertise }
 	x = -2
-	y = 1
+	y = 2
 	relative_position_id = CHI_reach_out_to_france
 
 	cost = 10
@@ -1231,7 +1294,7 @@ shared_focus = {
 shared_focus = {
 	id = CHI_elite_mountaineers
 	icon = GFX_goal_generic_allies_build_infantry
-	prerequisite = { focus = CHI_invite_soviet_advisers focus = CHI_small_arms_expertise }
+	prerequisite = { focus = CHI_small_arms_expertise }
 	x = 0
 	y = 1
 	relative_position_id = CHI_small_arms_expertise
@@ -1347,69 +1410,6 @@ shared_focus = {
 	}
 }
 
-
-shared_focus = {
-	id = CHI_guarantee_the_hanoi_route
-	icon = GFX_goal_generic_intelligence_exchange
-	prerequisite = { focus = CHI_reach_out_to_france }
-	x = 0
-	y = 1
-	relative_position_id = CHI_reach_out_to_france
-
-	cost = 10
-
-	ai_will_do = {
-		factor = 1
-		modifier = {
-			FRA = {
-				has_war = yes
-			}
-			factor = 0
-		}
-	}
-
-	available = {
-		all_other_country = { NOT = { has_completed_focus = CHI_guarantee_the_hanoi_route } }
-		FRA_will_support = yes
-		325 = { #Yunnan
-			CONTROLLER = {
-				OR = {
-					tag = ROOT
-					is_subject_of = ROOT
-					is_in_faction_with = ROOT
-				}
-			}
-		}
-		671 = { #Tonkin
-			CONTROLLER = {
-				NOT = { has_war_with = ROOT }
-				OR = {
-					original_tag = FRA
-					is_subject_of = FRA
-				}
-			}
-		}
-	}
-
-	bypass = {
-
-	}
-
-	cancel_if_invalid = yes
-	continue_if_invalid = no
-	available_if_capitulated = no
-
-	completion_reward = {
-		671 = { #Tonkin
-			set_state_flag = CHI_needed_for_hanoi_route
-		}
-		325 = { #Yunnan
-			set_state_flag = CHI_needed_for_hanoi_route
-		}	
-		set_variable = { CHI_hanoi_route_current_level = 3 }
-		add_offsite_building = { type = arms_factory level = 3 }
-	}
-}
 
 shared_focus = {
 	id = CHI_construction_battalions
@@ -2555,7 +2555,6 @@ shared_focus = {
 shared_focus = {
 	id = CHI_british_cooperation
 	icon = GFX_focus_chi_british_cooperation
-	mutually_exclusive = { focus = CHI_reach_out_to_france }
 	prerequisite = { focus = CHI_invite_foreign_investors }
 	x = 2
 	y = 0
@@ -2630,6 +2629,7 @@ shared_focus = {
 shared_focus = {
 	id = CHI_burma_road
 	icon = GFX_goal_generic_army_motorized
+	mutually_exclusive = { focus = CHI_guarantee_the_hanoi_route }
 	prerequisite = { focus = CHI_british_cooperation }
 	x = 0
 	y = 1

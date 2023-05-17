@@ -237,11 +237,13 @@ opinion_modifiers = {
 	}
 	
 	long_term_trade_partner = {
-		value = 1
+		value = 0
+		months = 0
+		decay = 5
+		max_trust = 100
 	}
 	
-	puppet_opinion = 
-	{
+	puppet_opinion = {
 		value = 50
 	}
 

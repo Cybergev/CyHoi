@@ -10,12 +10,11 @@ ideas = {
 			removal_cost = -1
 
 			available = {
-				#has_manpower_for_recruit_change_to = { value = 0.005 group = mobilization_laws }
-			}
-
-			modifier = {
-				conscription = 0.0
-				consumer_goods_factor = 0.0
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_conscription_policy
+					}
+				}
 			}
 
 			cancel_if_invalid = no
@@ -36,6 +35,11 @@ ideas = {
 				}
 				NOT = { has_idea = undisturbed_isolation }
 				NOT = { has_idea = isolation }
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_conscription_policy
+					}
+				}
 			}
 
 			ai_will_do = {
@@ -121,6 +125,11 @@ ideas = {
 						has_dlc = "Battle for the Bosporus"
 					}
 					NOT = { has_idea = BUL_army_restrictions }
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_conscription_policy
+					}
 				}
 			}
 
@@ -214,6 +223,11 @@ ideas = {
 						has_dlc = "Battle for the Bosporus"
 					}
 					NOT = { has_idea = BUL_army_restrictions }
+				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_conscription_policy
+					}
 				}
 			}
 			ai_will_do = {
@@ -332,6 +346,11 @@ ideas = {
 					}
 					NOT = { has_idea = BUL_army_restrictions }
 				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_conscription_policy
+					}
+				}
 			}
 
 			ai_will_do = {
@@ -387,9 +406,9 @@ ideas = {
 			modifier = {
 				conscription = 0.10
 				consumer_goods_factor = 0.20
-				production_speed_buildings_factor = -0.20
-				industrial_capacity_factory = -0.20
-				industrial_capacity_dockyard = -0.20
+				production_speed_buildings_factor = -0.10
+				industrial_capacity_factory = -0.10
+				industrial_capacity_dockyard = -0.10
 			}
 
 			cancel_if_invalid = no
@@ -474,6 +493,11 @@ ideas = {
 					}
 					NOT = { has_idea = BUL_army_restrictions }
 				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_conscription_policy
+					}
+				}
 			}
 
 			ai_will_do = {
@@ -522,9 +546,9 @@ ideas = {
 			modifier = {
 				conscription = 0.20
 				consumer_goods_factor = 0.40
-				production_speed_buildings_factor = -0.40
-				industrial_capacity_factory = -0.40
-				industrial_capacity_dockyard = -0.40
+				production_speed_buildings_factor = -0.20
+				industrial_capacity_factory = -0.20
+				industrial_capacity_dockyard = -0.20
 			}
 
 			cancel_if_invalid = no
@@ -609,6 +633,11 @@ ideas = {
 					}
 					NOT = { has_idea = BUL_army_restrictions }
 				}
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_conscription_policy
+					}
+				}
 			}
 
 			ai_will_do = {
@@ -644,9 +673,9 @@ ideas = {
 			modifier = {
 				conscription = 0.30
 				consumer_goods_factor = 0.60
-				production_speed_buildings_factor = -0.60
-				industrial_capacity_factory = -0.60
-				industrial_capacity_dockyard = -0.60
+				production_speed_buildings_factor = -0.30
+				industrial_capacity_factory = -0.30
+				industrial_capacity_dockyard = -0.30
 			}
 
 			cancel_if_invalid = no
@@ -658,6 +687,14 @@ ideas = {
 			cost = 150
 			removal_cost = -1
 			level = 6
+
+			available = {
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_conscription_policy
+					}
+				}
+			}
 
 			allowed = {
 				always = no
@@ -688,6 +725,14 @@ ideas = {
 			cost = 150
 			removal_cost = -1
 			level = 6
+
+			available = {
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_conscription_policy
+					}
+				}
+			}
 
 			allowed = {
 				always = no
@@ -721,6 +766,14 @@ ideas = {
 			removal_cost = -1
 			level = 6
 
+			available = {
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_conscription_policy
+					}
+				}
+			}
+
 			allowed = {
 				always = no
 			}
@@ -746,6 +799,14 @@ ideas = {
 			cost = 200
 			removal_cost = -1
 			level = 6
+
+			available = {
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_conscription_policy
+					}
+				}
+			}
 
 			allowed = {
 				always = no

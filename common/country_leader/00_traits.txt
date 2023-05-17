@@ -3123,105 +3123,98 @@ leader_traits = {
 
 	stalin_heart_of_steel = {
 		random = no
-		stability_factor = -0.1
+		stability_factor = -0.05
 		war_support_factor = 0.05
-		political_power_factor = 0.05
+		political_power_factor = 0.10
 		opinion_gain_monthly_factor = -0.05
-		subjects_autonomy_gain = -0.1
+		subjects_autonomy_gain = -0.10
 	}
 
 	stalin_heart_of_steel_opposition = {
 		random = no
-		stability_factor = -0.1
+		stability_factor = -0.10
 		war_support_factor = 0.05
 		opinion_gain_monthly_factor = -0.05
-		subjects_autonomy_gain = -0.1
+		subjects_autonomy_gain = -0.10
 	}
 
 	stalin_inheritor_of_lenin = {
 		random = no
-		political_power_factor = 0.1
+		offensive_war_stability_factor = 0.25
 		justify_war_goal_time = -0.25
 	}
 
 	stalin_inheritor_of_lenin_genius = {
 		random = no
-		political_power_factor = 0.1
+		political_power_factor = 0.10
+		offensive_war_stability_factor = 0.25
 		justify_war_goal_time = -0.25
-		research_speed_factor = 0.05
+
+		communism_drift = 0.20
+		political_advisor_cost_factor = -0.20
 	}
 
 	stalin_inheritor_of_lenin_leader = {
 		random = no
-		political_power_factor = 0.1
-		justify_war_goal_time = -0.25
-		party_popularity_stability_factor = 0.15
-		defensive_war_stability_factor = 0.4
-		political_advisor_cost_factor = -0.25
-	}
-
-	stalin_inheritor_of_lenin_final = {
-		random = no
-		political_power_factor = 0.1
-		justify_war_goal_time = -0.25
-		research_speed_factor = 0.05
-		party_popularity_stability_factor = 0.15
-		defensive_war_stability_factor = 0.4
-		political_advisor_cost_factor = -0.25
+		offensive_war_stability_factor = 0.50
+		justify_war_goal_time = -0.50
+		
+		communism_drift = 0.20
+		political_advisor_cost_factor = -0.20
 	}
 
 	stalin_servant_of_lenin = {
 		random = no
-		drift_defence_factor = 0.15
-		guarantee_cost = -0.5
+		defensive_war_stability_factor = 0.25
+		enemy_justify_war_goal_time = 0.25
 	}
 
 	stalin_servant_of_lenin_worship = {
 		random = no
-		drift_defence_factor = 0.15
-		guarantee_cost = -0.5
-		stability_factor = 0.15
+		political_power_factor = 0.10
+		defensive_war_stability_factor = 0.25
+		enemy_justify_war_goal_time = 0.25
+		
+		communism_drift = 0.20
+		political_advisor_cost_factor = -0.20
 	}
 
 	stalin_servant_of_lenin_leader = {
 		random = no
-		drift_defence_factor = 0.15
-		guarantee_cost = -0.5
-		party_popularity_stability_factor = 0.15
-		defensive_war_stability_factor = 0.4
-		political_advisor_cost_factor = -0.25
-	}
+		defensive_war_stability_factor = 0.50
+		enemy_justify_war_goal_time = 0.50
 
-	stalin_servant_of_lenin_final = {
-		random = no
-		drift_defence_factor = 0.15
-		guarantee_cost = -0.5
-		stability_factor = 0.15
-		party_popularity_stability_factor = 0.15
-		defensive_war_stability_factor = 0.4
-		political_advisor_cost_factor = -0.25
+		communism_drift = 0.20
+		political_advisor_cost_factor = -0.20
 	}
 
 	stalin_great_commander = {
 		random = no
-		war_support_factor = 0.1
-		army_morale_factor = 0.05
-		annex_cost_factor = -0.1
+		war_support_weekly = 0.001
+		annex_cost_factor = -0.10
+		command_power_gain = 1
 	}
 
 	stalin_architect_of_communism = {
 		random = no
-		communism_drift = 0.1
-		master_ideology_drift = 0.1
-		puppet_cost_factor = -0.2
+		stability_weekly = 0.010
+		puppet_cost_factor = -0.10
+		subjects_autonomy_gain = -1
 	}
 
 	stalin_father_of_nations = {
 		random = no
-		stability_weekly = 0.001
-		compliance_gain = 0.05
-		justify_war_goal_when_in_major_war_time = -0.5
-		conscription = 0.02
+		political_power_gain = 1
+		war_stability_factor = 0.10
+		stability_weekly = 0.010
+		war_support_weekly = 0.010
+		puppet_cost_factor = -0.10
+		annex_cost_factor = -0.10
+		drift_defence_factor = 0.10
+		subjects_autonomy_gain = -1
+		command_power_gain = 1
+		resistance_decay = 0.10
+		compliance_growth = 0.10
 	}
 
 	stalin_authority_undermined = {
@@ -3497,9 +3490,9 @@ leader_traits = {
 	political_commissar = {
 		random = no
 		sprite = 13
-		communism_drift = 0.1
-		political_power_factor = 0.05
-		max_command_power = 30
+		political_power_factor = 0.10
+		command_power_gain_mult = 0.10
+		communism_drift = 0.10
 	}
 
 	#Molotov

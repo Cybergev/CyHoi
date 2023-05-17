@@ -4,9 +4,52 @@ bookmarks = {
 		desc = "GATHERING_STORM_DESC"
 		date = 1936.1.1.12
 		picture = "GFX_select_date_1936"
-		default_country = "GER"
-		default = yes
+		default = no
 		
+		"SOV"={
+			history = "SOV_GATHERING_STORM_DESC"
+			ideology = communism
+			available = { has_dlc = "No Step Back" }
+			ideas = {
+				trotskyite_plot_nsb
+				SOV_second_five_year_plan_fake_1936_ns
+				SOV_politicized_military
+			}
+			focuses = {
+				SOV_behead_the_snake
+				SOV_the_supreme_soviet
+				SOV_reconvene_the_zemsky_sobor
+			}	
+		}
+		"SOV"={
+			history = "SOV_GATHERING_STORM_DESC"
+			ideology = communism
+			available = { NOT = { has_dlc = "No Step Back" } }
+			ideas = {
+				trotskyite_plot_nsb
+				SOV_second_five_year_plan_fake_1936_ns
+				SOV_politicized_military
+			}
+			focuses = {
+				SOV_behead_the_snake
+				SOV_father_of_nations
+				SOV_the_supreme_soviet
+			}	
+		}
+		"USA"={
+			history = "USA_GATHERING_STORM_DESC"
+			ideology = democratic
+			ideas = {
+				home_of_the_free
+				great_depression
+				undisturbed_isolation
+			}
+			focuses = {
+				USA_war_plan_black
+				USA_limited_intervention
+				USA_reestablish_the_gold_standard
+			}
+		}
 		"FRA"={
 			history = "FRA_GATHERING_STORM_DESC"
 			ideology = democratic
@@ -35,20 +78,6 @@ bookmarks = {
 				FRA_invite_communist_ministers
 				FRA_utilize_the_leagues
 				FRA_je_suis_la_deluge
-			}
-		}
-		"USA"={
-			history = "USA_GATHERING_STORM_DESC"
-			ideology = democratic
-			ideas = {
-				home_of_the_free
-				great_depression
-				undisturbed_isolation
-			}
-			focuses = {
-				USA_war_plan_black
-				USA_limited_intervention
-				USA_reestablish_the_gold_standard
 			}
 		}
 		"ENG"={
@@ -154,36 +183,6 @@ bookmarks = {
 				JAP_warrior_spirit
 				JAP_strike_on_the_southern_resource_area
 			}			
-		}
-		"SOV"={
-			history = "SOV_GATHERING_STORM_DESC"
-			ideology = communism
-			available = { has_dlc = "No Step Back" }
-			ideas = {
-				trotskyite_plot_nsb
-				SOV_second_five_year_plan_fake_1936_ns
-				SOV_politicized_military
-			}
-			focuses = {
-				SOV_behead_the_snake
-				SOV_the_supreme_soviet
-				SOV_reconvene_the_zemsky_sobor
-			}	
-		}
-		"SOV"={
-			history = "SOV_GATHERING_STORM_DESC"
-			ideology = communism
-			available = { NOT = { has_dlc = "No Step Back" } }
-			ideas = {
-				trotskyite_plot_nsb
-				SOV_second_five_year_plan_fake_1936_ns
-				SOV_politicized_military
-			}
-			focuses = {
-				SOV_behead_the_snake
-				SOV_father_of_nations
-				SOV_the_supreme_soviet
-			}	
 		}
 
 		"---"={

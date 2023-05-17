@@ -1,11 +1,14 @@
 ﻿l_russian:
 
- flexible_conscription_policy:0 "Призывная политика"
- flexible_conscription_policy_desc:0 " $MODIFIER_CONSCRIPTION_FACTOR$ [?Flexible_conscription_policy_conscription|=1%Y] \n $MODIFIER_CONSCRIPTION_FACTOR$ [?Flexible_conscription_policy_conscription_factor|=1%Y] \n $MODIFIER_CONSUMER_GOODS_FACTOR$ [?Flexible_conscription_policy_consumer_goods_factor|=1%Y] \n $MODIFIER_PRODUCTION_SPEED_BUILDINGS_FACTOR$ [?Flexible_conscription_policy_production_speed_buildings_factor|=1%Y] \n $MODIFIER_INDUSTRIAL_CAPACITY_FACTOR$ [?Flexible_conscription_policy_industrial_capacity_factory|=1%Y] \n $MODIFIER_INDUSTRIAL_CAPACITY_DOCKYARD_FACTOR$ [?Flexible_conscription_policy_industrial_capacity_dockyard|=1%Y] \n $MODIFIER_ARMY_ORG_FACTOR$ [?Flexible_conscription_policy_army_org_factor|=1%Y] \n $MODIFIER_ARMY_ORG_REGAIN$ [?Flexible_conscription_policy_army_org_regain|=1%Y] \n $MODIFIER_ORG_LOSS_AT_LOW_ORG_FACTOR$ [?Flexible_conscription_policy_org_loss_at_low_org_factor|=1%Y] \n $MODIFIER_ORG_LOSS_WHEN_MOVING$ [?Flexible_conscription_policy_org_loss_when_moving|=1%Y] \n $MODIFIER_TRAINING_TIME_FACTOR$ [?Flexible_conscription_policy_training_time_factor|=1%Y] \n $MODIFIER_MINIMUM_TRAINING_LEVEL$ [?Flexible_conscription_policy_minimum_training_level|=1%Y] \n"
+ Flexible_conscription_policy_category:0 "Призывная политика"
+ Flexible_conscription_policy_category_desc:0 "Призывная политика: \n $MODIFIER_CONSCRIPTION_FACTOR$ [?Flexible_conscription_policy_conscription|=%Y] \n $MODIFIER_CONSUMER_GOODS_FACTOR$ [?Flexible_conscription_policy_consumer_goods_factor|=1%Y] \n $MODIFIER_PRODUCTION_SPEED_BUILDINGS_FACTOR$ [?Flexible_conscription_policy_production_speed_buildings_factor|=%+] \n $MODIFIER_INDUSTRIAL_CAPACITY_FACTOR$ [?Flexible_conscription_policy_industrial_capacity_factory|=%+] \n $MODIFIER_INDUSTRIAL_CAPACITY_DOCKYARD_FACTOR$ [?Flexible_conscription_policy_industrial_capacity_dockyard|=%+] \n\nОрганизационные стандарты:\n $MODIFIER_CONSCRIPTION_TOTAL_FACTOR$ [?Flexible_conscription_policy_conscription_factor|=0%+] \n $MODIFIER_ARMY_ORG_FACTOR$ [?Flexible_conscription_policy_army_org_factor|=1%+] \n $MODIFIER_ARMY_ORG_REGAIN$ [?Flexible_conscription_policy_army_org_regain|RIGHT|=%+] \n $MODIFIER_ORG_LOSS_AT_LOW_ORG_FACTOR$ [?Flexible_conscription_policy_org_loss_at_low_org_factor|=%-] \n $MODIFIER_ORG_LOSS_WHEN_MOVING$ [?Flexible_conscription_policy_org_loss_when_moving|=1%-] \n $MODIFIER_TRAINING_TIME_FACTOR$ [?Flexible_conscription_policy_training_time_factor|=%-] \n"
+#$MODIFIER_MINIMUM_TRAINING_LEVEL$ [?Flexible_conscription_policy_minimum_training_level|=0%-] \n
  Begin_flexible_conscription_policy:0 "Начать гибкую призывную политику"
  Begin_flexible_conscription_policy_desc:0 "Приняв более гибкую призывную политику, мы сможем эффективнее регулировать процент призываемого населения, а так же контролировать уровень подготовки армии."
- increase_conscription:0 "$MODIFIER_CONSCRIPTION_FACTOR$: §Y+1%§!"
- decrease_conscription:0 "$MODIFIER_CONSCRIPTION_FACTOR$: §Y-1%§!"
+ increase_conscription:0 "$MODIFIER_CONSCRIPTION_FACTOR$: §Y+1.00%§!"
+ decrease_conscription:0 "$MODIFIER_CONSCRIPTION_FACTOR$: §Y-1.00%§!"
+ increase_standarts:0 "$MODIFIER_ARMY_ORG_FACTOR$: §G+1.0%§!"
+ decrease_standarts:0 "$MODIFIER_ARMY_ORG_FACTOR$: §R-1.0%§!"
 
  flexible_trade_policy_category:0 "Торговая политика"
  flexible_trade_policy_category_desc:0 " $MODIFIER_CONSUMER_GOODS_FACTOR$ [?Flexible_trade_policy_consumer_goods_factor|=1%Y] \n $MODIFIER_PRODUCTION_SPEED_BUILDINGS_FACTOR$ [?Flexible_trade_policy_production_speed_buildings_factor|=%+] \n $MODIFIER_RESEARCH_SPEED_FACTOR$ [?Flexible_trade_policy_research_speed_factor|=%+] \n $MODIFIER_INDUSTRIAL_CAPACITY_FACTOR$ [?Flexible_trade_policy_industrial_capacity_factory|=%+] \n $MODIFIER_INDUSTRIAL_CAPACITY_DOCKYARD_FACTOR$ [?Flexible_trade_policy_industrial_capacity_dockyard|=%+] \n $MODIFIER_MIN_EXPORT_FACTOR$ [?Flexible_trade_policy_min_export|=0%Y] \n $MODIFIER_CIVILIAN_INTEL_TO_OTHERS$ [?Flexible_trade_policy_civilian_intel_to_others|=1*%-] \n $MODIFIER_NAVY_INTEL_TO_OTHERS$ [?Flexible_trade_policy_navy_intel_to_others|=1*%-] \n"
@@ -37,9 +40,13 @@
  decrease_economy_policy_volume:0 "Объем экономической политики: §Y-10%§!"
  decrease_economy_policy_volume_MIN:0 "Минимальный объем экономической политики"
 
+ improved_worker_conditions:0 "Улучшение рабочих условий"
+ improved_worker_conditions_desc:0 "Работа на многих пердприятиях тяжела и полна опасностей. Улучшение условий труда наших рабочих снизит их эффективность на первое время, но долгосрочная выгода того стоит."
+ complete_improving_worker_conditions:0 "Завершить улучшение рабочих условий"
+
  change_capital_state_show:0 "Начать пренос столицы"
  change_capital_state_on_map:0 "[From.GetName] станет столичным регоном"
- change_capital_state_hide:0 "Закончить пренос столицы"
+ change_capital_state_hide:0 "Завершить пренос столицы"
 
  take_the_eurasian_steppe:0 "Присоединить Евразийскую степь"
  take_the_eurasian_steppe_desc:0 "Получив контроль над территорией Евразийской степью, и мы можем начать eё интеграцию"
@@ -98,6 +105,13 @@
  form_panslavic_union_category:0 "Панславянский союз"
  form_panslavic_union_category_desc:0 "Славяне всегда были разрознены в своей междоусобной грызне, чем не раз пользовались наши враги. За это долгое время мы твердо усвоили одно: славян всегда будут атаковать, притеснять и унижать, если мы не станем держаться вместе, прекратив эту бессмысленую грызню."
  form_integrate_slavic:0 "$form_panslavic_union_category$"
+
+ form_caucasian_gambit_category:0 "Кавказский гамбит"
+ form_mountainous_republic:0 "Объединить Горские республики"
+ form_mountainous_republic_desc:0 "Во время русской гражданской войны великий Тапа Чермоев пытался объединить республики Северного Кавказа под общим знаменем, чтобы противостоять вторжению России. Теперь народы Северного Кавказа объединятся вновь, чтобы изгнать иноземцев и восстановить былую славу!"
+ form_transcaucasian_republic:0 "Воссоздать Транскавказскую Федерацию"
+ form_transcaucasian_republic_desc:0 "Идея о Транскавказской республике, недавно распущенной после принятия Конституции СССР 1936 года, до сих пор витает в умах народа. Если бы страна могла объединить эти территории, был бы шанс повторно основать Федерацию государств и Транскавказия могла бы снова стать единой и сильной."
+ expand_north:0 "Расширяться на север"
 
  SOV_world_soviet_socialist_republic_category:0 "Мировая социалистическая республика"
  SOV_world_soviet_socialist_republic_category_desc:0 "\n"

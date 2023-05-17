@@ -1651,9 +1651,11 @@ characters={
 				OR = {
 					has_government = fascism 
 					has_country_flag = GER_reinstated_nazi_leadership 
-					NOT = {
-						has_country_leader = GER_heinrich_himmler
-					}
+				}
+			}
+			visible = {
+				NOT = {
+					has_country_leader = GER_heinrich_himmler
 				}
 			}
 			on_add = {

@@ -1,0 +1,8 @@
+spriteTypes = {
+		
+	spriteType = {
+		name = "GFX_WSSR_event"
+		texturefile = "gfx/event_pictures/WSSR_event.dds"
+	}
+
+}
