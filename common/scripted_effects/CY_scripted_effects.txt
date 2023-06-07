@@ -1,0 +1,282 @@
+increase_civilian_economy = {
+	clear_variable = Flexible_economy_policy_civilian_point
+	clear_variable = Flexible_economy_policy_military_point
+	clear_variable = Flexible_economy_policy_civilian_invert_point
+	clear_variable = Flexible_economy_policy_military_invert_point
+
+	set_temp_variable = {
+		v_economy_manipulator = increasing_civilian_economy_value
+	}
+	set_temp_variable = {
+		v_economy_consumer_point = Flexible_economy_policy_consumer_goods_factor
+	}
+	
+	add_to_variable = {
+		Flexible_economy_policy_civilian_share = v_economy_manipulator
+	}
+	set_variable = {
+		Flexible_economy_policy_military_share = 1.0
+	}
+	subtract_from_variable = {
+		Flexible_economy_policy_military_share = Flexible_economy_policy_civilian_share
+	}
+
+	divide_temp_variable = {
+		v_economy_consumer_point = 1.0
+	}
+	multiply_temp_variable = {
+		v_economy_consumer_point = Flexible_economy_policy_civilian_share
+	}
+	add_to_variable = {
+		Flexible_economy_policy_civilian_point = v_economy_consumer_point
+	}
+
+	set_temp_variable = {
+		v_economy_consumer_point = Flexible_economy_policy_consumer_goods_factor
+	}
+
+	divide_temp_variable = {
+		v_economy_consumer_point = 1.0
+	}
+	multiply_temp_variable = {
+		v_economy_consumer_point = Flexible_economy_policy_military_share
+	}
+	add_to_variable = {
+		Flexible_economy_policy_military_point = v_economy_consumer_point
+	}
+
+	
+	clear_variable = increasing_civilian_economy_value
+}
+
+increase_military_economy = {
+	clear_variable = Flexible_economy_policy_civilian_point
+	clear_variable = Flexible_economy_policy_military_point
+	clear_variable = Flexible_economy_policy_civilian_invert_point
+	clear_variable = Flexible_economy_policy_military_invert_point
+
+	set_temp_variable = {
+		v_economy_manipulator = increasing_military_economy_value
+	}
+	set_temp_variable = {
+		v_economy_consumer_point = Flexible_economy_policy_consumer_goods_factor
+	}
+
+	add_to_variable = {
+		Flexible_economy_policy_military_share = v_economy_manipulator
+	}
+	set_variable = {
+		Flexible_economy_policy_civilian_share = 1.0
+	}
+	subtract_from_variable = {
+		Flexible_economy_policy_civilian_share = Flexible_economy_policy_military_share
+	}
+
+	divide_temp_variable = {
+		v_economy_consumer_point = 1.0
+	}
+	multiply_temp_variable = {
+		v_economy_consumer_point = Flexible_economy_policy_civilian_share
+	}
+	add_to_variable = {
+		Flexible_economy_policy_civilian_point = v_economy_consumer_point
+	}
+	add_to_variable = {
+		Flexible_economy_policy_civilian_invert_point = Flexible_economy_policy_civilian_point
+	}
+	multiply_variable = {
+		Flexible_economy_policy_civilian_invert_point = -1
+	}
+
+	set_temp_variable = {
+		v_economy_consumer_point = Flexible_economy_policy_consumer_goods_factor
+	}
+
+	divide_temp_variable = {
+		v_economy_consumer_point = 1.0
+	}
+	multiply_temp_variable = {
+		v_economy_consumer_point = Flexible_economy_policy_military_share
+	}
+	add_to_variable = {
+		Flexible_economy_policy_military_point = v_economy_consumer_point
+	}
+	add_to_variable = {
+		Flexible_economy_policy_military_invert_point = Flexible_economy_policy_military_point
+	}
+	multiply_variable = {
+		Flexible_economy_policy_military_invert_point = -1
+	}
+	
+	clear_variable = increasing_military_economy_value
+}
+
+change_economy_policy_volume = {
+	clear_variable = Flexible_economy_policy_civilian_point
+	clear_variable = Flexible_economy_policy_military_point
+	clear_variable = Flexible_economy_policy_civilian_invert_point
+	clear_variable = Flexible_economy_policy_military_invert_point
+
+	set_temp_variable = {
+		v_economy_manipulator = changing_consumer_economy_value
+	}
+
+	add_to_variable = {
+		Flexible_economy_policy_consumer_goods_factor = v_economy_manipulator
+	}
+
+	divide_temp_variable = {
+		v_economy_consumer_point = 1.0
+	}
+	multiply_temp_variable = {
+		v_economy_consumer_point = Flexible_economy_policy_civilian_share
+	}
+	add_to_variable = {
+		Flexible_economy_policy_civilian_point = v_economy_consumer_point
+	}
+	add_to_variable = {
+		Flexible_economy_policy_civilian_invert_point = Flexible_economy_policy_civilian_point
+	}
+	multiply_variable = {
+		Flexible_economy_policy_civilian_invert_point = -1
+	}
+
+	set_temp_variable = {
+		v_economy_consumer_point = Flexible_economy_policy_consumer_goods_factor
+	}
+
+	divide_temp_variable = {
+		v_economy_consumer_point = 1.0
+	}
+	multiply_temp_variable = {
+		v_economy_consumer_point = Flexible_economy_policy_military_share
+	}
+	add_to_variable = {
+		Flexible_economy_policy_military_point = v_economy_consumer_point
+	}
+	add_to_variable = {
+		Flexible_economy_policy_military_invert_point = Flexible_economy_policy_military_point
+	}
+	multiply_variable = {
+		Flexible_economy_policy_military_invert_point = -1
+	}
+
+	
+	clear_variable = changing_consumer_economy_value
+}
+
+flexiblize_laws = {
+	hidden_effect = {
+		If = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = Flexible_conscription_policy
+				}
+				NOT = {
+					has_idea = Flexible_conscription
+				}
+			}
+			add_ideas = Flexible_conscription
+		}
+		If = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = Flexible_trade_policy
+				}
+				NOT = {
+					has_idea = Flexible_trade
+				}
+			}
+			add_ideas = Flexible_trade
+		}
+		If = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = Flexible_economy_policy
+				}
+				NOT = {
+					has_idea = Flexible_economy
+				}
+			}
+			add_ideas = Flexible_economy
+		}
+	}
+}
+
+change_conscription = {
+	set_temp_variable = {
+		t_conscription = Flexible_conscription_policy_conscription
+	}
+	set_temp_variable = {
+		t_conscription_x_2 = t_conscription
+	}
+	multiply_temp_variable = {
+		t_conscription_x_2 = 2
+	}
+	set_temp_variable = {
+		t_conscription_manipulator = changing_conscription_value
+	}
+	set_temp_variable = {
+		t_conscription_manipulator_x_2 = t_conscription_manipulator
+	}
+	multiply_temp_variable = {
+		t_conscription_manipulator_x_2 = 2
+	}
+	
+	clear_variable = Flexible_conscription_policy_conscription
+	clear_variable = Flexible_conscription_policy_consumer_goods_factor
+	clear_variable = Flexible_conscription_policy_production_speed_buildings_factor
+	clear_variable = Flexible_conscription_policy_industrial_capacity_factory
+	clear_variable = Flexible_conscription_policy_industrial_capacity_dockyard
+
+	set_variable = { 
+		Flexible_conscription_policy_conscription = t_conscription
+	}
+	add_to_variable = { 
+		Flexible_conscription_policy_conscription = t_conscription_manipulator
+		tooltip = conscription_tt
+	}
+	set_variable = { 
+		Flexible_conscription_policy_consumer_goods_factor = t_conscription_x_2
+	}
+	add_to_variable = { 
+		Flexible_conscription_policy_consumer_goods_factor = t_conscription_manipulator_x_2
+		tooltip = consumer_goods_factor_tt
+	}
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					t_conscription < 0.05
+				}
+			}
+		}
+		multiply_temp_variable = {
+			t_conscription = -1
+		}
+		multiply_temp_variable = {
+			t_conscription_manipulator = -1
+		}
+		set_variable = {
+			Flexible_conscription_policy_production_speed_buildings_factor = t_conscription
+		}
+		add_to_variable = { 
+			Flexible_conscription_policy_production_speed_buildings_factor = t_conscription_manipulator
+			tooltip = production_speed_buildings_factor_tt
+		}
+		set_variable = {
+			Flexible_conscription_policy_industrial_capacity_factory = t_conscription
+		}
+		add_to_variable = { 
+			Flexible_conscription_policy_industrial_capacity_factory = t_conscription_manipulator
+			tooltip = industrial_capacity_factory_tt
+		}
+		set_variable = {
+			Flexible_conscription_policy_industrial_capacity_dockyard = t_conscription
+		}
+		add_to_variable = { 
+			Flexible_conscription_policy_industrial_capacity_dockyard = t_conscription_manipulator
+			tooltip = industrial_capacity_dockyard_tt
+		}
+	}
+}

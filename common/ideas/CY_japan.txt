@@ -140,8 +140,8 @@ ideas = {
 			picture = warrior_traditions_idea
 			
 			modifier = {
-				mobilization_laws_cost_factor = -0.15
-				mobilization_speed = 0.15
+				mobilization_laws_cost_factor = -0.25
+				mobilization_speed = 0.25
 			}
 		}
 
@@ -160,8 +160,8 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				mobilization_laws_cost_factor = -0.30
-				mobilization_speed = 0.30
+				mobilization_laws_cost_factor = -0.50
+				mobilization_speed = 0.50
 			}
 		}
 
@@ -180,8 +180,8 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				mobilization_laws_cost_factor = -0.15
-				mobilization_speed = 0.15
+				mobilization_laws_cost_factor = -0.25
+				mobilization_speed = 0.25
 				conscription = 0.05
 			}
 		}

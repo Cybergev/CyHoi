@@ -86,10 +86,6 @@ form_scandinavia_category = {
 
 		ai_will_do = {
 			factor = 200
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
 		}
 	}
 }
@@ -102,12 +98,13 @@ form_nordic_league_category = {
 
 		allowed = {
 			OR = {
-				original_tag = NOR
 				original_tag = DEN
-				original_tag = SWE
+				original_tag = EST
 				original_tag = FIN
 				original_tag = ICE
-				original_tag = EST
+				original_tag = KAR
+				original_tag = NOR
+				original_tag = SWE
 			}
 			OR = {
 				has_dlc = "Waking the Tiger"
@@ -122,227 +119,285 @@ form_nordic_league_category = {
 			is_subject = no
 			if = {
 				limit = {
-					NOT = { original_tag = EST }
+					OR = {
+						NOT = {
+							original_tag = EST 
+						}
+						has_country_flag = EST_form_nordic_flag
+					}
 				}
-				# Norway
-				custom_trigger_tooltip = {
-					tooltip = form_country_norway_required_states_tt
-					controls_state = 110
-					controls_state = 142
-					controls_state = 143
-					controls_state = 144
-				}
-				# Sweden
-				custom_trigger_tooltip = {
-					tooltip = form_country_sweden_required_states_tt
-					controls_state = 124
-					controls_state = 138
-					controls_state = 139
-					controls_state = 140
-					controls_state = 141
-					controls_state = 38
-					controls_state = 666
-				}
-				# Denmark
-				custom_trigger_tooltip = {
-					tooltip = form_country_denmark_required_states_tt
-					controls_state = 37
-					controls_state = 99
-					controls_state = 100
-					controls_state = 101
-					controls_state = 337
-				}
-				# Finland
-				custom_trigger_tooltip = {
-					tooltip = form_country_finland_required_states_tt
-					controls_state = 111
-					controls_state = 145
-					controls_state = 148
-					controls_state = 149
-					controls_state = 150
+				all_state = {
+					OR = {
+						is_core_of = DEN
+						is_core_of = FIN
+						is_core_of = ICE
+						is_core_of = KAR
+						is_core_of = NOR
+						is_core_of = SWE
+					}
+					is_controlled_by = ROOT
 				}
 			}
 			else = {
-				custom_trigger_tooltip = {
-					tooltip = control_all_nordic_states_tt
-					all_state = {
-						OR = {
-							controls_or_subject_of = yes
-							controller = {
-								original_tag = FIN
-								is_in_faction_with = ROOT
-							}
-							NOT = {
-								AND = {
-									is_core_of = NOR
-									is_core_of = DEN
-									is_core_of = SWE
-								}
-							}
-						}
-					}
+				all_state = {
+					is_core_of = FIN
+					is_controlled_by = ROOT
 				}
 			}
 		}
 
 		visible = {
+			NOT = { has_global_flag = form_nordic_league_flag }
 			OR = {
-				original_tag = NOR
 				original_tag = DEN
-				original_tag = SWE
-				original_tag = FIN
 				AND = {
 					original_tag = EST
-					has_completed_focus = EST_form_scandinavia
+					OR = {
+						has_completed_focus = EST_form_scandinavia
+						has_country_flag = EST_form_nordic_flag
+					}
 				}
+				original_tag = FIN
+				original_tag = ICE
+				original_tag = KAR
+				original_tag = NOR
+				original_tag = SWE
 			}
-			NOT = { has_global_flag = form_nordic_league_flag }
 		}
 
 		complete_effect = {
-			set_cosmetic_tag = NDC_UNIFIED
-			# Norway
-			custom_effect_tooltip = form_country_norway_coring_states_tt
-			hidden_effect = {
-				110 = { add_core_of = ROOT }
-				142 = { add_core_of = ROOT }
-				143 = { add_core_of = ROOT }
-				144 = { add_core_of = ROOT }
-			}
-
 			if = {
 				limit = {
-					NOR = {
-						is_subject_of = ROOT
+					OR = {
+						NOT = {
+							original_tag = EST 
+						}
+						has_country_flag = EST_form_nordic_flag
 					}
 				}
-				
-				NOR = {
-					every_unit_leader = {
-						set_nationality = ROOT
-					}
-				}
-				
-				annex_country = {
-					target = NOR
-					transfer_troops = yes
-				}
-			}
-			# Sweden
-			custom_effect_tooltip = form_country_sweden_coring_states_tt
-			hidden_effect = {
-				124 = { add_core_of = ROOT }
-				138 = { add_core_of = ROOT }
-				139 = { add_core_of = ROOT }
-				140 = { add_core_of = ROOT }
-				141 = { add_core_of = ROOT }
-				38 = { add_core_of = ROOT }
-				666 = { add_core_of = ROOT }
-
-			}
-
-			if = {
-				limit = {
-					SWE = {
-						is_subject_of = ROOT
-					}
-				}
-				
-				SWE = {
-					every_unit_leader = {
-						set_nationality = ROOT
-					}
-				}
-				
-				annex_country = {
-					target = SWE
-					transfer_troops = yes
-				}
-			}
-			# Denmark
-			custom_effect_tooltip = form_country_denmark_coring_states_tt
-			hidden_effect = {
-				37 = { add_core_of = ROOT }
-				99 = { add_core_of = ROOT }
-				100 = { add_core_of = ROOT }
-				101 = { add_core_of = ROOT }
-				337 = { add_core_of = ROOT }
-			}
-
-			if = {
-				limit = {
-					DEN = {
-						is_subject_of = ROOT
-					}
-				}
-				
-				DEN = {
-					every_unit_leader = {
-						set_nationality = ROOT
-					}
-				}				
-				
-				annex_country = {
-					target = DEN
-					transfer_troops = yes
-				}
-			}
-			
-			# Finland
-			custom_effect_tooltip = form_country_finland_coring_states_tt
-			hidden_effect = {
-				111 = { add_core_of = ROOT }
-				145 = { add_core_of = ROOT }
-				148 = { add_core_of = ROOT }
-				149 = { add_core_of = ROOT }
-				150 = { add_core_of = ROOT }
-			}
-			
-			if = {
-				limit = {
-					FIN = {
-						is_subject_of = ROOT
+				every_possible_country = {
+					limit = {
 						OR = {
-							is_subject_of = ROOT
-							all_core_state = {
-								controller = {
-									tag = ROOT
-								} 
-							}
+							original_tag = DEN
+							original_tag = FIN
+							original_tag = ICE
+							original_tag = NOR
+							original_tag = SWE
 						}
 					}
-				}
-				
-				FIN = {
-					every_unit_leader = {
+					every_core_state = {
+						add_core_of = DEN
+						add_core_of = FIN
+						add_core_of = ICE
+						add_core_of = NOR
+						add_core_of = SWE
+						add_core_of = ROOT
+						if = {
+							limit = {
+								is_core_of = SOV
+							}
+							remove_core_of = SOV
+							add_claim_by = SOV
+						}
+					}
+					every_character = {
 						set_nationality = ROOT
 					}
 				}
-
-				annex_country = {
-					target = FIN
-					transfer_troops = yes
-				}
-			}
-			
-			hidden_effect = {
-				if = {
-					limit = { NOT = { original_tag = EST } }
+				set_cosmetic_tag = NDC_UNIFIED
+				set_global_flag = form_nordic_league_flag
+				hidden_effect = {
 					news_event = { id = wtt_news.54 hours = 6 }
 				}
-				else = {
+			}
+			else = {
+				every_possible_country = {
+					limit = {
+						OR = {
+							original_tag = EST
+							original_tag = FIN
+						}
+					}
+					every_core_state = {
+						add_core_of = EST
+						add_core_of = FIN
+						if = {
+							limit = {
+								is_core_of = SOV
+							}
+							remove_core_of = SOV
+							add_claim_by = SOV
+						}
+					}
+					every_character = {
+						set_nationality = ROOT
+					}
+				}
+				hidden_effect = {
+					EST = {
+						set_country_flag = EST_form_nordic_flag
+					}
 					news_event = { id = EST_events.3 hours = 6 }
 				}
-				set_global_flag = form_nordic_league_flag
 			}
 		}
 
 		ai_will_do = {
 			factor = 200
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
+		}
+	}
+
+	expand_nordic_league = {
+
+		name = form_nordic_league
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = DEN
+				original_tag = EST
+				original_tag = FIN
+				original_tag = ICE
+				original_tag = KAR
+				original_tag = NOR
+				original_tag = SWE
 			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				AND = {
+					has_dlc = "No Step Back"
+					original_tag = EST
+				}
+			}
+		}
+
+		available = {
+			is_subject = no
+		}
+
+		visible = {
+			has_cosmetic_tag = NDC_UNIFIED
+			OR = {
+				original_tag = DEN
+				original_tag = EST
+				original_tag = FIN
+				original_tag = ICE
+				original_tag = KAR
+				original_tag = NOR
+				original_tag = SWE
+				AND = {
+					original_tag = EST
+					has_completed_focus = EST_form_scandinavia
+				}
+			}
+			any_controlled_state = {
+				AND = {
+					OR = {
+						region = 10
+						region = 11
+						region = 12
+						region = 13
+						region = 191
+						region = 192
+						region = 265
+						state = 195
+						AND = {
+							ROOT = {
+								original_tag = EST
+							}
+							OR = {
+								state = 208
+								state = 209
+							}
+						}
+					}
+					OR = {
+						NOT = {
+							is_core_of = DEN
+						}
+						NOT = {
+							is_core_of = FIN
+						}
+						NOT = {
+							is_core_of = ICE
+						}
+						NOT = {
+							is_core_of = NOR
+						}
+						NOT = {
+							is_core_of = SWE
+						}
+						NOT = {
+							is_core_of = ROOT
+						}
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			every_controlled_state = {
+				limit = {
+					OR = {
+						region = 10
+						region = 11
+						region = 12
+						region = 13
+						region = 191
+						region = 192
+						region = 265
+						state = 195
+						AND = {
+							ROOT = {
+								original_tag = EST
+							}
+							OR = {
+								state = 208
+								state = 209
+							}
+						}
+					}
+					OR = {
+						NOT = {
+							is_core_of = DEN
+						}
+						NOT = {
+							is_core_of = FIN
+						}
+						NOT = {
+							is_core_of = ICE
+						}
+						NOT = {
+							is_core_of = NOR
+						}
+						NOT = {
+							is_core_of = SWE
+						}
+						NOT = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				if = {
+					limit = {
+						is_core_of = SOV
+					}
+					remove_core_of = SOV
+					add_claim_by = SOV
+				}
+				add_core_of = DEN
+				add_core_of = FIN
+				add_core_of = ICE
+				add_core_of = NOR
+				add_core_of = SWE
+				add_core_of = ROOT
+				transfer_state_to = ROOT
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
 		}
 	}
 } 
@@ -441,10 +496,6 @@ form_gran_colombia_category = {
 
 		ai_will_do = {
 			factor = 200
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
 		}
 	}
 }
@@ -580,7 +631,10 @@ form_austria_hungary_category = {
 			factor = 200
 			modifier = {
 				factor = 0
-				is_historical_focus_on = yes
+				NOT = {
+					original_tag = AUS
+					original_tag = HUN
+				}
 			}
 		}
 	}
@@ -747,10 +801,6 @@ form_baltic_federation_category = {
 
 		ai_will_do = {
 			factor = 200
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
 		}
 	}
 }
@@ -838,10 +888,6 @@ form_commonwealth_category = {
 
 		ai_will_do = {
 			factor = 200
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
 		}
 	}
 }
@@ -913,10 +959,6 @@ form_united_netherlands_category = {
 
 		ai_will_do = {
 			factor = 200
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
 		}
 	}
 }
@@ -975,10 +1017,6 @@ form_united_central_america_category = {
 
 		ai_will_do = {
 			factor = 200
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
 		}
 	}
 }
@@ -2109,16 +2147,6 @@ form_european_union_category = {
 				EUR = {
 					ROOT = {
 						every_character = {
-							limit = {
-								OR = {
-									is_advisor = yes
-									is_air_chief = yes
-									is_army_chief = yes
-									is_navy_chief = yes
-									is_unit_leader = yes
-									is_operative = yes
-								}
-							}
 							set_nationality = EUR
 						}
 						send_equipment_fraction = {
@@ -3680,215 +3708,45 @@ form_persian_empire_category = {
 					original_tag = TAJ
 				}
 			}
-			any_state = {
+			any_controlled_state = {
 				OR = {
-					AND = {
-						region = 196
-						AND = {
-							OR = {
-								AND = {
-									is_controlled_by = ROOT
-									NOT = {
-										is_core_of = AFG
-									}
-								}
-								AND = {
-									is_controlled_by = ROOT
-									NOT = {
-										is_core_of = PER
-									}
-								}
-								AND = {
-									is_controlled_by = ROOT
-									NOT = {
-										is_core_of = TAJ
-									}
-								}
-							}
-						}
+					region = 196
+					region = 236
+					region = 237
+					region = 238
+				}
+				OR = {
+					NOT = {
+						is_core_of = AFG
 					}
-					AND = {
-						region = 236
-						AND = {
-							OR = {
-								AND = {
-									is_controlled_by = ROOT
-									NOT = {
-										is_core_of = AFG
-									}
-								}
-								AND = {
-									is_controlled_by = ROOT
-									NOT = {
-										is_core_of = PER
-									}
-								}
-								AND = {
-									is_controlled_by = ROOT
-									NOT = {
-										is_core_of = TAJ
-									}
-								}
-							}
-						}
+					NOT = {
+						is_core_of = PER
 					}
-					AND = {
-						region = 237
-						AND = {
-							OR = {
-								AND = {
-									is_controlled_by = ROOT
-									NOT = {
-										is_core_of = AFG
-									}
-								}
-								AND = {
-									is_controlled_by = ROOT
-									NOT = {
-										is_core_of = PER
-									}
-								}
-								AND = {
-									is_controlled_by = ROOT
-									NOT = {
-										is_core_of = TAJ
-									}
-								}
-							}
-						}
-					}
-					AND = {
-						region = 238
-						AND = {
-							OR = {
-								AND = {
-									is_controlled_by = ROOT
-									NOT = {
-										is_core_of = AFG
-									}
-								}
-								AND = {
-									is_controlled_by = ROOT
-									NOT = {
-										is_core_of = PER
-									}
-								}
-								AND = {
-									is_controlled_by = ROOT
-									NOT = {
-										is_core_of = TAJ
-									}
-								}
-							}
-						}
+					NOT = {
+						is_core_of = TAJ
 					}
 				}
 			}
 		}
 
 		complete_effect = {
-			every_state = {
+			every_controlled_state = {
 				limit = {
 					OR = {
-						AND = {
-							region = 196
-							AND = {
-								OR = {
-									AND = {
-										is_controlled_by = ROOT
-										NOT = {
-											is_core_of = AFG
-										}
-									}
-									AND = {
-										is_controlled_by = ROOT
-										NOT = {
-											is_core_of = PER
-										}
-									}
-									AND = {
-										is_controlled_by = ROOT
-										NOT = {
-											is_core_of = TAJ
-										}
-									}
-								}
-							}
+						region = 196
+						region = 236
+						region = 237
+						region = 238
+					}
+					OR = {
+						NOT = {
+							is_core_of = AFG
 						}
-						AND = {
-							region = 236
-							AND = {
-								OR = {
-									AND = {
-										is_controlled_by = ROOT
-										NOT = {
-											is_core_of = AFG
-										}
-									}
-									AND = {
-										is_controlled_by = ROOT
-										NOT = {
-											is_core_of = PER
-										}
-									}
-									AND = {
-										is_controlled_by = ROOT
-										NOT = {
-											is_core_of = TAJ
-										}
-									}
-								}
-							}
+						NOT = {
+							is_core_of = PER
 						}
-						AND = {
-							region = 237
-							AND = {
-								OR = {
-									AND = {
-										is_controlled_by = ROOT
-										NOT = {
-											is_core_of = AFG
-										}
-									}
-									AND = {
-										is_controlled_by = ROOT
-										NOT = {
-											is_core_of = PER
-										}
-									}
-									AND = {
-										is_controlled_by = ROOT
-										NOT = {
-											is_core_of = TAJ
-										}
-									}
-								}
-							}
-						}
-						AND = {
-							region = 238
-							AND = {
-								OR = {
-									AND = {
-										is_controlled_by = ROOT
-										NOT = {
-											is_core_of = AFG
-										}
-									}
-									AND = {
-										is_controlled_by = ROOT
-										NOT = {
-											is_core_of = PER
-										}
-									}
-									AND = {
-										is_controlled_by = ROOT
-										NOT = {
-											is_core_of = TAJ
-										}
-									}
-								}
-							}
+						NOT = {
+							is_core_of = TAJ
 						}
 					}
 				}

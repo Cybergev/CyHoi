@@ -1,7 +1,192 @@
 ideas = {
+	
+	mobilization_laws = {
+		law = yes
+		
+		Flexible_conscription = {
+			
+			picture = volunteer_only
+			
+			allowed = {
+				always = no
+			}
+			
+			cancel = {
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_conscription_policy
+					}
+				}
+			}
+
+			removal_cost = -1
+			
+			allowed_to_remove = {
+				always = no
+			}
+			
+			cancel_if_invalid = no
+
+			modifier = {
+				custom_modifier_tooltip = Flexible_conscription_policy_tt
+			}
+			
+		}
+	}
+
+	trade_laws = {
+		law = yes
+		
+		Flexible_trade = {
+			
+			picture = free_trade
+			
+			allowed = {
+				always = no
+			}
+			
+			cancel = {
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_trade_policy
+					}
+				}
+			}
+
+			removal_cost = -1
+			
+			allowed_to_remove = {
+				always = no
+			}
+			
+			cancel_if_invalid = no
+
+			modifier = {
+				custom_modifier_tooltip = Flexible_trade_policy_tt
+			}
+		}
+	}
+
+	economy = {
+		law = yes
+		
+		Flexible_economy = {
+
+			picture = civilian_economy
+			
+			allowed = {
+				always = no
+			}
+
+			cancel = {
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = Flexible_economy_policy
+					}
+				}
+			}
+
+			removal_cost = -1
+			
+			allowed_to_remove = {
+				always = no
+			}
+			
+			cancel_if_invalid = no
+
+			modifier = {
+				custom_modifier_tooltip = Flexible_economy_policy_tt
+			}
+		}
+
+		soviet_economic = {
+
+			picture = new_economic_policy
+
+			allowed = {
+				always = no
+			}
+
+			allowed_to_remove = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				custom_modifier_tooltip = soviet_economic_tt
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+   				factor = 0
+   			}
+		}
+		
+		FRA_socialist_economy = {
+
+			picture = new_economic_policy		
+			
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+		
+			modifier = {
+				monthly_population = 0.20
+				consumer_goods_factor = 0.20
+				conversion_cost_civ_to_mil_factor= -0.20
+				conversion_cost_mil_to_civ_factor = -0.20
+				production_speed_buildings_factor = 0.10
+				industrial_capacity_factory = 0.10
+				industrial_capacity_dockyard = 0.10
+				fuel_gain_factor = 0.10
+				max_fuel_factor = 0.10
+			}
+			
+			allowed_to_remove = {
+				always = no
+			}
+			
+			cancel_if_invalid = no
+		}
+	}
 
 	country = {
 		
+		flexible_controller = {
+			
+			allowed = {
+				always = no
+			}
+
+			cancel = {
+				OR = {
+					NOT = {
+						has_idea = Flexible_conscription
+					}
+					NOT = {
+						has_idea = Flexible_trade
+					}
+					NOT = {
+						has_idea = Flexible_economy
+					}
+				}
+			}
+
+			removal_cost = -1
+			
+            on_remove = {
+				flexiblize_laws = yes
+            }
+
+            on_add = {
+				flexiblize_laws = yes
+            }
+
+		}
+
 		nationalism_1 = {
 
 			name = nationalism

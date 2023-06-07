@@ -2781,6 +2781,21 @@ focus_tree = {
 		x = 25
 		y = 0
 		cost = 10
+		
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = {
+					has_completed_focus = GER_oppose_hitler
+				}
+			}
+		}
+
 		available = {
 			is_subject = no
 		}
@@ -2795,6 +2810,7 @@ focus_tree = {
 		completion_reward = {
 			42 = { set_demilitarized_zone = no }
 			51 = { set_demilitarized_zone = no }
+			set_global_flag = rhineland_remilitarized
 			custom_effect_tooltip = GER_rhineland_ultimatum
 			add_political_power = 120
 			army_experience = 5
@@ -2804,6 +2820,17 @@ focus_tree = {
 				FRA = {
 					country_event = { id = germany.60 }
 					custom_effect_tooltip = may_provoke_hostility
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						has_game_rule = {
+							rule = obsolete_focus_branches_visibility
+							option = HIDE
+						}
+					}
+					mark_focus_tree_layout_dirty = yes
 				}
 			}
 		}		
@@ -4659,11 +4686,6 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			AUS = {
-				every_core_state = {
-					add_claim_by = ROOT
-				}
-			}
 			BEL = {
 				every_core_state = {
 					add_claim_by = ROOT
@@ -4691,6 +4713,19 @@ focus_tree = {
 		icon = GFX_goal_generic_build_navy
 		x = 35
 		y = 1
+		
+		offset = {
+			x = -8
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = GER_oppose_hitler
+			}
+		}
+
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -5931,6 +5966,17 @@ focus_tree = {
 
 		allow_branch = {
 			has_dlc = "Waking the Tiger"
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = {
+					has_completed_focus = GER_rhineland
+				}
+			}
 		}
 
 		available = {
@@ -5939,6 +5985,42 @@ focus_tree = {
 		}
 		x = 47
 		y = 0
+
+		offset = {
+			x = -8
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = GER_oppose_hitler
+			}
+		}
+		offset = {
+			x = -8
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = GER_reestablish_free_elections
+			}
+		}
+
+		offset = {
+			x = -1
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = GER_revive_the_kaiserreich
+			}
+		}
+
 		cost = 10
 		ai_will_do = {
 			factor = 7
@@ -5968,6 +6050,17 @@ focus_tree = {
 			add_political_power = 120
 			add_named_threat = { threat = 5 name = GER_oppose_hitler }
 			country_event = { id = wtt_germany.1 }
+			hidden_effect = {
+				if = {
+					limit = {
+						has_game_rule = {
+							rule = obsolete_focus_branches_visibility
+							option = HIDE
+						}
+					}
+					mark_focus_tree_layout_dirty = yes
+				}
+			}
 		}
 	}
 

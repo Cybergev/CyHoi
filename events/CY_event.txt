@@ -42,6 +42,177 @@ country_event = {
 }
 
 country_event = {
+	id = germany.4
+	title = germany.4.t
+	desc = germany.4.d
+	picture = GFX_report_event_german_speech
+
+	is_triggered_only = yes
+
+ 	immediate = {
+ 		hidden_effect = {
+ 			add_named_threat = { threat = 12 name = germany.4.t }
+ 		}
+ 	}
+
+	option = {
+		name = germany.4.a
+		AUS = {
+			every_core_state = {
+				add_core_of = GER
+			}
+			every_character = {
+				set_nationality = GER
+			}
+			send_equipment_fraction = {
+				value = 1
+				target = GER
+			}
+			transfer_navy = {
+				target = GER
+			}
+		}
+		annex_country = { 
+			target = AUS 
+			transfer_troops = yes 
+		}
+		add_political_power = 75
+		set_country_flag = AUS_annexed
+		add_war_support = 0.1
+		add_stability = 0.05
+		USA = {
+			set_country_flag = { flag = USA_anschluss_window days = 60 value = 1 }
+		}
+		custom_effect_tooltip = anschluss_mefo_bills_tt
+		hidden_effect = { # Having it appear twice might be confusing
+			GER_mefo_bills_level_down = yes
+			GER_mefo_bills_level_down = yes
+		}
+		custom_effect_tooltip = anschluss_mefo_bills_double_reduction
+		add_to_variable = { var = GER_mefo_bill_counter value = -10 }
+
+		if = {
+			limit = {
+				has_dlc = "Death or Dishonor"
+				country_exists = YUG
+				YUG = { has_war = no }
+			}
+			country_event = {
+				id = DOD_yugoslavia.30
+				days = 4
+			}
+		}
+		hidden_effect = {
+			news_event = { hours = 6 id = news.36 }
+		}
+	}
+}
+# Austria asked about Anschluss
+country_event = {
+	id = germany.28
+	title = germany.28.t
+	desc = germany.28.d
+	picture = GFX_report_event_hitler_parade
+
+	is_triggered_only = yes
+
+	option = { # Accept
+		name = germany.28.a
+		ai_chance = {
+			base = 30
+			modifier = {
+				add = -25
+				GER = { has_army_size = { size < 40 } }
+			}
+			modifier = {
+				add = 100
+				GER = { has_army_size = { size > 39 } }
+			}
+			modifier = {
+				add = 20
+				is_in_faction_with = GER
+			}
+		}
+		GER = {
+			country_event = { hours = 2 id = germany.4 }
+		}
+		custom_effect_tooltip = GAME_OVER_TT
+	}
+	option = { # Refuse
+		name = germany.28.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { HUN = { has_completed_focus = HUN_protect_austria } }
+				NOT = { ITA = { has_completed_focus = ITA_guarantee_austrian_independence } }
+			}
+			modifier = {
+				GER = { has_army_size = { size > 39 } }
+				factor = 0.5
+			}
+			modifier = {
+				add = 20
+				GER = { has_army_size = { size < 30 } }
+			}
+			modifier = {
+				add = 100
+				HUN = {
+					OR = {
+						has_completed_focus = HUN_protect_austria
+						is_in_faction_with = AUS
+					}
+				}
+			}
+			modifier = {
+				add = 100
+				ITA = {
+					OR = {
+						has_completed_focus = ITA_guarantee_austrian_independence
+						is_in_faction_with = AUS
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				is_in_faction = yes
+				NOT = { is_in_faction_with = GER }
+			}
+			modifier = {
+				any_other_country = {
+					has_guaranteed = AUS
+				}
+				factor = 5 #i've got friends
+			}
+			modifier = {
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = AUS
+				}
+				factor = 5 #i've got big friends
+			}
+		}
+		GER = {
+			add_opinion_modifier = { target = ROOT modifier = GER_anschluss_rejected }
+			country_event = { hours = 2 id = germany.29 }
+			if = { limit = { is_in_faction_with = AUS }
+				remove_from_faction = AUS
+			}
+		}
+		if = {
+			limit = {
+				ITA = {
+					has_completed_focus = ITA_guarantee_austrian_independence
+				}
+			}
+			ITA = { #Italy gets an event to ask the UK and France to guarantee Austria too
+				country_event = { id = BBA_italy_interaction_events.24 hours = 1 }
+			}
+		}
+	}
+}
+country_event = {
 	id = germany.29
 	title = germany.29.t
 	desc = germany.29.d

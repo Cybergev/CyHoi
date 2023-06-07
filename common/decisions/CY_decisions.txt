@@ -241,9 +241,7 @@ Flexible_conscription_policy_category = {
 		icon = generic_decision
 
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_conscription_policy
-			}
+			has_idea = Flexible_conscription
 			is_debug = yes
 		}
 
@@ -279,99 +277,59 @@ Flexible_conscription_policy_category = {
 				ws_point = 3
 			}
 			has_war_support = ws_point
+
+			set_temp_variable = {
+				temp_cost = ws_point
+			}
+			multiply_temp_variable = {
+				ws_point = 10
+			}
 		}
 
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_conscription_policy
-			}
+			has_idea = Flexible_conscription
 			check_variable = {
 				Flexible_conscription_policy_conscription < 0.30
 			}
 		}
 
-		cost = ws_point
+		cost = temp_cost
 
 		complete_effect = {
-			set_temp_variable = {
-				t_conscription = Flexible_conscription_policy_conscription
+			set_variable = {
+				changing_conscription_value = 0.01
 			}
-			set_temp_variable = {
-				t_conscription_x_2 = t_conscription
-			}
-			multiply_temp_variable = {
-				t_conscription_x_2 = 2
-			}
-			set_temp_variable = {
-				t_conscription_manipulator = 0.01
-			}
-			set_temp_variable = {
-				t_conscription_manipulator_x_2 = t_conscription_manipulator
-			}
-			multiply_temp_variable = {
-				t_conscription_manipulator_x_2 = 2
-			}
-			
-			clear_variable = Flexible_conscription_policy_conscription
-			clear_variable = Flexible_conscription_policy_consumer_goods_factor
-			clear_variable = Flexible_conscription_policy_production_speed_buildings_factor
-			clear_variable = Flexible_conscription_policy_industrial_capacity_factory
-			clear_variable = Flexible_conscription_policy_industrial_capacity_dockyard
-
-			set_variable = { 
-				Flexible_conscription_policy_conscription = t_conscription
-			}
-			add_to_variable = { 
-				Flexible_conscription_policy_conscription = t_conscription_manipulator
-				tooltip = conscription_tt
-			}
-			set_variable = { 
-				Flexible_conscription_policy_consumer_goods_factor = t_conscription_x_2
-			}
-			add_to_variable = { 
-				Flexible_conscription_policy_consumer_goods_factor = t_conscription_manipulator_x_2
-				tooltip = consumer_goods_factor_tt
-			}
-			if = {
-				limit = {
-					NOT = {
-						check_variable = {
-							t_conscription < 0.05
-						}
-					}
-				}
-				multiply_temp_variable = {
-					t_conscription = -1
-				}
-				multiply_temp_variable = {
-					t_conscription_manipulator = -1
-				}
-				set_variable = {
-					Flexible_conscription_policy_production_speed_buildings_factor = t_conscription
-				}
-				add_to_variable = { 
-					Flexible_conscription_policy_production_speed_buildings_factor = t_conscription_manipulator
-					tooltip = production_speed_buildings_factor_tt
-				}
-				set_variable = {
-					Flexible_conscription_policy_industrial_capacity_factory = t_conscription
-				}
-				add_to_variable = { 
-					Flexible_conscription_policy_industrial_capacity_factory = t_conscription_manipulator
-					tooltip = industrial_capacity_factory_tt
-				}
-				set_variable = {
-					Flexible_conscription_policy_industrial_capacity_dockyard = t_conscription
-				}
-				add_to_variable = { 
-					Flexible_conscription_policy_industrial_capacity_dockyard = t_conscription_manipulator
-					tooltip = industrial_capacity_dockyard_tt
-				}
-			}
+			change_conscription = yes
 		}
 
 		ai_will_do = {
 			base = 0
+			modifier = {
+				add = 100
+				set_temp_variable = {
+					t = modifier@consumer_goods_factor
+				}
+				subtract_from_temp_variable = {
+					t = Flexible_economy_policy_consumer_goods_factor
+				}
+				if = {
+					limit = {
+						has_war = no
+					}
+					NOT = {
+						check_variable = {
+							t > 0.05
+						}
+					}
+				}
+				else = {
+					NOT = {
+						check_variable = {
+							t > 0.10
+						}
+					}
+				}
+			}
 		}
 		
 	}
@@ -381,96 +339,43 @@ Flexible_conscription_policy_category = {
 		icon = generic_decision
 
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_conscription_policy
-			}
+			has_idea = Flexible_conscription
 			check_variable = {
 				Flexible_conscription_policy_conscription > 0
 			}
 		}
 
-		cost = 0
-
 		complete_effect = {
-			set_temp_variable = {
-				t_conscription = Flexible_conscription_policy_conscription
+			set_variable = {
+				changing_conscription_value = -0.01
 			}
-			set_temp_variable = {
-				t_conscription_x_2 = t_conscription
-			}
-			multiply_temp_variable = {
-				t_conscription_x_2 = 2
-			}
-			set_temp_variable = {
-				t_conscription_manipulator = -0.01
-			}
-			set_temp_variable = {
-				t_conscription_manipulator_x_2 = t_conscription_manipulator
-			}
-			multiply_temp_variable = {
-				t_conscription_manipulator_x_2 = 2
-			}
-			
-			clear_variable = Flexible_conscription_policy_conscription
-			clear_variable = Flexible_conscription_policy_consumer_goods_factor
-			clear_variable = Flexible_conscription_policy_production_speed_buildings_factor
-			clear_variable = Flexible_conscription_policy_industrial_capacity_factory
-			clear_variable = Flexible_conscription_policy_industrial_capacity_dockyard
-
-			set_variable = { 
-				Flexible_conscription_policy_conscription = t_conscription
-			}
-			add_to_variable = { 
-				Flexible_conscription_policy_conscription = t_conscription_manipulator
-				tooltip = conscription_tt
-			}
-			set_variable = { 
-				Flexible_conscription_policy_consumer_goods_factor = t_conscription_x_2
-			}
-			add_to_variable = { 
-				Flexible_conscription_policy_consumer_goods_factor = t_conscription_manipulator_x_2
-				tooltip = consumer_goods_factor_tt
-			}
-			if = {
-				limit = {
-					NOT = {
-						check_variable = {
-							t_conscription < 0.05
-						}
-					}
-				}
-				multiply_temp_variable = {
-					t_conscription = -1
-				}
-				multiply_temp_variable = {
-					t_conscription_manipulator = -1
-				}
-				set_variable = {
-					Flexible_conscription_policy_production_speed_buildings_factor = t_conscription
-				}
-				add_to_variable = { 
-					Flexible_conscription_policy_production_speed_buildings_factor = t_conscription_manipulator
-					tooltip = production_speed_buildings_factor_tt
-				}
-				set_variable = {
-					Flexible_conscription_policy_industrial_capacity_factory = t_conscription
-				}
-				add_to_variable = { 
-					Flexible_conscription_policy_industrial_capacity_factory = t_conscription_manipulator
-					tooltip = industrial_capacity_factory_tt
-				}
-				set_variable = {
-					Flexible_conscription_policy_industrial_capacity_dockyard = t_conscription
-				}
-				add_to_variable = { 
-					Flexible_conscription_policy_industrial_capacity_dockyard = t_conscription_manipulator
-					tooltip = industrial_capacity_dockyard_tt
-				}
-			}
+			change_conscription = yes
 		}
 
 		ai_will_do = {
 			base = 0
+			modifier = {
+				add = 100
+				set_temp_variable = {
+					t = modifier@consumer_goods_factor
+				}
+				subtract_from_temp_variable = {
+					t = Flexible_economy_policy_consumer_goods_factor
+				}
+				if = {
+					limit = {
+						has_war = no
+					}
+					check_variable = {
+						t > 0
+					}
+				}
+				else = {
+					check_variable = {
+						t > 0.10
+					}
+				}
+			}
 		}
 		
 	}
@@ -479,9 +384,7 @@ Flexible_conscription_policy_category = {
 		icon = generic_army_support
 		
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_conscription_policy
-			}
+			has_idea = Flexible_conscription
 			check_variable = {
 				Flexible_conscription_policy_army_org_factor < 0.10
 			}
@@ -625,9 +528,7 @@ Flexible_conscription_policy_category = {
 		icon = generic_army_support
 		
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_conscription_policy
-			}
+			has_idea = Flexible_conscription
 			check_variable = {
 				Flexible_conscription_policy_army_org_factor > 0
 			}
@@ -874,24 +775,17 @@ flexible_trade_policy_category = {
 		}
 
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_trade_policy
-			}
-			check_variable = {
-				Flexible_trade_policy_min_export < 1.0
+			has_idea = Flexible_trade
+			NOT = {
+				check_variable = {
+					Flexible_trade_policy_min_export > 0.99
+				}
 			}
 		}
 
 		cost = 1
 
 		complete_effect = {
-			clear_variable = Flexible_trade_policy_consumer_goods_factor
-			clear_variable = Flexible_trade_policy_production_speed_buildings_factor
-			clear_variable = Flexible_trade_policy_research_speed_factor
-			clear_variable = Flexible_trade_policy_industrial_capacity_factory
-			clear_variable = Flexible_trade_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_trade_policy_civilian_intel_to_others
-			clear_variable = Flexible_trade_policy_navy_intel_to_others
 			add_to_variable = { 
 				Flexible_trade_policy_min_export = 0.01
 			} 
@@ -921,24 +815,12 @@ flexible_trade_policy_category = {
 			}
 			set_variable = { 
 				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
-			} 
+			}
 			set_variable = { 
-				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
-			} 
+				Flexible_trade_policy_bonus = v_trade_bonus
+			}
 			set_variable = { 
-				Flexible_trade_policy_research_speed_factor = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_industrial_capacity_factory = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_industrial_capacity_dockyard = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_civilian_intel_to_others = v_trade_intel
-			} 
-			set_variable = { 
-				Flexible_trade_policy_navy_intel_to_others = v_trade_intel
+				Flexible_trade_policy_intel = v_trade_intel
 			} 
 		}
 
@@ -949,24 +831,17 @@ flexible_trade_policy_category = {
 		icon = generic_decision
 		
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_trade_policy
-			}
-			check_variable = {
-				Flexible_trade_policy_min_export < 0.99
+			has_idea = Flexible_trade
+			NOT = {
+				check_variable = {
+					Flexible_trade_policy_min_export > 0.98
+				}
 			}
 		}
 
 		cost = 2
 
 		complete_effect = {
-			clear_variable = Flexible_trade_policy_consumer_goods_factor
-			clear_variable = Flexible_trade_policy_production_speed_buildings_factor
-			clear_variable = Flexible_trade_policy_research_speed_factor
-			clear_variable = Flexible_trade_policy_industrial_capacity_factory
-			clear_variable = Flexible_trade_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_trade_policy_civilian_intel_to_others
-			clear_variable = Flexible_trade_policy_navy_intel_to_others
 			add_to_variable = { 
 				Flexible_trade_policy_min_export = 0.02
 			} 
@@ -996,24 +871,12 @@ flexible_trade_policy_category = {
 			}
 			set_variable = { 
 				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
-			} 
+			}
 			set_variable = { 
-				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
-			} 
+				Flexible_trade_policy_bonus = v_trade_bonus
+			}
 			set_variable = { 
-				Flexible_trade_policy_research_speed_factor = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_industrial_capacity_factory = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_industrial_capacity_dockyard = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_civilian_intel_to_others = v_trade_intel
-			} 
-			set_variable = { 
-				Flexible_trade_policy_navy_intel_to_others = v_trade_intel
+				Flexible_trade_policy_intel = v_trade_intel
 			} 
 		}
 
@@ -1024,24 +887,17 @@ flexible_trade_policy_category = {
 		icon = generic_decision
 
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_trade_policy
-			}
-			check_variable = {
-				Flexible_trade_policy_min_export < 0.96
+			has_idea = Flexible_trade
+			NOT = {
+				check_variable = {
+					Flexible_trade_policy_min_export > 0.95
+				}
 			}
 		}
 
 		cost = 5
 
 		complete_effect = {
-			clear_variable = Flexible_trade_policy_consumer_goods_factor
-			clear_variable = Flexible_trade_policy_production_speed_buildings_factor
-			clear_variable = Flexible_trade_policy_research_speed_factor
-			clear_variable = Flexible_trade_policy_industrial_capacity_factory
-			clear_variable = Flexible_trade_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_trade_policy_civilian_intel_to_others
-			clear_variable = Flexible_trade_policy_navy_intel_to_others
 			add_to_variable = { 
 				Flexible_trade_policy_min_export = 0.05
 			} 
@@ -1071,24 +927,12 @@ flexible_trade_policy_category = {
 			}
 			set_variable = { 
 				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
-			} 
+			}
 			set_variable = { 
-				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
-			} 
+				Flexible_trade_policy_bonus = v_trade_bonus
+			}
 			set_variable = { 
-				Flexible_trade_policy_research_speed_factor = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_industrial_capacity_factory = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_industrial_capacity_dockyard = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_civilian_intel_to_others = v_trade_intel
-			} 
-			set_variable = { 
-				Flexible_trade_policy_navy_intel_to_others = v_trade_intel
+				Flexible_trade_policy_intel = v_trade_intel
 			} 
 		}
 
@@ -1099,26 +943,19 @@ flexible_trade_policy_category = {
 		icon = generic_decision
 
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_trade_policy
-			}
-			check_variable = {
-				Flexible_trade_policy_min_export < 0.91
+			has_idea = Flexible_trade
+			NOT = {
+				check_variable = {
+					Flexible_trade_policy_min_export > 0.90
+				}
 			}
 		}
 
 		cost = 10
 
 		complete_effect = {
-			clear_variable = Flexible_trade_policy_consumer_goods_factor
-			clear_variable = Flexible_trade_policy_production_speed_buildings_factor
-			clear_variable = Flexible_trade_policy_research_speed_factor
-			clear_variable = Flexible_trade_policy_industrial_capacity_factory
-			clear_variable = Flexible_trade_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_trade_policy_civilian_intel_to_others
-			clear_variable = Flexible_trade_policy_navy_intel_to_others
 			add_to_variable = { 
-				Flexible_trade_policy_min_export = 0.1
+				Flexible_trade_policy_min_export = 0.10
 			} 
 			set_temp_variable = {
 				v_trade = Flexible_trade_policy_min_export
@@ -1146,24 +983,12 @@ flexible_trade_policy_category = {
 			}
 			set_variable = { 
 				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
-			} 
+			}
 			set_variable = { 
-				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
-			} 
+				Flexible_trade_policy_bonus = v_trade_bonus
+			}
 			set_variable = { 
-				Flexible_trade_policy_research_speed_factor = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_industrial_capacity_factory = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_industrial_capacity_dockyard = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_civilian_intel_to_others = v_trade_intel
-			} 
-			set_variable = { 
-				Flexible_trade_policy_navy_intel_to_others = v_trade_intel
+				Flexible_trade_policy_intel = v_trade_intel
 			} 
 		}
 	}
@@ -1277,24 +1102,17 @@ flexible_trade_policy_category = {
 		}
 
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_trade_policy
-			}
-			check_variable = {
-				Flexible_trade_policy_min_export > 0.0
+			has_idea = Flexible_trade
+			NOT = {
+				check_variable = {
+					Flexible_trade_policy_min_export < 0.01
+				}
 			}
 		}
 
 		cost = 1
 
 		complete_effect = {
-			clear_variable = Flexible_trade_policy_consumer_goods_factor
-			clear_variable = Flexible_trade_policy_production_speed_buildings_factor
-			clear_variable = Flexible_trade_policy_research_speed_factor
-			clear_variable = Flexible_trade_policy_industrial_capacity_factory
-			clear_variable = Flexible_trade_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_trade_policy_civilian_intel_to_others
-			clear_variable = Flexible_trade_policy_navy_intel_to_others
 			add_to_variable = { 
 				Flexible_trade_policy_min_export = -0.01
 			} 
@@ -1324,24 +1142,12 @@ flexible_trade_policy_category = {
 			}
 			set_variable = { 
 				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
-			} 
+			}
 			set_variable = { 
-				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
-			} 
+				Flexible_trade_policy_bonus = v_trade_bonus
+			}
 			set_variable = { 
-				Flexible_trade_policy_research_speed_factor = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_industrial_capacity_factory = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_industrial_capacity_dockyard = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_civilian_intel_to_others = v_trade_intel
-			} 
-			set_variable = { 
-				Flexible_trade_policy_navy_intel_to_others = v_trade_intel
+				Flexible_trade_policy_intel = v_trade_intel
 			} 
 		}
 
@@ -1352,24 +1158,17 @@ flexible_trade_policy_category = {
 		icon = generic_decision
 		
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_trade_policy
-			}
-			check_variable = {
-				Flexible_trade_policy_min_export > 0.01
+			has_idea = Flexible_trade
+			NOT = {
+				check_variable = {
+					Flexible_trade_policy_min_export < 0.02
+				}
 			}
 		}
 
 		cost = 2
 
 		complete_effect = {
-			clear_variable = Flexible_trade_policy_consumer_goods_factor
-			clear_variable = Flexible_trade_policy_production_speed_buildings_factor
-			clear_variable = Flexible_trade_policy_research_speed_factor
-			clear_variable = Flexible_trade_policy_industrial_capacity_factory
-			clear_variable = Flexible_trade_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_trade_policy_civilian_intel_to_others
-			clear_variable = Flexible_trade_policy_navy_intel_to_others
 			add_to_variable = { 
 				Flexible_trade_policy_min_export = -0.02
 			} 
@@ -1399,25 +1198,13 @@ flexible_trade_policy_category = {
 			}
 			set_variable = { 
 				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
-			} 
-			set_variable = { 
-				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_research_speed_factor = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_industrial_capacity_factory = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_industrial_capacity_dockyard = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_civilian_intel_to_others = v_trade_intel
-			} 
-			set_variable = { 
-				Flexible_trade_policy_navy_intel_to_others = v_trade_intel
 			}
+			set_variable = { 
+				Flexible_trade_policy_bonus = v_trade_bonus
+			}
+			set_variable = { 
+				Flexible_trade_policy_intel = v_trade_intel
+			} 
 		}
 
 	}
@@ -1427,24 +1214,17 @@ flexible_trade_policy_category = {
 		icon = generic_decision
 
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_trade_policy
-			}
-			check_variable = {
-				Flexible_trade_policy_min_export > 0.04
+			has_idea = Flexible_trade
+			NOT = {
+				check_variable = {
+					Flexible_trade_policy_min_export < 0.05
+				}
 			}
 		}
 
 		cost = 5
 
 		complete_effect = {
-			clear_variable = Flexible_trade_policy_consumer_goods_factor
-			clear_variable = Flexible_trade_policy_production_speed_buildings_factor
-			clear_variable = Flexible_trade_policy_research_speed_factor
-			clear_variable = Flexible_trade_policy_industrial_capacity_factory
-			clear_variable = Flexible_trade_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_trade_policy_civilian_intel_to_others
-			clear_variable = Flexible_trade_policy_navy_intel_to_others
 			add_to_variable = { 
 				Flexible_trade_policy_min_export = -0.05
 			} 
@@ -1474,24 +1254,12 @@ flexible_trade_policy_category = {
 			}
 			set_variable = { 
 				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
-			} 
+			}
 			set_variable = { 
-				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
-			} 
+				Flexible_trade_policy_bonus = v_trade_bonus
+			}
 			set_variable = { 
-				Flexible_trade_policy_research_speed_factor = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_industrial_capacity_factory = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_industrial_capacity_dockyard = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_civilian_intel_to_others = v_trade_intel
-			} 
-			set_variable = { 
-				Flexible_trade_policy_navy_intel_to_others = v_trade_intel
+				Flexible_trade_policy_intel = v_trade_intel
 			} 
 		}
 
@@ -1502,26 +1270,19 @@ flexible_trade_policy_category = {
 		icon = generic_decision
 
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_trade_policy
-			}
-			check_variable = {
-				Flexible_trade_policy_min_export > 0.11
+			has_idea = Flexible_trade
+			NOT = {
+				check_variable = {
+					Flexible_trade_policy_min_export < 0.10
+				}
 			}
 		}
 
 		cost = 10
 
 		complete_effect = {
-			clear_variable = Flexible_trade_policy_consumer_goods_factor
-			clear_variable = Flexible_trade_policy_production_speed_buildings_factor
-			clear_variable = Flexible_trade_policy_research_speed_factor
-			clear_variable = Flexible_trade_policy_industrial_capacity_factory
-			clear_variable = Flexible_trade_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_trade_policy_civilian_intel_to_others
-			clear_variable = Flexible_trade_policy_navy_intel_to_others
 			add_to_variable = { 
-				Flexible_trade_policy_min_export = -0.1
+				Flexible_trade_policy_min_export = -0.10
 			} 
 			set_temp_variable = {
 				v_trade = Flexible_trade_policy_min_export
@@ -1549,24 +1310,12 @@ flexible_trade_policy_category = {
 			}
 			set_variable = { 
 				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
-			} 
+			}
 			set_variable = { 
-				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
-			} 
+				Flexible_trade_policy_bonus = v_trade_bonus
+			}
 			set_variable = { 
-				Flexible_trade_policy_research_speed_factor = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_industrial_capacity_factory = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_industrial_capacity_dockyard = v_trade_bonus
-			} 
-			set_variable = { 
-				Flexible_trade_policy_civilian_intel_to_others = v_trade_intel
-			} 
-			set_variable = { 
-				Flexible_trade_policy_navy_intel_to_others = v_trade_intel
+				Flexible_trade_policy_intel = v_trade_intel
 			} 
 		}
 
@@ -1581,18 +1330,10 @@ flexible_economy_policy_category = {
 		icon = generic_decision
 		
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_economy_policy
-			}
-			set_temp_variable = {
-				cg = Flexible_economy_policy_consumer_goods_factor
-			}
-			subtract_from_temp_variable = {
-				cg = Flexible_economy_policy_civilian_point
-			}
+			has_idea = Flexible_economy
 			NOT = {
 				check_variable = {
-					cg < 0.01
+					Flexible_economy_policy_civilian_share > 0.99
 				}
 			}
 		}
@@ -1603,210 +1344,17 @@ flexible_economy_policy_category = {
 			base = 0
 
 			modifier = {
-				add = 10
-				check_variable = {
-					Flexible_economy_policy_civilian_point < 0.2
-				}
-				threat < 0.1
-			}
-			modifier = {
-				add = 10
-				check_variable = {
-					Flexible_economy_policy_civilian_point < 0.1
-				}
-				threat > 0.1
-				threat < 0.2
+				has_war = yes
+				factor = -10
 			}
 
 	 	}
 
 		complete_effect = {
-			clear_variable = Flexible_economy_policy_conversion_cost_civ_to_mil_factor
-			clear_variable = Flexible_economy_policy_conversion_cost_mil_to_civ_factor
-			clear_variable = Flexible_economy_policy_production_speed_buildings_factor
-			clear_variable = Flexible_economy_policy_industrial_capacity_factory
-			clear_variable = Flexible_economy_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_economy_policy_fuel_gain_factor
-			clear_variable = Flexible_economy_policy_max_fuel_factor
-			clear_variable = Flexible_economy_policy_production_speed_infrastructure_factor
-			clear_variable = Flexible_economy_policy_production_speed_industrial_complex_factor
-			clear_variable = Flexible_economy_policy_production_speed_arms_factory_factor
-			clear_variable = Flexible_economy_policy_production_speed_dockyard_factor
-			clear_variable = Flexible_economy_policy_production_speed_synthetic_refinery_factor
-			clear_variable = Flexible_economy_policy_production_speed_nuclear_reactor_factor
-			clear_variable = Flexible_economy_policy_production_speed_rocket_site_factor
-			clear_variable = Flexible_economy_policy_production_speed_air_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_supply_node_factor
-			clear_variable = Flexible_economy_policy_production_speed_naval_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_coastal_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_anti_air_building_factor
-			clear_variable = Flexible_economy_policy_production_speed_radar_station_factor
-			set_temp_variable = {
-				v_economy_manipulator = 0.01
+			set_variable = {
+				increasing_civilian_economy_value = 0.01
 			}
-			set_temp_variable = {
-				v_economy_civilian_point = v_economy_manipulator
-			}
-			subtract_from_temp_variable = {
-				v_economy_military_point = v_economy_manipulator
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = Flexible_economy_policy_civilian_point
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = Flexible_economy_policy_military_point
-				}
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = v_economy_civilian_point
-					tooltip = conversion_cost_civ_to_mil_factor_tt
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = v_economy_military_point
-					tooltip = conversion_cost_mil_to_civ_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = v_economy_military_point
-					tooltip = industrial_capacity_factory_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = v_economy_military_point
-					tooltip = industrial_capacity_dockyard_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = v_economy_military_point
-					tooltip = fuel_gain_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = v_economy_military_point
-					tooltip = max_fuel_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = v_economy_civilian_point
-					tooltip = production_speed_infrastructure_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = v_economy_civilian_point
-					tooltip = production_speed_industrial_complex_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = v_economy_military_point
-					tooltip = production_speed_arms_factory_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = v_economy_military_point
-					tooltip = production_speed_dockyard_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = v_economy_military_point
-					tooltip = production_speed_synthetic_refinery_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = v_economy_military_point
-					tooltip = production_speed_nuclear_reactor_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = v_economy_military_point
-					tooltip = production_speed_rocket_site_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = v_economy_military_point
-					tooltip = production_speed_air_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = v_economy_military_point
-					tooltip = production_speed_supply_node_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = v_economy_military_point
-					tooltip = production_speed_naval_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = v_economy_military_point
-					tooltip = production_speed_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = v_economy_military_point
-					tooltip = production_speed_coastal_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = v_economy_military_point
-					tooltip = production_speed_anti_air_building_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = v_economy_military_point
-					tooltip = production_speed_radar_station_factor_tt
-				}
-			}
+			increase_civilian_economy = yes
 		}
 	}
 	increase_civilian_economy_2 = {
@@ -1814,18 +1362,10 @@ flexible_economy_policy_category = {
 		icon = generic_decision
 		
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_economy_policy
-			}
-			set_temp_variable = {
-				cg = Flexible_economy_policy_consumer_goods_factor
-			}
-			subtract_from_temp_variable = {
-				cg = Flexible_economy_policy_civilian_point
-			}
+			has_idea = Flexible_economy
 			NOT = {
 				check_variable = {
-					cg < 0.02
+					Flexible_economy_policy_civilian_share > 0.98
 				}
 			}
 		}
@@ -1833,192 +1373,10 @@ flexible_economy_policy_category = {
 		cost = 4
 
 		complete_effect = {
-			clear_variable = Flexible_economy_policy_conversion_cost_civ_to_mil_factor
-			clear_variable = Flexible_economy_policy_conversion_cost_mil_to_civ_factor
-			clear_variable = Flexible_economy_policy_production_speed_buildings_factor
-			clear_variable = Flexible_economy_policy_industrial_capacity_factory
-			clear_variable = Flexible_economy_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_economy_policy_fuel_gain_factor
-			clear_variable = Flexible_economy_policy_max_fuel_factor
-			clear_variable = Flexible_economy_policy_production_speed_infrastructure_factor
-			clear_variable = Flexible_economy_policy_production_speed_industrial_complex_factor
-			clear_variable = Flexible_economy_policy_production_speed_arms_factory_factor
-			clear_variable = Flexible_economy_policy_production_speed_dockyard_factor
-			clear_variable = Flexible_economy_policy_production_speed_synthetic_refinery_factor
-			clear_variable = Flexible_economy_policy_production_speed_nuclear_reactor_factor
-			clear_variable = Flexible_economy_policy_production_speed_rocket_site_factor
-			clear_variable = Flexible_economy_policy_production_speed_air_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_supply_node_factor
-			clear_variable = Flexible_economy_policy_production_speed_naval_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_coastal_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_anti_air_building_factor
-			clear_variable = Flexible_economy_policy_production_speed_radar_station_factor
-			set_temp_variable = {
-				v_economy_manipulator = 0.02
+			set_variable = {
+				increasing_civilian_economy_value = 0.02
 			}
-			set_temp_variable = {
-				v_economy_civilian_point = v_economy_manipulator
-			}
-			subtract_from_temp_variable = {
-				v_economy_military_point = v_economy_manipulator
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = Flexible_economy_policy_civilian_point
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = Flexible_economy_policy_military_point
-				}
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = v_economy_civilian_point
-					tooltip = conversion_cost_civ_to_mil_factor_tt
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = v_economy_military_point
-					tooltip = conversion_cost_mil_to_civ_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = v_economy_military_point
-					tooltip = industrial_capacity_factory_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = v_economy_military_point
-					tooltip = industrial_capacity_dockyard_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = v_economy_military_point
-					tooltip = fuel_gain_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = v_economy_military_point
-					tooltip = max_fuel_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = v_economy_civilian_point
-					tooltip = production_speed_infrastructure_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = v_economy_civilian_point
-					tooltip = production_speed_industrial_complex_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = v_economy_military_point
-					tooltip = production_speed_arms_factory_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = v_economy_military_point
-					tooltip = production_speed_dockyard_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = v_economy_military_point
-					tooltip = production_speed_synthetic_refinery_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = v_economy_military_point
-					tooltip = production_speed_nuclear_reactor_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = v_economy_military_point
-					tooltip = production_speed_rocket_site_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = v_economy_military_point
-					tooltip = production_speed_air_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = v_economy_military_point
-					tooltip = production_speed_supply_node_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = v_economy_military_point
-					tooltip = production_speed_naval_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = v_economy_military_point
-					tooltip = production_speed_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = v_economy_military_point
-					tooltip = production_speed_coastal_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = v_economy_military_point
-					tooltip = production_speed_anti_air_building_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = v_economy_military_point
-					tooltip = production_speed_radar_station_factor_tt
-				}
-			}
+			increase_civilian_economy = yes
 		}
 	}
 	increase_civilian_economy_5 = {
@@ -2026,18 +1384,10 @@ flexible_economy_policy_category = {
 		icon = generic_decision
 		
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_economy_policy
-			}
-			set_temp_variable = {
-				cg = Flexible_economy_policy_consumer_goods_factor
-			}
-			subtract_from_temp_variable = {
-				cg = Flexible_economy_policy_civilian_point
-			}
+			has_idea = Flexible_economy
 			NOT = {
 				check_variable = {
-					cg < 0.05
+					Flexible_economy_policy_civilian_share > 0.95
 				}
 			}
 		}
@@ -2045,192 +1395,10 @@ flexible_economy_policy_category = {
 		cost = 10
 
 		complete_effect = {
-			clear_variable = Flexible_economy_policy_conversion_cost_civ_to_mil_factor
-			clear_variable = Flexible_economy_policy_conversion_cost_mil_to_civ_factor
-			clear_variable = Flexible_economy_policy_production_speed_buildings_factor
-			clear_variable = Flexible_economy_policy_industrial_capacity_factory
-			clear_variable = Flexible_economy_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_economy_policy_fuel_gain_factor
-			clear_variable = Flexible_economy_policy_max_fuel_factor
-			clear_variable = Flexible_economy_policy_production_speed_infrastructure_factor
-			clear_variable = Flexible_economy_policy_production_speed_industrial_complex_factor
-			clear_variable = Flexible_economy_policy_production_speed_arms_factory_factor
-			clear_variable = Flexible_economy_policy_production_speed_dockyard_factor
-			clear_variable = Flexible_economy_policy_production_speed_synthetic_refinery_factor
-			clear_variable = Flexible_economy_policy_production_speed_nuclear_reactor_factor
-			clear_variable = Flexible_economy_policy_production_speed_rocket_site_factor
-			clear_variable = Flexible_economy_policy_production_speed_air_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_supply_node_factor
-			clear_variable = Flexible_economy_policy_production_speed_naval_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_coastal_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_anti_air_building_factor
-			clear_variable = Flexible_economy_policy_production_speed_radar_station_factor
-			set_temp_variable = {
-				v_economy_manipulator = 0.05
+			set_variable = {
+				increasing_civilian_economy_value = 0.05
 			}
-			set_temp_variable = {
-				v_economy_civilian_point = v_economy_manipulator
-			}
-			subtract_from_temp_variable = {
-				v_economy_military_point = v_economy_manipulator
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = Flexible_economy_policy_civilian_point
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = Flexible_economy_policy_military_point
-				}
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = v_economy_civilian_point
-					tooltip = conversion_cost_civ_to_mil_factor_tt
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = v_economy_military_point
-					tooltip = conversion_cost_mil_to_civ_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = v_economy_military_point
-					tooltip = industrial_capacity_factory_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = v_economy_military_point
-					tooltip = industrial_capacity_dockyard_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = v_economy_military_point
-					tooltip = fuel_gain_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = v_economy_military_point
-					tooltip = max_fuel_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = v_economy_civilian_point
-					tooltip = production_speed_infrastructure_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = v_economy_civilian_point
-					tooltip = production_speed_industrial_complex_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = v_economy_military_point
-					tooltip = production_speed_arms_factory_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = v_economy_military_point
-					tooltip = production_speed_dockyard_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = v_economy_military_point
-					tooltip = production_speed_synthetic_refinery_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = v_economy_military_point
-					tooltip = production_speed_nuclear_reactor_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = v_economy_military_point
-					tooltip = production_speed_rocket_site_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = v_economy_military_point
-					tooltip = production_speed_air_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = v_economy_military_point
-					tooltip = production_speed_supply_node_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = v_economy_military_point
-					tooltip = production_speed_naval_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = v_economy_military_point
-					tooltip = production_speed_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = v_economy_military_point
-					tooltip = production_speed_coastal_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = v_economy_military_point
-					tooltip = production_speed_anti_air_building_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = v_economy_military_point
-					tooltip = production_speed_radar_station_factor_tt
-				}
-			}
+			increase_civilian_economy = yes
 		}
 	}
 	increase_civilian_economy_10 = {
@@ -2238,18 +1406,10 @@ flexible_economy_policy_category = {
 		icon = generic_decision
 		
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_economy_policy
-			}
-			set_temp_variable = {
-				cg = Flexible_economy_policy_consumer_goods_factor
-			}
-			subtract_from_temp_variable = {
-				cg = Flexible_economy_policy_civilian_point
-			}
+			has_idea = Flexible_economy
 			NOT = {
 				check_variable = {
-					cg < 0.10
+					Flexible_economy_policy_civilian_share > 0.90
 				}
 			}
 		}
@@ -2257,212 +1417,35 @@ flexible_economy_policy_category = {
 		cost = 20
 
 		complete_effect = {
-			clear_variable = Flexible_economy_policy_conversion_cost_civ_to_mil_factor
-			clear_variable = Flexible_economy_policy_conversion_cost_mil_to_civ_factor
-			clear_variable = Flexible_economy_policy_production_speed_buildings_factor
-			clear_variable = Flexible_economy_policy_industrial_capacity_factory
-			clear_variable = Flexible_economy_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_economy_policy_fuel_gain_factor
-			clear_variable = Flexible_economy_policy_max_fuel_factor
-			clear_variable = Flexible_economy_policy_production_speed_infrastructure_factor
-			clear_variable = Flexible_economy_policy_production_speed_industrial_complex_factor
-			clear_variable = Flexible_economy_policy_production_speed_arms_factory_factor
-			clear_variable = Flexible_economy_policy_production_speed_dockyard_factor
-			clear_variable = Flexible_economy_policy_production_speed_synthetic_refinery_factor
-			clear_variable = Flexible_economy_policy_production_speed_nuclear_reactor_factor
-			clear_variable = Flexible_economy_policy_production_speed_rocket_site_factor
-			clear_variable = Flexible_economy_policy_production_speed_air_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_supply_node_factor
-			clear_variable = Flexible_economy_policy_production_speed_naval_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_coastal_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_anti_air_building_factor
-			clear_variable = Flexible_economy_policy_production_speed_radar_station_factor
-			set_temp_variable = {
-				v_economy_manipulator = 0.10
+			set_variable = {
+				increasing_civilian_economy_value = 0.10
 			}
-			set_temp_variable = {
-				v_economy_civilian_point = v_economy_manipulator
-			}
-			subtract_from_temp_variable = {
-				v_economy_military_point = v_economy_manipulator
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = Flexible_economy_policy_civilian_point
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = Flexible_economy_policy_military_point
-				}
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = v_economy_civilian_point
-					tooltip = conversion_cost_civ_to_mil_factor_tt
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = v_economy_military_point
-					tooltip = conversion_cost_mil_to_civ_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = v_economy_military_point
-					tooltip = industrial_capacity_factory_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = v_economy_military_point
-					tooltip = industrial_capacity_dockyard_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = v_economy_military_point
-					tooltip = fuel_gain_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = v_economy_military_point
-					tooltip = max_fuel_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = v_economy_civilian_point
-					tooltip = production_speed_infrastructure_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = v_economy_civilian_point
-					tooltip = production_speed_industrial_complex_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = v_economy_military_point
-					tooltip = production_speed_arms_factory_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = v_economy_military_point
-					tooltip = production_speed_dockyard_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = v_economy_military_point
-					tooltip = production_speed_synthetic_refinery_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = v_economy_military_point
-					tooltip = production_speed_nuclear_reactor_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = v_economy_military_point
-					tooltip = production_speed_rocket_site_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = v_economy_military_point
-					tooltip = production_speed_air_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = v_economy_military_point
-					tooltip = production_speed_supply_node_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = v_economy_military_point
-					tooltip = production_speed_naval_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = v_economy_military_point
-					tooltip = production_speed_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = v_economy_military_point
-					tooltip = production_speed_coastal_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = v_economy_military_point
-					tooltip = production_speed_anti_air_building_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = v_economy_military_point
-					tooltip = production_speed_radar_station_factor_tt
-				}
-			}
+			increase_civilian_economy = yes
 		}
 	}
+	
 	increase_military_economy_1 = {
 
 		icon = generic_decision
 		
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_economy_policy
-			}
-			set_temp_variable = {
-				cg = Flexible_economy_policy_consumer_goods_factor
-			}
-			subtract_from_temp_variable = {
-				cg = Flexible_economy_policy_military_point
-			}
+			has_idea = Flexible_economy
 			NOT = {
 				check_variable = {
-					cg < 0.01
+					Flexible_economy_policy_military_share > 0.99
 				}
+			}
+		}
+
+		available = {
+			set_temp_variable = {
+				ws = Flexible_economy_policy_military_share
+			}
+			add_to_temp_variable = {
+				ws = 0.01
+			}
+			NOT = {
+				has_war_support < ws
 			}
 		}
 
@@ -2472,255 +1455,30 @@ flexible_economy_policy_category = {
 			base = 0
 
 			modifier = {
-				add = 10
-				check_variable = {
-					Flexible_economy_policy_military_point < 0.1
+				set_temp_variable = {
+					t = 1
 				}
-				threat > 0.2
-				threat < 0.3
-			}
-
-			modifier = {
-				add = 10
-				check_variable = {
-					Flexible_economy_policy_military_point < 0.15
+				subtract_from_temp_variable = {
+					t = threat
 				}
-				threat > 0.4
-				threat < 0.8
+				multiply_temp_variable = {
+					t = 100
+				}
+				add = t
 			}
 
 			modifier = {
 				add = 100
-				check_variable = {
-					Flexible_economy_policy_military_point < 0.2
-				}
 				has_war = yes
 			}
 			
-			modifier = {
-				add = 20
-				check_variable = {
-					Flexible_economy_policy_military_point < 0.2
-				}
-			}
-
-			modifier = {
-				add = 100
-				check_variable = {
-					Flexible_economy_policy_military_point < 0.2
-				}
-				manpower_per_military_factory > 15000
-				has_war = yes
-				has_war_support > 0.8
-				any_enemy_country = {
-					ic_ratio = {
-						tag = ROOT
-						ratio > 0.5
-					}
-				}
-			}
-			modifier = {
-				add = 100
-				check_variable = {
-					Flexible_economy_policy_military_point < 0.2
-				}
-				OR = {
-					has_idea = closed_economy
-					check_variable = {
-						Flexible_trade_policy_min_export < 0.20
-					}
-				}
-			}
-
 	 	}
 
 		complete_effect = {
-			clear_variable = Flexible_economy_policy_conversion_cost_civ_to_mil_factor
-			clear_variable = Flexible_economy_policy_conversion_cost_mil_to_civ_factor
-			clear_variable = Flexible_economy_policy_production_speed_buildings_factor
-			clear_variable = Flexible_economy_policy_industrial_capacity_factory
-			clear_variable = Flexible_economy_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_economy_policy_fuel_gain_factor
-			clear_variable = Flexible_economy_policy_max_fuel_factor
-			clear_variable = Flexible_economy_policy_production_speed_infrastructure_factor
-			clear_variable = Flexible_economy_policy_production_speed_industrial_complex_factor
-			clear_variable = Flexible_economy_policy_production_speed_arms_factory_factor
-			clear_variable = Flexible_economy_policy_production_speed_dockyard_factor
-			clear_variable = Flexible_economy_policy_production_speed_synthetic_refinery_factor
-			clear_variable = Flexible_economy_policy_production_speed_nuclear_reactor_factor
-			clear_variable = Flexible_economy_policy_production_speed_rocket_site_factor
-			clear_variable = Flexible_economy_policy_production_speed_air_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_supply_node_factor
-			clear_variable = Flexible_economy_policy_production_speed_naval_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_coastal_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_anti_air_building_factor
-			clear_variable = Flexible_economy_policy_production_speed_radar_station_factor
-			set_temp_variable = {
-				v_economy_manipulator = 0.01
+			set_variable = {
+				increasing_military_economy_value = 0.01
 			}
-			subtract_from_temp_variable = {
-				v_economy_civilian_point = v_economy_manipulator
-			}
-			set_temp_variable = {
-				v_economy_military_point = v_economy_manipulator
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = Flexible_economy_policy_civilian_point
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = Flexible_economy_policy_military_point
-				}
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = v_economy_civilian_point
-					tooltip = conversion_cost_civ_to_mil_factor_tt
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = v_economy_military_point
-					tooltip = conversion_cost_mil_to_civ_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = v_economy_military_point
-					tooltip = industrial_capacity_factory_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = v_economy_military_point
-					tooltip = industrial_capacity_dockyard_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = v_economy_military_point
-					tooltip = fuel_gain_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = v_economy_military_point
-					tooltip = max_fuel_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = v_economy_civilian_point
-					tooltip = production_speed_infrastructure_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = v_economy_civilian_point
-					tooltip = production_speed_industrial_complex_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = v_economy_military_point
-					tooltip = production_speed_arms_factory_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = v_economy_military_point
-					tooltip = production_speed_dockyard_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = v_economy_military_point
-					tooltip = production_speed_synthetic_refinery_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = v_economy_military_point
-					tooltip = production_speed_nuclear_reactor_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = v_economy_military_point
-					tooltip = production_speed_rocket_site_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = v_economy_military_point
-					tooltip = production_speed_air_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = v_economy_military_point
-					tooltip = production_speed_supply_node_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = v_economy_military_point
-					tooltip = production_speed_naval_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = v_economy_military_point
-					tooltip = production_speed_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = v_economy_military_point
-					tooltip = production_speed_coastal_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = v_economy_military_point
-					tooltip = production_speed_anti_air_building_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = v_economy_military_point
-					tooltip = production_speed_radar_station_factor_tt
-				}
-			}
+			increase_military_economy = yes
 		}
 	}
 	increase_military_economy_2 = {
@@ -2728,211 +1486,33 @@ flexible_economy_policy_category = {
 		icon = generic_decision
 		
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_economy_policy
-			}
-			set_temp_variable = {
-				cg = Flexible_economy_policy_consumer_goods_factor
-			}
-			subtract_from_temp_variable = {
-				cg = Flexible_economy_policy_military_point
-			}
+			has_idea = Flexible_economy
 			NOT = {
 				check_variable = {
-					cg < 0.02
+					Flexible_economy_policy_military_share > 0.98
 				}
+			}
+		}
+
+		available = {
+			set_temp_variable = {
+				ws = Flexible_economy_policy_military_share
+			}
+			add_to_temp_variable = {
+				ws = 0.02
+			}
+			NOT = {
+				has_war_support < ws
 			}
 		}
 
 		cost = 4
 
 		complete_effect = {
-			clear_variable = Flexible_economy_policy_conversion_cost_civ_to_mil_factor
-			clear_variable = Flexible_economy_policy_conversion_cost_mil_to_civ_factor
-			clear_variable = Flexible_economy_policy_production_speed_buildings_factor
-			clear_variable = Flexible_economy_policy_industrial_capacity_factory
-			clear_variable = Flexible_economy_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_economy_policy_fuel_gain_factor
-			clear_variable = Flexible_economy_policy_max_fuel_factor
-			clear_variable = Flexible_economy_policy_production_speed_infrastructure_factor
-			clear_variable = Flexible_economy_policy_production_speed_industrial_complex_factor
-			clear_variable = Flexible_economy_policy_production_speed_arms_factory_factor
-			clear_variable = Flexible_economy_policy_production_speed_dockyard_factor
-			clear_variable = Flexible_economy_policy_production_speed_synthetic_refinery_factor
-			clear_variable = Flexible_economy_policy_production_speed_nuclear_reactor_factor
-			clear_variable = Flexible_economy_policy_production_speed_rocket_site_factor
-			clear_variable = Flexible_economy_policy_production_speed_air_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_supply_node_factor
-			clear_variable = Flexible_economy_policy_production_speed_naval_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_coastal_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_anti_air_building_factor
-			clear_variable = Flexible_economy_policy_production_speed_radar_station_factor
-			set_temp_variable = {
-				v_economy_manipulator = 0.02
+			set_variable = {
+				increasing_military_economy_value = 0.02
 			}
-			subtract_from_temp_variable = {
-				v_economy_civilian_point = v_economy_manipulator
-			}
-			set_temp_variable = {
-				v_economy_military_point = v_economy_manipulator
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = Flexible_economy_policy_civilian_point
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = Flexible_economy_policy_military_point
-				}
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = v_economy_civilian_point
-					tooltip = conversion_cost_civ_to_mil_factor_tt
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = v_economy_military_point
-					tooltip = conversion_cost_mil_to_civ_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = v_economy_military_point
-					tooltip = industrial_capacity_factory_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = v_economy_military_point
-					tooltip = industrial_capacity_dockyard_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = v_economy_military_point
-					tooltip = fuel_gain_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = v_economy_military_point
-					tooltip = max_fuel_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = v_economy_civilian_point
-					tooltip = production_speed_infrastructure_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = v_economy_civilian_point
-					tooltip = production_speed_industrial_complex_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = v_economy_military_point
-					tooltip = production_speed_arms_factory_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = v_economy_military_point
-					tooltip = production_speed_dockyard_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = v_economy_military_point
-					tooltip = production_speed_synthetic_refinery_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = v_economy_military_point
-					tooltip = production_speed_nuclear_reactor_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = v_economy_military_point
-					tooltip = production_speed_rocket_site_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = v_economy_military_point
-					tooltip = production_speed_air_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = v_economy_military_point
-					tooltip = production_speed_supply_node_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = v_economy_military_point
-					tooltip = production_speed_naval_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = v_economy_military_point
-					tooltip = production_speed_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = v_economy_military_point
-					tooltip = production_speed_coastal_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = v_economy_military_point
-					tooltip = production_speed_anti_air_building_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = v_economy_military_point
-					tooltip = production_speed_radar_station_factor_tt
-				}
-			}
+			increase_military_economy = yes
 		}
 	}
 	increase_military_economy_5 = {
@@ -2940,211 +1520,33 @@ flexible_economy_policy_category = {
 		icon = generic_decision
 		
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_economy_policy
-			}
-			set_temp_variable = {
-				cg = Flexible_economy_policy_consumer_goods_factor
-			}
-			subtract_from_temp_variable = {
-				cg = Flexible_economy_policy_military_point
-			}
+			has_idea = Flexible_economy
 			NOT = {
 				check_variable = {
-					cg < 0.05
+					Flexible_economy_policy_military_share > 0.95
 				}
+			}
+		}
+
+		available = {
+			set_temp_variable = {
+				ws = Flexible_economy_policy_military_share
+			}
+			add_to_temp_variable = {
+				ws = 0.05
+			}
+			NOT = {
+				has_war_support < ws
 			}
 		}
 
 		cost = 10
 
 		complete_effect = {
-			clear_variable = Flexible_economy_policy_conversion_cost_civ_to_mil_factor
-			clear_variable = Flexible_economy_policy_conversion_cost_mil_to_civ_factor
-			clear_variable = Flexible_economy_policy_production_speed_buildings_factor
-			clear_variable = Flexible_economy_policy_industrial_capacity_factory
-			clear_variable = Flexible_economy_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_economy_policy_fuel_gain_factor
-			clear_variable = Flexible_economy_policy_max_fuel_factor
-			clear_variable = Flexible_economy_policy_production_speed_infrastructure_factor
-			clear_variable = Flexible_economy_policy_production_speed_industrial_complex_factor
-			clear_variable = Flexible_economy_policy_production_speed_arms_factory_factor
-			clear_variable = Flexible_economy_policy_production_speed_dockyard_factor
-			clear_variable = Flexible_economy_policy_production_speed_synthetic_refinery_factor
-			clear_variable = Flexible_economy_policy_production_speed_nuclear_reactor_factor
-			clear_variable = Flexible_economy_policy_production_speed_rocket_site_factor
-			clear_variable = Flexible_economy_policy_production_speed_air_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_supply_node_factor
-			clear_variable = Flexible_economy_policy_production_speed_naval_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_coastal_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_anti_air_building_factor
-			clear_variable = Flexible_economy_policy_production_speed_radar_station_factor
-			set_temp_variable = {
-				v_economy_manipulator = 0.05
+			set_variable = {
+				increasing_military_economy_value = 0.05
 			}
-			subtract_from_temp_variable = {
-				v_economy_civilian_point = v_economy_manipulator
-			}
-			set_temp_variable = {
-				v_economy_military_point = v_economy_manipulator
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = Flexible_economy_policy_civilian_point
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = Flexible_economy_policy_military_point
-				}
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = v_economy_civilian_point
-					tooltip = conversion_cost_civ_to_mil_factor_tt
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = v_economy_military_point
-					tooltip = conversion_cost_mil_to_civ_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = v_economy_military_point
-					tooltip = industrial_capacity_factory_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = v_economy_military_point
-					tooltip = industrial_capacity_dockyard_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = v_economy_military_point
-					tooltip = fuel_gain_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = v_economy_military_point
-					tooltip = max_fuel_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = v_economy_civilian_point
-					tooltip = production_speed_infrastructure_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = v_economy_civilian_point
-					tooltip = production_speed_industrial_complex_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = v_economy_military_point
-					tooltip = production_speed_arms_factory_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = v_economy_military_point
-					tooltip = production_speed_dockyard_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = v_economy_military_point
-					tooltip = production_speed_synthetic_refinery_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = v_economy_military_point
-					tooltip = production_speed_nuclear_reactor_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = v_economy_military_point
-					tooltip = production_speed_rocket_site_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = v_economy_military_point
-					tooltip = production_speed_air_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = v_economy_military_point
-					tooltip = production_speed_supply_node_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = v_economy_military_point
-					tooltip = production_speed_naval_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = v_economy_military_point
-					tooltip = production_speed_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = v_economy_military_point
-					tooltip = production_speed_coastal_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = v_economy_military_point
-					tooltip = production_speed_anti_air_building_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = v_economy_military_point
-					tooltip = production_speed_radar_station_factor_tt
-				}
-			}
+			increase_military_economy = yes
 		}
 	}
 	increase_military_economy_10 = {
@@ -3152,18 +1554,86 @@ flexible_economy_policy_category = {
 		icon = generic_decision
 		
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_economy_policy
-			}
-			set_temp_variable = {
-				cg = Flexible_economy_policy_consumer_goods_factor
-			}
-			subtract_from_temp_variable = {
-				cg = Flexible_economy_policy_military_point
-			}
+			has_idea = Flexible_economy
 			NOT = {
 				check_variable = {
-					cg < 0.10
+					Flexible_economy_policy_military_share > 0.90
+				}
+			}
+		}
+
+		available = {
+			set_temp_variable = {
+				ws = Flexible_economy_policy_military_share
+			}
+			add_to_temp_variable = {
+				ws = 0.10
+			}
+			NOT = {
+				has_war_support < ws
+			}
+		}
+
+		cost = 20
+
+		complete_effect = {
+			set_variable = {
+				increasing_military_economy_value = 0.10
+			}
+			increase_military_economy = yes
+		}
+	}
+
+	increase_economy_policy_1 = {
+
+		icon = generic_decision
+		
+		visible = {
+			has_idea = Flexible_economy
+			NOT = {
+				check_variable = {
+					Flexible_economy_policy_consumer_goods_factor > 0.49
+				}
+			}
+		}
+
+		cost = 10
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				set_temp_variable = {
+					t = num_of_available_civilian_factories
+				}
+				set_temp_variable = {
+					tt = Flexible_economy_policy_consumer_goods_factor
+				}
+				add_to_temp_variable = {
+					tt = 0.10
+				}
+				divide_temp_variable = {
+					t = tt
+				}
+				add = t
+			}
+		}
+
+		complete_effect = {
+			set_variable = {
+				changing_consumer_economy_value = 0.01
+			}
+			change_economy_policy_volume = yes
+		}
+	}
+	increase_economy_policy_2 = {
+
+		icon = generic_decision
+		
+		visible = {
+			has_idea = Flexible_economy
+			NOT = {
+				check_variable = {
+					Flexible_economy_policy_consumer_goods_factor > 0.48
 				}
 			}
 		}
@@ -3171,610 +1641,251 @@ flexible_economy_policy_category = {
 		cost = 20
 
 		complete_effect = {
-			clear_variable = Flexible_economy_policy_conversion_cost_civ_to_mil_factor
-			clear_variable = Flexible_economy_policy_conversion_cost_mil_to_civ_factor
-			clear_variable = Flexible_economy_policy_production_speed_buildings_factor
-			clear_variable = Flexible_economy_policy_industrial_capacity_factory
-			clear_variable = Flexible_economy_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_economy_policy_fuel_gain_factor
-			clear_variable = Flexible_economy_policy_max_fuel_factor
-			clear_variable = Flexible_economy_policy_production_speed_infrastructure_factor
-			clear_variable = Flexible_economy_policy_production_speed_industrial_complex_factor
-			clear_variable = Flexible_economy_policy_production_speed_arms_factory_factor
-			clear_variable = Flexible_economy_policy_production_speed_dockyard_factor
-			clear_variable = Flexible_economy_policy_production_speed_synthetic_refinery_factor
-			clear_variable = Flexible_economy_policy_production_speed_nuclear_reactor_factor
-			clear_variable = Flexible_economy_policy_production_speed_rocket_site_factor
-			clear_variable = Flexible_economy_policy_production_speed_air_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_supply_node_factor
-			clear_variable = Flexible_economy_policy_production_speed_naval_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_coastal_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_anti_air_building_factor
-			clear_variable = Flexible_economy_policy_production_speed_radar_station_factor
-			set_temp_variable = {
-				v_economy_manipulator = 0.10
+			set_variable = {
+				changing_consumer_economy_value = 0.02
 			}
-			subtract_from_temp_variable = {
-				v_economy_civilian_point = v_economy_manipulator
-			}
-			set_temp_variable = {
-				v_economy_military_point = v_economy_manipulator
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = Flexible_economy_policy_civilian_point
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = Flexible_economy_policy_military_point
-				}
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = v_economy_civilian_point
-					tooltip = conversion_cost_civ_to_mil_factor_tt
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = v_economy_military_point
-					tooltip = conversion_cost_mil_to_civ_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = v_economy_military_point
-					tooltip = industrial_capacity_factory_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = v_economy_military_point
-					tooltip = industrial_capacity_dockyard_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = v_economy_military_point
-					tooltip = fuel_gain_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = v_economy_military_point
-					tooltip = max_fuel_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = v_economy_civilian_point
-					tooltip = production_speed_infrastructure_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = v_economy_civilian_point
-					tooltip = production_speed_industrial_complex_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = v_economy_military_point
-					tooltip = production_speed_arms_factory_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = v_economy_military_point
-					tooltip = production_speed_dockyard_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = v_economy_military_point
-					tooltip = production_speed_synthetic_refinery_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = v_economy_military_point
-					tooltip = production_speed_nuclear_reactor_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = v_economy_military_point
-					tooltip = production_speed_rocket_site_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = v_economy_military_point
-					tooltip = production_speed_air_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = v_economy_military_point
-					tooltip = production_speed_supply_node_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = v_economy_military_point
-					tooltip = production_speed_naval_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = v_economy_military_point
-					tooltip = production_speed_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = v_economy_military_point
-					tooltip = production_speed_coastal_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = v_economy_military_point
-					tooltip = production_speed_anti_air_building_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = v_economy_military_point
-					tooltip = production_speed_radar_station_factor_tt
-				}
-			}
+			change_economy_policy_volume = yes
 		}
 	}
-	increase_economy_policy_volume = {
-		
-		icon = generic_political_actions
+	increase_economy_policy_5 = {
 
+		icon = generic_decision
+		
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_economy_policy
-			}
-			check_variable = {
-				Flexible_economy_policy_consumer_goods_factor < 0.40
+			has_idea = Flexible_economy
+			NOT = {
+				check_variable = {
+					Flexible_economy_policy_consumer_goods_factor > 0.45
+				}
 			}
 		}
+		
+		cost = 50
 
-		available = {
-			IF = {
-				limit = {
-					NOT = {
-						check_variable = {
-							Flexible_economy_policy_consumer_goods_factor < 0.20
-						}
-					}
-				}
-				set_temp_variable = {
-					sp = Flexible_economy_policy_consumer_goods_factor
-				}
-				multiply_temp_variable = {
-					sp = 2
-				}
-				add_to_temp_variable = {
-					sp = 0.10
-				}
-				NOT = {
-					has_stability < sp
-					has_war_support < sp
+		complete_effect = {
+			set_variable = {
+				changing_consumer_economy_value = 0.05
+			}
+			change_economy_policy_volume = yes
+		}
+	}
+	increase_economy_policy_10 = {
+
+		icon = generic_decision
+		
+		visible = {
+			has_idea = Flexible_economy
+			NOT = {
+				check_variable = {
+					Flexible_economy_policy_consumer_goods_factor > 0.40
 				}
 			}
 		}
 
 		cost = 100
 
-		ai_will_do = {
-			base = 0
-			modifier = {
-				add = 10
-				num_of_available_civilian_factories > 50
-				NOT = {
-					check_variable = {
-						Flexible_economy_policy_consumer_goods_factor > 0.20
-					}
-				}
-			}
-			modifier = {
-				add = 10
-				num_of_available_civilian_factories > 100
-				NOT = {
-					check_variable = {
-						Flexible_economy_policy_consumer_goods_factor < 0.30
-					}
-				}
-			}
-		}
-
 		complete_effect = {
-			add_to_variable = {
-				Flexible_economy_policy_consumer_goods_factor = 0.10
-				tooltip = consumer_goods_factor_tt
+			set_variable = {
+				changing_consumer_economy_value = 0.10
 			}
+			change_economy_policy_volume = yes
 		}
 	}
-	increase_economy_policy_volume_MAX = {
-		
-		icon = generic_political_actions
+	
+	decrease_economy_policy_1 = {
 
+		icon = generic_decision
+		
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_economy_policy
-			}
-			check_variable = {
-				Flexible_economy_policy_consumer_goods_factor < 0.40
-			}
-		}
-
-		available = {
-			set_temp_variable = {
-				sp = Flexible_economy_policy_consumer_goods_factor
-			}
-			set_temp_variable = {
-				v_cost = 0.40
-			}
-			subtract_from_temp_variable = {
-				v_cost = sp
-			}
-			multiply_temp_variable = {
-				v_cost = 1000
-			}
+			has_idea = Flexible_economy
 			NOT = {
-				has_stability < 0.80
-				has_war_support < 0.80
+				check_variable = {
+					Flexible_economy_policy_consumer_goods_factor < 0.01
+				}
 			}
 		}
 
-		cost = v_cost
-		
+		cost = 10
+
 		ai_will_do = {
 			base = 0
 			modifier = {
-				add = 10
-				num_of_available_civilian_factories > 100
-				NOT = {
-					check_variable = {
-						Flexible_economy_policy_consumer_goods_factor < 0.30
-					}
+				set_temp_variable = {
+					t = num_of_available_civilian_factories
 				}
+				set_temp_variable = {
+					tt = Flexible_economy_policy_consumer_goods_factor
+				}
+				add_to_temp_variable = {
+					tt = 0.10
+				}
+				multiply_temp_variable = {
+					t = tt
+				}
+				add = t
 			}
 		}
 
 		complete_effect = {
 			set_variable = {
-				Flexible_economy_policy_consumer_goods_factor = 0.40
-				tooltip = consumer_goods_factor_tt
+				changing_consumer_economy_value = -0.01
 			}
+			change_economy_policy_volume = yes
 		}
 	}
-	decrease_economy_policy_volume = {
+	decrease_economy_policy_2 = {
 
-		icon = generic_political_actions
-
+		icon = generic_decision
+		
 		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_economy_policy
-			}
-			check_variable = {
-				Flexible_economy_policy_consumer_goods_factor > 0.20
-			}
+			has_idea = Flexible_economy
 			NOT = {
 				check_variable = {
-					Flexible_economy_policy_civilian_point > 0.20
+					Flexible_economy_policy_consumer_goods_factor < 0.02
 				}
+			}
+		}
+
+		cost = 20
+
+		complete_effect = {
+			set_variable = {
+				changing_consumer_economy_value = -0.02
+			}
+			change_economy_policy_volume = yes
+		}
+	}
+	decrease_economy_policy_5 = {
+
+		icon = generic_decision
+		
+		visible = {
+			has_idea = Flexible_economy
+			NOT = {
 				check_variable = {
-					Flexible_economy_policy_military_point > 0.20
+					Flexible_economy_policy_consumer_goods_factor < 0.05
+				}
+			}
+		}
+		
+		cost = 50
+
+		complete_effect = {
+			set_variable = {
+				changing_consumer_economy_value = -0.05
+			}
+			change_economy_policy_volume = yes
+		}
+	}
+	decrease_economy_policy_10 = {
+
+		icon = generic_decision
+		
+		visible = {
+			has_idea = Flexible_economy
+			NOT = {
+				check_variable = {
+					Flexible_economy_policy_consumer_goods_factor < 0.10
 				}
 			}
 		}
 
 		cost = 100
-		
-		ai_will_do = {
-			base = 0
-			modifier = {
-				add = 10
-				num_of_available_civilian_factories < 40
-				NOT = {
-					check_variable = {
-						Flexible_economy_policy_consumer_goods_factor < 0.20
-					}
-				}
-			}
-			modifier = {
-				add = 10
-				num_of_available_civilian_factories < 80
-				NOT = {
-					check_variable = {
-						Flexible_economy_policy_consumer_goods_factor < 0.30
-					}
-				}
-			}
-		}
 
 		complete_effect = {
-			add_to_variable = {
-				Flexible_economy_policy_consumer_goods_factor = -0.10
-				tooltip = consumer_goods_factor_tt
+			set_variable = {
+				changing_consumer_economy_value = -0.10
 			}
+			change_economy_policy_volume = yes
 		}
 	}
-	decrease_economy_policy_volume_MIN = {
-
-		icon = generic_political_actions
-
-		visible = {
-			has_dynamic_modifier = {
-				modifier = Flexible_economy_policy
-			}
-			check_variable = {
-				Flexible_economy_policy_consumer_goods_factor > 0.20
-			}
-			NOT = {
-				check_variable = {
-					Flexible_economy_policy_civilian_point > 0.20
-				}
-				check_variable = {
-					Flexible_economy_policy_military_point > 0.20
-				}
-			}
-		}
-
-		available = {
-			set_temp_variable = {
-				cg = Flexible_economy_policy_consumer_goods_factor
-			}
-			set_temp_variable = {
-				v_cost = 0.20
-			}
-			subtract_from_temp_variable = {
-				v_cost = cg
-			}
-			multiply_temp_variable = {
-				v_cost = -1000
-			}
-		}
-
-		cost = v_cost
-		
-		complete_effect = {
-			clear_variable = Flexible_economy_policy_conversion_cost_civ_to_mil_factor
-			clear_variable = Flexible_economy_policy_conversion_cost_mil_to_civ_factor
-			clear_variable = Flexible_economy_policy_production_speed_buildings_factor
-			clear_variable = Flexible_economy_policy_industrial_capacity_factory
-			clear_variable = Flexible_economy_policy_industrial_capacity_dockyard
-			clear_variable = Flexible_economy_policy_fuel_gain_factor
-			clear_variable = Flexible_economy_policy_max_fuel_factor
-			clear_variable = Flexible_economy_policy_production_speed_infrastructure_factor
-			clear_variable = Flexible_economy_policy_production_speed_industrial_complex_factor
-			clear_variable = Flexible_economy_policy_production_speed_arms_factory_factor
-			clear_variable = Flexible_economy_policy_production_speed_dockyard_factor
-			clear_variable = Flexible_economy_policy_production_speed_synthetic_refinery_factor
-			clear_variable = Flexible_economy_policy_production_speed_nuclear_reactor_factor
-			clear_variable = Flexible_economy_policy_production_speed_rocket_site_factor
-			clear_variable = Flexible_economy_policy_production_speed_air_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_supply_node_factor
-			clear_variable = Flexible_economy_policy_production_speed_naval_base_factor
-			clear_variable = Flexible_economy_policy_production_speed_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_coastal_bunker_factor
-			clear_variable = Flexible_economy_policy_production_speed_anti_air_building_factor
-			clear_variable = Flexible_economy_policy_production_speed_radar_station_factor
-			set_temp_variable = {
-				v_economy_manipulator = 0.05
-			}
-			subtract_from_temp_variable = {
-				v_economy_civilian_point = v_economy_manipulator
-			}
-			subtract_from_temp_variable = {
-				v_economy_military_point = v_economy_manipulator
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = Flexible_economy_policy_civilian_point
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = Flexible_economy_policy_civilian_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = Flexible_economy_policy_military_point
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = Flexible_economy_policy_military_point
-				}
-			}
-			if = {
-				limit = {
-					always = yes
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_civ_to_mil_factor = v_economy_civilian_point
-					tooltip = conversion_cost_civ_to_mil_factor_tt
-				}
-				subtract_from_variable = {
-					Flexible_economy_policy_conversion_cost_mil_to_civ_factor = v_economy_military_point
-					tooltip = conversion_cost_mil_to_civ_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_buildings_factor = 0
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_factory = v_economy_military_point
-					tooltip = industrial_capacity_factory_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_industrial_capacity_dockyard = v_economy_military_point
-					tooltip = industrial_capacity_dockyard_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_fuel_gain_factor = v_economy_military_point
-					tooltip = fuel_gain_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_max_fuel_factor = v_economy_military_point
-					tooltip = max_fuel_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_infrastructure_factor = v_economy_civilian_point
-					tooltip = production_speed_infrastructure_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_industrial_complex_factor = v_economy_civilian_point
-					tooltip = production_speed_industrial_complex_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_arms_factory_factor = v_economy_military_point
-					tooltip = production_speed_arms_factory_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_dockyard_factor = v_economy_military_point
-					tooltip = production_speed_dockyard_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_synthetic_refinery_factor = v_economy_military_point
-					tooltip = production_speed_synthetic_refinery_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_nuclear_reactor_factor = v_economy_military_point
-					tooltip = production_speed_nuclear_reactor_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_rocket_site_factor = v_economy_military_point
-					tooltip = production_speed_rocket_site_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_air_base_factor = v_economy_military_point
-					tooltip = production_speed_air_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_supply_node_factor = v_economy_military_point
-					tooltip = production_speed_supply_node_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_naval_base_factor = v_economy_military_point
-					tooltip = production_speed_naval_base_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_bunker_factor = v_economy_military_point
-					tooltip = production_speed_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_coastal_bunker_factor = v_economy_military_point
-					tooltip = production_speed_coastal_bunker_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_anti_air_building_factor = v_economy_military_point
-					tooltip = production_speed_anti_air_building_factor_tt
-				}
-				add_to_variable = {
-					Flexible_economy_policy_production_speed_radar_station_factor = v_economy_military_point
-					tooltip = production_speed_radar_station_factor_tt
-				}
-			}
-		}
-	}
+	
 }
 
 economy_decisions = {
+
+	Flexiblizing_laws = {
+
+		icon = generic_decision
+
+		is_good = no
+		
+		selectable_mission = yes
+
+		activation = {
+			OR = {
+				if = {
+					limit = {
+						has_dynamic_modifier = {
+							modifier = Flexible_conscription_policy
+						}
+					}
+					NOT = {
+						has_idea = Flexible_conscription
+					}
+				}
+				if = {
+					limit = {
+						has_dynamic_modifier = {
+							modifier = Flexible_trade_policy
+						}
+					}
+					NOT = {
+						has_idea = Flexible_trade
+					}
+				}
+				if = {
+					limit = {
+						has_dynamic_modifier = {
+							modifier = Flexible_economy_policy
+						}
+					}
+					NOT = {
+						has_idea = Flexible_economy
+					}
+				}
+			}
+		}
+
+		cancel_trigger = {
+			always = yes
+		}
+
+		days_mission_timeout = 0
+
+		timeout_effect = {
+			flexiblize_laws = yes
+		}
+
+		cancel_effect = {
+			flexiblize_laws = yes
+		}
+
+		complete_effect = {
+			flexiblize_laws = yes
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
 
 	Begin_flexible_conscription_policy = {
 
 		icon = generic_decision
 
 		available = {
-			has_idea = extensive_conscription
+			OR = {
+				has_idea = extensive_conscription
+				has_idea = service_by_requirement
+				has_idea = all_adults_serve
+				has_idea = scraping_the_barrel
+			}
 		}
 
 		visible = {
 			NOT = {
+				has_idea = Flexible_conscription
 				has_dynamic_modifier = {
 					modifier = Flexible_conscription_policy
 				}
@@ -3782,8 +1893,25 @@ economy_decisions = {
 		}
 
 		cancel_trigger = {
-			NOT = {
-				has_idea = extensive_conscription
+			OR = {
+				AND = {
+					NOT = {
+						has_idea = extensive_conscription
+					}
+					NOT = {
+						has_idea = service_by_requirement
+					}
+					NOT = {
+						has_idea = all_adults_serve
+					}
+					NOT = {
+						has_idea = scraping_the_barrel
+					}
+				}
+				has_idea = Flexible_conscription
+				has_dynamic_modifier = {
+					modifier = Flexible_conscription_policy
+				}
 			}
 		}
 
@@ -3794,18 +1922,43 @@ economy_decisions = {
 		}
 
 		remove_effect = {
-			remove_ideas = extensive_conscription
+			if = {
+				limit = {
+					has_idea = extensive_conscription
+				}
+				set_variable = {
+					changing_conscription_value = 0.05
+				}
+			}
+			if = {
+				limit = {
+					has_idea = service_by_requirement
+				}
+				set_variable = {
+					changing_conscription_value = 0.10
+				}
+			}
+			if = {
+				limit = {
+					has_idea = all_adults_serve
+				}
+				set_variable = {
+					changing_conscription_value = 0.20
+				}
+			}
+			if = {
+				limit = {
+					has_idea = scraping_the_barrel
+				}
+				set_variable = {
+					changing_conscription_value = 0.25
+				}
+			}
 			add_dynamic_modifier = {
 				modifier = Flexible_conscription_policy
 			}
-			add_to_variable = { 
-				Flexible_conscription_policy_conscription = 0.05
-				tooltip = conscription_tt
-			} 
-			add_to_variable = { 
-				Flexible_conscription_policy_consumer_goods_factor = 0.10
-				tooltip = consumer_goods_factor_tt
-			} 
+			change_conscription = yes
+			add_ideas = Flexible_conscription
 		}
 
 		ai_will_do = {
@@ -3822,12 +1975,12 @@ economy_decisions = {
 			OR = {
 				has_idea = free_trade
 				has_idea = export_focus
-				has_idea = limited_exports
 			}
 		}
 
 		visible = {
 			NOT = {
+				has_idea = Flexible_trade
 				has_dynamic_modifier = {
 					modifier = Flexible_trade_policy
 				}
@@ -3835,15 +1988,18 @@ economy_decisions = {
 		}
 
 		cancel_trigger = {
-			AND = {
-				NOT = {
-					has_idea = free_trade
+			OR = {
+				AND = {
+					NOT = {
+						has_idea = free_trade
+					}
+					NOT = {
+						has_idea = export_focus
+					}
 				}
-				NOT = {
-					has_idea = export_focus
-				}
-				NOT = {
-					has_idea = limited_exports
+				has_idea = Flexible_trade
+				has_dynamic_modifier = {
+					modifier = Flexible_trade_policy
 				}
 			}
 		}
@@ -3855,133 +2011,64 @@ economy_decisions = {
 		}
 
 		remove_effect = {
-			If = {
-				if = {
-					limit = {
-						has_idea = free_trade
-					}
-					remove_ideas = free_trade
-					set_temp_variable = {
-						v_trade = 0.8
-					}
-					set_temp_variable = {
-						v_trade_consumer = v_trade
-					}
-					divide_temp_variable = {
-						v_trade_consumer = 10
-					}
-					multiply_temp_variable = {
-						v_trade_consumer = -1
-					}
-					set_temp_variable = {
-						v_trade_bonus = v_trade
-					}
-					divide_temp_variable = {
-						v_trade_bonus = 5
-					}
-					set_temp_variable = {
-						v_trade_intel = v_trade
-					}
-					multiply_temp_variable = {
-						v_trade_intel = 40
-					}
+			if = {
+				limit = {
+					has_idea = free_trade
 				}
-				if = {
-					limit = {
-						has_idea = export_focus
-					}
-					remove_ideas = export_focus
-					set_temp_variable = {
-						v_trade = 0.5
-					}
-					set_temp_variable = {
-						v_trade_consumer = v_trade
-					}
-					divide_temp_variable = {
-						v_trade_consumer = 10
-					}
-					multiply_temp_variable = {
-						v_trade_consumer = -1
-					}
-					set_temp_variable = {
-						v_trade_bonus = v_trade
-					}
-					divide_temp_variable = {
-						v_trade_bonus = 5
-					}
-					set_temp_variable = {
-						v_trade_intel = v_trade
-					}
-					multiply_temp_variable = {
-						v_trade_intel = 40
-					}
+				remove_ideas = free_trade
+				set_temp_variable = {
+					v_trade = 0.8
 				}
-				if = {
-					limit = {
-						has_idea = limited_exports
-					}
-					remove_ideas = limited_exports
-					set_temp_variable = {
-						v_trade = 0.25
-					}
-					set_temp_variable = {
-						v_trade_consumer = v_trade
-					}
-					divide_temp_variable = {
-						v_trade_consumer = 10
-					}
-					multiply_temp_variable = {
-						v_trade_consumer = -1
-					}
-					set_temp_variable = {
-						v_trade_bonus = v_trade
-					}
-					divide_temp_variable = {
-						v_trade_bonus = 5
-					}
-					set_temp_variable = {
-						v_trade_intel = v_trade
-					}
-					multiply_temp_variable = {
-						v_trade_intel = 40
-					}
+			}
+			if = {
+				limit = {
+					has_idea = export_focus
 				}
+				remove_ideas = export_focus
+				set_temp_variable = {
+					v_trade = 0.5
+				}
+			}
+			add_to_variable = { 
+				Flexible_trade_policy_min_export = v_trade
+			} 
+			set_temp_variable = {
+				v_trade = Flexible_trade_policy_min_export
+			}
+			set_temp_variable = {
+				v_trade_consumer = v_trade
+			}
+			divide_temp_variable = {
+				v_trade_consumer = 10
+			}
+			multiply_temp_variable = {
+				v_trade_consumer = -1
+			}
+			set_temp_variable = {
+				v_trade_bonus = v_trade
+			}
+			divide_temp_variable = {
+				v_trade_bonus = 5
+			}
+			set_temp_variable = {
+				v_trade_intel = v_trade
+			}
+			multiply_temp_variable = {
+				v_trade_intel = 40
+			}
+			set_variable = { 
+				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
+			}
+			set_variable = { 
+				Flexible_trade_policy_bonus = v_trade_bonus
+			}
+			set_variable = { 
+				Flexible_trade_policy_intel = v_trade_intel
 			}
 			add_dynamic_modifier = {
 				modifier = Flexible_trade_policy
 			}
-			add_to_variable = { 
-				Flexible_trade_policy_consumer_goods_factor = v_trade_consumer
-				tooltip = consumer_goods_factor_tt
-			} 
-			add_to_variable = { 
-				Flexible_trade_policy_production_speed_buildings_factor = v_trade_bonus
-				tooltip = production_speed_buildings_factor_tt
-			} 
-			add_to_variable = { 
-				Flexible_trade_policy_research_speed_factor = v_trade_bonus
-				tooltip = research_speed_factor_tt
-			} 
-			add_to_variable = { 
-				Flexible_trade_policy_industrial_capacity_factory = v_trade_bonus
-				tooltip = industrial_capacity_factory_tt
-			} 
-			add_to_variable = { 
-				Flexible_trade_policy_industrial_capacity_dockyard = v_trade_bonus
-				tooltip = industrial_capacity_dockyard_tt
-			} 
-			add_to_variable = { 
-				Flexible_trade_policy_min_export = v_trade
-				tooltip = min_export_tt
-			} 
-			add_to_variable = { 
-				Flexible_trade_policy_civilian_intel_to_others = v_trade_intel 
-				tooltip = civilian_intel_to_others_tt
-			} 
-			add_to_variable = { 
-				Flexible_trade_policy_navy_intel_to_others = v_trade_intel
-				tooltip = navy_intel_to_others_tt
-			}
+			add_ideas = Flexible_trade
 		}
 
 		ai_will_do = {
@@ -3996,8 +2083,6 @@ economy_decisions = {
 
 		available = {
 			OR = {
-				has_idea = civilian_economy
-				has_idea = low_economic_mobilisation
 				has_idea = partial_economic_mobilisation
 				has_idea = war_economy
 			}
@@ -4005,6 +2090,7 @@ economy_decisions = {
 
 		visible = {
 			NOT = {
+				has_idea = Flexible_economy
 				has_dynamic_modifier = {
 					modifier = Flexible_economy_policy
 				}
@@ -4012,18 +2098,18 @@ economy_decisions = {
 		}
 
 		cancel_trigger = {
-			AND = {
-				NOT = {
-					has_idea = civilian_economy
+			OR = {
+				AND = {
+					NOT = {
+						has_idea = partial_economic_mobilisation
+					}
+					NOT = {
+						has_idea = war_economy
+					}
 				}
-				NOT = {
-					has_idea = low_economic_mobilisation
-				}
-				NOT = {
-					has_idea = partial_economic_mobilisation
-				}
-				NOT = {
-					has_idea = war_economy
+				has_idea = Flexible_economy
+				has_dynamic_modifier = {
+					modifier = Flexible_economy_policy
 				}
 			}
 		}
@@ -4035,165 +2121,50 @@ economy_decisions = {
 		}
 
 		remove_effect = {
-			If = {
-				IF = {
-					limit = {
-						has_idea = civilian_economy
-					}
-					remove_ideas = civilian_economy
-					set_temp_variable = {
-						v_consumer_bonus = 0.2
-					}
-					add_to_temp_variable = {
-						v_economy_civilian_point = v_consumer_bonus
-					}
-					subtract_from_temp_variable = {
-						v_economy_military_point = v_consumer_bonus
-					}
+			IF = {
+				limit = {
+					has_idea = partial_economic_mobilisation
 				}
-				IF = {
-					limit = {
-						has_idea = low_economic_mobilisation
-					}
-					remove_ideas = low_economic_mobilisation
-					set_temp_variable = {
-						v_consumer_bonus = 0.1
-					}
-					add_to_temp_variable = {
-						v_economy_civilian_point = v_consumer_bonus
-					}
-					subtract_from_temp_variable = {
-						v_economy_military_point = v_consumer_bonus
-					}
+				remove_ideas = partial_economic_mobilisation
+				set_temp_variable = {
+					v_consumer_bonus = 0.2
 				}
-				IF = {
-					limit = {
-						has_idea = partial_economic_mobilisation
-					}
-					remove_ideas = partial_economic_mobilisation
-					set_temp_variable = {
-						v_consumer_bonus = 0.1
-					}
-					subtract_from_temp_variable = {
-						v_economy_civilian_point = v_consumer_bonus
-					}
-					add_to_temp_variable = {
-						v_economy_military_point = v_consumer_bonus
-					}
+				add_to_temp_variable = {
+					v_economy_civilian_point = 0.4
 				}
-				IF = {
-					limit = {
-						has_idea = war_economy
-					}
-					remove_ideas = war_economy
-					set_temp_variable = {
-						v_consumer_bonus = 0.2
-					}
-					subtract_from_temp_variable = {
-						v_economy_civilian_point = v_consumer_bonus
-					}
-					add_to_temp_variable = {
-						v_economy_military_point = v_consumer_bonus
-					}
+				add_to_temp_variable = {
+					v_economy_military_point = 0.6
 				}
 			}
+			IF = {
+				limit = {
+					has_idea = war_economy
+				}
+				remove_ideas = war_economy
+				set_temp_variable = {
+					v_consumer_bonus = 0.2
+				}
+				add_to_temp_variable = {
+					v_economy_civilian_point = 0.0
+				}
+				add_to_temp_variable = {
+					v_economy_military_point = 1
+				}
+			}
+			set_variable = {
+				changing_consumer_economy_value = v_consumer_bonus
+			}
+			set_variable = {
+				Flexible_economy_policy_civilian_share = v_economy_civilian_point
+			}
+			set_variable = {
+				Flexible_economy_policy_military_share = v_economy_military_point
+			}
+			change_economy_policy_volume = yes
 			add_dynamic_modifier = {
 				modifier = Flexible_economy_policy
 			}
-			add_to_variable = {
-				Flexible_economy_policy_civilian_point = v_economy_civilian_point
-			}
-			add_to_variable = {
-				Flexible_economy_policy_military_point = v_economy_military_point
-			}
-			add_to_variable = {
-				Flexible_economy_policy_consumer_goods_factor = v_consumer_bonus
-				tooltip = consumer_goods_factor_tt
-			}
-			subtract_from_variable = {
-				Flexible_economy_policy_conversion_cost_civ_to_mil_factor = Flexible_economy_policy_civilian_point
-				tooltip = conversion_cost_civ_to_mil_factor_tt
-			}
-			subtract_from_variable = {
-				Flexible_economy_policy_conversion_cost_mil_to_civ_factor = Flexible_economy_policy_military_point
-				tooltip = conversion_cost_mil_to_civ_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_production_speed_buildings_factor = 0
-				tooltip = production_speed_buildings_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_industrial_capacity_factory = Flexible_economy_policy_military_point
-				tooltip = industrial_capacity_factory_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_industrial_capacity_dockyard = Flexible_economy_policy_military_point
-				tooltip = industrial_capacity_dockyard_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_fuel_gain_factor = Flexible_economy_policy_military_point
-				tooltip = fuel_gain_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_max_fuel_factor = Flexible_economy_policy_military_point
-				tooltip = max_fuel_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_production_speed_infrastructure_factor = Flexible_economy_policy_civilian_point
-				tooltip = production_speed_infrastructure_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_production_speed_industrial_complex_factor = Flexible_economy_policy_civilian_point
-				tooltip = production_speed_industrial_complex_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_production_speed_arms_factory_factor = Flexible_economy_policy_military_point
-				tooltip = production_speed_arms_factory_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_production_speed_dockyard_factor = Flexible_economy_policy_military_point
-				tooltip = production_speed_dockyard_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_production_speed_synthetic_refinery_factor = Flexible_economy_policy_military_point
-				tooltip = production_speed_synthetic_refinery_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_production_speed_nuclear_reactor_factor = Flexible_economy_policy_military_point
-				tooltip = production_speed_nuclear_reactor_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_production_speed_rocket_site_factor = Flexible_economy_policy_military_point
-				tooltip = production_speed_rocket_site_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_production_speed_air_base_factor = Flexible_economy_policy_military_point
-				tooltip = production_speed_air_base_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_production_speed_supply_node_factor = Flexible_economy_policy_military_point
-				tooltip = production_speed_supply_node_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_production_speed_naval_base_factor = Flexible_economy_policy_military_point
-				tooltip = production_speed_naval_base_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_production_speed_bunker_factor = Flexible_economy_policy_military_point
-				tooltip = production_speed_bunker_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_production_speed_coastal_bunker_factor = Flexible_economy_policy_military_point
-				tooltip = production_speed_coastal_bunker_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_production_speed_anti_air_building_factor = Flexible_economy_policy_military_point
-				tooltip = production_speed_anti_air_building_factor_tt
-			}
-			add_to_variable = {
-				Flexible_economy_policy_production_speed_radar_station_factor = Flexible_economy_policy_military_point
-				tooltip = production_speed_radar_station_factor_tt
-			}
+			add_ideas = Flexible_economy
 		}
 		
 		ai_will_do = {

@@ -1,0 +1,62 @@
+on_actions = {
+
+	on_peaceconference_ended = {
+		effect = {
+			if = {
+				limit = {
+					original_tag = SOV
+					OR = {
+						NOT = {
+							any_country = {
+								has_country_flag = SOV_third_five_year_plan_disruptor_flag
+							}
+						}
+						any_country = {
+							has_country_flag = SOV_third_five_year_plan_disruptor_flag
+							NOT = { has_war_with = ROOT }
+						}
+					}
+				}
+				clr_country_flag = SOV_great_patriotic_war_flag
+			}
+		}
+	}
+
+	on_war_relation_added = {
+		effect = { #SOV - Great Patriotic War and Third Five Year Plan
+			if = {
+				limit = {
+					FROM = { original_tag = SOV }
+					ROOT = {
+						is_major = yes
+						NOT = { original_tag = SOV }
+					}
+				}
+				if = { ## GREAT PATRIOTIC WAR
+					limit = {
+						NOT = { has_country_flag = SOV_great_patriotic_war_flag }
+					}
+					SOV = { 
+						set_country_flag = SOV_great_patriotic_war_flag 
+						country_event = NSB_soviet_five_year_plan.01
+					}
+				}
+			}
+			if = {
+				limit = {
+					ROOT = { original_tag = SOV }
+					FROM = {
+						is_major = yes
+						NOT = { original_tag = SOV }
+					}
+				}
+				if = { ## GREAT PATRIOTIC WAR
+					limit = {
+						NOT = { has_country_flag = SOV_great_patriotic_war_flag }
+					}
+					SOV = { set_country_flag = SOV_great_patriotic_war_flag }
+				}
+			}
+		}
+	}
+}

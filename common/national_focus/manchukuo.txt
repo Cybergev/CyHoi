@@ -1170,7 +1170,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 6
+			factor = 10
 		}
 
 		cancel_if_invalid = yes
@@ -1271,7 +1271,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 2
+			factor = 10
 		}
 
 		cancel_if_invalid = yes
@@ -1316,7 +1316,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 1
+			factor = 10
 		}
 
 		cancel_if_invalid = yes
@@ -1367,7 +1367,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 5
+			factor = 10
 		}
 
 		cancel_if_invalid = yes
@@ -1412,7 +1412,7 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 1
+			factor = 10
 		}
 
 		cancel_if_invalid = yes
@@ -1556,7 +1556,15 @@
 		cost = 10
 
 		ai_will_do = {
-			factor = 4
+			factor = 0
+			modifier = {
+				is_historical_focus_on = NO
+				factor = 100
+			}
+			modifier = {
+				is_subject = no
+				factor = 100
+			}
 		}
 
 		available = {

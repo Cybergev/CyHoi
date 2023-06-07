@@ -4,6 +4,8 @@ debug_decisions = {
 
 		icon = generic_research
 
+		priority = 1000
+
 		visible = {
 			is_debug = yes
 		}
@@ -11,20 +13,15 @@ debug_decisions = {
 		available = {
 		}
 
-		days = -1
-		modifier = {
-			political_power_factor = 0.10
-			defensive_war_stability_factor = 0.25
-			enemy_justify_war_goal_time = 0.25
-			
-			communism_drift = 0.20
-			political_advisor_cost_factor = -0.20
+		complete_effect = {
 		}
 
 	}
 	EXPD2 = {
 
 		icon = generic_research
+
+		priority = 1000
 
 		visible = {
 			is_debug = yes
@@ -33,16 +30,7 @@ debug_decisions = {
 		available = {
 		}
 		
-		days = -1
-
-		modifier = {
-			political_power_factor = 0.10
-			defensive_war_stability_factor = 0.25
-			enemy_justify_war_goal_time = 0.25
-			
-			party_popularity_stability_factor = 0.10
-			communism_drift = 0.10
-			political_advisor_cost_factor = -0.10
+		complete_effect = {
 		}
 
 	}
@@ -51,7 +39,7 @@ debug_decisions = {
 
 		icon = GFX_decision_generic_form_nation
 		
-		priority = 1
+		priority = 1000
 
 		visible = {
 			is_debug = yes
@@ -68,7 +56,7 @@ debug_decisions = {
 		
 		icon = GFX_decision_generic_form_nation
 		
-		priority = 1
+		priority = 1000
 
 		visible = {
 			is_debug = yes

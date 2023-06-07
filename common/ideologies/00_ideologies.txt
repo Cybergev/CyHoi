@@ -98,7 +98,7 @@ ideologies = {
 		faction_impact_on_world_tension = 0.5
 
 		ai_communist = yes # uses the commie AI behaviour
-		ai_ideology_wanted_units_factor = 1.20
+		ai_ideology_wanted_units_factor = 1.5
 
 		rules = {
 			can_create_collaboration_government = yes
@@ -178,7 +178,7 @@ ideologies = {
 		}
 
 		ai_fascist = yes # uses the fascist AI behaviour
-		ai_ideology_wanted_units_factor = 1.65
+		ai_ideology_wanted_units_factor = 1.5
 	}
 
 	neutrality = {
@@ -229,8 +229,8 @@ ideologies = {
 		can_collaborate = yes
 
 		modifiers = {
-			ai_get_ally_desire_factor = -100
-			ai_join_ally_desire_factor = -50
+			ai_get_ally_desire_factor = -50
+			ai_join_ally_desire_factor = -25
 			drift_defence_factor = 0.5
 		}
 
@@ -239,6 +239,6 @@ ideologies = {
 		}
 
 		ai_neutral = yes #
-		ai_ideology_wanted_units_factor = 1.15
+		ai_ideology_wanted_units_factor = 1.0
 	}
 }

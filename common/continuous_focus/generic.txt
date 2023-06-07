@@ -311,11 +311,14 @@ continuous_focus_palette = {
 		}
 		
 		ai_will_do = {
-			factor = 1
+			factor = 0
 			modifier = {
-				factor = 0
-				
-				num_occupied_states < 1
+				any_controlled_state = {
+					NOT = {
+						resistance < 0.50
+					}
+				}
+				factor = 10
 			}
 		}
 		
@@ -406,12 +409,11 @@ continuous_focus_palette = {
 		icon = GFX_goal_continuous_boost_freedom
 		
 		available = {
-			hidden_trigger = { has_dlc = "Together for Victory" }
 			is_subject = yes			
 		}
 		
 		modifier = {
-			autonomy_gain = 0.5
+			autonomy_gain = 1.0
 		}
 		
 		ai_will_do = {
@@ -439,8 +441,7 @@ continuous_focus_palette = {
 		}
 
 		modifier = {
-			custom_modifier_tooltip = subject_autonomy_mod_tt
-			hidden_modifier = { subjects_autonomy_gain = -0.5 }
+			subjects_autonomy_gain = -1.0
 		}
 		
 		ai_will_do = {

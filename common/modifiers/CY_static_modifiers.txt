@@ -6,7 +6,6 @@ resistance_effect = {
 	local_intel_to_enemies = 1
 	local_factory_sabotage = 1
 	local_building_slots_factor = -1
-	resistance_target = 0.5
 	resistance_decay = -1
 	resistance_growth = 1
 	compliance_growth = -1
@@ -18,7 +17,6 @@ resistance_effect = {
 
 compliance_effect = {
 	local_non_core_manpower = 0.50
-	resistance_target = -1
 	resistance_decay = 1
 	resistance_growth = -1
 	compliance_growth = 1
@@ -38,12 +36,12 @@ lacking_consumer_goods = {
 }
 
 stability_good_modifier = {
-	political_power_gain = 0.11
-	consumer_goods_factor = -0.011
-	production_speed_buildings_factor = 0.011
-	research_speed_factor = 0.011
-	industrial_capacity_factory = 0.011
-	industrial_capacity_dockyard = 0.011
+	political_power_gain = 1.0
+	consumer_goods_factor = -0.10
+	production_speed_buildings_factor = 0.10
+	research_speed_factor = 0.10
+	industrial_capacity_factory = 0.10
+	industrial_capacity_dockyard = 0.10
 }
 
 stability_bad_modifier = {

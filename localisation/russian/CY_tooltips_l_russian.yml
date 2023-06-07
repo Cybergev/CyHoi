@@ -8,8 +8,13 @@
  SOV_decentralization_tt:0 "§Y$SOV_decentralization_modifier$§!:"
 # politic==========
 # economic==========
- Flexible_trade_policy_tt:0 "§Y$Flexible_trade_policy$§!:"
+
+ Flexible_conscription_policy_tt:0 "Призывная политика: \n $MODIFIER_CONSCRIPTION_FACTOR$ [?Flexible_conscription_policy_conscription|=%Y] \n $MODIFIER_CONSUMER_GOODS_FACTOR$ [?Flexible_conscription_policy_consumer_goods_factor|=1%Y] \n $MODIFIER_PRODUCTION_SPEED_BUILDINGS_FACTOR$ [?Flexible_conscription_policy_production_speed_buildings_factor|=%+] \n $MODIFIER_INDUSTRIAL_CAPACITY_FACTOR$ [?Flexible_conscription_policy_industrial_capacity_factory|=%+] \n $MODIFIER_INDUSTRIAL_CAPACITY_DOCKYARD_FACTOR$ [?Flexible_conscription_policy_industrial_capacity_dockyard|=%+] \n\nОрганизационные стандарты:\n $MODIFIER_CONSCRIPTION_TOTAL_FACTOR$ [?Flexible_conscription_policy_conscription_factor|=0%+] \n $MODIFIER_ARMY_ORG_FACTOR$ [?Flexible_conscription_policy_army_org_factor|=1%+] \n $MODIFIER_ARMY_ORG_REGAIN$ [?Flexible_conscription_policy_army_org_regain|RIGHT|=%+] \n $MODIFIER_ORG_LOSS_AT_LOW_ORG_FACTOR$ [?Flexible_conscription_policy_org_loss_at_low_org_factor|=%-] \n $MODIFIER_ORG_LOSS_WHEN_MOVING$ [?Flexible_conscription_policy_org_loss_when_moving|=1%-] \n $MODIFIER_TRAINING_TIME_FACTOR$ [?Flexible_conscription_policy_training_time_factor|=%-] \n"
+ 
+ Flexible_trade_policy_tt:0 " $MODIFIER_CONSUMER_GOODS_FACTOR$ [?Flexible_trade_policy_consumer_goods_factor|=1%Y] \n $MODIFIER_PRODUCTION_SPEED_BUILDINGS_FACTOR$ [?Flexible_trade_policy_bonus|=%+] \n $MODIFIER_RESEARCH_SPEED_FACTOR$ [?Flexible_trade_policy_bonus|=%+] \n $MODIFIER_INDUSTRIAL_CAPACITY_FACTOR$ [?Flexible_trade_policy_bonus|=%+] \n $MODIFIER_INDUSTRIAL_CAPACITY_DOCKYARD_FACTOR$ [?Flexible_trade_policy_bonus|=%+] \n $MODIFIER_MIN_EXPORT_FACTOR$ [?Flexible_trade_policy_min_export|=0%Y] \n $MODIFIER_CIVILIAN_INTEL_TO_OTHERS$ [?Flexible_trade_policy_intel|=1*%-] \n $MODIFIER_NAVY_INTEL_TO_OTHERS$ [?Flexible_trade_policy_intel|=1*%-] \n"
+ 
  Flexible_economy_policy_tt:0 "§Y$Flexible_economy_policy$§!:"
+
  MAN_economy_tt:0 "§Y$MAN_economy$§!:"
  SOV_five_year_plan_tt:0 "$SOV_second_five_year_plan_dynamic_modifier$:"
  SOV_defense_industry_tt:0 "$SOV_defense_industry_dynamic_modifier$:"
@@ -23,8 +28,8 @@
  SOV_soviet_airforce_alt_tt:0 "$SOV_the_red_army_dynamic_modifier_alt$:"
 # military==========
 # other=====================================================================================================================================================
- Flexible_economy_policy_civilian_economy_level_tt:0 "§Y$civilian_economy$§!: [?Flexible_economy_policy_civilian_point|%Y]"
- Flexible_economy_policy_military_economy_level_tt:0 "§G$war_economy$§!: [?Flexible_economy_policy_military_point|%G]"
+ Flexible_economy_policy_civilian_economy_level_tt:0 "§Y$civilian_economy$§!: [?Flexible_economy_policy_civilian_share|%]"
+ Flexible_economy_policy_military_economy_level_tt:0 "§G$war_economy$§!: [?Flexible_economy_policy_military_share|%]"
  Flexible_economy_policy_civilian_economy_tt: "§Y$civilian_economy$§!: $RIGHT|%+$"
  Flexible_economy_policy_military_economy_tt: "§G$war_economy$§!: $RIGHT|%+$"
  Flexible_economy_policy_multiplier_tt: "Объем: $RIGHT|%$"
